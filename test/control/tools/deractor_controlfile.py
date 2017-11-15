@@ -20,19 +20,19 @@ def log_bystatus(text_content, log_level):
         else:
             logging.warning(text_content + '\n')
 
-def _load(file, decodemethod = 'UTF-8'):
+def load(file, decodemethod = 'UTF-8'):
     """load file data with default utf-8"""
     with open(file, 'r') as f:
         read_content = (f.read()).decode(encoding=decodemethod, errors='strict')
         log_bystatus(read_content, 'i')
         return read_content
 
-def _save(file, file_content, decodemethod = 'UTF-8'):
+def save(file, file_content, decodemethod = 'UTF-8'):
 
     with open(file, 'w') as f:
         f.write(file_content.encode(encoding=decodemethod, errors='strict'))
 
-def _sha256_checksum(filename, block_size=65536):
+def sha256_checksum(filename, block_size=65536):
     sha256 = hashlib.sha256()
     with open(filename, 'rb') as f:
         for block in iter(lambda: f.read(block_size), b''):
@@ -41,4 +41,4 @@ def _sha256_checksum(filename, block_size=65536):
 
 if __name__ == '__main__':
 
-    print _sha256_checksum('__init__.py')
+    print sha256_checksum('__init__.py')

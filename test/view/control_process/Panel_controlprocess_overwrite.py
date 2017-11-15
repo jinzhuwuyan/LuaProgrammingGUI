@@ -2,35 +2,49 @@
 
 import wx
 import GUI_controlprocess
+from control import control_process
 
 # Implementing Panel_controlprocess
-class Panel_controlprocess( GUI_controlprocess.Panel_controlprocess ):
+class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def __init__( self, parent ):
 		GUI_controlprocess.Panel_controlprocess.__init__( self, parent )
-	
+		self.parent = parent
+		self.control = control_process.Control(self)
+		self.change_status = False
+		self.event_list = []
+
+
+
 	# Handlers for Panel_controlprocess events.
+	def check_save_status( self, event ):
+		self.control.monitor_changes(event, self.change_status)
+
+
 	def add_functions( self, event ):
 		# TODO: Implement add_functions
-		pass
-	
+		self.change_status = True
+		# self.m_dataViewTreeCtrl_show.AppendTextColumn('1')
+
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
-		pass
-	
+		self.change_status = True
+		# self.m_dataViewTreeCtrl_show.RemoveChild(self.m_dataViewTreeCtrl_show.GetSelection())
+
 	def take_function_up( self, event ):
 		# TODO: Implement take_function_up
-		pass
-	
+		self.change_status = True
+
+
 	def take_function_down( self, event ):
 		# TODO: Implement take_function_down
-		pass
-	
+		self.change_status = True
+
 	def save_change( self, event ):
 		# TODO: Implement save_change
-		pass
-	
+		self.change_status = False
+
 	def redo_edit( self, event ):
 		# TODO: Implement redo_edit
-		pass
+		self.change_status = True
 	
 	

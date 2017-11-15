@@ -9,33 +9,7 @@
 
 import wx
 import wx.xrc
-
-###########################################################################
-## Class Frame_controlprocess
-###########################################################################
-
-class Frame_controlprocess ( wx.Frame ):
-	
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"control_process", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-		
-		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
-		
-		topsizer = wx.BoxSizer( wx.VERTICAL )
-		
-		self.m_panel_controlprocess = Panel_controlprocess( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		topsizer.Add( self.m_panel_controlprocess, 1, wx.EXPAND, 5 )
-		
-		
-		self.SetSizer( topsizer )
-		self.Layout()
-		self.m_statusBar = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
-		
-		self.Centre( wx.BOTH )
-	
-	def __del__( self ):
-		pass
-	
+import wx.dataview
 
 ###########################################################################
 ## Class Panel_controlprocess
@@ -71,8 +45,8 @@ class Panel_controlprocess ( wx.Panel ):
 		
 		topsizer.Add( self.m_toolBar_main, 0, wx.EXPAND, 5 )
 		
-		self.m_textCtrl_showtext = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_RICH )
-		topsizer.Add( self.m_textCtrl_showtext, 0, wx.EXPAND, 5 )
+		self.m_dataViewTreeCtrl_show = wx.dataview.DataViewTreeCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		topsizer.Add( self.m_dataViewTreeCtrl_show, 0, wx.EXPAND, 5 )
 		
 		
 		self.SetSizer( topsizer )
@@ -84,6 +58,7 @@ class Panel_controlprocess ( wx.Panel ):
 		self.Bind( wx.EVT_TOOL, self.take_function_up, id = self.m_tool_up.GetId() )
 		self.Bind( wx.EVT_TOOL, self.take_function_down, id = self.m_tool_down.GetId() )
 		self.Bind( wx.EVT_TOOL, self.save_change, id = self.m_tool_save.GetId() )
+		self.Bind( wx.EVT_UPDATE_UI, self.check_save_status, id = self.m_tool_save.GetId() )
 		self.Bind( wx.EVT_TOOL, self.redo_edit, id = self.m_tool_redo.GetId() )
 	
 	def __del__( self ):
@@ -104,6 +79,9 @@ class Panel_controlprocess ( wx.Panel ):
 		event.Skip()
 	
 	def save_change( self, event ):
+		event.Skip()
+	
+	def check_save_status( self, event ):
 		event.Skip()
 	
 	def redo_edit( self, event ):
