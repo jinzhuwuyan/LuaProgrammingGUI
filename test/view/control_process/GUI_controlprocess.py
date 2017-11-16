@@ -7,18 +7,19 @@
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
 
+from wxPanel_overwrite import Panel
 import wx
 import wx.xrc
-import wx.dataview
+from TreeMixin import VirtualCustomTreeCtrl
 
 ###########################################################################
 ## Class Panel_controlprocess
 ###########################################################################
 
-class Panel_controlprocess ( wx.Panel ):
+class Panel_controlprocess ( Panel ):
 	
 	def __init__( self, parent ):
-		wx.Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.TAB_TRAVERSAL )
+		Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL )
 		
 		topsizer = wx.FlexGridSizer( 2, 0, 0, 0 )
 		topsizer.AddGrowableCol( 0 )
@@ -45,12 +46,13 @@ class Panel_controlprocess ( wx.Panel ):
 		
 		topsizer.Add( self.m_toolBar_main, 0, wx.EXPAND, 5 )
 		
-		self.m_dataViewTreeCtrl_show = wx.dataview.DataViewTreeCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
-		topsizer.Add( self.m_dataViewTreeCtrl_show, 0, wx.EXPAND, 5 )
+		self.m_treeControl_show = VirtualCustomTreeCtrl(self, treemodel=self.data.model, log=self.log)
+		topsizer.Add( self.m_treeControl_show, 0, wx.EXPAND, 5 )
 		
 		
 		self.SetSizer( topsizer )
 		self.Layout()
+		topsizer.Fit( self )
 		
 		# Connect Events
 		self.Bind( wx.EVT_TOOL, self.add_functions, id = self.m_tool_add.GetId() )

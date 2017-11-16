@@ -2,17 +2,18 @@
 
 import wx
 import GUI_controlprocess
-from control import control_process
+from test.control import control_process
+from test.control.tools import view_tools
 
 # Implementing Panel_controlprocess
 class panel_process( GUI_controlprocess.Panel_controlprocess ):
-	def __init__( self, parent ):
+	def __init__( self, parent, id, pos, size, style ):
 		GUI_controlprocess.Panel_controlprocess.__init__( self, parent )
 		self.parent = parent
 		self.control = control_process.Control(self)
 		self.change_status = False
 		self.event_list = []
-
+		view_tools.config_control(self, id, pos, size, style)
 
 
 	# Handlers for Panel_controlprocess events.
@@ -23,12 +24,16 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def add_functions( self, event ):
 		# TODO: Implement add_functions
 		self.change_status = True
-		# self.m_dataViewTreeCtrl_show.AppendTextColumn('1')
+		self.data.model.items.append(('test', []))
+		self.m_treeControl_show.RefreshItems()
 
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
 		self.change_status = True
 		# self.m_dataViewTreeCtrl_show.RemoveChild(self.m_dataViewTreeCtrl_show.GetSelection())
+		if self.data.model.items:
+			self.data.model.items.pop()
+			self.m_treeControl_show.RefreshItems()
 
 	def take_function_up( self, event ):
 		# TODO: Implement take_function_up

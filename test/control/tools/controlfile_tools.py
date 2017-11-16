@@ -1,5 +1,8 @@
+import os
 import logging
+import time
 import hashlib
+import yaml
 
 version_status = 'debug'
 
@@ -11,21 +14,36 @@ def controlfile(status):
     return deractor
 
 def log_bystatus(text_content, log_level):
+
+    time_str = str(time.time())
+    log_msg = ''.join([time_str, '--------->loglevel: %s\n' % log_level, text_content, '\n'])
     if version_status == 'debug':
         # print(text_content+'\n')
         if log_level == 'i':
-            logging.info(text_content + '\n')
+            logging.info(log_msg)
         elif log_level == 'e':
-            logging.error(text_content + '\n')
+            logging.error(log_msg)
         else:
-            logging.warning(text_content + '\n')
+            logging.warning(log_msg)
 
-def load(file, decodemethod = 'UTF-8'):
+def load(file_path, decodemethod = 'UTF-8'):
     """load file data with default utf-8"""
-    with open(file, 'r') as f:
+    with open(file_path, 'r') as f:
         read_content = (f.read()).decode(encoding=decodemethod, errors='strict')
         log_bystatus(read_content, 'i')
         return read_content
+
+def loadyaml(file_path, decodemethod = 'UTF-8'):
+
+    file_data = load(file_path, decodemethod)
+    try:
+
+        yaml_data = yaml.load(file_data)
+        return yaml_data
+
+    except ValueError as e:
+        log_bystatus(e, 'e')
+        return None
 
 def save(file, file_content, decodemethod = 'UTF-8'):
 
