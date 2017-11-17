@@ -29,13 +29,11 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement add_functions
 		self.change_status = True
 		self.control.append_item(self.parent.GetParent().panel_functionlist.data.get_selectionstr())
-		# self.m_treeControl_show.RefreshItems()
-		# self.m_treeControl_show.UnselectAll()
+
 
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
 		self.change_status = True
-		# self.m_dataViewTreeCtrl_show.RemoveChild(self.m_dataViewTreeCtrl_show.GetSelection())
 		if self.data.model.items:
 			self.control.delete_item()
 

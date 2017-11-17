@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_parameters.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/control_parameters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/control_parameters/parameters_object.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/control_parameters/Main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/control_parameters/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/control_process.py" afterPath="$PROJECT_DIR$/test/control/control_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/funcs_data.yml" afterPath="$PROJECT_DIR$/test/control/funcs_data.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/controlfile_tools.py" afterPath="$PROJECT_DIR$/test/control/tools/controlfile_tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/function_list.fbp" afterPath="$PROJECT_DIR$/test/data/function_list.fbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/programmingview.fbp" afterPath="$PROJECT_DIR$/test/data/programmingview.fbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/MainView.py" afterPath="$PROJECT_DIR$/test/view/MainView.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/control_process/TreeMixin.py" afterPath="$PROJECT_DIR$/test/view/control_process/TreeMixin.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,16 +27,17 @@
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Panel_ChooseFunc_overwrite.coverage" NAME="Panel_ChooseFunc_overwrite Coverage Results" MODIFIED="1510816023934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/function_list" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$create_funcs_datas.coverage" NAME="create_funcs_datas Coverage Results" MODIFIED="1510817776205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/control/tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$TreeMixin.coverage" NAME="TreeMixin Coverage Results" MODIFIED="1510802501140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/control_process" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1510898064890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1510809888570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/control_process" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1510911160808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$parameters_object.coverage" NAME="parameters_object Coverage Results" MODIFIED="1510906925005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/data/control_parameters" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1510910073076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/control_parameters" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="Panel_controlprocess_overwrite.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="188">
+              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#78#87#0" expanded="true" />
               </folding>
@@ -38,54 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control_process.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/control/control_process.py">
+      <file leaf-file-name="control_parameters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/control/control_parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-              <folding>
-                <element signature="e#1111#3185#0" expanded="false" />
-                <element signature="e#3240#4784#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeMixin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/view/control_process/TreeMixin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="54" column="60" lean-forward="true" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeMixin.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/wxPython/demo/TreeMixin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="funcs_data.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/funcs_data.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controlfile_tools.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/tools/controlfile_tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="234">
+              <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -93,34 +57,88 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_reference.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/tools/create_reference.py">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/view/control_process/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/logging/__init__.py">
+      <file leaf-file-name="Panel_edit_paras_overwrite.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Panel_edit_paras_overwrite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="1630" column="9" lean-forward="false" selection-start-line="1630" selection-start-column="4" selection-end-line="1630" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_tools.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/tools/view_tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="450">
+              <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
               <folding>
-                <element signature="e#88#116#0" expanded="true" />
+                <element signature="e#19#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Panel_control_paras_overwrite.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Panel_control_paras_overwrite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding>
+                <element signature="e#82#91#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainView.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/view/MainView.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_core.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/wxPython/wx/_core.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="14921" column="8" lean-forward="false" selection-start-line="14921" selection-start-column="8" selection-end-line="14921" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters_object.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/data/control_parameters/parameters_object.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,6 +195,14 @@
         <option value="$PROJECT_DIR$/test/control/funcs_data.yml" />
         <option value="$PROJECT_DIR$/test/control/control_process.py" />
         <option value="$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py" />
+        <option value="$PROJECT_DIR$/test/control_parameters.py" />
+        <option value="$PROJECT_DIR$/test/view/control_parameters/__init__.py" />
+        <option value="$PROJECT_DIR$/test/control/control_parameters.py" />
+        <option value="$PROJECT_DIR$/test/view/control_parameters/mAIN.py" />
+        <option value="$PROJECT_DIR$/test/data/control_parameters/parameters_object.py" />
+        <option value="$PROJECT_DIR$/test/view/control_parameters/Main.py" />
+        <option value="$PROJECT_DIR$/test/view/control_parameters/Panel_edit_paras_overwrite.py" />
+        <option value="$PROJECT_DIR$/test/view/control_parameters/Panel_control_paras_overwrite.py" />
       </list>
     </option>
   </component>
@@ -187,8 +213,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="460" />
-    <option name="y" value="77" />
+    <option name="x" value="148" />
+    <option name="y" value="72" />
     <option name="width" value="1535" />
     <option name="height" value="1020" />
   </component>
@@ -245,6 +271,13 @@
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="control_parameters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="control_process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -265,14 +298,14 @@
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="control_process" type="462c0819:PsiDirectoryNode" />
+              <item name="control_parameters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="function_list" type="462c0819:PsiDirectoryNode" />
+              <item name="control_process" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,6 +320,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/control" />
+      <recent name="$PROJECT_DIR$/test/control/tools" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/view/control_process" />
@@ -304,7 +338,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.controlfile_tools">
+  <component name="RunManager" selected="Python.Main (2)">
     <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,20 +375,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="Panel_ChooseFunc_overwrite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/view/function_list" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/view/control_parameters" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/view/function_list/Panel_ChooseFunc_overwrite.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/view/control_parameters/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -377,38 +411,38 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="create_funcs_datas" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="parameters_object" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/control/tools" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/data/control_parameters" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/control/tools/create_reference.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/data/control_parameters/parameters_object.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Main (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.create_funcs_datas" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Panel_ChooseFunc_overwrite" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Main (2)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.controlfile_tools" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Main (2)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.controlfile_tools" />
+      <item index="3" class="java.lang.String" itemvalue="Python.parameters_object" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Main (2)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.controlfile_tools" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Main (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.create_funcs_datas" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Panel_ChooseFunc_overwrite" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Main" />
+        <item index="2" class="java.lang.String" itemvalue="Python.parameters_object" />
+        <item index="3" class="java.lang.String" itemvalue="Python.controlfile_tools" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -426,7 +460,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="460" y="77" width="1535" height="1020" extended-state="0" />
+    <frame x="148" y="72" width="1535" height="1020" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2495114" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -561,39 +595,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/view/control_process/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/control/reference.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/wxPython/wx/_core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-678">
-          <caret line="12964" column="35" lean-forward="true" selection-start-line="12964" selection-start-column="35" selection-end-line="12964" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/control/control_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,44 +653,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/data/function_list/function_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/data/control_process/process_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/view/control_process/wxPanel_overwrite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/view/MainView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -728,7 +700,7 @@
         <state relative-caret-position="36">
           <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding>
-            <element signature="e#88#116#0" expanded="true" />
+            <element signature="e#88#116#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -751,10 +723,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/wxPython/demo/TreeMixin.py">
+    <entry file="file://$PROJECT_DIR$/test/view/control_process/TreeMixin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="-480">
+          <caret line="54" column="60" lean-forward="true" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/control/control_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#698#2772#0" expanded="false" />
+            <element signature="e#2827#4371#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Project_control_parameterspanel_control_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -767,31 +758,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/view/control_process/TreeMixin.py">
+    <entry file="file:///usr/local/wxPython/demo/TreeMixin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="54" column="60" lean-forward="true" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
+        <state relative-caret-position="194">
+          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/data/control_process/process_object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/wxPython/wx/_misc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="2820" column="21" lean-forward="false" selection-start-line="2820" selection-start-column="21" selection-end-line="2820" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/control/control_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="7" column="12" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/data/function_list/function_object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/GUI_control_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="63" column="23" lean-forward="true" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="65" />
+          <folding>
+            <marker date="1510911135913" expanded="true" signature="572:700" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="936:943" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="1050:1065" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="1069:1249" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="2267:3399" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="2267:3052" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="3333:3348" ph="..." />
+            <marker date="1510911135913" expanded="true" signature="3384:3399" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/control/control_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/data/control_parameters/parameters_object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_process/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Panel_edit_paras_overwrite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/wxPython/wx/_core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="14921" column="8" lean-forward="false" selection-start-line="14921" selection-start-column="8" selection-end-line="14921" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/MainView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        <state relative-caret-position="188">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="e#78#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/control/control_process.py">
+    <entry file="file://$PROJECT_DIR$/test/view/control_parameters/Panel_control_paras_overwrite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        <state relative-caret-position="312">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding>
-            <element signature="e#1111#3185#0" expanded="false" />
-            <element signature="e#3240#4784#0" expanded="false" />
+            <element signature="e#82#91#0" expanded="true" />
           </folding>
         </state>
       </provider>

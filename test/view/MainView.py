@@ -9,6 +9,7 @@
 
 from test.view.function_list.Panel_ChooseFunc_overwrite import Panel_ChooseFunc
 from test.view.control_process.Panel_controlprocess_overwrite import panel_process
+from test.view.control_parameters.Panel_control_paras_overwrite import panel_control_paras
 import wx
 import wx.xrc
 
@@ -26,20 +27,22 @@ class Frame_Main ( wx.Frame ):
 		topsizer = wx.BoxSizer( wx.VERTICAL )
 		
 		self.panel_programming_Main = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		main_sizer = wx.FlexGridSizer( 0, 2, 0, 0 )
-		main_sizer.AddGrowableCol( 1 )
+		main_sizer = wx.FlexGridSizer( 0, 3, 0, 0 )
+		main_sizer.AddGrowableCol( 2 )
 		main_sizer.AddGrowableRow( 0 )
 		main_sizer.SetFlexibleDirection( wx.BOTH )
 		main_sizer.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
 		self.panel_functionlist = Panel_ChooseFunc( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_functionlist, 0, wx.EXPAND, 5 )
+		main_sizer.Add( self.panel_functionlist, 1, wx.EXPAND, 5 )
 		
 		self.panel_controlprocess = panel_process( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
 		main_sizer.Add( self.panel_controlprocess, 0, wx.EXPAND, 5 )
 		
-		self.panel_editparas = wx.Panel( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_editparas, 0, wx.EXPAND, 5 )
+		self.panel_editparas = panel_control_paras( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
+		self.panel_editparas.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
+		
+		main_sizer.Add( self.panel_editparas, 1, wx.EXPAND, 5 )
 		
 		
 		self.panel_programming_Main.SetSizer( main_sizer )
