@@ -4,7 +4,10 @@ import wx
 import GUI_controlprocess
 from test.control import control_process
 from test.control.tools import view_tools
-
+try:
+    from wx.lib.pubsub import pub
+except ImportError:
+    from pubsub import pub
 # Implementing Panel_controlprocess
 class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def __init__( self, parent, id, pos, size, style ):
@@ -12,6 +15,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.parent = parent
 		self.control = control_process.Control(self)
 		self.change_status = False
+		self.current_func_str = ''
 		self.event_list = []
 		view_tools.config_control(self, id, pos, size, style)
 
@@ -23,9 +27,10 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 
 	def add_functions( self, event ):
 		# TODO: Implement add_functions
-		self.change_status = True
-		self.data.model.items.append(('test', []))
+
+		self.control.append_item(self, self.parent.GetParent().panel_functionlist.data.get_selectionstr())
 		self.m_treeControl_show.RefreshItems()
+		self.m_treeControl_show.UnselectAll()
 
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions

@@ -324,7 +324,7 @@
                         <property name="center_pane">0</property>
                         <property name="class"></property>
                         <property name="close_button">1</property>
-                        <property name="construction">self.m_treeControl_show = VirtualCustomTreeCtrl(self, treemodel=self.data.model, log=self.log)</property>
+                        <property name="construction">self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.data.model, log=self.log)</property>
                         <property name="context_help"></property>
                         <property name="context_menu">1</property>
                         <property name="declaration"></property>
@@ -339,7 +339,7 @@
                         <property name="gripper">0</property>
                         <property name="hidden">0</property>
                         <property name="id">wxID_ANY</property>
-                        <property name="include">from TreeMixin import VirtualCustomTreeCtrl</property>
+                        <property name="include">from TreeMixin import VirtualTreeCtrl</property>
                         <property name="max_size"></property>
                         <property name="maximize_button">0</property>
                         <property name="maximum_size"></property>
