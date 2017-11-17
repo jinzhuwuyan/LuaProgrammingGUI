@@ -135,7 +135,9 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         self.log.write('drop %s %s on %s %s'%(dragText, dragIndex,
             dropText, dropIndex))
         self.model.MoveItem(dragIndex, dropIndex)
-        self.GetParent().RefreshItems()
+        self.RefreshItems()
+        self.UnselectAll()
+
 
 
 class VirtualTreeCtrl(DemoTreeMixin, wx.TreeCtrl):

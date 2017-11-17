@@ -3,11 +3,11 @@ import logging
 import time
 import hashlib
 import yaml
-from NewLogger import InitLog
+# from NewLogger import InitLog
 
 version_status = 'debug'
 
-logger = InitLog().getLogger()
+
 
 def controlfile(status):
     def deractor(func):
@@ -17,17 +17,18 @@ def controlfile(status):
     return deractor
 
 def log_bystatus(text_content, log_level):
-
+    # logger = InitLog().getLogger()
     time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
     log_msg = ''.join([time_str, '--------->loglevel: (%s)\n' % log_level, text_content, '\n'])
     if version_status == 'debug':
         # print(text_content+'\n')
         if log_level == 'i':
-            logger.info(log_msg)
+            logging.getLogger().setLevel(logging.INFO)
+            logging.info(log_msg)
         elif log_level == 'e':
-            logger.error(log_msg)
+            logging.error(log_msg)
         else:
-            logger.warning(log_msg)
+            logging.warning(log_msg)
 
 def load(file_path, decodemethod = 'UTF-8'):
     """load file data with default utf-8"""

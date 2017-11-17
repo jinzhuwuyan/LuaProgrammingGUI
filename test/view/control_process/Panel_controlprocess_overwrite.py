@@ -27,27 +27,28 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 
 	def add_functions( self, event ):
 		# TODO: Implement add_functions
-
-		self.control.append_item(self, self.parent.GetParent().panel_functionlist.data.get_selectionstr())
-		self.m_treeControl_show.RefreshItems()
-		self.m_treeControl_show.UnselectAll()
+		self.change_status = True
+		self.control.append_item(self.parent.GetParent().panel_functionlist.data.get_selectionstr())
+		# self.m_treeControl_show.RefreshItems()
+		# self.m_treeControl_show.UnselectAll()
 
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
 		self.change_status = True
 		# self.m_dataViewTreeCtrl_show.RemoveChild(self.m_dataViewTreeCtrl_show.GetSelection())
 		if self.data.model.items:
-			self.data.model.items.pop()
-			self.m_treeControl_show.RefreshItems()
+			self.control.delete_item()
+
 
 	def take_function_up( self, event ):
 		# TODO: Implement take_function_up
 		self.change_status = True
-
+		self.control.change_item_position('up')
 
 	def take_function_down( self, event ):
 		# TODO: Implement take_function_down
 		self.change_status = True
+		self.control.change_item_position('down')
 
 	def save_change( self, event ):
 		# TODO: Implement save_change
