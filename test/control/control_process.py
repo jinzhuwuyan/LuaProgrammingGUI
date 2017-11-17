@@ -7,6 +7,17 @@ class Control():
         self.parent = parent
         self.func_str, self.func_child, self.command, self.change_way = [None] * 4
 
+    def get_current_pos(self):
+        # _pos = []
+        # select_item = self.parent.m_treeControl_show.GetSelection()
+        # for i in list(self.parent.m_treeControl_show.GetIndexOfItem(select_item)):
+        #     _pos.append(i)
+        _pos = ['1', '2', '3', '5', 'test']
+        return _pos
+
+    def get_current_modeldata(self):
+        # 等待重写，只是测试！
+        return {'1': {'2': {'3': {'5': {'test': {'X': '1', 'Y': 'ss'}}}, '4': {}}}}
 
     def monitor_changes(self, event, status):
         event.Enable(status)
@@ -96,3 +107,4 @@ class Control():
             obj = None
 
         return obj
+

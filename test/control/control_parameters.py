@@ -10,7 +10,9 @@ class Control():
     def save_content_from_gui(self, text_content):
         self.set_bitmap()
 
-    def load_show_content(self):
+    def load_show_content(self, data, pos):
+        self._data.model = data
+        self._data.pos = pos
         return self._data.get_paras()
 
     def set_bitmap(self, bitmap_style = 'ok'):

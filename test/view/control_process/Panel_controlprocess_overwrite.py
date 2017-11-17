@@ -16,7 +16,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.control = control_process.Control(self)
 		self.change_status = False
 		self.current_func_str = ''
-		self.event_list = []
+		self.current_choosen = None
 		view_tools.config_control(self, id, pos, size, style)
 
 
@@ -56,4 +56,12 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement redo_edit
 		self.change_status = True
 	
-	
+	def refresh_current_selection( self, event ):
+		select_item = self.m_treeControl_show.GetSelection()
+
+		if select_item and len(self.m_treeControl_show.GetIndexOfItem(select_item)) > 0:
+				items_indexs = self.m_treeControl_show.GetIndexOfItem(select_item)
+				if list(items_indexs)[-1] != self.current_choosen:
+					print 'refreshing.,...'
+					self.current_choosen = list(items_indexs)[-1]
+					pub.sendMessage('refresh_paras', data = self.control.get_current_modeldata(), pos = self.control.get_current_pos())
