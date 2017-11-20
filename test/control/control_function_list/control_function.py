@@ -1,11 +1,17 @@
-from test.control.control_function import Control
-class container():
-    def __init__(self, func_path = None):
+from test.data.function_list import function_object
+try:
+    from wx.lib.pubsub import pub
+except ImportError:
+    from pubsub import pub
 
-        self._select_obj = None
-        self._current_select = 0
-        self._select_str = ''
-        self._funcs_paras = Control().load_functions(func_path)
+class Control():
+
+    def __init__(self, parent, func_path = None):
+        self.parent = parent
+        self.model = function_object.container(self.parent, func_path)
+        self._funcs_paras = self.model.funcs_data
+        self._select_obj, self._current_select, self._select_str = [None] * 3
+        pub.subscribe(self._send_funcs_data, 'refresh_funcs')
 
     def get_selection(self):
 
@@ -31,6 +37,9 @@ class container():
     def get_items(self):
 
         return self._funcs_paras
+
+    def _send_funcs_data(self):
+        pub.sendMessage('refresh_func_ret', funcs=self.get_items(), func_str=self.get_selectionstr(), func_selection=self.get_selection())
 
     def Refresh(self, obj = None):
         """

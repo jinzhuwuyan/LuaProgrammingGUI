@@ -46,7 +46,7 @@ class Panel_controlprocess ( Panel ):
 		
 		topsizer.Add( self.m_toolBar_main, 0, wx.EXPAND, 5 )
 		
-		self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.data.model, log=self.log)
+		self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.control.model, log=self.log)
 		topsizer.Add( self.m_treeControl_show, 0, wx.EXPAND, 5 )
 		
 		
@@ -55,7 +55,6 @@ class Panel_controlprocess ( Panel ):
 		topsizer.Fit( self )
 		
 		# Connect Events
-		self.Bind( wx.EVT_UPDATE_UI, self.refresh_current_selection )
 		self.Bind( wx.EVT_TOOL, self.add_functions, id = self.m_tool_add.GetId() )
 		self.Bind( wx.EVT_TOOL, self.delete_functions, id = self.m_tool_delete.GetId() )
 		self.Bind( wx.EVT_TOOL, self.take_function_up, id = self.m_tool_up.GetId() )
@@ -69,9 +68,6 @@ class Panel_controlprocess ( Panel ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
-	def refresh_current_selection( self, event ):
-		event.Skip()
-	
 	def add_functions( self, event ):
 		event.Skip()
 	

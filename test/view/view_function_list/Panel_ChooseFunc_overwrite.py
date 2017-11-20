@@ -2,33 +2,33 @@
 
 import wx
 import GUI_functionlist
-from test.data.function_list import function_object
 from test.control.tools import view_tools
+from test.control import control_function
 
 # Implementing Panel_ChooseFunc
 class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 	def __init__( self, parent, id, pos, size, style ):
 		GUI_functionlist.Panel_ChooseFunc.__init__( self, parent )
-		self.data = function_object.container()
-		self.current_data = None
+		self.func_path, self.current_data = [None] * 2
+		self.control = control_function.Control(self, self.func_path)
 		view_tools.config_control(self, id, pos, size, style)
 		self.config()
 
 	# Handlers for Panel_ChooseFunc events.
 	def update_func( self, event ):
 		# TODO: Implement update_func
-		self.data.Refresh(event.EventObject)
-		print self.data.get_selection()
-		print self.data.get_selectionstr()
-		print self.data.get_selectionparas()
+		self.control.Refresh(event.EventObject)
+		print self.control.get_selection()
+		print self.control.get_selectionstr()
+		print self.control.get_selectionparas()
 	
 	def config(self):
-		self.m_listBox_choosefunction.SetItems(self.data.get_items_keys())
+		self.m_listBox_choosefunction.SetItems(self.control.get_items_keys())
 		if len(self.m_listBox_choosefunction.GetItems()) > 0:
 			self.m_listBox_choosefunction.SetSelection(0)
-			self.data.Refresh(self.m_listBox_choosefunction)
-		print self.data.get_selection()
-		print self.data.get_selectionstr()
-		print self.data.get_selectionparas()
+			self.control.Refresh(self.m_listBox_choosefunction)
+		print self.control.get_selection()
+		print self.control.get_selectionstr()
+		print self.control.get_selectionparas()
 
 

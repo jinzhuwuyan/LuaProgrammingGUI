@@ -2,23 +2,21 @@
 
 import wx
 import GUI_controlprocess
-from test.control import control_process
+from test.control.control_process import control_process
 from test.control.tools import view_tools
-try:
-    from wx.lib.pubsub import pub
-except ImportError:
-    from pubsub import pub
+
 # Implementing Panel_controlprocess
 class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def __init__( self, parent, id, pos, size, style ):
-		GUI_controlprocess.Panel_controlprocess.__init__( self, parent )
+
 		self.parent = parent
 		self.control = control_process.Control(self)
 		self.change_status = False
 		self.current_func_str = ''
 		self.current_choosen = None
+		GUI_controlprocess.Panel_controlprocess.__init__(self, parent)
 		view_tools.config_control(self, id, pos, size, style)
-
+		self.m_treeControl_show.Bind(wx.EVT_TREE_ITEM_ACTIVATED, self.refresh_current_selection)
 
 	# Handlers for Panel_controlprocess events.
 	def check_save_status( self, event ):
@@ -28,7 +26,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def add_functions( self, event ):
 		# TODO: Implement add_functions
 		self.change_status = True
-		self.control.append_item(self.parent.GetParent().panel_functionlist.data.get_selectionstr())
+		self.control.append_item()
 
 
 	def delete_functions( self, event ):
@@ -57,11 +55,5 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.change_status = True
 	
 	def refresh_current_selection( self, event ):
-		select_item = self.m_treeControl_show.GetSelection()
-
-		if select_item and len(self.m_treeControl_show.GetIndexOfItem(select_item)) > 0:
-				items_indexs = self.m_treeControl_show.GetIndexOfItem(select_item)
-				if list(items_indexs)[-1] != self.current_choosen:
-					print 'refreshing.,...'
-					self.current_choosen = list(items_indexs)[-1]
-					pub.sendMessage('refresh_paras', data = self.control.get_current_modeldata(), pos = self.control.get_current_pos())
+		print 'refresh_current_selection ...'
+		self.control.refresh_current_selection()

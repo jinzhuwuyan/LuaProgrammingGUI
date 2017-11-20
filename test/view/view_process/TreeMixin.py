@@ -17,10 +17,10 @@ class TreeModel(object):
         super(TreeModel, self).__init__(*args, **kwargs)
 
     def GetItem(self, indices):
-        text, children = 'root', self.items
+        text, children, childrendata = 'root', self.items, {}
         for index in indices:
-            text, children = children[index]
-        return text, children
+            text, children, childrendata = children[index]
+        return text, children, childrendata
 
     def GetText(self, indices):
         return self.GetItem(indices)[0]
@@ -73,7 +73,7 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         for art in wx.ART_FOLDER, wx.ART_FILE_OPEN, wx.ART_NORMAL_FILE:
             self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER, 
                                                         size))
-        self.AssignImageList(self.imageList)
+        # self.AssignImageList(self.imageList)
 
     def OnGetItemText(self, indices):
         print 'OnGetItemText....'

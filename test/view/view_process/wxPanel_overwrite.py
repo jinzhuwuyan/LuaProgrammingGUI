@@ -1,6 +1,6 @@
 import sys
 import wx
-from test.data.control_process import process_object
+from test.data.object_process import process_object
 
 class Panel(wx.Panel):
     def __init__(self, *args, **kwargs):
