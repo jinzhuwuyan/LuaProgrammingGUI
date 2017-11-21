@@ -53,6 +53,7 @@ class Frame_Main ( wx.Frame ):
 		
 		self.SetSizer( topsizer )
 		self.Layout()
+		self.m_statusBar_showstatus = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
 		
 		self.Centre( wx.BOTH )
 	

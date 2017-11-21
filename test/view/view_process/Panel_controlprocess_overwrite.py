@@ -49,10 +49,14 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement save_change
 		self.change_status = False
 
+		self.control.save_to_disk()
+
 	def redo_edit( self, event ):
 		# TODO: Implement redo_edit
 		self.change_status = True
-	
+
+		self.control.load_from_disk()
+
 	def refresh_current_selection( self, event ):
 		print 'refresh_current_selection ...'
 

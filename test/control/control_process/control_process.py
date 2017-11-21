@@ -1,4 +1,6 @@
 #! encoding: utf-8
+import yaml
+import wx
 from test.control.tools import command_tools
 from test.control.tools import controlfile_tools
 from test.data.object_process import process_object
@@ -18,6 +20,7 @@ class Control():
             self._funcs_paras, self._funcs_unlimit,\
             self.index_1, self.index_2= [None] * 12
         self.model = process_object.container()
+        self.file_name = ''
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
@@ -104,6 +107,49 @@ class Control():
         self.change_way = change_way
         self._control_model('change')
 
+    def save_to_disk(self):
+        # TODO: 保存当前数据进行文件
+        controlfile_tools.save(self.file_path, yaml.dump(self.model.items))
+
+    def load_from_disk(self):
+        # TODO: 从文件中读取数据
+        pass
+
+    def _add_obj_bylimit(self, obj, index, limit = False):
+
+        if not limit:
+            (item_str, itemlist, item_data) = obj[index]
+            itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
+            obj[index] = (item_str, itemlist, item_data)
+        else:
+
+            obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
+        print 'Enter by limit is %s' % str(limit)
+        return obj
+
+    def _change_obj_pos(self, obj, index):
+        move_count = 1
+        if self.change_way == 'up' and index > move_count - 1:
+            controlfile_tools.log_bystatus(
+                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
+            obj[index - move_count], obj[index] = obj[index], obj[index - move_count]
+            controlfile_tools.log_bystatus(
+                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
+
+        elif self.change_way == 'down' and index < len(obj) - move_count:
+            controlfile_tools.log_bystatus(
+                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
+            obj[index + move_count], obj[index] = obj[index], obj[index + move_count]
+            controlfile_tools.log_bystatus(
+                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
+
+        else:
+            controlfile_tools.log_bystatus("Can't move the item!", 'e')
+        return obj
+
+    def _delete_obj(self, obj, index):
+        obj.pop(index)
+        return None
 
     def _control_model(self, command = 'delete', data = ('', [], {})):
         self._refresh_func_init()
@@ -166,52 +212,16 @@ class Control():
     def _control_command(self, obj, index, limit = False):
 
         if self.command == 'add':
-            obj = self.add_obj_bylimit(obj, index, limit=limit)
+            obj = self._add_obj_bylimit(obj, index, limit=limit)
 
         elif self.command == 'change':
-            obj = self.change_obj_pos(obj, index)
+            obj = self._change_obj_pos(obj, index)
 
         elif self.command == 'delete':
 
-            obj = self.delete_obj(obj, index)
+            obj = self._delete_obj(obj, index)
 
         return obj
-
-    def add_obj_bylimit(self, obj, index, limit = False):
-
-        if not limit:
-            (item_str, itemlist, item_data) = obj[index]
-            itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
-            obj[index] = (item_str, itemlist, item_data)
-        else:
-
-            obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
-        print 'Enter by limit is %s' % str(limit)
-        return obj
-
-    def change_obj_pos(self, obj, index):
-        move_count = 1
-        if self.change_way == 'up' and index > move_count - 1:
-            controlfile_tools.log_bystatus(
-                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-            obj[index - move_count], obj[index] = obj[index], obj[index - move_count]
-            controlfile_tools.log_bystatus(
-                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-
-        elif self.change_way == 'down' and index < len(obj) - move_count:
-            controlfile_tools.log_bystatus(
-                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-            obj[index + move_count], obj[index] = obj[index], obj[index + move_count]
-            controlfile_tools.log_bystatus(
-                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-
-        else:
-            controlfile_tools.log_bystatus("Can't move the item!", 'e')
-        return obj
-
-    def delete_obj(self, obj, index):
-        obj.pop(index)
-        return None
 
     def _unselete_all(self):
         self.parent.m_treeControl_show.UnselectAll()
@@ -243,5 +253,5 @@ class Control():
         pub.sendMessage('refresh_funcs')
 
     def _get_funcs_data(self, data):
-        (self._func_items, self._func_str, self._func_selection, self._funcs_paras, self._funcs_unlimit) = data
+        (self._func_items, self._func_str, self._func_selection, self._funcs_paras, self._funcs_unlimit, self.file_path) = data
         print 'recv _get_funcs_data ', data

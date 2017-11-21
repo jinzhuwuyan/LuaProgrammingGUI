@@ -44,7 +44,8 @@ class Control():
 
     def _send_funcs_data(self):
         print '_reference_data is ', self._reference_data
-        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas(), self._reference_data['unlimit_func'])
+        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas(),
+                self._reference_data.get('unlimit_func', None), self._reference_data.get('file_path', None), )
         print 'refresh_func_ret ', data
         pub.sendMessage('refresh_func_ret', data=data)
 
