@@ -138,11 +138,11 @@ class Control():
             elif len(select_items) == 2:
                 (self.index_1, self.index_2,) = select_items
                 controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
-                (item_str, itemlist) = childitem[self.index_1]
+                (item_str, itemlist, paraslist) = childitem[self.index_1]
 
                 itemlist = self._control_command(itemlist, self.index_2)
                 if itemlist:
-                    childitem[self.index_1] = (item_str, itemlist)
+                    childitem[self.index_1] = (item_str, itemlist, paraslist)
             else:
                 controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
                 controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
