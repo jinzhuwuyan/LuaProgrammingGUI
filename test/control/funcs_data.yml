@@ -1,2 +1,9 @@
-go: {X: 0, Y: 0, Z: 0}
-move: {}
+go:
+  X: !!python/tuple [0.0, float]
+  Y: !!python/tuple [0.0, float]
+  Z: !!python/tuple [0.0, float]
+move:
+  U: !!python/tuple [0.0, float]
+  V: !!python/tuple [0.0, float]
+  W: !!python/tuple [0.0, float]
+test: {}

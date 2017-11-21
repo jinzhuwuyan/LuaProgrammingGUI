@@ -32,8 +32,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
 		self.change_status = True
-		if self.data.model.items:
-			self.control.delete_item()
+		self.control.delete_item()
 
 
 	def take_function_up( self, event ):

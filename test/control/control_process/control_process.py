@@ -19,27 +19,54 @@ class Control():
         self.model = process_object.container()
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
-
+        pub.subscribe(self._refresh_parasdata, 'save_paras')
+        pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
 ##########################################control parameters panel#########################################
     def refresh_current_selection(self):
-        selection_indexs = self.get_current_pos()
-        print 'select_item is ', str(selection_indexs)
-        if selection_indexs:
-            self.index_1 = selection_indexs[0]
-            if len(selection_indexs) > 1:
-                self.index_2 = selection_indexs[1]
-                print self.model.items
-                _, _tmp_item, _ = self.model.items[self.index_1]
-                _, _, refresh_data = _tmp_item[self.index_2]
-            else:
-                print self.model.items
-                _, _, refresh_data = self.model.items[self.index_1]
-        else:
-            refresh_data = {}
+
+
+        refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
         pub.sendMessage('refresh_paras', data=refresh_data,
                             pos=self.get_current_pos())
 
+    def _refresh_parasdata(self, refresh_type = 'get', data = None):
+        print '_refresh_parasdata ', refresh_type, str(data)
+        refresh_data = None
+        selection_indexs = self.get_current_pos()
+        print 'select_item is ', str(selection_indexs)
+        if selection_indexs and len(selection_indexs) > 1:
+            self.index_1 = selection_indexs[0]
+            self.index_2 = selection_indexs[1]
+            print self.model.items
+            if refresh_type == 'get':
+                _, _tmp_item, _ = self.model.items[self.index_1]
+                _, _, refresh_data = _tmp_item[self.index_2]
+            elif data and refresh_type == 'refresh':
+                    _tmp_key1, _tmp_item1, _tmp_paras1 = self.model.items[self.index_1]
+                    _tmp_key2, _tmp_item2, refresh_data = _tmp_item1[self.index_2]
+                    _tmp_item1[self.index_2] = (_tmp_key2, _tmp_item2, data)
+                    self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, _tmp_paras1)
+            else:
+                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
+
+        elif selection_indexs and len(selection_indexs) == 1:
+            self.index_1 = selection_indexs[0]
+            self.index_2 = None
+            if refresh_type == 'get':
+                _, _, refresh_data = self.model.items[self.index_1]
+            elif data and refresh_type == 'refresh':
+                _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
+                self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
+            else:
+                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
+        else:
+            refresh_data = {}
+
+        controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
+                                       % (str(refresh_type), str(data), str(self.model.items)), 'e')
+
+        return refresh_data
 
     def get_current_pos(self):
         _pos = []
@@ -70,7 +97,8 @@ class Control():
         self._control_model('add', data)
 
     def delete_item(self):
-        self._control_model('delete')
+        if self.model.items:
+            self._control_model('delete')
 
     def change_item_position(self, change_way = 'up'):
         self.change_way = change_way
@@ -159,6 +187,9 @@ class Control():
             obj = None
 
         return obj
+
+    def _unselete_all(self):
+        self.parent.m_treeControl_show.UnselectAll()
 
 ##########################################control function list panel################################
     def get_selectionstr(self):

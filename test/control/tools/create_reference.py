@@ -8,8 +8,9 @@ def get_abspath(reative_path):
     return os.path.abspath(reative_path)
 
 funcs = {
-    'go': {'X': 0, 'Y': 0, 'Z': 0},
-    'move': {},
+    'go': {'X': (0.00,'float'), 'Y': (0.00, 'float'), 'Z': (0.00, 'float')},
+    'move': {'U': (0.00,'float'), 'V': (0.00, 'float'), 'W': (0.00, 'float')},
+    'test': {},
 
 }
 references = {

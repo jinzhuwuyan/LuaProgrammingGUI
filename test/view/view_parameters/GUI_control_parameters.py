@@ -28,17 +28,9 @@ class panel_control_parameters ( wx.Panel ):
 		self.SetSizer( topsizer )
 		self.Layout()
 		topsizer.Fit( self )
-		
-		# Connect Events
-		self.Bind( wx.EVT_LEAVE_WINDOW, self.refresh_paras_panel )
 	
 	def __del__( self ):
 		pass
-	
-	
-	# Virtual event handlers, overide them in your derived class
-	def refresh_paras_panel( self, event ):
-		event.Skip()
 	
 
 ###########################################################################
@@ -58,12 +50,12 @@ class panel_control_paras ( wx.Panel ):
 		self.m_staticText_paraname.Wrap( -1 )
 		text_sizer.Add( self.m_staticText_paraname, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.RIGHT, 5 )
 		
-		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"：", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText2.Wrap( -1 )
-		text_sizer.Add( self.m_staticText2, 0, wx.ALIGN_CENTER_VERTICAL|wx.BOTTOM|wx.RIGHT|wx.TOP, 5 )
+		self.m_staticText_show = wx.StaticText( self, wx.ID_ANY, u"：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText_show.Wrap( -1 )
+		text_sizer.Add( self.m_staticText_show, 0, wx.ALIGN_CENTER_VERTICAL|wx.BOTTOM|wx.RIGHT|wx.TOP, 5 )
 		
 		
-		topsizer.Add( text_sizer, 1, wx.ALIGN_CENTER_VERTICAL, 5 )
+		topsizer.Add( text_sizer, 1, wx.ALIGN_CENTER_VERTICAL|wx.LEFT, 5 )
 		
 		sizer_get_value = wx.BoxSizer( wx.HORIZONTAL )
 		

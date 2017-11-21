@@ -1,3 +1,4 @@
+import wx
 from test.data.object_function_list import function_object
 try:
     from wx.lib.pubsub import pub
@@ -12,6 +13,7 @@ class Control():
         self._funcs_paras = self.model.funcs_data
         self._select_obj, self._current_select, self._select_str = [None] * 3
         pub.subscribe(self._send_funcs_data, 'refresh_funcs')
+        pub.subscribe(self._unselete_all, 'UnSelectAll_funclist')
 
     def get_selection(self):
 
@@ -41,7 +43,7 @@ class Control():
     def _send_funcs_data(self):
 
         data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas())
-        print 'rerefresh_func_ret ', data
+        print 'refresh_func_ret ', data
         pub.sendMessage('refresh_func_ret', data=data)
 
     def Refresh(self, obj = None):
@@ -54,3 +56,10 @@ class Control():
         if self._select_obj:
             self._current_select = self._select_obj.GetSelection()
             self._select_str = self._select_obj.GetStringSelection()
+            if self._current_select != wx.NOT_FOUND:
+                pub.sendMessage('UnSelectAll_controlprocess')
+                pub.sendMessage('remove_all_paras')
+
+    def _unselete_all(self):
+        for i in range(len(self._select_obj.GetSelections())):
+            self._select_obj.Deselect(i)

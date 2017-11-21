@@ -2,7 +2,6 @@
 
 import wx
 import GUI_control_parameters
-import Panel_edit_paras_overwrite
 from test.control.control_parameters import control_parameters
 from test.control.tools import view_tools
 from test.control.tools import controlfile_tools
@@ -17,41 +16,5 @@ class panel_control_paras( GUI_control_parameters.panel_control_parameters ):
 		GUI_control_parameters.panel_control_parameters.__init__( self, parent )
 		self.control = control_parameters.Control(self)
 		view_tools.config_control(self, id, pos, size, style)
-		pub.subscribe(self.refresh_paras_panel1, 'refresh_paras')
 
-	# Handlers for panel_control_parameters events.
-	def refresh_paras_panel( self, event ):
-		# TODO: Implement refresh_paras_panel
-		# show_content = self.control.load_show_content()
-		# sizer = self.GetSizer()
-		# sizer.Clear()
-		# for key, values in (show_content.iterkeys(), show_content.itervalues()):
-        #
-		# 	panel = Panel_edit_paras_overwrite.panel_edit_paras(self)
-		# 	panel.m_staticText_paraname.SetLabel(key)
-		# 	panel.m_textCtrl_paravalue.SetValue(values)
-		# 	sizer.Add( panel, 0, 0, 5 )
-		# print 'layout'
-		# sizer.Layout()
-		pass
-	
-	
-	def refresh_paras_panel1( self, data, pos ):
-		# TODO: Implement refresh_paras_panel
-		# show_content = self.control.load_show_content( data, pos )
-		show_content = data
-		print 'data is ',show_content, '.......', type(show_content)
-		sizer = self.GetSizer()
-		sizer.Clear()
-		if data:
-			for key, values in show_content.iteritems():
 
-				panel = Panel_edit_paras_overwrite.panel_edit_paras(self)
-				panel.m_staticText_paraname.SetLabel(str(key))
-				panel.m_textCtrl_paravalue.SetValue(str(values))
-				sizer.Add( panel, 0, 0, 5 )
-			controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"
-										   % (len(data), data), 'i')
-		else:
-			controlfile_tools.log_bystatus("Don't have any control to refresh!", 'e')
-		sizer.Layout()

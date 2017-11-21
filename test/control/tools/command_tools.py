@@ -1,5 +1,6 @@
 #! encoding: utf-8
 import copy
+import controlfile_tools
 def get_dict(data, pos):
     """
     按位置获取字典的内容
@@ -29,3 +30,30 @@ def ret_obj(list_name, obj):
             _tmp[1] = i
             _ret_list.extend(_tmp)
     return list_name + ''.join(_ret_list)
+
+def check_type(obj, type_str):
+    tmp_type = None
+    ret = None
+    if type_str == 'float' or type_str == str(float):
+        tmp_type = float
+    elif type_str == 'int' or type_str == str(int):
+        tmp_type = int
+    elif type_str == 'list' or type_str == str(list):
+        tmp_type = list
+    elif type_str == 'dict' or type_str == str(dict):
+        tmp_type = dict
+    elif type_str == 'tuple' or type_str == str(tuple):
+        tmp_type = tuple
+    else:
+        controlfile_tools.log_bystatus("Can't check type is %s" % type_str, 'e')
+    try:
+        ret = tmp_type(obj)
+    except Exception as e:
+        controlfile_tools.log_bystatus('Error encount when try-catch init %s(%s)'
+                                       % (str(obj), str(tmp_type)), 'e')
+        ret = None
+
+    return ret
+
+if __name__ == '__main__':
+    print check_type(u'6.00', 'float')

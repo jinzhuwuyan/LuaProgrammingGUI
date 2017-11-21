@@ -3,11 +3,12 @@ class container():
 
     def __init__(self):
 
-        # self.model = {}
-        # self.pos = []
-        self.model  = {'1': {'2': {'3': {'5': {'test': {'X': '1', 'Y': 'ss'}}}, '4': {}}}}
-        self.pos = ['1', '2', '3', '5', 'test']
+        self.model = {}
+        self.pos = []
+        # self.model  = {'1': {'2': {'3': {'5': {'test': {'X': '1', 'Y': 'ss'}}}, '4': {}}}}
+        # self.pos = ['1', '2', '3', '5', 'test']
         self._tmppos = []
+        self.showcontent = None
 
     def  get_paras(self):
         # _tmp = copy.deepcopy(self.model)
