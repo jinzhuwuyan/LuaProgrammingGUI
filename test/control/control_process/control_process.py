@@ -14,8 +14,9 @@ class Control():
         self.parent = parent
         self.func_str, self.func_child, self.command, \
             self.change_way, self.func_data, \
-            self._func_items, self._func_str, self._func_selection, self._funcs_paras,\
-            self.index_1, self.index_2= [None] * 11
+            self._func_items, self._func_str, self._func_selection, \
+            self._funcs_paras, self._funcs_unlimit,\
+            self.index_1, self.index_2= [None] * 12
         self.model = process_object.container()
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
@@ -23,7 +24,6 @@ class Control():
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
 ##########################################control parameters panel#########################################
     def refresh_current_selection(self):
-
 
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
@@ -111,6 +111,7 @@ class Control():
         (self.func_str, self.func_child, self._funcs_paras) = data
         self.command = command
         select_item = self.parent.m_treeControl_show.GetSelection()
+
         # show_item = _panel_functionlist.data.get_selectionstr()
         controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
         childitem = self.model.items
@@ -120,32 +121,36 @@ class Control():
             controlfile_tools.log_bystatus('selection is %s' %
                                            str(self.parent.m_treeControl_show.GetIndexOfItem(select_item)), 'i')
             select_items = self.parent.m_treeControl_show.GetIndexOfItem(select_item)
+            select_item_str = self.parent.m_treeControl_show.GetItemText(select_item)
+            controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
+                                           (select_items, select_item_str), 'i')
+            if len(select_items) > 2:
 
-            if len(select_items) == 0:
-                controlfile_tools.log_bystatus('index is %s' % '0', 'i')
-                if self.command == 'add':
-                    childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-                    # childitemdata.append((self.func_str, self.get_funcsitems(), []))
-                    # childitemdata[self.func_str] = {}
-                    self.index_1, self.index_2 = [None] * 2
+                controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
+                controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
+
             elif len(select_items) == 1:
-
                 (self.index_1,) = select_items
                 self.index_2 = None
                 controlfile_tools.log_bystatus('index_1 is %s' % str(self.index_1), 'i')
-                childitem = self._control_command(childitem, self.index_1)
+                childitem = self._control_command(childitem, self.index_1, limit=not self._check_func_str(select_item_str))
 
             elif len(select_items) == 2:
-                (self.index_1, self.index_2,) = select_items
-                controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
-                (item_str, itemlist, paraslist) = childitem[self.index_1]
 
-                itemlist = self._control_command(itemlist, self.index_2)
+                (self.index_1, self.index_2,) = select_items
+                (item_str, itemlist, paraslist) = childitem[self.index_1]
+                controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
+
+
+                itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
                 if itemlist:
                     childitem[self.index_1] = (item_str, itemlist, paraslist)
             else:
-                controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
-                controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
+                controlfile_tools.log_bystatus('index is %s' % '0', 'i')
+                if self.command == 'add':
+                    childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
+                    self.index_1, self.index_2 = [None] * 2
+
 
         else:
             # 初始化的时候调用此函数添加第一个节点
@@ -156,40 +161,67 @@ class Control():
         self.parent.m_treeControl_show.RefreshItems()
         self.parent.m_treeControl_show.UnselectAll()
 
-    def _control_command(self, obj, index):
-        (item_str, itemlist, item_data) = obj[index]
-        controlfile_tools.log_bystatus('index is %s' % str(index), 'i')
-        # (item_str, itemlist) = childitem[index_1]
-        controlfile_tools.log_bystatus('itemlist is %s' % str(itemlist), 'i')
+
+
+    def _control_command(self, obj, index, limit = False):
+
         if self.command == 'add':
-
-            itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
-            obj[index] =  (item_str, itemlist, item_data)
-
+            obj = self.add_obj_bylimit(obj, index, limit=limit)
 
         elif self.command == 'change':
-            move_count = 1
-            if self.change_way == 'up' and index > move_count - 1:
-                controlfile_tools.log_bystatus('obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-                obj[index - move_count], obj[index] = obj[index], obj[index - move_count]
-                controlfile_tools.log_bystatus('obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-
-            elif self.change_way == 'down' and index < len(obj) - move_count:
-                controlfile_tools.log_bystatus('obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-                obj[index + move_count], obj[index] = obj[index], obj[index + move_count]
-                controlfile_tools.log_bystatus('obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-
-            else:
-                controlfile_tools.log_bystatus("Can't move the item!", 'e')
+            obj = self.change_obj_pos(obj, index)
 
         elif self.command == 'delete':
-            obj.pop(index)
-            obj = None
+
+            obj = self.delete_obj(obj, index)
 
         return obj
 
+    def add_obj_bylimit(self, obj, index, limit = False):
+
+        if not limit:
+            (item_str, itemlist, item_data) = obj[index]
+            itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
+            obj[index] = (item_str, itemlist, item_data)
+        else:
+
+            obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
+        print 'Enter by limit is %s' % str(limit)
+        return obj
+
+    def change_obj_pos(self, obj, index):
+        move_count = 1
+        if self.change_way == 'up' and index > move_count - 1:
+            controlfile_tools.log_bystatus(
+                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
+            obj[index - move_count], obj[index] = obj[index], obj[index - move_count]
+            controlfile_tools.log_bystatus(
+                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
+
+        elif self.change_way == 'down' and index < len(obj) - move_count:
+            controlfile_tools.log_bystatus(
+                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
+            obj[index + move_count], obj[index] = obj[index], obj[index + move_count]
+            controlfile_tools.log_bystatus(
+                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
+
+        else:
+            controlfile_tools.log_bystatus("Can't move the item!", 'e')
+        return obj
+
+    def delete_obj(self, obj, index):
+        obj.pop(index)
+        return None
+
     def _unselete_all(self):
         self.parent.m_treeControl_show.UnselectAll()
+
+    def _check_func_str(self, func_str):
+        controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
+        if func_str in self._funcs_unlimit:
+            return True
+        else:
+            return False
 
 ##########################################control function list panel################################
     def get_selectionstr(self):
@@ -211,5 +243,5 @@ class Control():
         pub.sendMessage('refresh_funcs')
 
     def _get_funcs_data(self, data):
-        (self._func_items, self._func_str, self._func_selection, self._funcs_paras) = data
+        (self._func_items, self._func_str, self._func_selection, self._funcs_paras, self._funcs_unlimit) = data
         print 'recv _get_funcs_data ', data

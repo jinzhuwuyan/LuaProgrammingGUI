@@ -19,7 +19,7 @@ references = {
     'view_path': os.path.join(get_abspath(current_path), 'view'),
     'default_func_path': os.path.join(get_abspath(current_path), 'control'),
     'default_func_filename': 'funcs_data.yml',
-
+    'unlimit_func': ['go']
 
 }
 

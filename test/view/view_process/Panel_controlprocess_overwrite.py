@@ -16,7 +16,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.current_choosen = None
 		GUI_controlprocess.Panel_controlprocess.__init__(self, parent)
 		view_tools.config_control(self, id, pos, size, style)
-		self.m_treeControl_show.Bind(wx.EVT_TREE_ITEM_ACTIVATED, self.refresh_current_selection)
+		self.m_treeControl_show.Bind(wx.EVT_TREE_SEL_CHANGED, self.refresh_current_selection)
 
 	# Handlers for Panel_controlprocess events.
 	def check_save_status( self, event ):
@@ -55,4 +55,5 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	
 	def refresh_current_selection( self, event ):
 		print 'refresh_current_selection ...'
+
 		self.control.refresh_current_selection()

@@ -1,3 +1,6 @@
-{control_path: /home/pi/Documents/LuaProgrammingGUI/test/control, data_path: /home/pi/Documents/LuaProgrammingGUI/test/data,
-  default_func_filename: funcs_data.yml, default_func_path: /home/pi/Documents/LuaProgrammingGUI/test/control,
-  view_path: /home/pi/Documents/LuaProgrammingGUI/test/view}
+control_path: /home/pi/Documents/LuaProgrammingGUI/test/control
+data_path: /home/pi/Documents/LuaProgrammingGUI/test/data
+default_func_filename: funcs_data.yml
+default_func_path: /home/pi/Documents/LuaProgrammingGUI/test/control
+unlimit_func: [go]
+view_path: /home/pi/Documents/LuaProgrammingGUI/test/view

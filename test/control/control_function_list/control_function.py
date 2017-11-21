@@ -11,9 +11,11 @@ class Control():
         self.parent = parent
         self.model = function_object.container(self.parent, func_path)
         self._funcs_paras = self.model.funcs_data
+        self._reference_data = self.model.reference_data
         self._select_obj, self._current_select, self._select_str = [None] * 3
         pub.subscribe(self._send_funcs_data, 'refresh_funcs')
         pub.subscribe(self._unselete_all, 'UnSelectAll_funclist')
+
 
     def get_selection(self):
 
@@ -41,8 +43,8 @@ class Control():
         return self._funcs_paras
 
     def _send_funcs_data(self):
-
-        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas())
+        print '_reference_data is ', self._reference_data
+        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas(), self._reference_data['unlimit_func'])
         print 'refresh_func_ret ', data
         pub.sendMessage('refresh_func_ret', data=data)
 

@@ -48,8 +48,7 @@ class Panel_controlprocess ( Panel ):
 		
 		self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.control.model, log=self.log)
 		topsizer.Add( self.m_treeControl_show, 0, wx.EXPAND, 5 )
-		
-		
+
 		self.SetSizer( topsizer )
 		self.Layout()
 		topsizer.Fit( self )
