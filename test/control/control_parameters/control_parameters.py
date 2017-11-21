@@ -1,5 +1,5 @@
 import wx
-from test.data.control_parameters import parameters_object
+from test.data.object_parameters import parameters_object
 
 class Control():
 

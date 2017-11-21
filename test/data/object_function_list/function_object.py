@@ -22,7 +22,7 @@ class container():
 
     def _load_default(self):
         reference_data = file_control.loadyaml(os.path.join(
-                os.path.split(os.path.abspath(__file__))[0],
+            os.path.join(os.path.abspath('./test/'), 'control'),
                 'reference.yml'))
         _file_path = reference_data['default_func_path']
         _file_name = reference_data['default_func_filename']

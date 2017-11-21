@@ -10,10 +10,11 @@ class container():
         self._tmppos = []
 
     def  get_paras(self):
-        _tmp = copy.deepcopy(self.model)
-        for pos in self.pos:
-            _tmp = _tmp[pos]
-        return _tmp
+        # _tmp = copy.deepcopy(self.model)
+        # for pos in self.pos:
+        #     _tmp = _tmp[pos]
+        # return _tmp
+        return self.model
 
     def set_paras(self, text_content):
         self._tmppos = copy.deepcopy(self.pos)

@@ -1,0 +1,4 @@
+{control_path: /home/pi/Documents/LuaProgrammingGUI/test/control/tools/test/control,
+  data_path: /home/pi/Documents/LuaProgrammingGUI/test/control/tools/test/data, default_func_filename: funcs_data.yml,
+  default_func_path: /home/pi/Documents/LuaProgrammingGUI/test/control/tools/test/control,
+  view_path: /home/pi/Documents/LuaProgrammingGUI/test/control/tools/test/view}

@@ -17,7 +17,7 @@
         <property name="internationalize">0</property>
         <property name="name">control_process</property>
         <property name="namespace"></property>
-        <property name="path">/home/pi/Documents/LuaProgrammingGUI/test/view/control_process</property>
+        <property name="path">/home/pi/Documents/LuaProgrammingGUI/test/view/view_process</property>
         <property name="precompiled_header"></property>
         <property name="relative_path">1</property>
         <property name="skip_lua_events">1</property>
@@ -77,7 +77,7 @@
             <event name="OnRightUp"></event>
             <event name="OnSetFocus"></event>
             <event name="OnSize"></event>
-            <event name="OnUpdateUI">refresh_current_selection</event>
+            <event name="OnUpdateUI"></event>
             <object class="wxFlexGridSizer" expanded="1">
                 <property name="cols">0</property>
                 <property name="flexible_direction">wxBOTH</property>
@@ -324,7 +324,7 @@
                         <property name="center_pane">0</property>
                         <property name="class"></property>
                         <property name="close_button">1</property>
-                        <property name="construction">self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.data.model, log=self.log)</property>
+                        <property name="construction">self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.control.model, log=self.log)</property>
                         <property name="context_help"></property>
                         <property name="context_menu">1</property>
                         <property name="declaration"></property>

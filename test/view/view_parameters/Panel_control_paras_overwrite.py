@@ -3,10 +3,9 @@
 import wx
 import GUI_control_parameters
 import Panel_edit_paras_overwrite
-from test.data.control_parameters import parameters_object
-from test.control import control_parameters
+from test.control.control_parameters import control_parameters
 from test.control.tools import view_tools
-
+from test.control.tools import controlfile_tools
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -39,14 +38,20 @@ class panel_control_paras( GUI_control_parameters.panel_control_parameters ):
 	
 	def refresh_paras_panel1( self, data, pos ):
 		# TODO: Implement refresh_paras_panel
-		show_content = self.control.load_show_content( data, pos )
+		# show_content = self.control.load_show_content( data, pos )
+		show_content = data
+		print 'data is ',show_content, '.......', type(show_content)
 		sizer = self.GetSizer()
 		sizer.Clear()
-		for key, values in (show_content.iterkeys(), show_content.itervalues()):
+		if data:
+			for key, values in show_content.iteritems():
 
-			panel = Panel_edit_paras_overwrite.panel_edit_paras(self)
-			panel.m_staticText_paraname.SetLabel(key)
-			panel.m_textCtrl_paravalue.SetValue(values)
-			sizer.Add( panel, 0, 0, 5 )
-		print 'layout'
+				panel = Panel_edit_paras_overwrite.panel_edit_paras(self)
+				panel.m_staticText_paraname.SetLabel(str(key))
+				panel.m_textCtrl_paravalue.SetValue(str(values))
+				sizer.Add( panel, 0, 0, 5 )
+			controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"
+										   % (len(data), data), 'i')
+		else:
+			controlfile_tools.log_bystatus("Don't have any control to refresh!", 'e')
 		sizer.Layout()

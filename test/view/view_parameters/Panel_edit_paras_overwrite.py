@@ -1,7 +1,7 @@
 #! encoding: utf-8
 import wx
 import GUI_control_parameters
-from test.control import control_parameters
+from test.control.control_parameters import control_parameters
 
 # Implementing panel_control_paras
 class panel_edit_paras( GUI_control_parameters.panel_control_paras ):

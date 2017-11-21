@@ -1,4 +1,4 @@
-from test.data.function_list import function_object
+from test.data.object_function_list import function_object
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -39,7 +39,10 @@ class Control():
         return self._funcs_paras
 
     def _send_funcs_data(self):
-        pub.sendMessage('refresh_func_ret', funcs=self.get_items(), func_str=self.get_selectionstr(), func_selection=self.get_selection())
+
+        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas())
+        print 'rerefresh_func_ret ', data
+        pub.sendMessage('refresh_func_ret', data=data)
 
     def Refresh(self, obj = None):
         """
