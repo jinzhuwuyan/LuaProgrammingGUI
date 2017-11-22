@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/control/tools/funcs_data.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/control/tools/reference.yml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/control_function_list/control_function.py" afterPath="$PROJECT_DIR$/test/control/control_function_list/control_function.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/control_process/control_process.py" afterPath="$PROJECT_DIR$/test/control/control_process/control_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/reference.yml" afterPath="$PROJECT_DIR$/test/control/reference.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/create_reference.py" afterPath="$PROJECT_DIR$/test/control/tools/create_reference.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/programmingview.fbp" afterPath="$PROJECT_DIR$/test/data/programmingview.fbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/MainView.py" afterPath="$PROJECT_DIR$/test/view/MainView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +21,7 @@
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$create_funcs_datas.coverage" NAME="create_funcs_datas Coverage Results" MODIFIED="1510817776205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/control/tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$TreeMixin.coverage" NAME="TreeMixin Coverage Results" MODIFIED="1510802501140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/control_process" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$command_tools.coverage" NAME="command_tools Coverage Results" MODIFIED="1511242541671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/control/tools" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1511257568879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1511312995466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$parameters_object.coverage" NAME="parameters_object Coverage Results" MODIFIED="1510906925005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/data/control_parameters" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1510910073076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/view/control_parameters" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$_core.coverage" NAME="_core Coverage Results" MODIFIED="1511245803605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/usr/local/wxPython/wx" />
@@ -60,11 +53,21 @@
       <file leaf-file-name="control_process.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/control/control_process/control_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="114" column="24" lean-forward="true" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="24" />
+            <state relative-caret-position="1817">
+              <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding>
-                <marker date="1511257629601" expanded="true" signature="41:188" ph="import ..." />
+                <marker date="1511312992602" expanded="true" signature="41:188" ph="import ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.lts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test.lts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,8 +115,8 @@
       <file leaf-file-name="control_function.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/control/control_function_list/control_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+            <state relative-caret-position="222">
+              <caret line="47" column="84" lean-forward="false" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="84" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -127,19 +130,6 @@
             <state relative-caret-position="215">
               <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reference.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/reference.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <marker date="1511257569873" expanded="true" signature="229:309" ph="unlimit_func: [1 item]" />
-                <marker date="1511257569873" expanded="true" signature="306:308" ph="go" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -164,7 +154,6 @@
       <find>OnGetItemBackGroundColour</find>
       <find>selection is</find>
       <find>func_child</find>
-      <find>refresh_func_ret</find>
       <find>refresh_func_init</find>
       <find>don't have any</find>
       <find>refresh_data</find>
@@ -180,6 +169,8 @@
       <find>_funcs_paras</find>
       <find>_refresh_func_init</find>
       <find>Enter by</find>
+      <find>recv _get_funcs_data</find>
+      <find>refresh_func_ret</find>
     </findStrings>
     <replaceStrings>
       <replace>model</replace>
@@ -232,10 +223,10 @@
         <option value="$PROJECT_DIR$/test/control/control_parameters/control_parameters.py" />
         <option value="$PROJECT_DIR$/test/data/object_function_list/function_object.py" />
         <option value="$PROJECT_DIR$/test/view/view_process/GUI_controlprocess.py" />
-        <option value="$PROJECT_DIR$/test/control/control_function_list/control_function.py" />
         <option value="$PROJECT_DIR$/test/control/tools/create_reference.py" />
         <option value="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" />
         <option value="$PROJECT_DIR$/test/view/MainView.py" />
+        <option value="$PROJECT_DIR$/test/control/control_function_list/control_function.py" />
         <option value="$PROJECT_DIR$/test/control/control_process/control_process.py" />
       </list>
     </option>
@@ -335,6 +326,12 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
@@ -522,11 +519,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="120" y="24" width="1535" height="1020" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -579,16 +575,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/control/control_process/control_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding>
-            <marker date="1511257629601" expanded="true" signature="41:188" ph="import ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/wxPython/wx/lib/agw/customtreectrl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -907,8 +893,8 @@
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <marker date="1511257569873" expanded="true" signature="229:309" ph="unlimit_func: [1 item]" />
-            <marker date="1511257569873" expanded="true" signature="306:308" ph="go" />
+            <marker date="1511312996998" expanded="true" signature="229:309" ph="unlimit_func: [1 item]" />
+            <marker date="1511312996998" expanded="true" signature="306:308" ph="go" />
           </folding>
         </state>
       </provider>
@@ -926,16 +912,6 @@
         <state relative-caret-position="215">
           <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/control/control_function_list/control_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,12 +957,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/test.lts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/control/control_function_list/control_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="47" column="84" lean-forward="false" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/control/control_process/control_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="114" column="24" lean-forward="true" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="24" />
+        <state relative-caret-position="1817">
+          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding>
-            <marker date="1511257629601" expanded="true" signature="41:188" ph="import ..." />
+            <marker date="1511312992602" expanded="true" signature="41:188" ph="import ..." />
           </folding>
         </state>
       </provider>

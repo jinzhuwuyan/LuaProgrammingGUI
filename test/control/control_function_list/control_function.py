@@ -15,7 +15,7 @@ class Control():
         self._select_obj, self._current_select, self._select_str = [None] * 3
         pub.subscribe(self._send_funcs_data, 'refresh_funcs')
         pub.subscribe(self._unselete_all, 'UnSelectAll_funclist')
-
+        self._send_funcs_data()
 
     def get_selection(self):
 

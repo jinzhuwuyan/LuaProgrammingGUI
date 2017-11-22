@@ -1,0 +1,25 @@
+- !!python/tuple
+  - !!python/unicode 'go'
+  - - !!python/tuple
+      - !!python/unicode 'test'
+      - []
+      - &id001 {}
+    - !!python/tuple
+      - !!python/unicode 'move'
+      - []
+      - U: !!python/tuple [-10.0, float]
+        V: !!python/tuple [0.0, float]
+        W: !!python/tuple [50.0, float]
+  - X: !!python/tuple [20.0, float]
+    Y: !!python/tuple [30.0, float]
+    Z: !!python/tuple [50.0, float]
+- !!python/tuple
+  - !!python/unicode 'move'
+  - []
+  - U: !!python/tuple [0.0, float]
+    V: !!python/tuple [0.0, float]
+    W: !!python/tuple [20.0, float]
+- !!python/tuple
+  - !!python/unicode 'test'
+  - []
+  - *id001

@@ -18,9 +18,9 @@ class Control():
             self.change_way, self.func_data, \
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
-            self.index_1, self.index_2= [None] * 12
+            self.index_1, self.index_2, self.file_path = [None] * 13
         self.model = process_object.container()
-        self.file_name = ''
+
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
@@ -109,11 +109,24 @@ class Control():
 
     def save_to_disk(self):
         # TODO: 保存当前数据进行文件
-        controlfile_tools.save(self.file_path, yaml.dump(self.model.items))
+        if self.file_path:
+            controlfile_tools.save(self.file_path, yaml.dump(self.model.items))
+        else:
+            # load filepath
+            pass
 
     def load_from_disk(self):
         # TODO: 从文件中读取数据
-        pass
+        if self.file_path:
+            self.model.items = controlfile_tools.loadyaml(self.file_path)
+            self.refresh_tree()
+        else:
+            # load filepath
+            pass
+
+    def refresh_tree(self):
+        self.parent.m_treeControl_show.RefreshItems()
+        self.parent.m_treeControl_show.UnselectAll()
 
     def _add_obj_bylimit(self, obj, index, limit = False):
 
@@ -204,8 +217,7 @@ class Control():
                 childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
                 self.index_1, self.index_2 = [None] * 2
                 # childitemdata.append((self.func_str, {}, []))
-        self.parent.m_treeControl_show.RefreshItems()
-        self.parent.m_treeControl_show.UnselectAll()
+        self.refresh_tree()
 
 
 
