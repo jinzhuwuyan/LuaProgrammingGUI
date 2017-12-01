@@ -3,5 +3,5 @@ data_path: /home/pi/Documents/LuaProgrammingGUI/test/data
 default_func_filename: funcs_data.yml
 default_func_path: /home/pi/Documents/LuaProgrammingGUI/test/control
 file_path: /home/pi/Documents/LuaProgrammingGUI/test/test.lts
-unlimit_func: [go]
+unlimit_func: [if, else]
 view_path: /home/pi/Documents/LuaProgrammingGUI/test/view

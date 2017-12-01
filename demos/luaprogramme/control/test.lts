@@ -1,0 +1,17 @@
+- !!python/tuple
+  - !!python/unicode 'go'
+  - []
+  - &id001
+    U: !!python/tuple [0.0, float]
+    V: !!python/tuple [0.0, float]
+    W: !!python/tuple [0.0, float]
+    X: !!python/tuple [0.0, float]
+    Y: !!python/tuple [0.0, float]
+    Z: !!python/tuple [0.0, float]
+- !!python/tuple
+  - !!python/unicode 'if'
+  - - !!python/tuple
+      - !!python/unicode 'go'
+      - []
+      - *id001
+  - condition: !!python/tuple ['', str]

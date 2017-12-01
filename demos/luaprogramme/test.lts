@@ -1,0 +1,33 @@
+- !!python/tuple
+  - !!python/unicode 'emgStop'
+  - []
+  - value: !!python/tuple [1, int]
+- !!python/tuple
+  - !!python/unicode 'emgStop'
+  - []
+  - value: !!python/tuple [0, int]
+- !!python/tuple
+  - !!python/unicode 'go'
+  - []
+  - U: !!python/tuple [0.0, float]
+    V: !!python/tuple [0.0, float]
+    W: !!python/tuple [0.0, float]
+    X: !!python/tuple [0.0, float]
+    Y: !!python/tuple [0.0, float]
+    Z: !!python/tuple [0.0, float]
+- !!python/tuple
+  - !!python/unicode 'luaSleep'
+  - []
+  - value: !!python/tuple [5.0, float]
+- !!python/tuple
+  - !!python/unicode 'goja'
+  - []
+  - J1: !!python/tuple [90.0, float]
+    J2: !!python/tuple [0.0, float]
+    J3: !!python/tuple [0.0, float]
+    J4: !!python/tuple [0.0, float]
+    J5: !!python/tuple [0.0, float]
+- !!python/tuple
+  - !!python/unicode 'luaSleep'
+  - []
+  - value: !!python/tuple [5.0, float]

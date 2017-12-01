@@ -1,9 +1,22 @@
-go:
-  X: !!python/tuple [0.0, float]
-  Y: !!python/tuple [0.0, float]
-  Z: !!python/tuple [0.0, float]
-move:
+emgStop:
+  value: !!python/tuple [0, int]
+go: &id001
   U: !!python/tuple [0.0, float]
   V: !!python/tuple [0.0, float]
   W: !!python/tuple [0.0, float]
-test: {}
+  X: !!python/tuple [0.0, float]
+  Y: !!python/tuple [0.0, float]
+  Z: !!python/tuple [0.0, float]
+goja:
+  J1: !!python/tuple [0.0, float]
+  J2: !!python/tuple [0.0, float]
+  J3: !!python/tuple [0.0, float]
+  J4: !!python/tuple [0.0, float]
+  J5: !!python/tuple [0.0, float]
+  J6: !!python/tuple [0.0, float]
+luaSleep:
+  time: !!python/tuple [0, float]
+move: *id001
+setAccel: &id002
+  value: !!python/tuple [0.0, float]
+setSpeed: *id002

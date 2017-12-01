@@ -79,13 +79,28 @@ class Control():
         # TODO: Implement refresh_paras_panel
         # show_content = self.control.load_show_content( data, pos )
         self.controllist.clear()
+        self._remove_allcontrols()
+        ##-----------------------init value------------------
+        reorder_list = [list('XYZUVW'), 'J1,J2,J3,J4,J5,J6'.split(',')]
+        keys_list = None
         self.model.showcontent = data
         print 'data is ', self.model.showcontent, '.......'
         sizer = self._parent.GetSizer()
-        self._remove_allcontrols()
+        #-------------------Logic-----------------
         if data:
-            for key, values in self.model.showcontent.iteritems():
-                panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key, value=values)
+
+
+            check_list = self.model.showcontent.keys()
+            for check in reorder_list:
+                if check_list[0] in check:
+                    check_list = check
+                    break
+                else:
+                    continue
+            controlfile_tools.log_bystatus('keys is .....%s' % str(check_list), 'i')
+            for key in check_list:
+                panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
+                                                                    value=self.model.showcontent[key])
                 sizer.Add(panel, 0, 0, 5)
                 self.controllist[key] = panel
             controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"

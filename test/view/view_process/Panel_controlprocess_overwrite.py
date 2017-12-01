@@ -19,8 +19,8 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.m_treeControl_show.Bind(wx.EVT_TREE_SEL_CHANGED, self.refresh_current_selection)
 
 	# Handlers for Panel_controlprocess events.
-	def check_save_status( self, event ):
-		self.control.monitor_changes(event, self.change_status)
+	# def check_save_status( self, event ):
+	# 	self.control.monitor_changes(event, self.change_status)
 
 
 	def add_functions( self, event ):
@@ -61,3 +61,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		print 'refresh_current_selection ...'
 
 		self.control.refresh_current_selection()
+
+	def modify_runtime( self, event ):
+
+		self.control.modify_runtime()

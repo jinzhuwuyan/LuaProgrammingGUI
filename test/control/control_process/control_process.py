@@ -1,6 +1,7 @@
 #! encoding: utf-8
 import yaml
 import wx
+import time
 from test.control.tools import command_tools
 from test.control.tools import controlfile_tools
 from test.data.object_process import process_object
@@ -13,18 +14,22 @@ except ImportError:
 class Control():
 
     def __init__(self, parent):
+        self.version = '.'.join(list('0010'))
         self.parent = parent
+        #change
         self.func_str, self.func_child, self.command, \
             self.change_way, self.func_data, \
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
             self.index_1, self.index_2, self.file_path = [None] * 13
         self.model = process_object.container()
-
+        self.repeat_time = 1
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
+        self._refresh_func_init()
+
 ##########################################control parameters panel#########################################
     def refresh_current_selection(self):
 
@@ -94,6 +99,14 @@ class Control():
     def monitor_changes(self, event, status):
         event.Enable(status)
 
+    def modify_runtime(self):
+        dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数：', '输入循环次数弹框', self.repeat_time, 1, 100000)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.repeat_time = dlg.GetValue()
+            wx.MessageBox('设置成功！')
+        else:
+            print 'Cancle it!'
+
     def append_item(self):
         """控制显示数据"""
         data = (self.get_selectionstr(), [], self.get_selection_paras())
@@ -109,16 +122,42 @@ class Control():
 
     def save_to_disk(self):
         # TODO: 保存当前数据进行文件
+        print 'self.file_path', self.file_path
         if self.file_path:
-            controlfile_tools.save(self.file_path, yaml.dump(self.model.items))
+            print 'saving file.',self.model.items
+            controlfile_tools.save(self.file_path, self.generate_prj_data())
+            from demos.luaprogramme.control.Data_Handler import Handle_Msg
+            handler = Handle_Msg(self)
+            commands_data = handler.generate_data_from_gui(self.model.items)
+            handler.generate_commands(commands_data, self.repeat_time)
+            controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
         else:
             # load filepath
             pass
 
+    def generate_prj_data(self):
+        _tmp = {}
+        _tmp['ProgramBlocks'] = self.model.items
+        _tmp['Repeat_time'] = self.repeat_time
+        _tmp['Last_Edit_time'] = time.asctime( time.localtime(time.time()))
+        _tmp['encoding'] = 'utf-8'
+        _tmp['Author'] = 'ysw'
+        # _tmp['version'] = '.'.join(list('0010'))
+        _tmp['version'] = self.version
+
+        return yaml.dump(_tmp)
+
+
+
+
     def load_from_disk(self):
         # TODO: 从文件中读取数据
+        print self.file_path
         if self.file_path:
-            self.model.items = controlfile_tools.loadyaml(self.file_path)
+            filedata = controlfile_tools.loadyaml(self.file_path)
+            self.model.items = filedata['ProgramBlocks']
+            self.repeat_time = filedata['Repeat_time']
+            print 'loading ...', self.model.items
             self.refresh_tree()
         else:
             # load filepath
@@ -135,7 +174,6 @@ class Control():
             itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
             obj[index] = (item_str, itemlist, item_data)
         else:
-
             obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
         print 'Enter by limit is %s' % str(limit)
         return obj

@@ -66,6 +66,7 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         super(DemoTreeMixin, self).__init__(*args, **kwargs)
         self.CreateImageList()
 
+
     def CreateImageList(self):
         print 'Creating Image List....'
         size = (16, 16)
@@ -109,10 +110,10 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         # Show how to change the item background colour. In this case the
         # background colour of each third item is green.
         print 'OnGetItemBackGroundColour.....'
-        if indices[-1] == 2:
-            return wx.GREEN
-        else: 
-            return super(DemoTreeMixin, 
+        # if indices[-1] == 2:
+        #     return wx.GREEN
+        # else:
+        return super(DemoTreeMixin,
                          self).OnGetItemBackgroundColour(indices)
 
     def OnGetItemImage(self, indices, which):
@@ -128,13 +129,13 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
 
     def OnDrop(self, dropTarget, dragItem):
         print 'Droping.....'
-        dropIndex = self.GetIndexOfItem(dropTarget)
-        dropText = self.model.GetText(dropIndex)
-        dragIndex = self.GetIndexOfItem(dragItem)
-        dragText = self.model.GetText(dragIndex)
-        self.log.write('drop %s %s on %s %s'%(dragText, dragIndex,
-            dropText, dropIndex))
-        self.model.MoveItem(dragIndex, dropIndex)
+        # dropIndex = self.GetIndexOfItem(dropTarget)
+        # dropText = self.model.GetText(dropIndex)
+        # dragIndex = self.GetIndexOfItem(dragItem)
+        # dragText = self.model.GetText(dragIndex)
+        # self.log.write('drop %s %s on %s %s'%(dragText, dragIndex,
+        #     dropText, dropIndex))
+        # self.model.MoveItem(dragIndex, dropIndex)
         self.RefreshItems()
         self.UnselectAll()
 

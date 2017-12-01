@@ -44,6 +44,8 @@ def check_type(obj, type_str):
         tmp_type = dict
     elif type_str == 'tuple' or type_str == str(tuple):
         tmp_type = tuple
+    elif type_str == 'str' or type_str == str(tuple):
+        tmp_type = str
     else:
         controlfile_tools.log_bystatus("Can't check type is %s" % type_str, 'e')
     try:
