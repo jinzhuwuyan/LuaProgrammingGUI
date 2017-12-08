@@ -7,9 +7,9 @@
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
 
-from test.view.view_function_list.Panel_ChooseFunc_overwrite import Panel_ChooseFunc
-from test.view.view_process.Panel_controlprocess_overwrite import panel_process
-from test.view.view_parameters.Panel_control_paras_overwrite import panel_control_paras
+from view_function_list.Panel_ChooseFunc_overwrite import Panel_ChooseFunc
+from view_process.Panel_controlprocess_overwrite import panel_process
+from view_parameters.Panel_control_paras_overwrite import panel_control_paras
 import wx
 import wx.xrc
 

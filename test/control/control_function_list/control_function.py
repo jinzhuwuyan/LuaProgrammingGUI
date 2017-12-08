@@ -1,5 +1,5 @@
 import wx
-from test.data.object_function_list import function_object
+from LuaProgrammingGUI.test.data.object_function_list import function_object
 try:
     from wx.lib.pubsub import pub
 except ImportError:

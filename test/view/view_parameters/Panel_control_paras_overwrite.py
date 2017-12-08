@@ -2,9 +2,9 @@
 
 import wx
 import GUI_control_parameters
-from test.control.control_parameters import control_parameters
-from test.control.tools import view_tools
-from test.control.tools import controlfile_tools
+from LuaProgrammingGUI.test.control.control_parameters import control_parameters
+from LuaProgrammingGUI.test.control.tools import view_tools
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
 try:
     from wx.lib.pubsub import pub
 except ImportError:

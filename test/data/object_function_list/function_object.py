@@ -1,5 +1,5 @@
 import os
-from test.control.tools import controlfile_tools as file_control
+from LuaProgrammingGUI.test.control.tools import controlfile_tools as file_control
 class container():
     def __init__(self, parent, func_path = None):
         self.parent = parent
@@ -11,9 +11,7 @@ class container():
 
     def _load_functions(self, file_path=None):
 
-        self.reference_data = file_control.loadyaml(os.path.join(
-            os.path.join(os.path.abspath('./test/'), 'control'),
-            'reference.yml'))
+        self.reference_data = file_control.loadyaml(os.path.abspath('./LuaProgrammingGUI/test/control/reference.yml'))
 
         if file_path:
                 funcs = file_control.loadyaml(file_path)

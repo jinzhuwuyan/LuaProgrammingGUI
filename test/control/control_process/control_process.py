@@ -2,9 +2,9 @@
 import yaml
 import wx
 import time
-from test.control.tools import command_tools
-from test.control.tools import controlfile_tools
-from test.data.object_process import process_object
+from LuaProgrammingGUI.test.control.tools import command_tools
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from LuaProgrammingGUI.test.data.object_process import process_object
 
 try:
     from wx.lib.pubsub import pub

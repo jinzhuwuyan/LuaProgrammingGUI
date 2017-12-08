@@ -17,7 +17,7 @@
         <property name="internationalize">0</property>
         <property name="name">project_GUIProgramming_overwrite</property>
         <property name="namespace"></property>
-        <property name="path">/home/pi/Documents/LuaProgrammingGUI/test/view</property>
+        <property name="path">/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/view</property>
         <property name="precompiled_header"></property>
         <property name="relative_path">1</property>
         <property name="skip_lua_events">1</property>
@@ -83,11 +83,11 @@
                 <property name="name">topsizer</property>
                 <property name="orient">wxVERTICAL</property>
                 <property name="permission">none</property>
-                <object class="sizeritem" expanded="0">
+                <object class="sizeritem" expanded="1">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxPanel" expanded="0">
+                    <object class="wxPanel" expanded="1">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>
                         <property name="RightDockable">1</property>
@@ -161,7 +161,7 @@
                         <event name="OnSetFocus"></event>
                         <event name="OnSize"></event>
                         <event name="OnUpdateUI"></event>
-                        <object class="wxFlexGridSizer" expanded="0">
+                        <object class="wxFlexGridSizer" expanded="1">
                             <property name="cols">3</property>
                             <property name="flexible_direction">wxBOTH</property>
                             <property name="growablecols">2</property>
@@ -222,7 +222,7 @@
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
                                     <property name="size">-1,-1</property>
-                                    <property name="subclass">Panel_ChooseFunc; test.view.view_function_list.Panel_ChooseFunc_overwrite</property>
+                                    <property name="subclass">Panel_ChooseFunc; view_function_list.Panel_ChooseFunc_overwrite</property>
                                     <property name="toolbar_pane">0</property>
                                     <property name="tooltip"></property>
                                     <property name="window_extra_style"></property>
@@ -302,7 +302,7 @@
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
                                     <property name="size">-1,-1</property>
-                                    <property name="subclass">panel_process; test.view.view_process.Panel_controlprocess_overwrite</property>
+                                    <property name="subclass">panel_process; view_process.Panel_controlprocess_overwrite</property>
                                     <property name="toolbar_pane">0</property>
                                     <property name="tooltip"></property>
                                     <property name="window_extra_style"></property>
@@ -382,7 +382,7 @@
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
                                     <property name="size">-1,-1</property>
-                                    <property name="subclass">panel_control_paras; test.view.view_parameters.Panel_control_paras_overwrite</property>
+                                    <property name="subclass">panel_control_paras; view_parameters.Panel_control_paras_overwrite</property>
                                     <property name="toolbar_pane">0</property>
                                     <property name="tooltip"></property>
                                     <property name="window_extra_style"></property>

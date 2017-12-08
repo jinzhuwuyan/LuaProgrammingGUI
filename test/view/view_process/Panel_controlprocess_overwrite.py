@@ -2,8 +2,8 @@
 
 import wx
 import GUI_controlprocess
-from test.control.control_process import control_process
-from test.control.tools import view_tools
+from LuaProgrammingGUI.test.control.control_process import control_process
+from LuaProgrammingGUI.test.control.tools import view_tools
 
 # Implementing Panel_controlprocess
 class panel_process( GUI_controlprocess.Panel_controlprocess ):

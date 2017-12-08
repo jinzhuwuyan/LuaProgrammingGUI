@@ -1,10 +1,10 @@
 #! encoding: utf-8
 import copy
 import wx
-from test.data.object_parameters import parameters_object
-from test.control.tools import command_tools
-from test.control.tools import controlfile_tools
-from test.view.view_parameters import Panel_edit_paras_overwrite
+from LuaProgrammingGUI.test.data.object_parameters import parameters_object
+from LuaProgrammingGUI.test.control.tools import command_tools
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from LuaProgrammingGUI.test.view.view_parameters import Panel_edit_paras_overwrite
 
 
 try:

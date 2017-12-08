@@ -1,4 +1,4 @@
-from test.view.view_process import TreeMixin
+from LuaProgrammingGUI.test.view.view_process import TreeMixin
 class container(TreeMixin.TreeModel):
 
     def __init__(self, *args, **kwargs):
