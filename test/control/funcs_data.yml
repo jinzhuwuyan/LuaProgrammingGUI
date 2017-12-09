@@ -1,12 +1,7 @@
 emgStop:
   value: !!python/tuple [0, int]
 go: &id001
-  U: !!python/tuple [0.0, float]
-  V: !!python/tuple [0.0, float]
-  W: !!python/tuple [0.0, float]
-  X: !!python/tuple [0.0, float]
-  Y: !!python/tuple [0.0, float]
-  Z: !!python/tuple [0.0, float]
+  choose_point: !!python/tuple [P1, str]
 goja:
   J1: !!python/tuple [0.0, float]
   J2: !!python/tuple [0.0, float]

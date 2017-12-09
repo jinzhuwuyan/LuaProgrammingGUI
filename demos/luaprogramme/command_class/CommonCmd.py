@@ -76,12 +76,17 @@ class Go(Abstract_Command):
     def __init__(self, CmdID):
         Abstract_Command.__init__(self, CmdID, commandName='go', commandType='EXEC', PairID=None)
 
+    def gen_str(self):
+        return ''.join([self.commandName, '(%s)'])
 
 
 class Move(Abstract_Command):
 
     def __init__(self, CmdID):
         Abstract_Command.__init__(self, CmdID, commandName='move', commandType='EXEC', PairID=None)
+
+    def gen_str(self):
+        return ''.join([self.commandName, '(%s)'])
 
 class GoJa(Abstract_Command):
 

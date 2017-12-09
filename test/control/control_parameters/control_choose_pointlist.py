@@ -1,12 +1,22 @@
 #! encoding: utf-8
 import wx
+from LuaProgrammingGUI.test.control.tools import command_tools
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
+try:
+    from wx.lib.pubsub import pub
+except ImportError:
+    from pubsub import pub
+
 class ChoosePoinListControl():
 
     def __init__(self, parent, datalist):
         data = (parent, datalist)
         self.init_data(data)
+        self.showcontent = {}
         print 'datalists len is %d' % len(datalist)
-
+        # pub.subscribe(self.refresh_datalist, 'refresh_choosedatalist')
+        # pub.subscribe(self._get_Paras_MainControl_Data, 'get_paras_main_data')
+        controlfile_tools.log_bystatus('Enter ChoosePointListControl')
 
     def init_data(self, data):
         (parent, datalist, ) = data
@@ -35,29 +45,37 @@ class ChoosePoinListControl():
             return None
 
     def set_textctrl_datas(self, id):
+        controlfile_tools.log_bystatus('selection id is %d' % id)
         show_point = self.get_pointbyid(id)
-        from LuaProgrammingGUI.test.view.view_tools.FloatSpin import FloatSpinCtrl
-        print show_point
-        [X, Y, Z, U, V, W] = show_point['Data']
-        elbow, handmode = show_point['Elbow'], show_point['Hand']
-        self.tc_X.SetValue(str(X))
-        self.tc_Y.SetValue(str(Y))
-        self.tc_Z.SetValue(str(Z))
-        self.tc_U.SetValue(str(U))
-        self.tc_V.SetValue(str(V))
-        self.tc_W.SetValue(str(W))
-        elbowid = 0 if show_point['Elbow'] == 'A' else 1
-        handmodeid = 0 if show_point['Hand'] == 'L' else 1
-        self.select_elbow(elbowid)
-        self.select_handmode(handmodeid)
+        if show_point:
+            pos_data = [X, Y, Z, U, V, W] = show_point['Data']
+            elbow, handmode = show_point['Elbow'], show_point['Hand']
+            tcctrls = [self.tc_X, self.tc_Y, self.tc_Z, self.tc_U, self.tc_V, self.tc_W]
+            for index, value in enumerate(tcctrls):
+                value.SetValue(str(pos_data[index]))
+            self.select_elbow(0 if show_point['Elbow'] == 'A' else 1)
+            self.select_handmode(0 if show_point['Hand'] == 'L' else 1)
+            # controlfile_tools.log_bystatus('sending save_paras %s' % str(self.showcontent))
+            self.showcontent['choose_point'] = ('P%d' % id, 'str')
+            pub.sendMessage('save_paras', refresh_type='refresh', data=self.showcontent)
+
+            # pub.sendMessage('save_paras', refresh_type = 'refresh', data = ('P%d' % id, 'str'))
+            return True, ''
+        else:
+            return False, '请检查点文件内容是否有错!'
 
     def get_id_fromstring(self, value):
         try:
-            final_str = value.replace('P', '').replace('-', '')
-            print 'final_str is %s' % final_str
-            id = int(final_str)
-            return True, id
-
+            match_result, match_result_msg = command_tools.re_match(value=value, pattern='P-(\d+)')
+            print match_result, match_result_msg, len(self.datalist)
+            if match_result:
+                id = int(match_result_msg)
+                if 0 < id  < len(self.datalist):
+                    return True, id
+                else:
+                    return False, '不存在该点！'
+            else:
+                return False, '输入有误！'
         except Exception:
             return False, '选择字符串错误！'
 
@@ -75,10 +93,13 @@ class ChoosePoinListControl():
         self.parent.m_comboBox_pointlist.Refresh()
 
     def check_value_availablity(self, value):
-        ret, ret_msg = self.get_id_fromstring(value)
-        print ret, ret_msg
-        if not ret:
-            self.select_pointlist(0)
-            wx.MessageBox(ret_msg)
-        else:
-            pass
+        return self.get_id_fromstring(value)
+
+    def refresh_datalist(self, datalist):
+        self.datalist = datalist
+
+    # def _get_Paras_MainControl_Data(self, data):
+    #     controlfile_tools.log_bystatus('get showcontent is %s ' % str(data), 'i')
+    #     (self.showcontent, ) = data
+    #     controlfile_tools.log_bystatus('get showcontent is %s ' % str(self.showcontent), 'i')
+        # controlfile_tools.log_bystatus('get showcontent is %s ' % str(data), 'i')

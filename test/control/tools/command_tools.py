@@ -1,6 +1,9 @@
 #! encoding: utf-8
 import copy
 import controlfile_tools
+import re
+
+
 def get_dict(data, pos):
     """
     按位置获取字典的内容
@@ -31,6 +34,20 @@ def ret_obj(list_name, obj):
             _ret_list.extend(_tmp)
     return list_name + ''.join(_ret_list)
 
+def re_match(pattern, value):
+
+    # 将正则表达式编译成Pattern对象
+    pattern = re.compile(pattern)
+
+    # 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None
+    match = pattern.match(value)
+
+    if match:
+        # 使用Match获得分组信息
+        return True, match.group(1)
+    else:
+        return False, ''
+
 def check_type(obj, type_str):
     tmp_type = None
     ret = None
@@ -59,3 +76,4 @@ def check_type(obj, type_str):
 
 if __name__ == '__main__':
     print check_type(u'6.00', 'float')
+    print re_match('P-(\d)', 'P-1')

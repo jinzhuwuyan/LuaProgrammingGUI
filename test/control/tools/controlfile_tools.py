@@ -16,7 +16,7 @@ def controlfile(status):
         return wrapper
     return deractor
 
-def log_bystatus(text_content, log_level):
+def log_bystatus(text_content, log_level = 'i'):
     # logger = InitLog().getLogger()
     time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
     log_msg = ''.join([time_str, '--------->loglevel: (%s)\n' % log_level, text_content, '\n'])

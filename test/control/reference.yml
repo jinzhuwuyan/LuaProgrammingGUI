@@ -1,7 +1,7 @@
-control_path: /home/pi/Documents/LuaProgrammingGUI/test/control
-data_path: /home/pi/Documents/LuaProgrammingGUI/test/data
+control_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
+data_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../data
 default_func_filename: funcs_data.yml
-default_func_path: /home/pi/Documents/LuaProgrammingGUI/test/control
-file_path: /home/pi/Documents/LuaProgrammingGUI/test/test.lts
+default_func_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
+file_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/test.lts
 unlimit_func: [if, else]
-view_path: /home/pi/Documents/LuaProgrammingGUI/test/view
+view_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../view

@@ -3,9 +3,9 @@ import wx
 import yaml
 
 
-from demos.luaprogramme.command_class.core import cmds2
-from demos.luaprogramme.command_class import CommonCmd
-
+from LuaProgrammingGUI.demos.luaprogramme.command_class.core import cmds2
+from LuaProgrammingGUI.demos.luaprogramme.command_class import CommonCmd
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
 
 try:
     from wx.lib.pubsub import pub
@@ -23,8 +23,12 @@ DATA_DICT_STRS = {'coord': ['go', 'move'],
                   'time': ['luaSleep'],
                   'value': ['emgStop', 'setAccel', 'setSpeed', 'for'],
                   'condition': ['if'],
+                  'choose_point': ['go', 'move'],
                   }
 DATA_NONE_LIST = ['else']
+GENGERATE_PARMETERS_LIST = {'coord': list('XYZUVW'), 'ja': list('J1,J2,J3,J4,J5,J6'.split(',')), 'time':['time'],
+                        'value': ['value'], 'condition': ['condition'], 'choose_point': ['choose_point']}
+
 class Handle_Msg(object):
 
     def __init__(self, parent):
@@ -76,11 +80,10 @@ class Handle_Msg(object):
         return _tmpchild
 
     def get_cmd_paras(self, func_name):
-        _check_value = {'coord': list('XYZUVW'), 'ja': list('J1,J2,J3,J4,J5,J6'.split(',')), 'time':['time'],
-                        'value': ['value'], 'condition': ['condition']}
+
         for key, value in  DATA_DICT_STRS.iteritems():
             if func_name in value:
-                return _check_value[key]
+                return GENGERATE_PARMETERS_LIST[key]
 
     def generate_commands(self, commanddata, repeat_time = 1):
 
@@ -104,6 +107,8 @@ class Handle_Msg(object):
                 else:
                     print self.Cmd_Factory
                     # instance_exec = self.Cmd_Factory.genCmd(str(func_str))
+                    controlfile_tools.log_bystatus('Generating command func_str is %s, func_paras is %s, funct_cmd_paras is %s'
+                                                   % (str(func_str), func_paras, self.get_cmd_paras(str(func_str))))
                     instance_exec = self.Cmd_Factory.genCmd_overwrite(str(func_str), func_paras, self.get_cmd_paras(str(func_str)))
                     self.Cmd_Manager.pg.append(instance_exec)
                 print func_paras

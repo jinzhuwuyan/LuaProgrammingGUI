@@ -34,15 +34,15 @@ class Frame_Main ( wx.Frame ):
 		main_sizer.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
 		self.panel_functionlist = Panel_ChooseFunc( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_functionlist, 1, wx.EXPAND, 5 )
+		main_sizer.Add( self.panel_functionlist, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		self.panel_controlprocess = panel_process( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_controlprocess, 0, wx.EXPAND, 5 )
+		main_sizer.Add( self.panel_controlprocess, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		self.panel_editparas = panel_control_paras( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
 		self.panel_editparas.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
 		
-		main_sizer.Add( self.panel_editparas, 1, wx.EXPAND, 5 )
+		main_sizer.Add( self.panel_editparas, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		
 		self.panel_programming_Main.SetSizer( main_sizer )

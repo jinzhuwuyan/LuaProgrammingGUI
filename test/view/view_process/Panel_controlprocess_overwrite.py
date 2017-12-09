@@ -49,7 +49,8 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement save_change
 		self.change_status = False
 
-		self.control.save_to_disk()
+		ret, ret_msg = self.control.save_to_disk()
+		wx.MessageBox(ret_msg)
 
 	def redo_edit( self, event ):
 		# TODO: Implement redo_edit

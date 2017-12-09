@@ -1,0 +1,27 @@
+Author: ysw
+Last_Edit_time: Sat Dec  9 14:58:34 2017
+ProgramBlocks:
+- !!python/tuple
+  - !!python/unicode 'go'
+  - []
+  - choose_point: !!python/tuple [P11, str]
+- !!python/tuple
+  - !!python/unicode 'luaSleep'
+  - []
+  - time: !!python/tuple [10.0, float]
+- !!python/tuple
+  - !!python/unicode 'goja'
+  - []
+  - J1: !!python/tuple [90.0, float]
+    J2: !!python/tuple [0.0, float]
+    J3: !!python/tuple [0.0, float]
+    J4: !!python/tuple [0.0, float]
+    J5: !!python/tuple [0.0, float]
+    J6: !!python/tuple [0.0, float]
+- !!python/tuple
+  - !!python/unicode 'move'
+  - []
+  - choose_point: !!python/tuple [P8, str]
+Repeat_time: 10
+encoding: utf-8
+version: 0.0.1.0

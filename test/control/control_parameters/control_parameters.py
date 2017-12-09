@@ -1,11 +1,12 @@
 #! encoding: utf-8
 import copy
 import wx
+import yaml
 from LuaProgrammingGUI.test.data.object_parameters import parameters_object
 from LuaProgrammingGUI.test.control.tools import command_tools
 from LuaProgrammingGUI.test.control.tools import controlfile_tools
 from LuaProgrammingGUI.test.view.view_parameters import Panel_edit_paras_overwrite
-
+from LuaProgrammingGUI.test.view.view_parameters import Panel_choose_pointlist_overwrite
 
 try:
     from wx.lib.pubsub import pub
@@ -15,12 +16,15 @@ except ImportError:
 
 class Control():
 
-    def __init__(self, parent):
+    def __init__(self, parent, pts_path = None):
         self._parent = parent
+        self.pts_path = pts_path
         self.model = parameters_object.container()
         self.controllist = {}
         pub.subscribe(self.refresh_paras_panel1, 'refresh_paras')
         pub.subscribe(self._remove_allcontrols, 'remove_all_paras')
+        pub.subscribe(self._get_MainMsg, 'get_main_msg')
+
 
     def save_content_from_gui(self, text_content, _type):
         controlfile_tools.log_bystatus('text_content is %s, type is %s' % (text_content, _type), 'i')
@@ -88,8 +92,6 @@ class Control():
         sizer = self._parent.GetSizer()
         #-------------------Logic-----------------
         if data:
-
-
             check_list = self.model.showcontent.keys()
             for check in reorder_list:
                 if check_list[0] in check:
@@ -98,11 +100,12 @@ class Control():
                 else:
                     continue
             controlfile_tools.log_bystatus('keys is .....%s' % str(check_list), 'i')
-            for key in check_list:
-                panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
-                                                                    value=self.model.showcontent[key])
-                sizer.Add(panel, 0, 0, 5)
-                self.controllist[key] = panel
+            self._refresh_paraslist(check_list)
+            # for key in check_list:
+            #     panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
+            #                                                         value=self.model.showcontent[key])
+            #     sizer.Add(panel, 0, 0, 5)
+            #     self.controllist[key] = panel
             controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"
                                            % (len(data), data), 'i')
 
@@ -110,8 +113,31 @@ class Control():
             controlfile_tools.log_bystatus("Don't have any control to refresh!", 'e')
         sizer.Layout()
 
+    def _refresh_paraslist(self, check_list):
+        if len(check_list) == 1 and check_list[0] == 'choose_point':
+            key = check_list[0]
+            id_str = (self.model.showcontent[key][0]).replace('P', '')
+            id = int(id_str)
+            controlfile_tools.log_bystatus('refreshing paraslist ....%d, %s' % (id, str(self.model.showcontent)))
+            panel = Panel_choose_pointlist_overwrite.Panel_Choose_Point(self._parent, self.pts_path, current_selection=id)
+            self._parent.GetSizer().Add(panel, 0, 0, 5)
+            self.controllist[0] = panel
+            controlfile_tools.log_bystatus('Sending show content to other paras panel, %s' % str(self.model.showcontent))
+            # pub.sendMessage('get_paras_main_data', data=(self.model.showcontent, ))
+        else:
+            for key in check_list:
+                panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
+                                                                    value=self.model.showcontent[key])
+                self._parent.GetSizer().Add(panel, 0, 0, 5)
+                self.controllist[key] = panel
+
     def _remove_allcontrols(self):
         sizer = self._parent.GetSizer()
         for i in range(len(sizer.GetChildren())):
             sizer.Hide(0)
             sizer.Remove(0)
+
+    def _get_MainMsg(self, data):
+        controlfile_tools.log_bystatus('get Msg from Main, %s' % str(data), 'i')
+        (self.pts_path, ) = data
+        # pub.sendMessage('refresh_choosedatalist', data=(datalist, ))

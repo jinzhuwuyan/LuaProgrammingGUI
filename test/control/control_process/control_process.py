@@ -64,6 +64,7 @@ class Control():
             if refresh_type == 'get':
                 _, _, refresh_data = self.model.items[self.index_1]
             elif data and refresh_type == 'refresh':
+                controlfile_tools.log_bystatus('refreshing data %s' % str(data))
                 _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
                 self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
             else:
@@ -124,16 +125,21 @@ class Control():
         # TODO: 保存当前数据进行文件
         print 'self.file_path', self.file_path
         if self.file_path:
-            print 'saving file.',self.model.items
-            controlfile_tools.save(self.file_path, self.generate_prj_data())
-            from demos.luaprogramme.control.Data_Handler import Handle_Msg
-            handler = Handle_Msg(self)
-            commands_data = handler.generate_data_from_gui(self.model.items)
-            handler.generate_commands(commands_data, self.repeat_time)
-            controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
+            try:
+                print 'saving file.',self.model.items
+                controlfile_tools.save(self.file_path, self.generate_prj_data())
+                from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
+                handler = Handle_Msg(self)
+                commands_data = handler.generate_data_from_gui(self.model.items)
+                handler.generate_commands(commands_data, self.repeat_time)
+                controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
+                pub.sendMessage('refresh_lua_panel', data = (handler.output_commands(), ))
+                return True, '保存成功！'
+            except Exception as e:
+                return False, '保存失败，请检查错误原因！'
         else:
             # load filepath
-            pass
+            return False, '请检查文件路径%s是否正确？' % self.file_path
 
     def generate_prj_data(self):
         _tmp = {}
@@ -304,4 +310,3 @@ class Control():
 
     def _get_funcs_data(self, data):
         (self._func_items, self._func_str, self._func_selection, self._funcs_paras, self._funcs_unlimit, self.file_path) = data
-        print 'recv _get_funcs_data ', data
