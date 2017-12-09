@@ -66,6 +66,8 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         super(DemoTreeMixin, self).__init__(*args, **kwargs)
         self.CreateImageList()
 
+    def SetTreeModel(self, model):
+        self.model = model
 
     def CreateImageList(self):
         print 'Creating Image List....'
@@ -143,6 +145,7 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
 
 class VirtualTreeCtrl(DemoTreeMixin, wx.TreeCtrl):
     pass
+
 
 
 class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):

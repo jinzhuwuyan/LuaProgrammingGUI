@@ -12,7 +12,7 @@ class container():
     def _load_functions(self, file_path=None):
 
         self.reference_data = file_control.loadyaml(os.path.abspath('./LuaProgrammingGUI/test/control/reference.yml'))
-
+        # self.reference_data = file_control.loadyaml(os.path.abspath('./test/control/reference.yml'))
         if file_path:
                 funcs = file_control.loadyaml(file_path)
                 if isinstance(funcs, dict):

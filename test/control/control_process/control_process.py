@@ -5,7 +5,7 @@ import time
 from LuaProgrammingGUI.test.control.tools import command_tools
 from LuaProgrammingGUI.test.control.tools import controlfile_tools
 from LuaProgrammingGUI.test.data.object_process import process_object
-
+from LuaProgrammingGUI.test.control.control_process import control_process_showdata
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -170,6 +170,7 @@ class Control():
             pass
 
     def refresh_tree(self):
+        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
         self.parent.m_treeControl_show.RefreshItems()
         self.parent.m_treeControl_show.UnselectAll()
 
@@ -278,6 +279,9 @@ class Control():
             obj = self._delete_obj(obj, index)
 
         return obj
+
+    def _add_obj_bylimit(obj, index, limit):
+        pass
 
     def _unselete_all(self):
         self.parent.m_treeControl_show.UnselectAll()

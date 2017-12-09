@@ -3,6 +3,7 @@
 import wx
 import GUI_controlprocess
 from LuaProgrammingGUI.test.control.control_process import control_process
+from LuaProgrammingGUI.test.control.control_process import control_process_showdata
 from LuaProgrammingGUI.test.control.tools import view_tools
 
 # Implementing Panel_controlprocess
@@ -11,6 +12,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 
 		self.parent = parent
 		self.control = control_process.Control(self)
+		self.showdatacontrol = control_process_showdata.ShowDataControl(self)
 		self.change_status = False
 		self.current_func_str = ''
 		self.current_choosen = None
@@ -27,7 +29,6 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement add_functions
 		self.change_status = True
 		self.control.append_item()
-
 
 	def delete_functions( self, event ):
 		# TODO: Implement delete_functions
