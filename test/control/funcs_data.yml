@@ -1,17 +1,12 @@
-emgStop:
-  value: !!python/tuple [0, int]
-go: &id001
-  choose_point: !!python/tuple [P1, str]
-goja:
-  J1: !!python/tuple [0.0, float]
-  J2: !!python/tuple [0.0, float]
-  J3: !!python/tuple [0.0, float]
-  J4: !!python/tuple [0.0, float]
-  J5: !!python/tuple [0.0, float]
-  J6: !!python/tuple [0.0, float]
-luaSleep:
-  time: !!python/tuple [0, float]
-move: *id001
-setAccel: &id002
+ACCEL: &id003
   value: !!python/tuple [0.0, float]
-setSpeed: *id002
+DELAY:
+  time: !!python/tuple [0, float]
+GO: &id001
+  choose_point: !!python/tuple [P1, str]
+MOVE: *id001
+'OFF': &id002
+  value: !!python/tuple [0, int]
+'ON': *id002
+SPEED: *id003
+STOP: *id002

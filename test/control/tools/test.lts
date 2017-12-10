@@ -1,27 +1,41 @@
 Author: ysw
-Last_Edit_time: Sat Dec  9 14:58:34 2017
+Last_Edit_time: Sun Dec 10 19:05:24 2017
 ProgramBlocks:
 - !!python/tuple
-  - !!python/unicode 'go'
+  - !!python/unicode 'ON'
   - []
-  - choose_point: !!python/tuple [P11, str]
+  - &id001
+    value: !!python/tuple [0, int]
 - !!python/tuple
-  - !!python/unicode 'luaSleep'
+  - !!python/unicode 'OFF'
   - []
-  - time: !!python/tuple [10.0, float]
+  - *id001
 - !!python/tuple
-  - !!python/unicode 'goja'
+  - !!python/unicode 'SPEED'
   - []
-  - J1: !!python/tuple [90.0, float]
-    J2: !!python/tuple [0.0, float]
-    J3: !!python/tuple [0.0, float]
-    J4: !!python/tuple [0.0, float]
-    J5: !!python/tuple [0.0, float]
-    J6: !!python/tuple [0.0, float]
+  - &id003
+    value: !!python/tuple [0.0, float]
 - !!python/tuple
-  - !!python/unicode 'move'
+  - !!python/unicode 'STOP'
   - []
-  - choose_point: !!python/tuple [P8, str]
-Repeat_time: 10
+  - *id001
+- !!python/tuple
+  - !!python/unicode 'MOVE'
+  - []
+  - &id002
+    choose_point: !!python/tuple [P1, str]
+- !!python/tuple
+  - !!python/unicode 'GO'
+  - []
+  - *id002
+- !!python/tuple
+  - !!python/unicode 'DELAY'
+  - []
+  - time: !!python/tuple [0, float]
+- !!python/tuple
+  - !!python/unicode 'ACCEL'
+  - []
+  - *id003
+Repeat_time: 1
 encoding: utf-8
 version: 0.0.1.0

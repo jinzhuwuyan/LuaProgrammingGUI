@@ -82,6 +82,7 @@ class Control():
     def refresh_paras_panel1(self, data, pos):
         # TODO: Implement refresh_paras_panel
         # show_content = self.control.load_show_content( data, pos )
+        controlfile_tools.log_bystatus('Entering refresh_paras_panel1... %s' % data )
         self.controllist.clear()
         self._remove_allcontrols()
         ##-----------------------init value------------------

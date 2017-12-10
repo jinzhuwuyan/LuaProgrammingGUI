@@ -14,8 +14,6 @@ class ChoosePoinListControl():
         self.init_data(data)
         self.showcontent = {}
         print 'datalists len is %d' % len(datalist)
-        # pub.subscribe(self.refresh_datalist, 'refresh_choosedatalist')
-        # pub.subscribe(self._get_Paras_MainControl_Data, 'get_paras_main_data')
         controlfile_tools.log_bystatus('Enter ChoosePointListControl')
 
     def init_data(self, data):
@@ -46,7 +44,7 @@ class ChoosePoinListControl():
 
     def set_textctrl_datas(self, id):
         controlfile_tools.log_bystatus('selection id is %d' % id)
-        show_point = self.get_pointbyid(id)
+        show_point = self.get_pointbyid(id - 1)
         if show_point:
             pos_data = [X, Y, Z, U, V, W] = show_point['Data']
             elbow, handmode = show_point['Elbow'], show_point['Hand']
@@ -98,8 +96,3 @@ class ChoosePoinListControl():
     def refresh_datalist(self, datalist):
         self.datalist = datalist
 
-    # def _get_Paras_MainControl_Data(self, data):
-    #     controlfile_tools.log_bystatus('get showcontent is %s ' % str(data), 'i')
-    #     (self.showcontent, ) = data
-    #     controlfile_tools.log_bystatus('get showcontent is %s ' % str(self.showcontent), 'i')
-        # controlfile_tools.log_bystatus('get showcontent is %s ' % str(data), 'i')

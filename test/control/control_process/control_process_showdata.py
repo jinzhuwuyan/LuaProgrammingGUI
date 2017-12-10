@@ -24,7 +24,10 @@ class ShowDataControl():
         _tmp = []
         for index, value in enumerate(modeldata):
             (func_str, child, paras) = value
-            _tmp.append((str(paras), child, paras))
+            if isinstance(paras, dict):
+                controlfile_tools.log_bystatus(str([i for i in list(paras.values())]), 'i')
+                show_str = ','.join([str(i[0]) for i in list(paras.values())])
+                _tmp.append((show_str, child, paras))
         return _tmp
 
     def refresh_show_modeldata(self, data):

@@ -2,6 +2,7 @@
 import yaml
 import wx
 import time
+import sys
 from LuaProgrammingGUI.test.control.tools import command_tools
 from LuaProgrammingGUI.test.control.tools import controlfile_tools
 from LuaProgrammingGUI.test.data.object_process import process_object
@@ -21,7 +22,8 @@ class Control():
             self.change_way, self.func_data, \
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
-            self.index_1, self.index_2, self.file_path = [None] * 13
+            self.index_1, self.index_2, self.file_path, \
+            self.rename_list= [None] * 14
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
@@ -74,7 +76,7 @@ class Control():
 
         controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
                                        % (str(refresh_type), str(data), str(self.model.items)), 'e')
-
+        self.request_showdata_refresh()
         return refresh_data
 
     def get_current_pos(self):
@@ -101,7 +103,7 @@ class Control():
         event.Enable(status)
 
     def modify_runtime(self):
-        dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数：', '输入循环次数弹框', self.repeat_time, 1, 100000)
+        dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
         if dlg.ShowModal() == wx.ID_OK:
             self.repeat_time = dlg.GetValue()
             wx.MessageBox('设置成功！')
@@ -130,13 +132,16 @@ class Control():
                 controlfile_tools.save(self.file_path, self.generate_prj_data())
                 from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
                 handler = Handle_Msg(self)
-                commands_data = handler.generate_data_from_gui(self.model.items)
+                controlfile_tools.log_bystatus(str(self.model.items))
+                commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
+                controlfile_tools.log_bystatus('Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
                 handler.generate_commands(commands_data, self.repeat_time)
                 controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
                 pub.sendMessage('refresh_lua_panel', data = (handler.output_commands(), ))
                 return True, '保存成功！'
             except Exception as e:
-                return False, '保存失败，请检查错误原因！'
+                exceptions = sys.exc_info()
+                return False, '保存失败，请检查第%d行错误原因！' % exceptions[2].tb_lineno
         else:
             # load filepath
             return False, '请检查文件路径%s是否正确？' % self.file_path
@@ -170,9 +175,12 @@ class Control():
             pass
 
     def refresh_tree(self):
-        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
+        self.request_showdata_refresh()
         self.parent.m_treeControl_show.RefreshItems()
         self.parent.m_treeControl_show.UnselectAll()
+
+    def request_showdata_refresh(self):
+        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
 
     def _add_obj_bylimit(self, obj, index, limit = False):
 
@@ -184,6 +192,10 @@ class Control():
             obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
         print 'Enter by limit is %s' % str(limit)
         return obj
+
+    def _rename_func_str(self, func_str):
+        controlfile_tools.log_bystatus('func_str is %s, final_str is %s' % (func_str, self.rename_list[func_str]))
+        return self.rename_list[func_str]
 
     def _change_obj_pos(self, obj, index):
         move_count = 1
@@ -208,6 +220,7 @@ class Control():
     def _delete_obj(self, obj, index):
         obj.pop(index)
         return None
+
 
     def _control_model(self, command = 'delete', data = ('', [], {})):
         self._refresh_func_init()
@@ -280,8 +293,6 @@ class Control():
 
         return obj
 
-    def _add_obj_bylimit(obj, index, limit):
-        pass
 
     def _unselete_all(self):
         self.parent.m_treeControl_show.UnselectAll()
@@ -313,4 +324,6 @@ class Control():
         pub.sendMessage('refresh_funcs')
 
     def _get_funcs_data(self, data):
-        (self._func_items, self._func_str, self._func_selection, self._funcs_paras, self._funcs_unlimit, self.file_path) = data
+        (self._func_items, self._func_str, self._func_selection, self._funcs_paras,
+                        self._funcs_unlimit, self.file_path, self.rename_list) = data
+        controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))

@@ -147,3 +147,25 @@ class FOR(Abstract_Command):
     def gen_str(self):
         return ''.join([self.commandName, " i=0,%d do"])
 
+class WHILE(Abstract_Command):
+    def __init__(self, CmdID, inputPairID):
+        Abstract_Command.__init__(self, CmdID, commandName='while', commandType='HEAD', PairID=inputPairID)
+
+    def gen_str(self):
+        return ''.join([self.commandName, " %s do"])
+
+class ON(Abstract_Command):
+
+    def __init__(self, CmdID):
+        Abstract_Command.__init__(self, CmdID, commandName='on', commandType='EXEC', PairID=None)
+
+    def gen_str(self):
+        return ''.join([self.commandName, "(%d)"])
+
+class OFF(Abstract_Command):
+
+    def __init__(self, CmdID):
+        Abstract_Command.__init__(self, CmdID, commandName='off', commandType='EXEC', PairID=None)
+
+    def gen_str(self):
+        return ''.join([self.commandName, "(%d)"])
