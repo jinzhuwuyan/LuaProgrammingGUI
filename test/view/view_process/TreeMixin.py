@@ -167,7 +167,8 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         func_str = self.model.items[index][0]
         child = self.model.items[index][1]
         paras = self.model.items[index][2]
-        paras_str = ','.join([para[0] for para in paras.values()])
+        print 'Get Item in TreeListCtrl, func_str is %s, child is %s, paras is %s' % (str(func_str), str(child), str(paras))
+        paras_str = ','.join([str(para[0]) for para in paras.values()])
         return func_str if column == 0 else paras_str
 
     # def OnGetItemImage(self, indices, which, column=0):

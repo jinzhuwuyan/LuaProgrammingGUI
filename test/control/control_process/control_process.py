@@ -14,9 +14,10 @@ except ImportError:
 
 class Control():
 
-    def __init__(self, parent):
+    def __init__(self, parent, tree=None):
         self.version = '.'.join(list('0010'))
         self.parent = parent
+        self.tree = tree
         #change
         self.func_str, self.func_child, self.command, \
             self.change_way, self.func_data, \
@@ -41,14 +42,14 @@ class Control():
                             pos=self.get_current_pos())
 
     def _refresh_parasdata(self, refresh_type = 'get', data = None):
-        print '_refresh_parasdata ', refresh_type, str(data)
+        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s' % (str(refresh_type), str(data)))
         refresh_data = None
         selection_indexs = self.get_current_pos()
-        print 'select_item is ', str(selection_indexs)
+        # print 'select_item is ', str(selection_indexs)
         if selection_indexs and len(selection_indexs) > 1:
             self.index_1 = selection_indexs[0]
             self.index_2 = selection_indexs[1]
-            print self.model.items
+            # print self.model.items
             if refresh_type == 'get':
                 _, _tmp_item, _ = self.model.items[self.index_1]
                 _, _, refresh_data = _tmp_item[self.index_2]
@@ -81,14 +82,17 @@ class Control():
 
     def get_current_pos(self):
         _pos = []
-        select_item = self.parent.m_treeControl_show.GetSelection()
-        if select_item:
-            for i in list(self.parent.m_treeControl_show.GetIndexOfItem(select_item)):
+        select_item = self.tree.GetSelection()
+        if select_item.m_pItem:
+            controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+            for i in list(self.tree.GetIndexOfItem(select_item)):
                 _pos.append(i)
         else:
-            # controlfile_tools.log_bystatus("Tree control for showing programming process "
-            #                                "don't have selection!", 'e')
+            controlfile_tools.log_bystatus("Tree control for showing programming process "
+                                           "don't have selection!")
             pass
+        controlfile_tools.log_bystatus('select_item is %s, get_current_pos is %s'
+                                       % (str(select_item.m_pItem), str(_pos)))
         return _pos
 
 
@@ -101,6 +105,10 @@ class Control():
 ##########################################control programming process panel################################
     def monitor_changes(self, event, status):
         event.Enable(status)
+
+
+    def set_tree(self, tree):
+        self.tree = tree
 
     def modify_runtime(self):
         dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
@@ -176,10 +184,11 @@ class Control():
 
     def refresh_tree(self):
         self.request_showdata_refresh()
-        self.parent.m_treeControl_show.RefreshItems()
-        self.parent.m_treeControl_show.UnselectAll()
+        # self.parent.m_treeControl_show.RefreshItems()
+        # self.parent.m_treeControl_show.UnselectAll()
 
     def request_showdata_refresh(self):
+        controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
         pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
 
     def _add_obj_bylimit(self, obj, index, limit = False):
@@ -227,18 +236,23 @@ class Control():
         controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
         (self.func_str, self.func_child, self._funcs_paras) = data
         self.command = command
-        select_item = self.parent.m_treeControl_show.GetSelection()
+        select_item = self.tree.GetSelection()
 
         # show_item = _panel_functionlist.data.get_selectionstr()
         controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
         childitem = self.model.items
         # childitemdata = self.model.modeldata
+        try:
+            controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
+        except Exception as e:
+            controlfile_tools.log_bystatus(str(e))
+            controlfile_tools.log_bystatus('selection is None')
 
         if select_item:
             controlfile_tools.log_bystatus('selection is %s' %
-                                           str(self.parent.m_treeControl_show.GetIndexOfItem(select_item)), 'i')
-            select_items = self.parent.m_treeControl_show.GetIndexOfItem(select_item)
-            select_item_str = self.parent.m_treeControl_show.GetItemText(select_item)
+                                           str(self.tree.GetIndexOfItem(select_item)), 'i')
+            select_items = self.tree.GetIndexOfItem(select_item)
+            select_item_str = self.tree.GetItemText(select_item)
             controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
                                            (select_items, select_item_str), 'i')
             if len(select_items) > 2:
@@ -295,7 +309,7 @@ class Control():
 
 
     def _unselete_all(self):
-        self.parent.m_treeControl_show.UnselectAll()
+        self.tree.UnselectAll()
 
     def _check_func_str(self, func_str):
         controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
