@@ -156,6 +156,8 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         super(VirtualTreeListCtrl, self).__init__(*args, **kwargs)
         self.AddColumn('命令')
         self.AddColumn('值')
+        a = self.GetColumn(0)
+        print 'SelectedImage is ', a.GetSelectedImage()
         for art in wx.ART_TIP, wx.ART_WARNING:
             self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER,
                                                         (16, 16)))
@@ -167,7 +169,7 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         func_str = self.model.items[index][0]
         child = self.model.items[index][1]
         paras = self.model.items[index][2]
-        paras_str = ','.join([para[0] for para in paras.values()])
+        paras_str = ','.join([str(para[0]) for para in paras.values()])
         return func_str if column == 0 else paras_str
 
     # def OnGetItemImage(self, indices, which, column=0):
