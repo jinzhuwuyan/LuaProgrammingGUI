@@ -99,7 +99,7 @@ class Sleep(Abstract_Command):
         Abstract_Command.__init__(self, CmdID, commandName='luaSleep', commandType='EXEC', PairID=None)
 
     def gen_str(self):
-        return ''.join([self.commandName, "(%d)"])
+        return ''.join([self.commandName, "(%f)"])
 
 class Stop(Abstract_Command):
 
