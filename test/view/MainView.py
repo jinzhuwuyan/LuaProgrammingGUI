@@ -27,14 +27,10 @@ class Frame_Main ( wx.Frame ):
 		topsizer = wx.BoxSizer( wx.VERTICAL )
 		
 		self.panel_programming_Main = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		main_sizer = wx.FlexGridSizer( 0, 3, 0, 0 )
-		main_sizer.AddGrowableCol( 2 )
-		main_sizer.AddGrowableRow( 0 )
-		main_sizer.SetFlexibleDirection( wx.BOTH )
-		main_sizer.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		main_sizer = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.panel_functionlist = Panel_ChooseFunc( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_functionlist, 1, wx.EXPAND |wx.ALL, 5 )
+		main_sizer.Add( self.panel_functionlist, 0, wx.EXPAND |wx.ALL, 5 )
 		
 		self.panel_controlprocess = panel_process( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
 		main_sizer.Add( self.panel_controlprocess, 1, wx.EXPAND |wx.ALL, 5 )
@@ -42,7 +38,7 @@ class Frame_Main ( wx.Frame ):
 		self.panel_editparas = panel_control_paras( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
 		self.panel_editparas.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
 		
-		main_sizer.Add( self.panel_editparas, 1, wx.EXPAND |wx.ALL, 5 )
+		main_sizer.Add( self.panel_editparas, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.panel_programming_Main.SetSizer( main_sizer )

@@ -25,27 +25,23 @@ class Panel_luaprogramming ( wx.Panel ):
 		topsizer = wx.BoxSizer( wx.VERTICAL )
 		
 		self.panel_programming_Main = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		main_sizer = wx.FlexGridSizer( 0, 3, 0, 0 )
-		main_sizer.AddGrowableCol( 2 )
-		main_sizer.AddGrowableRow( 0 )
-		main_sizer.SetFlexibleDirection( wx.BOTH )
-		main_sizer.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.panel_functionlist = Panel_ChooseFunc( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_functionlist, 1, wx.EXPAND, 5 )
+		bSizer2.Add( self.panel_functionlist, 0, wx.EXPAND, 5 )
 		
 		self.panel_controlprocess = panel_process( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
-		main_sizer.Add( self.panel_controlprocess, 0, wx.EXPAND, 5 )
+		bSizer2.Add( self.panel_controlprocess, 1, wx.EXPAND, 5 )
 		
 		self.panel_editparas = panel_control_paras( self.panel_programming_Main, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TAB_TRAVERSAL )
 		self.panel_editparas.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
 		
-		main_sizer.Add( self.panel_editparas, 1, wx.EXPAND, 5 )
+		bSizer2.Add( self.panel_editparas, 1, wx.EXPAND, 5 )
 		
 		
-		self.panel_programming_Main.SetSizer( main_sizer )
+		self.panel_programming_Main.SetSizer( bSizer2 )
 		self.panel_programming_Main.Layout()
-		main_sizer.Fit( self.panel_programming_Main )
+		bSizer2.Fit( self.panel_programming_Main )
 		topsizer.Add( self.panel_programming_Main, 1, wx.EXPAND, 5 )
 		
 		
