@@ -1,10 +1,4 @@
-    for i=0,1 do
-        on(0)
-        off(0)
-        setSpeed(0)
-        emgStop(0)
-        move(P1)
+    for i=0,10 do
         go(P1)
-        luaSleep(0)
-        setAccel(0)
+        luaSleep(5)
     end --#END -- 1

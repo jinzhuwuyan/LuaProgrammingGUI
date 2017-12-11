@@ -195,7 +195,7 @@
                             <event name="OnUpdateUI"></event>
                         </object>
                         <object class="tool" expanded="1">
-                            <property name="bitmap">Load From Art Provider; gtk-no; wxART_TOOLBAR</property>
+                            <property name="bitmap">Load From Art Provider; gtk-cancel; wxART_TOOLBAR</property>
                             <property name="context_menu">0</property>
                             <property name="id">wxID_ANY</property>
                             <property name="kind">wxITEM_NORMAL</property>

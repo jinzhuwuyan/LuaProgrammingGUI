@@ -30,7 +30,7 @@ class Panel_controlprocess ( Panel ):
 		self.m_toolBar_main = wx.ToolBar( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TB_HORIZONTAL ) 
 		self.m_tool_add = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( wx.ART_ADD_BOOKMARK, wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"添加函数", u"添加函数", None ) 
 		
-		self.m_tool_delete = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( u"gtk-no", wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"删除函数", u"删除函数", None ) 
+		self.m_tool_delete = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( u"gtk-cancel", wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"删除函数", u"删除函数", None ) 
 		
 		self.m_tool_up = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( wx.ART_GO_UP, wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"向上一级移动", u"向上一级移动", None ) 
 		
