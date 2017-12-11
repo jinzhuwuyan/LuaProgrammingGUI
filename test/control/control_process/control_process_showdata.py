@@ -32,6 +32,7 @@ class ShowDataControl():
 
     def refresh_show_modeldata(self, data):
         (items, ) = data
-        self.model.items = self.translate_modeldata(items)
+        # self.model.items = self.translate_modeldata(items)
+        self.model.items = items
         controlfile_tools.log_bystatus('Refresh showdata by process control %s ' % str(self.model.items))
         self.refresh_tree()

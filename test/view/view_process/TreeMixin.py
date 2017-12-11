@@ -1,3 +1,4 @@
+#! encoding: utf-8
 import wx, wx.lib.customtreectrl, wx.gizmos
 try:
     import treemixin 
@@ -40,7 +41,7 @@ class TreeModel(object):
             while len(children) > count:
                 children.pop()
             while len(children) < count:
-                children.append(('item %d'%self.itemCounter, []))
+                children.append(('item %d'%self.itemCounter, [], {}))
                 self.itemCounter += 1
         else:
             print model
@@ -63,6 +64,7 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
     def __init__(self, *args, **kwargs):
         self.model = kwargs.pop('treemodel')
         self.log = kwargs.pop('log')
+        print 'Init DemoTreeMixin ...', str(self.model.items)
         super(DemoTreeMixin, self).__init__(*args, **kwargs)
         self.CreateImageList()
 
@@ -79,7 +81,7 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         # self.AssignImageList(self.imageList)
 
     def OnGetItemText(self, indices):
-        print 'OnGetItemText....'
+        print 'OnGetItemText.... %s ' % self.model.GetText(indices)
         return self.model.GetText(indices)
 
     def OnGetChildrenCount(self, indices):
@@ -118,16 +120,16 @@ class DemoTreeMixin(treemixin.VirtualTree, treemixin.DragAndDrop,
         return super(DemoTreeMixin,
                          self).OnGetItemBackgroundColour(indices)
 
-    def OnGetItemImage(self, indices, which):
-        # Return the right icon depending on whether the item has children.
-        print 'GetItemImage....'
-        if which in [wx.TreeItemIcon_Normal, wx.TreeItemIcon_Selected]:
-            if self.model.GetChildrenCount(indices):
-                return 0
-            else:
-                return 2
-        else:
-            return 1
+    # def OnGetItemImage(self, indices, which):
+    #     # Return the right icon depending on whether the item has children.
+    #     print 'GetItemImage....'
+    #     if which in [wx.TreeItemIcon_Normal, wx.TreeItemIcon_Selected]:
+    #         if self.model.GetChildrenCount(indices):
+    #             return 0
+    #         else:
+    #             return 2
+    #     else:
+    #         return 1
 
     def OnDrop(self, dropTarget, dragItem):
         print 'Droping.....'
@@ -152,27 +154,32 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
     def __init__(self, *args, **kwargs):
         kwargs['style'] = wx.TR_DEFAULT_STYLE | wx.TR_FULL_ROW_HIGHLIGHT
         super(VirtualTreeListCtrl, self).__init__(*args, **kwargs)
-        self.AddColumn('Column 0')
-        self.AddColumn('Column 1')
+        self.AddColumn('命令')
+        self.AddColumn('值')
         for art in wx.ART_TIP, wx.ART_WARNING:
-            self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER, 
+            self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER,
                                                         (16, 16)))
 
     def OnGetItemText(self, indices, column=0):
         # Return a different label depending on column.
-        return '%s, column %d'%\
-            (super(VirtualTreeListCtrl, self).OnGetItemText(indices), column)
+        (index, ) = indices
+        print 'Get Item in TreeListCtrl, items is %s, column is %d' % (str(self.model.items[index]), column)
+        func_str = self.model.items[index][0]
+        child = self.model.items[index][1]
+        paras = self.model.items[index][2]
+        paras_str = ','.join([para[0] for para in paras.values()])
+        return func_str if column == 0 else paras_str
 
-    def OnGetItemImage(self, indices, which, column=0):
-        # Also change the image of the other columns when the item has 
-        # children.
-        if column == 0:
-            return super(VirtualTreeListCtrl, self).OnGetItemImage(indices, 
-                                                                   which)
-        elif self.OnGetChildrenCount(indices):
-            return 4
-        else:
-            return 3
+    # def OnGetItemImage(self, indices, which, column=0):
+    #     # Also change the image of the other columns when the item has
+    #     # children.
+    #     if column == 0:
+    #         return super(VirtualTreeListCtrl, self).OnGetItemImage(indices,
+    #                                                                which)
+    #     elif self.OnGetChildrenCount(indices):
+    #         return 4
+    #     else:
+    #         return 3
 
 
 class VirtualCustomTreeCtrl(DemoTreeMixin, 
@@ -241,6 +248,7 @@ class TreeNotebook(wx.Notebook):
             return [()]
 
     def RefreshItems(self):
+        print 'Refreshing items is %s' % str(self.trees[self.GetSelection()])
         tree = self.trees[self.GetSelection()]
         tree.RefreshItems()
         tree.UnselectAll()
@@ -274,23 +282,16 @@ class TesPanel(wx.Panel):
         self.SetSizer(sizer)
 
     def OnEnter(self, event):
-        print 'OnEnter....'
         indicesList = self.notebook.GetIndicesOfSelectedItems()
         newChildrenCount = self.childrenCountCtrl.GetValue()
-        print indicesList
-        print newChildrenCount
-        model = [('go', []), ('if', [('go', []), ('move', [])]), ('else', [('move', []), ('move', [])]), ('move', [])]
-
-        # self.treemodel.SetChildrenCount((), 0, model)
         for indices in indicesList:
-            self.treemodel.SetChildrenCount(indices, newChildrenCount, model)
-
-        #     text = self.treemodel.GetText(indices)
-        #     oldChildrenCount = self.treemodel.GetChildrenCount(indices)
-        #     self.log.write('%s %s now has %d children (was %d)'%(text, indices,
-        #         newChildrenCount, oldChildrenCount))
-        #     model = [('go', []), ('if', [('go', []), ('move', [])]), ('else', [('move', []), ('move', [])]), ('move', [])]
-        #     self.treemodel.SetChildrenCount(indices, newChildrenCount, model)
+            text = self.treemodel.GetText(indices)
+            print 'text is %s ' % str(text)
+            oldChildrenCount = self.treemodel.GetChildrenCount(indices)
+            print 'oldChildrenCount is %d' % oldChildrenCount
+            self.log.write('%s %s now has %d children (was %d)' % (text, indices,
+                                                                   newChildrenCount, oldChildrenCount))
+            self.treemodel.SetChildrenCount(indices, newChildrenCount)
         self.notebook.RefreshItems()
 
 
