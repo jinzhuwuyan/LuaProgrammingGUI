@@ -13,12 +13,19 @@ class ShowDataControl():
         # Control.__init__(self, parent)
         self.parent = parent
         self.model = process_object.container()
+        self.unlimit_funcs = None
         pub.subscribe(self.refresh_show_modeldata, 'refresh_show_modeldata')
-
+        # pub.subscribe(self._unselete_all, 'unselete_process_all')
 
     def refresh_tree(self):
         self.parent.m_treeControl_showdata.RefreshItems()
+        # selection = self.parent.m_treeControl_showdata.GetSelection()
+        # if  selection \
+        #         and self.parent.m_treeControl_showdata.GetItemText(selection, 0) not in self.unlimit_funcs:
         self.parent.m_treeControl_showdata.UnselectAll()
+
+    # def _unselete_all(self, data):
+    #     self.parent.m_treeControl_showdata.UnselectAll()
 
     def translate_modeldata(self, modeldata):
         _tmp = []
@@ -31,7 +38,7 @@ class ShowDataControl():
         return _tmp
 
     def refresh_show_modeldata(self, data):
-        (items, ) = data
+        (items, self.unlimit_funcs) = data
         # self.model.items = self.translate_modeldata(items)
         self.model.items = items
         controlfile_tools.log_bystatus('Refresh showdata by process control %s ' % str(self.model.items))

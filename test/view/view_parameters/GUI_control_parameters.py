@@ -28,9 +28,17 @@ class panel_control_parameters ( wx.Panel ):
 		self.SetSizer( topsizer )
 		self.Layout()
 		topsizer.Fit( self )
+		
+		# Connect Events
+		self.Bind( wx.EVT_SET_FOCUS, self._unselete_process_all )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def _unselete_process_all( self, event ):
+		event.Skip()
 	
 
 ###########################################################################

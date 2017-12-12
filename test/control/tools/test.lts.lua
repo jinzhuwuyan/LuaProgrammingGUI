@@ -1,4 +1,5 @@
-    for i=0,1 do
-        go(P1)
-        luaSleep(5.300000)
+    for i=0,10 do
+        if () then
+            go(P1)
+        end --#END -- 2
     end --#END -- 1

@@ -26,15 +26,16 @@ class panel_edit_paras( GUI_control_parameters.panel_control_paras ):
 
 		else:
 			self._control.set_bitmap(self.m_bpButton_checkisNull, 'ok')
+			self._control.save_content_from_gui(textctrl.GetValue(), self.type)
 
 
-	def save_content( self, event ):
-		textctrl = event.EventObject
-		if textctrl.GetValue():
-			if not self._control.save_content_from_gui(textctrl.GetValue(), self.type):
-				self.show_msg(u'输入的参数值应该为%s类型' % self.type)
-		else:
-			self._control.set_bitmap(self.m_bpButton_checkisNull, 'error')
+	# def save_content( self, event ):
+	# 	textctrl = event.EventObject
+	# 	if textctrl.GetValue():
+	# 		if not self._control.save_content_from_gui(textctrl.GetValue(), self.type):
+	# 			self.show_msg(u'输入的参数值应该为%s类型' % self.type)
+	# 	else:
+	# 		self._control.set_bitmap(self.m_bpButton_checkisNull, 'error')
 
 	def save_tmpvalue( self, event ):
 		self._control.set_bitmap(self.m_bpButton_checkisNull, 'error')

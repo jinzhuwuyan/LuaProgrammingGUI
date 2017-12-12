@@ -14,9 +14,9 @@ except ImportError:
 
 CMD_OBJ_TUPLE = [CommonCmd.Go, CommonCmd.Move, CommonCmd.Sleep, CommonCmd.Stop,
                  CommonCmd.Set_Accel_Go, CommonCmd.Set_Speed_Go, CommonCmd.IF,
-                 CommonCmd.ELSE, CommonCmd.FOR, CommonCmd.WHILE, cmds2.End,
-                 CommonCmd.ON, CommonCmd.OFF]
-CMD_Name_TUPLE = ['go', 'move', 'luaSleep', 'emgStop', 'setAccel', 'setSpeed', 'if', 'else', 'for', 'while', 'End', 'on', 'off']
+                 CommonCmd.ELIF, CommonCmd.ELSE, CommonCmd.FOR, CommonCmd.WHILE,
+                 cmds2.End, CommonCmd.ON, CommonCmd.OFF]
+CMD_Name_TUPLE = ['go', 'move', 'luaSleep', 'emgStop', 'setAccel', 'setSpeed', 'if', 'elif', 'else', 'for', 'while', 'End', 'on', 'off']
 LIMITED_LIST = ['for', 'if', 'while']
 check_condition = lambda t: t not in LIMITED_LIST
 EXEC_CMD_NAMELIST = list(filter(check_condition, CMD_Name_TUPLE))
@@ -24,14 +24,14 @@ DATA_DICT_STRS = {#'coord': ['GO', 'MOVE'],
                   'ja': ['goja'],
                   'time': ['luaSleep'],
                   'value': ['emgStop', 'setAccel', 'setSpeed', 'for', 'while', 'on', 'off'],
-                  'condition': ['if'],
+                  'condition': ['if', 'elif'],
                   'choose_point': ['go', 'move'],
                   }
 DATA_NONE_LIST = ['else']
 GENGERATE_PARMETERS_LIST = {'coord': list('XYZUVW'), 'ja': list('J1,J2,J3,J4,J5,J6'.split(',')), 'time':['time'],
                         'value': ['value'], 'condition': ['condition'], 'choose_point': ['choose_point']}
-RENAME_LIST = {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
-                    'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off'}
+# RENAME_LIST = {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
+#                 'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off', 'ELIF': 'elif'}
 class Handle_Msg(object):
 
     def __init__(self, parent):
@@ -94,11 +94,11 @@ class Handle_Msg(object):
 
         # if self.Gui_data:
         #     command_data = self.generate_data_from_gui(self.Gui_data)
-        print 'Current pg is ', self.Cmd_Manager.pg
-        for_head_instance, for_end_instance = self.get_repeat_lua_for(repeat_time)
-        print 'Current1 pg is ', self.Cmd_Manager.pg
-        self.Cmd_Manager.pg.append(for_head_instance)
-        print 'Current2 pg is ', self.Cmd_Manager.pg
+        # print 'Current pg is ', self.Cmd_Manager.pg
+        # for_head_instance, for_end_instance = self.get_repeat_lua_for(repeat_time)
+        # print 'Current1 pg is ', self.Cmd_Manager.pg
+        # self.Cmd_Manager.pg.append(for_head_instance)
+        # print 'Current2 pg is ', self.Cmd_Manager.pg
         if isinstance(commanddata, list):
             for index, value in enumerate(commanddata):
                 (func_str, func_paras, func_child) = value
@@ -121,7 +121,7 @@ class Handle_Msg(object):
                     self.Cmd_Manager.pg.append(instance_exec)
                 print func_paras
 
-        self.Cmd_Manager.pg.append(for_end_instance)
+        # self.Cmd_Manager.pg.append(for_end_instance)
         # print 'self.__end_instances....is ....', self.__end_instances
         # return self.output_commands()
     def get_repeat_lua_for(self, repeat_time):

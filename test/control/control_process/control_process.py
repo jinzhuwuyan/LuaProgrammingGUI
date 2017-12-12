@@ -42,9 +42,10 @@ class Control():
                             pos=self.get_current_pos())
 
     def _refresh_parasdata(self, refresh_type = 'get', data = None):
-        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s' % (str(refresh_type), str(data)))
+
         refresh_data = None
         selection_indexs = self.get_current_pos()
+        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (str(refresh_type), str(data), str(selection_indexs)))
         # print 'select_item is ', str(selection_indexs)
         if selection_indexs and len(selection_indexs) > 1:
             self.index_1 = selection_indexs[0]
@@ -58,6 +59,7 @@ class Control():
                     _tmp_key2, _tmp_item2, refresh_data = _tmp_item1[self.index_2]
                     _tmp_item1[self.index_2] = (_tmp_key2, _tmp_item2, data)
                     self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, _tmp_paras1)
+                    self.request_showdata_refresh()
             else:
                 controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
 
@@ -70,6 +72,7 @@ class Control():
                 controlfile_tools.log_bystatus('refreshing data %s' % str(data))
                 _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
                 self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
+                self.request_showdata_refresh()
             else:
                 controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
         else:
@@ -77,7 +80,7 @@ class Control():
 
         controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
                                        % (str(refresh_type), str(data), str(self.model.items)), 'e')
-        self.request_showdata_refresh()
+
         return refresh_data
 
     def get_current_pos(self):
@@ -110,6 +113,10 @@ class Control():
     def set_tree(self, tree):
         self.tree = tree
 
+    def unselect_items(self):
+        controlfile_tools.log_bystatus('UnselectAll items!')
+        self.tree.UnselectAll()
+
     def modify_runtime(self):
         dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
         if dlg.ShowModal() == wx.ID_OK:
@@ -138,14 +145,8 @@ class Control():
             try:
                 print 'saving file.',self.model.items
                 controlfile_tools.save(self.file_path, self.generate_prj_data())
-                from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
-                handler = Handle_Msg(self)
-                controlfile_tools.log_bystatus(str(self.model.items))
-                commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
-                controlfile_tools.log_bystatus('Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
-                handler.generate_commands(commands_data, self.repeat_time)
-                controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
-                pub.sendMessage('refresh_lua_panel', data = (handler.output_commands(), ))
+                commands_data = self.orgnize_commands()
+                pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                 return True, '保存成功！'
             except Exception as e:
                 exceptions = sys.exc_info()
@@ -166,6 +167,19 @@ class Control():
 
         return yaml.dump(_tmp)
 
+    def orgnize_commands(self):
+
+        from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
+        handler = Handle_Msg(self)
+        commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
+        controlfile_tools.log_bystatus(
+            'Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
+        head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
+        handler.Cmd_Manager.pg.append(head_instance)
+        handler.generate_commands(commands_data, self.repeat_time)
+        handler.Cmd_Manager.pg.append(end_instance)
+        controlfile_tools.save(self.file_path + '.lua', handler.output_commands())
+        return handler.output_commands()
 
 
 
@@ -185,11 +199,13 @@ class Control():
     def refresh_tree(self):
         self.request_showdata_refresh()
         # self.parent.m_treeControl_show.RefreshItems()
-        # self.parent.m_treeControl_show.UnselectAll()
+        controlfile_tools.log_bystatus('refreshing_tree.....')
+
 
     def request_showdata_refresh(self):
         controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
-        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
+        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], self._funcs_unlimit, ))
+
 
     def _add_obj_bylimit(self, obj, index, limit = False):
 
@@ -308,15 +324,13 @@ class Control():
         return obj
 
 
-    def _unselete_all(self):
-        self.tree.UnselectAll()
 
     def _check_func_str(self, func_str):
         controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
-        if func_str in self._funcs_unlimit:
-            return True
-        else:
-            return False
+        return func_str in self._funcs_unlimit
+
+    def _unselete_all(self):
+        self.request_showdata_refresh()
 
 ##########################################control function list panel################################
     def get_selectionstr(self):
