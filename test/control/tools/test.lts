@@ -1,5 +1,5 @@
 Author: ysw
-Last_Edit_time: Tue Dec 12 14:30:31 2017
+Last_Edit_time: Wed Dec 13 17:21:57 2017
 ProgramBlocks:
 - !!python/tuple
   - !!python/unicode 'IF'
@@ -8,6 +8,10 @@ ProgramBlocks:
       - []
       - choose_point: !!python/tuple [P1, str]
   - condition: !!python/tuple ['', str]
-Repeat_time: 10
+- !!python/tuple
+  - !!python/unicode 'GO'
+  - []
+  - choose_point: !!python/tuple [P1, str]
+Repeat_time: 1
 encoding: utf-8
 version: 0.0.1.0

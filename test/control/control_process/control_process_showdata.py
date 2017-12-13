@@ -22,7 +22,7 @@ class ShowDataControl():
         # selection = self.parent.m_treeControl_showdata.GetSelection()
         # if  selection \
         #         and self.parent.m_treeControl_showdata.GetItemText(selection, 0) not in self.unlimit_funcs:
-        self.parent.m_treeControl_showdata.UnselectAll()
+        # self.parent.m_treeControl_showdata.UnselectAll()
 
     # def _unselete_all(self, data):
     #     self.parent.m_treeControl_showdata.UnselectAll()
