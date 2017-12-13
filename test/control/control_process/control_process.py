@@ -24,7 +24,7 @@ class Control():
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
             self.index_1, self.index_2, self.file_path, \
-            self.rename_list= [None] * 14
+            self.rename_list, self.help_msg_path, self.help_msg= [None] * 16
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
@@ -332,6 +332,32 @@ class Control():
     def _unselete_all(self):
         self.request_showdata_refresh()
 
+    ## Addon functions
+
+    def import_prj_fromdisk(self, file_path):
+        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=self.file_path,
+                      wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
+        else:
+            pass
+        self.load_from_disk()
+
+    def output_to_folder(self):
+        dlg = wx.DirDialog(parent=self.parent, message='Plese Set your path to save project file!',
+                           defaultPath=self.file_path, DirDialogNameStr='view.lts')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
+        else:
+            pass
+        self.save_to_disk()
+
+    def load_help_msg(self):
+        data = controlfile_tools.loadyaml(self.help_msg_path)
+        return self.help_msg
+
+    def get_help(self, func_str):
+        return self.help_msg.get(func_str, None)
 ##########################################control function list panel################################
     def get_selectionstr(self):
         self._refresh_func_init()
@@ -353,5 +379,5 @@ class Control():
 
     def _get_funcs_data(self, data):
         (self._func_items, self._func_str, self._func_selection, self._funcs_paras,
-                        self._funcs_unlimit, self.file_path, self.rename_list) = data
+                        self._funcs_unlimit, self.file_path, self.rename_list, self.help_msg_path) = data
         controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))
