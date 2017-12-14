@@ -40,7 +40,8 @@ references = {
     'file_path': os.path.join(get_abspath(current_path), 'test.lts'),
     'rename_list': {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
                     'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off',
-                    'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif'}
+                    'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif'},
+    'help_msg_path': os.path.join(get_abspath(current_path), 'help_msg.yml')
 }
 
 

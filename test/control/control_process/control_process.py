@@ -24,7 +24,8 @@ class Control():
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
             self.index_1, self.index_2, self.file_path, \
-            self.rename_list= [None] * 14
+            self.rename_list, self.help_msg_path, self.help_msg,\
+            self.pos = [None] * 17
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
@@ -82,6 +83,7 @@ class Control():
                                        % (str(refresh_type), str(data), str(self.model.items)), 'e')
 
         return refresh_data
+
 
     def get_current_pos(self):
         _pos = []
@@ -257,6 +259,7 @@ class Control():
         # show_item = _panel_functionlist.data.get_selectionstr()
         controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
         childitem = self.model.items
+
         # childitemdata = self.model.modeldata
         try:
             controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
@@ -268,9 +271,14 @@ class Control():
             controlfile_tools.log_bystatus('selection is %s' %
                                            str(self.tree.GetIndexOfItem(select_item)), 'i')
             select_items = self.tree.GetIndexOfItem(select_item)
+            self.pos = select_items
             select_item_str = self.tree.GetItemText(select_item)
             controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
                                            (select_items, select_item_str), 'i')
+            if self.command == 'change':
+                controlfile_tools.log_bystatus(
+                    'Check Change type is %s' % str(self.check_process_hierarchy(childitem, list(select_items),
+                                                                             self.change_way)))
             if len(select_items) > 2:
 
                 controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
@@ -315,7 +323,88 @@ class Control():
             obj = self._add_obj_bylimit(obj, index, limit=limit)
 
         elif self.command == 'change':
-            obj = self._change_obj_pos(obj, index)
+            __tmp = []
+            parentitem = None
+            func_str, child, paras = [None] * 3
+            if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
+                obj = self._change_obj_pos(obj, index)
+            else:
+                if self.change_way == 'up':
+
+                    if index == 0:
+
+                        for inx, value in enumerate(self.pos):
+                            if inx + 1 == len(self.pos):
+                                func_str, child, paras = __tmp[-1]
+                                if isinstance(child, list):
+                                    child.append(obj[index])
+                                    del obj[index]
+                                __tmp[-1] = func_str, child, paras
+
+                            else:
+                                if not parentitem:
+                                    parentitem = parentitem[value]
+                                else:
+                                    parentitem = self.model.items[value]
+                                __tmp.append(parentitem)
+                        # __tmp.reverse()
+                        while __tmp and len(self.pos) > 1:
+                            last_one_index = self.pos[-1]
+                            last_two_index = self.pos[-2]
+                            # __tmp[last_one_index] = func_str, child, paras
+
+                            func_str_parent, child_parent, paras_parent = __tmp[last_two_index]
+                            child_parent[last_two_index] = __tmp[last_one_index]
+                            __tmp[last_two_index] = func_str_parent, child_parent, paras_parent
+                            self.pos.pop()
+                        lastindex = self.pos.pop()
+                        self.model.items[lastindex] = __tmp[0]
+                        del __tmp[:]
+                        return obj
+
+                    else:
+                        (func_str, child, paras) = obj[index - 1]
+                        child.append(obj[index])
+                        obj[index - 1] = (func_str, child, paras)
+                        del obj[index]
+                        return obj
+                else:
+                    if index + 1 == len(obj):
+                        for inx, value in enumerate(self.pos):
+                            if inx + 1 == len(self.pos):
+                                func_str, child, paras = __tmp[-1]
+                                if isinstance(child, list):
+                                    child.remove(obj[index])
+                                __tmp[-1] = func_str, child, paras
+                                func_str_2, child_2, paras_2 = __tmp[-2]
+                                child_2.append(obj[index])
+                                __tmp[-2] = func_str_2, child_2, paras_2
+                                self.pos.pop()
+                            else:
+                                if not parentitem:
+                                    parentitem = parentitem[value]
+                                else:
+                                    parentitem = self.model.items[value]
+                                __tmp.append(parentitem)
+                        while __tmp and len(self.pos) > 1:
+                            last_two_index = self.pos[-1]
+                            # __tmp[last_one_index] = func_str, child, paras
+
+                            func_str_parent, child_parent, paras_parent = __tmp[-2]
+                            child_parent[last_two_index] = __tmp[-1]
+                            __tmp[-2] = func_str_parent, child_parent, paras_parent
+                            self.pos.pop()
+                        lastindex = self.pos.pop()
+                        self.model.items[lastindex] = __tmp[0]
+                        del __tmp[:]
+                        return obj
+                    else:
+                        (func_str, child, paras) = obj[index + 1]
+                        child.append(obj[index])
+                        obj[index + 1] = (func_str, child, paras)
+                        del obj[index]
+                        return obj
+
 
         elif self.command == 'delete':
 
@@ -330,7 +419,111 @@ class Control():
         return func_str in self._funcs_unlimit
 
     def _unselete_all(self):
-        self.request_showdata_refresh()
+        self.tree.UnselectAll()
+
+
+    ## Addon functions
+
+    def import_prj_fromdisk(self):
+        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=self.file_path,
+                      wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
+        else:
+            pass
+        self.load_from_disk()
+
+    def output_to_folder(self):
+        dlg = wx.DirDialog(parent=self.parent, message='Plese Set your path to save project file!',
+                           defaultPath=self.file_path, name='view.lts')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
+        else:
+            pass
+        self.save_to_disk()
+
+    def load_help_msg(self):
+        controlfile_tools.log_bystatus('help_msg_path is %s' % self.help_msg_path)
+        data = controlfile_tools.loadyaml(self.help_msg_path)
+        return data
+
+    def get_help(self, func_str):
+        return self.help_msg.get(func_str, None)
+
+    def check_process_hierarchy(self, data, pos, check_type='up'):
+        """
+        return -1 equals to data None or index None.
+        return 0  equals to normal change, up is up, down is down.
+        return 1 equals to into or outto the hierarchy.
+        :param data:
+        :param pos:
+        :param check_type:
+        :return:
+        """
+        controlfile_tools.log_bystatus('Enter check_process_hierarchy....')
+        first_index = pos[0] if pos else None
+        _tmp_value = data[first_index] if data else None
+        controlfile_tools.log_bystatus('_tmp_value is %s, first_index is %d, data is %s, pos is %s '
+                                       % (str(_tmp_value), first_index, str(data), str(pos)))
+        if _tmp_value and len(pos) > 1:  # <list>
+            del pos[0]
+            controlfile_tools.log_bystatus('check_process pos is %s' % str(pos))
+            (func_str, child, paras) = _tmp_value
+            for index, value in enumerate(pos):  # <list>
+                if index + 1 == len(pos):
+                    return self.__check_current_func_islimited(child, value, check_type, parentdata=(func_str, child, paras))
+                else:
+                    try:
+                        (func_str, child, paras) = child[value]
+                    except Exception:
+                        wx.MessageBox('child[value]取值有误， child Is %s' % str(child))
+                        return 0
+        elif _tmp_value and len(pos) == 1:
+            return self.__check_current_func_islimited(data, first_index, check_type, parentdata=None)
+
+        else:
+            wx.MessageBox('数据为空！！！')
+            return 0
+
+    def __check_current_func_islimited(self, data, index, check_type, parentdata=None):
+        """
+        考虑到函数自身是否应该上(下)跳或直接移动
+        :param data:
+        :param index:
+        :param check_type:
+        :return:
+        """
+        if 0 < index < len(data) - 1:
+            check_value = data[index - 1] if check_type == 'up' else data[index + 1]
+            return self.__get_limited_checkvalue(check_value)
+        elif index == 0 and len(data) > 1:
+            if check_type != 'up':
+                check_value = data[index + 1]
+                return self.__get_limited_checkvalue(check_value)
+            else:
+                return 0
+        elif index == len(data) - 1 and len(data) > 1:
+            if check_type == 'up':
+                check_value = data[index - 1]
+                return self.__get_limited_checkvalue(check_value)
+            else:
+                return 0
+        elif len(data) == 1 and parentdata:
+            if self.__get_limited_checkvalue(parentdata) == 1:
+                return 1
+            else:
+                return 0
+        else:
+            return 0
+
+
+    def __get_limited_checkvalue(self, check_value):
+
+        (func_str_tmp, child, paras) = check_value
+        if func_str_tmp in self._funcs_unlimit:
+            return 1
+        else:
+            return 0
 
 ##########################################control function list panel################################
     def get_selectionstr(self):
@@ -353,5 +546,5 @@ class Control():
 
     def _get_funcs_data(self, data):
         (self._func_items, self._func_str, self._func_selection, self._funcs_paras,
-                        self._funcs_unlimit, self.file_path, self.rename_list) = data
+                        self._funcs_unlimit, self.file_path, self.rename_list, self.help_msg_path) = data
         controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))
