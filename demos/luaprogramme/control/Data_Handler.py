@@ -17,7 +17,7 @@ CMD_OBJ_TUPLE = [CommonCmd.Go, CommonCmd.Move, CommonCmd.Sleep, CommonCmd.Stop,
                  CommonCmd.ELIF, CommonCmd.ELSE, CommonCmd.FOR, CommonCmd.WHILE,
                  cmds2.End, CommonCmd.ON, CommonCmd.OFF]
 CMD_Name_TUPLE = ['go', 'move', 'luaSleep', 'emgStop', 'setAccel', 'setSpeed', 'if', 'elif', 'else', 'for', 'while', 'End', 'on', 'off']
-LIMITED_LIST = ['for', 'if', 'while']
+LIMITED_LIST = ['for', 'if', 'while', 'elif', 'else']
 check_condition = lambda t: t not in LIMITED_LIST
 EXEC_CMD_NAMELIST = list(filter(check_condition, CMD_Name_TUPLE))
 DATA_DICT_STRS = {#'coord': ['GO', 'MOVE'],

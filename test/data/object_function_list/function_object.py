@@ -1,34 +1,47 @@
+#！encoding: utf-8
 import os
 from LuaProgrammingGUI.test.control.tools import controlfile_tools as file_control
 class container():
-    def __init__(self, parent, func_path = None):
-        self.parent = parent
+    def __init__(self):
 
-        # self._funcs_paras = control_function.Control(self.parent).load_functions(func_path)
+        # 配置数据
         self.reference_data = None
-        self.funcs_data = self._load_functions(func_path)
+        # 函数列表数据
+        self.funcs_data = None
+
+    def init_container(self, func_path):
+        """
+        初始化数据模型
+        :param func_path: 配置路径地址
+        :return: True,初始化成功； False,初始化失败
+        """
+        try:
+            self.reference_data = file_control.loadyaml(os.path.abspath(func_path))
+            self._load_functions(self.reference_data['func_path'])
+            return True
+        except Exception as e:
+            print e
+            return False
 
 
     def _load_functions(self, file_path=None):
+        """
+        加载函数列表
+        :param file_path:  函数列表路径
+        :return:  True, 加载成功； False, 加载失败
+        """
 
-        self.reference_data = file_control.loadyaml(os.path.abspath('./LuaProgrammingGUI/test/control/reference.yml'))
-        # self.reference_data = file_control.loadyaml(os.path.abspath('./test/control/reference.yml'))
         if file_path:
-                funcs = file_control.loadyaml(file_path)
-                if isinstance(funcs, dict):
-                    return funcs
-                else:
-                    file_control.log_bystatus('Please check the content of %s can be loaded by yaml as %s type!!!'
-                                              % (file_path, 'dict'), 'e')
-                    return self._load_default()
+                self.funcs_data = file_control.loadyaml(file_path)
+                return True
         else:
-            return self._load_default()
+            return False
 
 
-    def _load_default(self):
-        _file_path = self.reference_data['default_func_path']
-        _file_name = self.reference_data['default_func_filename']
-        _open_path = os.path.join(_file_path, _file_name)
-        _file_data = file_control.loadyaml(_open_path)
-        return _file_data
+    # def _load_default(self):
+    #     _file_path = self.reference_data['default_func_path']
+    #     _file_name = self.reference_data['default_func_filename']
+    #     _open_path = os.path.join(_file_path, _file_name)
+    #     _file_data = file_control.loadyaml(_open_path)
+    #     return _file_data
 

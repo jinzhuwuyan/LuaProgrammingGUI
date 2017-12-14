@@ -9,7 +9,8 @@ from LuaProgrammingGUI.test.control.tools import view_tools
 class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 	def __init__( self, parent, id, pos, size, style ):
 		GUI_functionlist.Panel_ChooseFunc.__init__( self, parent )
-		self.func_path, self.current_data = [None] * 2
+		self.func_path = None
+		self.current_data = None
 		self.control = control_function.Control(self, self.func_path)
 		view_tools.config_control(self, id, pos, size, style)
 		self.config()

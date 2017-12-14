@@ -1,6 +1,10 @@
 Author: ysw
-Last_Edit_time: Wed Dec 13 17:21:57 2017
+Last_Edit_time: Thu Dec 14 16:36:07 2017
 ProgramBlocks:
+- !!python/tuple
+  - !!python/unicode 'MOVE'
+  - []
+  - choose_point: !!python/tuple [P1, str]
 - !!python/tuple
   - !!python/unicode 'IF'
   - - !!python/tuple
@@ -9,9 +13,27 @@ ProgramBlocks:
       - choose_point: !!python/tuple [P1, str]
   - condition: !!python/tuple ['', str]
 - !!python/tuple
-  - !!python/unicode 'GO'
+  - !!python/unicode 'ELIF'
+  - - !!python/tuple
+      - !!python/unicode 'IF'
+      - - !!python/tuple
+          - !!python/unicode 'GO'
+          - []
+          - choose_point: !!python/tuple [P1, str]
+      - condition: !!python/tuple ['', str]
+  - &id001
+    condition: !!python/tuple ['', str]
+- !!python/tuple
+  - !!python/unicode 'IF'
+  - - !!python/tuple
+      - !!python/unicode 'GO'
+      - []
+      - choose_point: !!python/tuple [P1, str]
+  - *id001
+- !!python/tuple
+  - !!python/unicode 'IF'
   - []
-  - choose_point: !!python/tuple [P1, str]
-Repeat_time: 1
+  - condition: !!python/tuple ['0', str]
+Repeat_time: 10
 encoding: utf-8
 version: 0.0.1.0
