@@ -1,17 +1,33 @@
 Author: ysw
-Last_Edit_time: Wed Dec 13 17:21:57 2017
+Last_Edit_time: Thu Dec 14 15:53:12 2017
 ProgramBlocks:
+- !!python/tuple
+  - !!python/unicode 'IF'
+  - []
+  - &id001
+    condition: !!python/tuple ['', str]
 - !!python/tuple
   - !!python/unicode 'IF'
   - - !!python/tuple
       - !!python/unicode 'GO'
       - []
       - choose_point: !!python/tuple [P1, str]
-  - condition: !!python/tuple ['', str]
+  - *id001
 - !!python/tuple
-  - !!python/unicode 'GO'
-  - []
-  - choose_point: !!python/tuple [P1, str]
+  - !!python/unicode 'IF'
+  - - !!python/tuple
+      - !!python/unicode 'GO'
+      - []
+      - choose_point: !!python/tuple [P1, str]
+    - !!python/tuple
+      - !!python/unicode 'MOVE'
+      - []
+      - choose_point: !!python/tuple [P1, str]
+    - !!python/tuple
+      - !!python/unicode 'GO'
+      - []
+      - choose_point: !!python/tuple [P1, str]
+  - condition: !!python/tuple ['', str]
 Repeat_time: 1
 encoding: utf-8
 version: 0.0.1.0

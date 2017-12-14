@@ -271,7 +271,7 @@ class Control():
             controlfile_tools.log_bystatus('selection is %s' %
                                            str(self.tree.GetIndexOfItem(select_item)), 'i')
             select_items = self.tree.GetIndexOfItem(select_item)
-            self.pos = select_items
+            self.pos = list(select_items)
             select_item_str = self.tree.GetItemText(select_item)
             controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
                                            (select_items, select_item_str), 'i')
@@ -298,7 +298,7 @@ class Control():
 
 
                 itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
-                if itemlist:
+                if itemlist and self.command != 'change':
                     childitem[self.index_1] = (item_str, itemlist, paraslist)
             else:
                 controlfile_tools.log_bystatus('index is %s' % '0', 'i')
@@ -326,6 +326,7 @@ class Control():
             __tmp = []
             parentitem = None
             func_str, child, paras = [None] * 3
+            parent_bother_left, parent_bother_right = [None] * 2
             if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
                 obj = self._change_obj_pos(obj, index)
             else:
@@ -333,34 +334,38 @@ class Control():
 
                     if index == 0:
 
-                        for inx, value in enumerate(self.pos):
-                            if inx + 1 == len(self.pos):
-                                func_str, child, paras = __tmp[-1]
-                                if isinstance(child, list):
-                                    child.append(obj[index])
-                                    del obj[index]
-                                __tmp[-1] = func_str, child, paras
-
-                            else:
-                                if not parentitem:
-                                    parentitem = parentitem[value]
-                                else:
-                                    parentitem = self.model.items[value]
-                                __tmp.append(parentitem)
-                        # __tmp.reverse()
-                        while __tmp and len(self.pos) > 1:
-                            last_one_index = self.pos[-1]
-                            last_two_index = self.pos[-2]
-                            # __tmp[last_one_index] = func_str, child, paras
-
-                            func_str_parent, child_parent, paras_parent = __tmp[last_two_index]
-                            child_parent[last_two_index] = __tmp[last_one_index]
-                            __tmp[last_two_index] = func_str_parent, child_parent, paras_parent
-                            self.pos.pop()
-                        lastindex = self.pos.pop()
-                        self.model.items[lastindex] = __tmp[0]
-                        del __tmp[:]
-                        return obj
+                        if self.__set_tree_value_jumpout(self.model.items[:], self.pos, self.change_way):
+                            controlfile_tools.log_bystatus('跳转成功！')
+                        else:
+                            controlfile_tools.log_bystatus('跳转失败！')
+                        # for inx, value in enumerate(self.pos):
+                        #     if inx + 1 == len(self.pos):
+                        #         func_str, child, paras = __tmp[-1]
+                        #         if isinstance(child, list):
+                        #             child.append(obj[index])
+                        #             del obj[index]
+                        #         __tmp[-1] = func_str, child, paras
+                        #
+                        #     else:
+                        #         if parentitem:
+                        #             parentitem = parentitem[value]
+                        #         else:
+                        #             parentitem = self.model.items[value]
+                        #         __tmp.append(parentitem)
+                        # # __tmp.reverse()
+                        # while __tmp and len(self.pos) > 1:
+                        #     last_one_index = self.pos[-1]
+                        #     last_two_index = self.pos[-2]
+                        #     # __tmp[last_one_index] = func_str, child, paras
+                        #
+                        #     func_str_parent, child_parent, paras_parent = __tmp[last_two_index]
+                        #     child_parent[last_two_index] = __tmp[last_one_index]
+                        #     __tmp[last_two_index] = func_str_parent, child_parent, paras_parent
+                        #     self.pos.pop()
+                        # lastindex = self.pos.pop()
+                        # self.model.items[lastindex] = __tmp[0]
+                        # del __tmp[:]
+                        # return obj
 
                     else:
                         (func_str, child, paras) = obj[index - 1]
@@ -370,34 +375,53 @@ class Control():
                         return obj
                 else:
                     if index + 1 == len(obj):
-                        for inx, value in enumerate(self.pos):
-                            if inx + 1 == len(self.pos):
-                                func_str, child, paras = __tmp[-1]
-                                if isinstance(child, list):
-                                    child.remove(obj[index])
-                                __tmp[-1] = func_str, child, paras
-                                func_str_2, child_2, paras_2 = __tmp[-2]
-                                child_2.append(obj[index])
-                                __tmp[-2] = func_str_2, child_2, paras_2
-                                self.pos.pop()
-                            else:
-                                if not parentitem:
-                                    parentitem = parentitem[value]
-                                else:
-                                    parentitem = self.model.items[value]
-                                __tmp.append(parentitem)
-                        while __tmp and len(self.pos) > 1:
-                            last_two_index = self.pos[-1]
-                            # __tmp[last_one_index] = func_str, child, paras
-
-                            func_str_parent, child_parent, paras_parent = __tmp[-2]
-                            child_parent[last_two_index] = __tmp[-1]
-                            __tmp[-2] = func_str_parent, child_parent, paras_parent
-                            self.pos.pop()
-                        lastindex = self.pos.pop()
-                        self.model.items[lastindex] = __tmp[0]
-                        del __tmp[:]
-                        return obj
+                        if self.__set_tree_value_jumpout(self.model.items[:], self.pos, self.change_way):
+                            controlfile_tools.log_bystatus('跳转成功！')
+                        else:
+                            controlfile_tools.log_bystatus('跳转失败！')
+                        # for inx, value in enumerate(self.pos):
+                        #     parentitem = self.__get_loop_data(parentitem, value)
+                        #     __tmp.append(parentitem)
+                        #     if value == self.pos[-1]:
+                        #         func_str, child, paras = __tmp[-1]
+                        #         del child[index]
+                        #         __tmp[-1] = (func_str, child, paras)
+                        #         if parent_bother_right:
+                        #             _, child_tmp, _ = parent_bother_right
+                        #             child_tmp
+                        #     elif value == self.pos[-2]:
+                        #         _, parentitem_child, _ = __tmp[-2]
+                        #
+                        #         if 0 < value < len(__tmp[-2]) - 1:
+                        #
+                        #             parent_bother_left = value - 1
+                        #             parent_bother_right = value + 1
+                        #         elif value == 0 and len(__tmp[-2]) > 1:
+                        #
+                        #             parent_bother_left = None
+                        #             parent_bother_right = value + 1
+                        #         elif value == len(__tmp[-2]) - 1 and len(__tmp[-2]) > 1:
+                        #             parent_bother_left = value - 1
+                        #             parent_bother_right = None
+                        #         else:
+                        #             parent_bother_left = None
+                        #             parent_bother_right = None
+                        #     else:
+                        #         pass
+                        #
+                        # while __tmp and len(self.pos) > 1:
+                        #     last_two_index = self.pos[-1]
+                        #
+                        #     # __tmp[last_one_index] = func_str, child, paras
+                        #
+                        #     func_str_parent, child_parent, paras_parent = __tmp[-2]
+                        #     child_parent[last_two_index] = __tmp[-1]
+                        #     __tmp[-2] = func_str_parent, child_parent, paras_parent
+                        #     self.pos.pop()
+                        # lastindex = self.pos.pop()
+                        # self.model.items[lastindex] = __tmp[0]
+                        # del __tmp[:]
+                        # return obj
                     else:
                         (func_str, child, paras) = obj[index + 1]
                         child.append(obj[index])
@@ -412,7 +436,48 @@ class Control():
 
         return obj
 
+    def __set_tree_value_jumpout(self, treedata, pos, check_type='up'):
+        __tmp_data = None
+        __tmp = []
+        for p in pos:
+            __tmp_data = treedata[p] if not __tmp_data else __tmp_data[1][p]
+            __tmp.append(__tmp_data)
+        setdata = __tmp[-1]
+        if len(pos) > 2:
+            (func_str_grandfather, func_child_grandfather, func_paras_grandfather) = __tmp[pos[-3]]
+            if check_type == 'up':
+                func_child_grandfather.insert(pos[-2], setdata)
+            else:
+                func_child_grandfather.insert(pos[-2] + 1, setdata)
+                __tmp[pos[-3]] = (func_str_grandfather, func_child_grandfather, func_paras_grandfather)
+        elif len(pos) == 2:
+            if check_type == 'up':
+                self.model.items.insert(pos[0], setdata)
+            else:
+                self.model.items.insert(pos[0] + 1, setdata)
+        else:
+            return False
+        del __tmp[-1] # 以便使用parent item来做控制
+        delete_pos = pos[-1]
+        del __tmp[-1][1][delete_pos]
+        # del pos[-1]
+        # generate_data = __tmp[::-1]
+        # generate_pos = pos[::-1]
+        # for inx, p in enumerate(generate_pos):
+        #     if inx + 1 < len(generate_pos):
+        #         func_str, func_child, func_paras = generate_data[inx+1]
+        #         func_child[generate_pos[inx+1]] = generate_data[inx]
+        #     else:
+        #         self.model.items[p] = generate_data[inx]
+        return True
 
+    def __get_loop_data(self, parentitem, index):
+        if parentitem:
+            parentitem_str, parentitem_child, parentitem_paras = parentitem
+            parentitem = parentitem_child[index]
+        else:
+            parentitem = self.model.items[index]
+        return parentitem
 
     def _check_func_str(self, func_str):
         controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
@@ -501,18 +566,22 @@ class Control():
                 check_value = data[index + 1]
                 return self.__get_limited_checkvalue(check_value)
             else:
-                return 0
+                if parentdata:
+                    return 1 if self.__get_limited_checkvalue(parentdata) else 0
+                else:
+                    return 0
         elif index == len(data) - 1 and len(data) > 1:
             if check_type == 'up':
                 check_value = data[index - 1]
                 return self.__get_limited_checkvalue(check_value)
             else:
-                return 0
+                if parentdata:
+                    return self.__get_limited_checkvalue(parentdata)
+                else:
+                    return 0
         elif len(data) == 1 and parentdata:
-            if self.__get_limited_checkvalue(parentdata) == 1:
-                return 1
-            else:
-                return 0
+            return self.__get_limited_checkvalue(parentdata)
+
         else:
             return 0
 
