@@ -323,11 +323,88 @@ class Control():
             obj = self._add_obj_bylimit(obj, index, limit=limit)
 
         elif self.command == 'change':
-
+            __tmp = []
+            parentitem = None
+            func_str, child, paras = [None] * 3
             if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
                 obj = self._change_obj_pos(obj, index)
             else:
-                print 'I jump!'
+                if self.change_way == 'up':
+
+                    if index == 0:
+
+                        for inx, value in enumerate(self.pos):
+                            if inx + 1 == len(self.pos):
+                                func_str, child, paras = __tmp[-1]
+                                if isinstance(child, list):
+                                    child.append(obj[index])
+                                    del obj[index]
+                                __tmp[-1] = func_str, child, paras
+
+                            else:
+                                if not parentitem:
+                                    parentitem = parentitem[value]
+                                else:
+                                    parentitem = self.model.items[value]
+                                __tmp.append(parentitem)
+                        # __tmp.reverse()
+                        while __tmp and len(self.pos) > 1:
+                            last_one_index = self.pos[-1]
+                            last_two_index = self.pos[-2]
+                            # __tmp[last_one_index] = func_str, child, paras
+
+                            func_str_parent, child_parent, paras_parent = __tmp[last_two_index]
+                            child_parent[last_two_index] = __tmp[last_one_index]
+                            __tmp[last_two_index] = func_str_parent, child_parent, paras_parent
+                            self.pos.pop()
+                        lastindex = self.pos.pop()
+                        self.model.items[lastindex] = __tmp[0]
+                        del __tmp[:]
+                        return obj
+
+                    else:
+                        (func_str, child, paras) = obj[index - 1]
+                        child.append(obj[index])
+                        obj[index - 1] = (func_str, child, paras)
+                        del obj[index]
+                        return obj
+                else:
+                    if index + 1 == len(obj):
+                        for inx, value in enumerate(self.pos):
+                            if inx + 1 == len(self.pos):
+                                func_str, child, paras = __tmp[-1]
+                                if isinstance(child, list):
+                                    child.remove(obj[index])
+                                __tmp[-1] = func_str, child, paras
+                                func_str_2, child_2, paras_2 = __tmp[-2]
+                                child_2.append(obj[index])
+                                __tmp[-2] = func_str_2, child_2, paras_2
+                                self.pos.pop()
+                            else:
+                                if not parentitem:
+                                    parentitem = parentitem[value]
+                                else:
+                                    parentitem = self.model.items[value]
+                                __tmp.append(parentitem)
+                        while __tmp and len(self.pos) > 1:
+                            last_two_index = self.pos[-1]
+                            # __tmp[last_one_index] = func_str, child, paras
+
+                            func_str_parent, child_parent, paras_parent = __tmp[-2]
+                            child_parent[last_two_index] = __tmp[-1]
+                            __tmp[-2] = func_str_parent, child_parent, paras_parent
+                            self.pos.pop()
+                        lastindex = self.pos.pop()
+                        self.model.items[lastindex] = __tmp[0]
+                        del __tmp[:]
+                        return obj
+                    else:
+                        (func_str, child, paras) = obj[index + 1]
+                        child.append(obj[index])
+                        obj[index + 1] = (func_str, child, paras)
+                        del obj[index]
+                        return obj
+
 
         elif self.command == 'delete':
 
