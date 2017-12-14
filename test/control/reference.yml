@@ -1,10 +1,10 @@
-control_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
-data_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../data
+control_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
+data_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../data
 default_func_filename: funcs_data.yml
-default_func_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
-file_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/test.lts
-help_msg_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/help_msg.yml
+default_func_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../control
+file_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/test.lts
+help_msg_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/help_msg.yml
 rename_list: {ACCEL: setAccel, DELAY: luaSleep, ELIF: elif, ELSE: else, GO: go, IF: if,
   MOVE: move, 'OFF': 'off', 'ON': 'on', SPEED: setSpeed, STOP: emgStop}
 unlimit_func: [IF, ELIF, ELSE]
-view_path: /Users/goldpig/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../view
+view_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/../../view
