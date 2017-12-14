@@ -2,32 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/__init__.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/GenerateCodeClass.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/command_class/CommonCmd.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/command_class/__init__.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/command_class/core/__init__.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/command_class/core/cmds2.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/control/Data_Handler.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/control/__init__.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/control/test.lts" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/luaprogramme/test.lts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_function_list/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_function_list/control_function.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_parameters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_parameters/control_choose_pointlist.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_parameters/control_parameters.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_process/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_process/control_process.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/control_process/control_process_showdata.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/tools/NewLogger.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/tools/colorstreamhandler.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/tools/command_tools.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/tools/test.lts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/control/tools/test.lts.lua" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/choose_point_list.fbp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/control_parameters.fbp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_function_list/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_function_list/function_object.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_parameters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_parameters/parameters_object.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_process/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/object_process/process_object.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/programmingview_overwrite.fbp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/tree_ctrl_rewrite.fbp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/test.lts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/test.lts.lua" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/LuaProgrammingPanel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/Panel_luaprogramming.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_function_list/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/GUI_control_parameters.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/Main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/Panel_choose_pointlist.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/Panel_choose_pointlist_overwrite.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/Panel_control_paras_overwrite.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/Panel_edit_paras_overwrite.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_parameters/test.pts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_process/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_tools/FloatSpin.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_tools/TextDialogClass.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/view/view_tools/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/control/control_function.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/control/control_process.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/data/control_process/process_object.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/data/function_list/function_object.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/view/control_process/DataTreeCtrl.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/view/control_process/TreeMixin.py.lprof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/view/function_list/Panel_ChooseFunc_overwrite.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/data/control_process/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/data/function_list/__init__.py" afterPath="$PROJECT_DIR$/demos/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/.idea/control_process.iml" afterPath="$PROJECT_DIR$/test/view/view_process/.idea/control_process.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/.idea/misc.xml" afterPath="$PROJECT_DIR$/test/view/view_process/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/.idea/modules.xml" afterPath="$PROJECT_DIR$/test/view/view_process/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/.idea/workspace.xml" afterPath="$PROJECT_DIR$/test/view/view_process/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/GUI_controlprocess.py" afterPath="$PROJECT_DIR$/test/view/view_process/GUI_controlprocess.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/Main.py" afterPath="$PROJECT_DIR$/test/view/view_process/Main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/TreeMixin.py" afterPath="$PROJECT_DIR$/test/view/view_process/TreeMixin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/__init__.py" afterPath="$PROJECT_DIR$/demos/luaprogramme/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/control_process/wxPanel_overwrite.py" afterPath="$PROJECT_DIR$/test/view/view_process/wxPanel_overwrite.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/function_list/GUI_functionlist.py" afterPath="$PROJECT_DIR$/test/view/view_function_list/GUI_functionlist.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/function_list/Main.py" afterPath="$PROJECT_DIR$/test/view/view_function_list/Main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/view/function_list/__init__.py" afterPath="$PROJECT_DIR$/demos/luaprogramme/command_class/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/control_parameters/control_parameters.py" afterPath="$PROJECT_DIR$/test/control/control_parameters/control_parameters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/control_process/control_process.py" afterPath="$PROJECT_DIR$/test/control/control_process/control_process.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/.idea/workspace.xml" afterPath="$PROJECT_DIR$/test/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/funcs_data.yml" afterPath="$PROJECT_DIR$/test/control/funcs_data.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/reference.yml" afterPath="$PROJECT_DIR$/test/control/reference.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/command_tools.py" afterPath="$PROJECT_DIR$/test/control/tools/command_tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/controlfile_tools.py" afterPath="$PROJECT_DIR$/test/control/tools/controlfile_tools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/create_reference.py" afterPath="$PROJECT_DIR$/test/control/tools/create_reference.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/control/tools/view_tools.py" afterPath="$PROJECT_DIR$/test/control/tools/view_tools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/control_process.fbp" afterPath="$PROJECT_DIR$/test/data/control_process.fbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/function_list.fbp" afterPath="$PROJECT_DIR$/test/data/function_list.fbp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/data/programmingview.fbp" afterPath="$PROJECT_DIR$/test/data/programmingview.fbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test.lts" afterPath="$PROJECT_DIR$/test/test.lts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/MainView.py" afterPath="$PROJECT_DIR$/test/view/MainView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/view_process/GUI_controlprocess.py" afterPath="$PROJECT_DIR$/test/view/view_process/GUI_controlprocess.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/test/view/view_process/Panel_controlprocess_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/view/view_process/TreeMixin.py" afterPath="$PROJECT_DIR$/test/view/view_process/TreeMixin.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,111 +110,9 @@
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1511312995466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512121845746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test.lts.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test.lts.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonCmd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demos/luaprogramme/command_class/CommonCmd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cmds2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demos/luaprogramme/command_class/core/cmds2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="122" column="25" lean-forward="true" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data_Handler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demos/luaprogramme/control/Data_Handler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_reference.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/tools/create_reference.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="control_process.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/control/control_process/control_process.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="130" column="76" lean-forward="true" selection-start-line="130" selection-start-column="76" selection-end-line="130" selection-end-column="76" />
-              <folding>
-                <element signature="e#19#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="treemixin.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/wxPython/wx/lib/mixins/treemixin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="544" column="65" lean-forward="true" selection-start-line="544" selection-start-column="65" selection-end-line="544" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeMixin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/view/view_process/TreeMixin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="139" column="26" lean-forward="true" selection-start-line="139" selection-start-column="26" selection-end-line="139" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainView.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/view/MainView.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -270,10 +225,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="243" />
-    <option name="y" value="249" />
-    <option name="width" value="1535" />
-    <option name="height" value="991" />
+    <option name="x" value="1981" />
+    <option name="y" value="109" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -290,90 +245,94 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="demos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="demos" type="462c0819:PsiDirectoryNode" />
-              <item name="luaprogramme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="demos" type="462c0819:PsiDirectoryNode" />
-              <item name="luaprogramme" type="462c0819:PsiDirectoryNode" />
-              <item name="command_class" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="demos" type="462c0819:PsiDirectoryNode" />
-              <item name="luaprogramme" type="462c0819:PsiDirectoryNode" />
-              <item name="command_class" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="demos" type="462c0819:PsiDirectoryNode" />
-              <item name="luaprogramme" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LuaProgrammingGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="view_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LuaProgrammingGUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,7 +368,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.Main">
-    <configuration name="Data_Handler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Data_Handler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -426,8 +385,9 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
-    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -444,8 +404,9 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -462,8 +423,9 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
-    <configuration name="TextDialogClass" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="TextDialogClass" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -480,8 +442,9 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
-    <configuration name="cmds2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="cmds2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -498,6 +461,25 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="LuaProgrammingGUI" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Main" />
@@ -530,29 +512,40 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="243" y="249" width="1535" height="991" extended-state="0" />
-    <editor active="true" />
+    <frame x="1981" y="109" width="1920" height="1057" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30645162" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Job" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4281525" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="MaxCompute Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51282054" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29446253" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42797056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -594,14 +587,7 @@
     <entry file="file://$PROJECT_DIR$/../test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
     <entry file="file://$PROJECT_DIR$/../test/data/object_process/process_object.py" />
     <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_parameters.py" />
-    <entry file="file:///usr/local/wxPython/wx/lib/pubsub/pub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="121" column="1" lean-forward="true" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/wxPython/wx/lib/pubsub/pub.py" />
     <entry file="file://$PROJECT_DIR$/../test/data/object_function_list/function_object.py" />
     <entry file="file://$PROJECT_DIR$/../Main.py" />
     <entry file="file://$PROJECT_DIR$/../test/control/control_function_list/control_function.py" />
@@ -614,7 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -622,10 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="8" />
-          <folding>
-            <marker date="1512121847788" expanded="true" signature="0:1" ph="emgStop: &lt;1 key&gt;" />
-            <marker date="1512121847788" expanded="true" signature="487:493" ph="&amp;id002" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -633,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,19 +632,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.lts.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-1247972723/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="2059" column="53" lean-forward="true" selection-start-line="2059" selection-start-column="53" selection-end-line="2059" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-1247972723/__builtin__.py" />
     <entry file="file://$PROJECT_DIR$/demos/luaprogramme/command_class/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -686,26 +658,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="41" column="23" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/wxPython/wx/_misc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="315" column="4" lean-forward="false" selection-start-line="315" selection-start-column="4" selection-end-line="315" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/wxPython/wx/_core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="11910" column="17" lean-forward="true" selection-start-line="11910" selection-start-column="17" selection-end-line="11910" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/wxPython/wx/_misc.py" />
+    <entry file="file:///usr/local/wxPython/wx/_core.py" />
     <entry file="file://$PROJECT_DIR$/demos/luaprogramme/Main.py" />
     <entry file="file://$PROJECT_DIR$/test/view/view_tools/TextDialogClass.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -714,14 +671,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/wxPython/wx/_windows.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="3423" column="84" lean-forward="true" selection-start-line="3423" selection-start-column="84" selection-end-line="3423" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/wxPython/wx/_windows.py" />
     <entry file="file://$PROJECT_DIR$/demos/luaprogramme/GenerateCodeClass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -733,7 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,9 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -759,7 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,7 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -775,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-536">
           <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,7 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="122" column="25" lean-forward="true" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -831,7 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,7 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -847,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,25 +788,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="130" column="76" lean-forward="true" selection-start-line="130" selection-start-column="76" selection-end-line="130" selection-end-column="76" />
-          <folding>
-            <element signature="e#19#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/wxPython/wx/lib/mixins/treemixin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="544" column="65" lean-forward="true" selection-start-line="544" selection-start-column="65" selection-end-line="544" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/wxPython/wx/lib/mixins/treemixin.py" />
     <entry file="file://$PROJECT_DIR$/test/view/view_process/TreeMixin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="139" column="26" lean-forward="true" selection-start-line="139" selection-start-column="26" selection-end-line="139" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,7 +803,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,7 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
