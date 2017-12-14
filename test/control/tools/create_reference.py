@@ -17,20 +17,18 @@ default_time_data = {'time': (0, 'float')}
 default_value_data = {'value': (0, 'int')}
 default_choose_point_data = {'choose_point': ('P1', 'str')}
 funcs = {
-    # 'go': default_coord_data,
-    # 'move': default_coord_data,
-    # 'goja': default_ja_data,
+
     'GO': default_choose_point_data,
     'MOVE': default_choose_point_data,
-    # 'goja': default_ja_data,
     'DELAY': default_time_data,
     'SPEED': default_data,
     'ACCEL': default_data,
     'STOP': default_value_data,
     'ON': default_value_data,
     'OFF': default_value_data,
-    # 'if': default_condition_data,
-    # 'else': default_none_data,
+    'IF': default_condition_data,
+    'ELIF': default_condition_data,
+    'ELSE': default_none_data,
 }
 references = {
     'control_path': os.path.join(get_abspath(current_path), '../../control'),
@@ -38,10 +36,12 @@ references = {
     'view_path': os.path.join(get_abspath(current_path), '../../view'),
     'default_func_path': os.path.join(get_abspath(current_path), '../../control'),
     'default_func_filename': 'funcs_data.yml',
-    'unlimit_func': ['if', 'else'],
+    'unlimit_func': ['IF', 'ELIF', 'ELSE'],
     'file_path': os.path.join(get_abspath(current_path), 'test.lts'),
     'rename_list': {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
-                    'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off'}
+                    'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off',
+                    'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif'},
+    'help_msg_path': os.path.join(get_abspath(current_path), 'help_msg.yml')
 }
 
 

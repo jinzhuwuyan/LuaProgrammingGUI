@@ -132,9 +132,16 @@ class IF(Abstract_Command):
     def gen_str(self):
         return ''.join([self.commandName, " (%s) then"])
 
+class ELIF(Abstract_Command):
+    def __init__(self, CmdID, inputPairID):
+        Abstract_Command.__init__(self, CmdID, commandName='elif', commandType='HEAD', PairID=inputPairID)
+
+    def gen_str(self):
+        return ''.join([self.commandName, " (%s) then"])
+
 class ELSE(Command):
     def __init__(self, CmdID):
-        Command.__init__(self, CmdID, commandName='else', commandType='EXEC', PairID=None)
+        Command.__init__(self, CmdID, commandName='else', commandType='HEAD', PairID=None)
         self.commandName = 'else'
 
     def genCode(self):

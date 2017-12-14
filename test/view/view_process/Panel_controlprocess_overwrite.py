@@ -13,15 +13,16 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def __init__( self, parent, id, pos, size, style ):
 
 		self.parent = parent
-		self.control = control_process.Control(self)
 		self.showdatacontrol = control_process_showdata.ShowDataControl(self)
+		self.control = control_process.Control(self)
 		self.change_status = False
 		self.current_func_str = ''
 		self.current_choosen = None
 		GUI_controlprocess.Panel_controlprocess.__init__(self, parent)
 		view_tools.config_control(self, id, pos, size, style)
-		self.m_treeControl_show.Bind(wx.EVT_TREE_SEL_CHANGED, self.refresh_current_selection)
-
+		self.control.set_tree(self.m_treeControl_showdata)
+		self.m_treeControl_showdata.Bind(wx.EVT_TREE_SEL_CHANGED, self.refresh_current_selection)
+		# self.m_treeControl_showdata.Bind(wx.EVT_KILL_FOCUS, self.unselect_items)
 	# Handlers for Panel_controlprocess events.
 	# def check_save_status( self, event ):
 	# 	self.control.monitor_changes(event, self.change_status)
@@ -68,3 +69,15 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 	def modify_runtime( self, event ):
 
 		self.control.modify_runtime()
+
+	def import_prj_fromdisk( self, event ):
+
+		self.control.import_prj_fromdisk()
+
+	def output_to_folder( self, event ):
+
+		self.control.output_to_folder()
+
+	def show_process_control_help( self, event ):
+
+		wx.MessageBox(str(self.control.load_help_msg()))

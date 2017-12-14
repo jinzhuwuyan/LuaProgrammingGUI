@@ -46,7 +46,7 @@ class Control():
         print '_reference_data is ', self._reference_data
         data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas(),
                 self._reference_data.get('unlimit_func', None), self._reference_data.get('file_path', None),
-                self._reference_data.get('rename_list', None))
+                self._reference_data.get('rename_list', None), self._reference_data.get('help_msg_path', None))
         print 'refresh_func_ret ', data
         pub.sendMessage('refresh_func_ret', data=data)
 

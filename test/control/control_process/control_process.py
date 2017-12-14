@@ -14,16 +14,18 @@ except ImportError:
 
 class Control():
 
-    def __init__(self, parent):
+    def __init__(self, parent, tree=None):
         self.version = '.'.join(list('0010'))
         self.parent = parent
+        self.tree = tree
         #change
         self.func_str, self.func_child, self.command, \
             self.change_way, self.func_data, \
             self._func_items, self._func_str, self._func_selection, \
             self._funcs_paras, self._funcs_unlimit,\
             self.index_1, self.index_2, self.file_path, \
-            self.rename_list= [None] * 14
+            self.rename_list, self.help_msg_path, self.help_msg,\
+            self.pos = [None] * 17
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
@@ -41,14 +43,15 @@ class Control():
                             pos=self.get_current_pos())
 
     def _refresh_parasdata(self, refresh_type = 'get', data = None):
-        print '_refresh_parasdata ', refresh_type, str(data)
+
         refresh_data = None
         selection_indexs = self.get_current_pos()
-        print 'select_item is ', str(selection_indexs)
+        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (str(refresh_type), str(data), str(selection_indexs)))
+        # print 'select_item is ', str(selection_indexs)
         if selection_indexs and len(selection_indexs) > 1:
             self.index_1 = selection_indexs[0]
             self.index_2 = selection_indexs[1]
-            print self.model.items
+            # print self.model.items
             if refresh_type == 'get':
                 _, _tmp_item, _ = self.model.items[self.index_1]
                 _, _, refresh_data = _tmp_item[self.index_2]
@@ -57,6 +60,7 @@ class Control():
                     _tmp_key2, _tmp_item2, refresh_data = _tmp_item1[self.index_2]
                     _tmp_item1[self.index_2] = (_tmp_key2, _tmp_item2, data)
                     self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, _tmp_paras1)
+                    self.request_showdata_refresh()
             else:
                 controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
 
@@ -69,6 +73,7 @@ class Control():
                 controlfile_tools.log_bystatus('refreshing data %s' % str(data))
                 _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
                 self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
+                self.request_showdata_refresh()
             else:
                 controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
         else:
@@ -76,19 +81,23 @@ class Control():
 
         controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
                                        % (str(refresh_type), str(data), str(self.model.items)), 'e')
-        self.request_showdata_refresh()
+
         return refresh_data
+
 
     def get_current_pos(self):
         _pos = []
-        select_item = self.parent.m_treeControl_show.GetSelection()
-        if select_item:
-            for i in list(self.parent.m_treeControl_show.GetIndexOfItem(select_item)):
+        select_item = self.tree.GetSelection()
+        if select_item.m_pItem:
+            controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+            for i in list(self.tree.GetIndexOfItem(select_item)):
                 _pos.append(i)
         else:
-            # controlfile_tools.log_bystatus("Tree control for showing programming process "
-            #                                "don't have selection!", 'e')
+            controlfile_tools.log_bystatus("Tree control for showing programming process "
+                                           "don't have selection!")
             pass
+        controlfile_tools.log_bystatus('select_item is %s, get_current_pos is %s'
+                                       % (str(select_item.m_pItem), str(_pos)))
         return _pos
 
 
@@ -101,6 +110,14 @@ class Control():
 ##########################################control programming process panel################################
     def monitor_changes(self, event, status):
         event.Enable(status)
+
+
+    def set_tree(self, tree):
+        self.tree = tree
+
+    def unselect_items(self):
+        controlfile_tools.log_bystatus('UnselectAll items!')
+        self.tree.UnselectAll()
 
     def modify_runtime(self):
         dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
@@ -130,14 +147,8 @@ class Control():
             try:
                 print 'saving file.',self.model.items
                 controlfile_tools.save(self.file_path, self.generate_prj_data())
-                from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
-                handler = Handle_Msg(self)
-                controlfile_tools.log_bystatus(str(self.model.items))
-                commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
-                controlfile_tools.log_bystatus('Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
-                handler.generate_commands(commands_data, self.repeat_time)
-                controlfile_tools.save(self.file_path+'.lua', handler.output_commands())
-                pub.sendMessage('refresh_lua_panel', data = (handler.output_commands(), ))
+                commands_data = self.orgnize_commands()
+                pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                 return True, '保存成功！'
             except Exception as e:
                 exceptions = sys.exc_info()
@@ -158,6 +169,19 @@ class Control():
 
         return yaml.dump(_tmp)
 
+    def orgnize_commands(self):
+
+        from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
+        handler = Handle_Msg(self)
+        commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
+        controlfile_tools.log_bystatus(
+            'Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
+        head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
+        handler.Cmd_Manager.pg.append(head_instance)
+        handler.generate_commands(commands_data, self.repeat_time)
+        handler.Cmd_Manager.pg.append(end_instance)
+        controlfile_tools.save(self.file_path + '.lua', handler.output_commands())
+        return handler.output_commands()
 
 
 
@@ -176,11 +200,14 @@ class Control():
 
     def refresh_tree(self):
         self.request_showdata_refresh()
-        self.parent.m_treeControl_show.RefreshItems()
-        self.parent.m_treeControl_show.UnselectAll()
+        # self.parent.m_treeControl_show.RefreshItems()
+        controlfile_tools.log_bystatus('refreshing_tree.....')
+
 
     def request_showdata_refresh(self):
-        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], ))
+        controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
+        pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], self._funcs_unlimit, ))
+
 
     def _add_obj_bylimit(self, obj, index, limit = False):
 
@@ -227,20 +254,31 @@ class Control():
         controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
         (self.func_str, self.func_child, self._funcs_paras) = data
         self.command = command
-        select_item = self.parent.m_treeControl_show.GetSelection()
+        select_item = self.tree.GetSelection()
 
         # show_item = _panel_functionlist.data.get_selectionstr()
         controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
         childitem = self.model.items
+
         # childitemdata = self.model.modeldata
+        try:
+            controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
+        except Exception as e:
+            controlfile_tools.log_bystatus(str(e))
+            controlfile_tools.log_bystatus('selection is None')
 
         if select_item:
             controlfile_tools.log_bystatus('selection is %s' %
-                                           str(self.parent.m_treeControl_show.GetIndexOfItem(select_item)), 'i')
-            select_items = self.parent.m_treeControl_show.GetIndexOfItem(select_item)
-            select_item_str = self.parent.m_treeControl_show.GetItemText(select_item)
+                                           str(self.tree.GetIndexOfItem(select_item)), 'i')
+            select_items = self.tree.GetIndexOfItem(select_item)
+            self.pos = select_items
+            select_item_str = self.tree.GetItemText(select_item)
             controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
                                            (select_items, select_item_str), 'i')
+            if self.command == 'change':
+                controlfile_tools.log_bystatus(
+                    'Check Change type is %s' % str(self.check_process_hierarchy(childitem, list(select_items),
+                                                                             self.change_way)))
             if len(select_items) > 2:
 
                 controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
@@ -285,7 +323,11 @@ class Control():
             obj = self._add_obj_bylimit(obj, index, limit=limit)
 
         elif self.command == 'change':
-            obj = self._change_obj_pos(obj, index)
+
+            if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
+                obj = self._change_obj_pos(obj, index)
+            else:
+                print 'I jump!'
 
         elif self.command == 'delete':
 
@@ -294,15 +336,117 @@ class Control():
         return obj
 
 
-    def _unselete_all(self):
-        self.parent.m_treeControl_show.UnselectAll()
 
     def _check_func_str(self, func_str):
         controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
-        if func_str in self._funcs_unlimit:
-            return True
+        return func_str in self._funcs_unlimit
+
+    def _unselete_all(self):
+        self.tree.UnselectAll()
+
+
+    ## Addon functions
+
+    def import_prj_fromdisk(self):
+        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=self.file_path,
+                      wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
         else:
-            return False
+            pass
+        self.load_from_disk()
+
+    def output_to_folder(self):
+        dlg = wx.DirDialog(parent=self.parent, message='Plese Set your path to save project file!',
+                           defaultPath=self.file_path, name='view.lts')
+        if dlg.ShowModal() == wx.ID_OK:
+            self.file_path = dlg.GetPath()
+        else:
+            pass
+        self.save_to_disk()
+
+    def load_help_msg(self):
+        controlfile_tools.log_bystatus('help_msg_path is %s' % self.help_msg_path)
+        data = controlfile_tools.loadyaml(self.help_msg_path)
+        return data
+
+    def get_help(self, func_str):
+        return self.help_msg.get(func_str, None)
+
+    def check_process_hierarchy(self, data, pos, check_type='up'):
+        """
+        return -1 equals to data None or index None.
+        return 0  equals to normal change, up is up, down is down.
+        return 1 equals to into or outto the hierarchy.
+        :param data:
+        :param pos:
+        :param check_type:
+        :return:
+        """
+        controlfile_tools.log_bystatus('Enter check_process_hierarchy....')
+        first_index = pos[0] if pos else None
+        _tmp_value = data[first_index] if data else None
+        controlfile_tools.log_bystatus('_tmp_value is %s, first_index is %d, data is %s, pos is %s '
+                                       % (str(_tmp_value), first_index, str(data), str(pos)))
+        if _tmp_value and len(pos) > 1:  # <list>
+            del pos[0]
+            controlfile_tools.log_bystatus('check_process pos is %s' % str(pos))
+            (func_str, child, paras) = _tmp_value
+            for index, value in enumerate(pos):  # <list>
+                if index + 1 == len(pos):
+                    return self.__check_current_func_islimited(child, value, check_type, parentdata=(func_str, child, paras))
+                else:
+                    try:
+                        (func_str, child, paras) = child[value]
+                    except Exception:
+                        wx.MessageBox('child[value]取值有误， child Is %s' % str(child))
+                        return 0
+        elif _tmp_value and len(pos) == 1:
+            return self.__check_current_func_islimited(data, first_index, check_type, parentdata=None)
+
+        else:
+            wx.MessageBox('数据为空！！！')
+            return 0
+
+    def __check_current_func_islimited(self, data, index, check_type, parentdata=None):
+        """
+        考虑到函数自身是否应该上(下)跳或直接移动
+        :param data:
+        :param index:
+        :param check_type:
+        :return:
+        """
+        if 0 < index < len(data) - 1:
+            check_value = data[index - 1] if check_type == 'up' else data[index + 1]
+            return self.__get_limited_checkvalue(check_value)
+        elif index == 0 and len(data) > 1:
+            if check_type != 'up':
+                check_value = data[index + 1]
+                return self.__get_limited_checkvalue(check_value)
+            else:
+                return 0
+        elif index == len(data) - 1 and len(data) > 1:
+            if check_type == 'up':
+                check_value = data[index - 1]
+                return self.__get_limited_checkvalue(check_value)
+            else:
+                return 0
+        elif len(data) == 1 and parentdata:
+            if self.__get_limited_checkvalue(parentdata) == 1:
+                return 1
+            else:
+                return 0
+        else:
+            return 0
+
+
+    def __get_limited_checkvalue(self, check_value):
+
+        (func_str_tmp, child, paras) = check_value
+        if func_str_tmp in self._funcs_unlimit:
+            return 1
+        else:
+            return 0
 
 ##########################################control function list panel################################
     def get_selectionstr(self):
@@ -325,5 +469,5 @@ class Control():
 
     def _get_funcs_data(self, data):
         (self._func_items, self._func_str, self._func_selection, self._funcs_paras,
-                        self._funcs_unlimit, self.file_path, self.rename_list) = data
+                        self._funcs_unlimit, self.file_path, self.rename_list, self.help_msg_path) = data
         controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))

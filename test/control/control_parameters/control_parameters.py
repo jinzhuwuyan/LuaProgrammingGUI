@@ -25,6 +25,9 @@ class Control():
         pub.subscribe(self._remove_allcontrols, 'remove_all_paras')
         pub.subscribe(self._get_MainMsg, 'get_main_msg')
 
+    #
+    # def unselete_process_all(self):
+    #     pub.sendMessage('unselete_process_all', data = ())
 
     def save_content_from_gui(self, text_content, _type):
         controlfile_tools.log_bystatus('text_content is %s, type is %s' % (text_content, _type), 'i')
@@ -39,7 +42,7 @@ class Control():
 
     def request_save_data(self):
         _check = False
-        print 'self.controllist ', self.controllist
+        controlfile_tools.log_bystatus('self.controllist -->%s' % self.controllist)
         if  self.model.showcontent:
             showdata = copy.deepcopy(self.model.showcontent)
             for key, values in showdata.iteritems():
@@ -137,6 +140,7 @@ class Control():
         for i in range(len(sizer.GetChildren())):
             sizer.Hide(0)
             sizer.Remove(0)
+
 
     def _get_MainMsg(self, data):
         controlfile_tools.log_bystatus('get Msg from Main, %s' % str(data), 'i')

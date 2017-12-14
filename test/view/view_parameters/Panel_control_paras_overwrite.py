@@ -18,3 +18,5 @@ class panel_control_paras( GUI_control_parameters.panel_control_parameters ):
 		view_tools.config_control(self, id, pos, size, style)
 
 
+	# def _unselete_process_all( self, event ):
+	# 	self.control.unselete_process_all()
