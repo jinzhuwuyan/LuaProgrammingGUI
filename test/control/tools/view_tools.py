@@ -1,11 +1,11 @@
 
 try:
-    from pubsub import pub
-except ImportError:
     from wx.lib.pubsub import pub
+except ImportError:
+    from pubsub import pub
 
 from threading import Thread
-from test.control.tools import controlfile_tools
+from LuaProgrammingGUI.test.control.tools import controlfile_tools
 
 def config_control(self, id, pos, size, style):
 

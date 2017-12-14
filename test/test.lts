@@ -1,0 +1,19 @@
+Author: ysw
+Last_Edit_time: Mon Dec  4 15:36:14 2017
+ProgramBlocks:
+- !!python/tuple
+  - !!python/unicode 'go'
+  - []
+  - U: !!python/tuple [0.0, float]
+    V: !!python/tuple [0.0, float]
+    W: !!python/tuple [0.0, float]
+    X: !!python/tuple [400.0, float]
+    Y: !!python/tuple [0.0, float]
+    Z: !!python/tuple [0.0, float]
+- !!python/tuple
+  - !!python/unicode 'emgStop'
+  - []
+  - value: !!python/tuple [1, int]
+Repeat_time: 10
+encoding: utf-8
+version: 0.0.1.0

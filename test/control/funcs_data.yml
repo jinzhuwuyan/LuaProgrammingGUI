@@ -1,2 +1,12 @@
-go: {X: 0, Y: 0, Z: 0}
-move: {}
+ACCEL: &id003
+  value: !!python/tuple [0.0, float]
+DELAY:
+  time: !!python/tuple [0, float]
+GO: &id001
+  choose_point: !!python/tuple [P1, str]
+MOVE: *id001
+'OFF': &id002
+  value: !!python/tuple [0, int]
+'ON': *id002
+SPEED: *id003
+STOP: *id002

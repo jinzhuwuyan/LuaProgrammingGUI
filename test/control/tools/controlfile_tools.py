@@ -3,8 +3,11 @@ import logging
 import time
 import hashlib
 import yaml
+# from NewLogger import InitLog
 
 version_status = 'debug'
+
+
 
 def controlfile(status):
     def deractor(func):
@@ -13,13 +16,14 @@ def controlfile(status):
         return wrapper
     return deractor
 
-def log_bystatus(text_content, log_level):
-
-    time_str = str(time.time())
-    log_msg = ''.join([time_str, '--------->loglevel: %s\n' % log_level, text_content, '\n'])
+def log_bystatus(text_content, log_level = 'i'):
+    # logger = InitLog().getLogger()
+    time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    log_msg = ''.join([time_str, '--------->loglevel: (%s)\n' % log_level, text_content, '\n'])
     if version_status == 'debug':
         # print(text_content+'\n')
         if log_level == 'i':
+            logging.getLogger().setLevel(logging.INFO)
             logging.info(log_msg)
         elif log_level == 'e':
             logging.error(log_msg)
@@ -60,3 +64,6 @@ def sha256_checksum(filename, block_size=65536):
 if __name__ == '__main__':
 
     print sha256_checksum('__init__.py')
+    log_bystatus('err!!!!', 'i')
+    log_bystatus('err!!!!', 'e')
+    log_bystatus('err!!!!', 'w')
