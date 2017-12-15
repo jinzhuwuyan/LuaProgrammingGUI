@@ -6,7 +6,7 @@ try:
 except ImportError:
     from pubsub import pub
 
-class Control():
+class Function_List_Control():
 
     def __init__(self, parent, func_path = None):
 
@@ -14,7 +14,7 @@ class Control():
         self.parent = parent
         # 配置文件路径
         self.reference_path = func_path
-        # 树型数据model
+        # 数据model
         self.model = None
         # 函数参数
         self._funcs_paras = None
@@ -22,7 +22,7 @@ class Control():
         self._reference_data = None
         # 当前选中的函数
         self._select_obj = None
-        # 当前选中的函数位置ID
+        # 当前选中的函数位置
         self._current_select = None
         # 当前选中的函数名
         self._select_str = None
@@ -38,55 +38,87 @@ class Control():
             pub.subscribe(self._send_funcs_data, 'refresh_funcs')
             # process function界面初始化过程中，先发送函数数据
             self._send_funcs_data()
-            return True
         else:
-            return False
 
-    def get_selection(self):
+            dlg = wx.FileDialog(parent=self.parent, message='加载配置文件有误，请选择一个有效的配置文件！', defaultDir=self.reference_path,
+                                wildcard='yml files (*.yml)|*.lts|All files (*.*)|*.*')
+            if dlg.ShowModal() == wx.ID_OK:
+                self.reference_path = dlg.GetPath()
+                self.init_control()
+            else:
+                wx.MessageBox('初始化界面失败！')
+                raise Exception('初始化界面失败！')
+
+    @property
+    def func_selection(self):
 
         return self._current_select
 
-    def get_selectionstr(self):
+    @property
+    def func_str(self):
 
         return self._select_str
 
-    def get_selectionparas(self):
+    # @property
+    # def func_paras(self):
+    #
+    #     _default_para =  {}
+    #     return self._funcs_paras.get(self._select_str, _default_para)
 
-        _default_para =  {}
-        return self._funcs_paras.get(self._select_str, _default_para)
-
-    def get_items_keys(self):
+    @property
+    def func_paras_keys(self):
 
         return self._funcs_paras.keys()
 
-    def get_items_values(self):
+    @property
+    def func_paras_values(self):
 
         return self._funcs_paras.values()
 
-    def get_items(self):
+    @property
+    def func_paras(self):
 
         return self._funcs_paras
 
+    @property
+    def funcs_hashierarchy(self):
+
+        return self._reference_data.get('unlimit_func', None)
+
+    @property
+    def project_file_path(self):
+        return self._reference_data.get('file_path', None)
+
+    @property
+    def name_reference_list(self):
+        return self._reference_data.get('rename_list', None)
+
+    @property
+    def help_msg_path(self):
+        return self._reference_data.get('help_msg_path', None)
+
+
     def _send_funcs_data(self):
-        data = (self.get_items(), self.get_selectionstr(), self.get_selection(), self.get_selectionparas(),
-                self._reference_data.get('unlimit_func', None), self._reference_data.get('file_path', None),
-                self._reference_data.get('rename_list', None), self._reference_data.get('help_msg_path', None))
+
+        data = (self.func_paras, self.func_str, self.func_selection, self.func_paras,
+                self.funcs_hashierarchy, self.project_file_path,
+                self.name_reference_list, self.help_msg_path, )
         pub.sendMessage('refresh_func_ret', data=data)
 
-    def Refresh(self, obj = None):
-        """
-        refresh the listbox's selection
-        :param obj: listbox instance
-        :return:
-        """
-        self._select_obj = obj
-        if self._select_obj:
-            self._current_select = self._select_obj.GetSelection()
-            self._select_str = self._select_obj.GetStringSelection()
-            if self._current_select != wx.NOT_FOUND:
-                pub.sendMessage('UnSelectAll_controlprocess')
-                pub.sendMessage('remove_all_paras')
-
-    def _unselete_all(self):
-        for i in range(len(self._select_obj.GetSelections())):
-            self._select_obj.Deselect(i)
+    # def Refresh(self, obj = None):
+    #     """
+    #     refresh the listbox's selection
+    #     :param obj: listbox instance
+    #     :return:
+    #     """
+    #     self._select_obj = obj
+    #     if self._select_obj:
+    #         self._current_select = self._select_obj.GetSelection()
+    #         self._select_str = self._select_obj.GetStringSelection()
+    #         if self._current_select != wx.NOT_FOUND:
+    #             pub.sendMessage('UnSelectAll_controlprocess')
+    #             pub.sendMessage('remove_all_paras')
+    #
+    # def _unselete_all(self):
+    #     for i in range(len(self._select_obj.GetSelections())):
+    #         self._select_obj.Deselect(i)

@@ -1,5 +1,6 @@
 #！encoding: utf-8
 import os
+import yaml
 from LuaProgrammingGUI.test.control.tools import controlfile_tools as file_control
 class container():
     def __init__(self):
@@ -16,9 +17,12 @@ class container():
         :return: True,初始化成功； False,初始化失败
         """
         try:
-            self.reference_data = file_control.loadyaml(os.path.abspath(func_path))
-            self._load_functions(self.reference_data['func_path'])
-            return True
+            with open(func_path, 'r') as f:
+                self.reference_data = yaml.load(f.read())
+            return self._load_functions(self.reference_data['func_path'])
+        except yaml.YAMLError as e:
+            print e
+            return False
         except Exception as e:
             print e
             return False

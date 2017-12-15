@@ -32,10 +32,10 @@ funcs = {
 }
 references = {
     'control_path': os.path.join(get_abspath(current_path), '../../control'),
-    'data_path': os.path.join(get_abspath(current_path), '../../data'),
-    'view_path': os.path.join(get_abspath(current_path), '../../view'),
-    'default_func_path': os.path.join(get_abspath(current_path), '../../control'),
-    'default_func_filename': 'funcs_data.yml',
+    # 'data_path': os.path.join(get_abspath(current_path), '../../data'),
+    # 'view_path': os.path.join(get_abspath(current_path), '../../view'),
+    'func_path': os.path.join(get_abspath(current_path), '../../control/funcs_data.yml'),
+    # 'default_func_filename': 'funcs_data.yml',
     'unlimit_func': ['IF', 'ELIF', 'ELSE'],
     'file_path': os.path.join(get_abspath(current_path), 'test.lts'),
     'rename_list': {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
