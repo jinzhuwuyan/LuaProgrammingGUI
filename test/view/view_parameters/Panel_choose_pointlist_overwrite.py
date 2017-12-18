@@ -11,6 +11,7 @@ class Panel_Choose_Point( Panel_choose_pointlist.choose_pointlist ):
 	def __init__( self, parent, filepath, current_selection = 0 ):
 		Panel_choose_pointlist.choose_pointlist.__init__( self, parent )
 		self.filepath = filepath
+		self.current_selection = current_selection
 		controlfile_tools.log_bystatus("Panel_choose_panel 's path is %s" % self.filepath)
 		try:
 			with open(self.filepath, 'r') as f:
@@ -23,6 +24,7 @@ class Panel_Choose_Point( Panel_choose_pointlist.choose_pointlist ):
 		except yaml.YAMLError as e:
 			wx.MessageBox('请检查点文件%s是否出现错误！' % self.filepath)
 		except Exception as e:
+			controlfile_tools.log_bystatus('filepath is %s, current_selection is %s' % (str(filepath), str(self.current_selection)))
 			s = sys.exc_info()
 			wx.MessageBox('第%d行初始化维护参数错误！\n错误信息如下,\n%s' % (s[2].tb_lineno, e))
 

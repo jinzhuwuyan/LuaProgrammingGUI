@@ -40,6 +40,8 @@ class ChoosePoinListControl():
         try:
             return  self.datalist[id]
         except Exception as e:
+            controlfile_tools.log_bystatus('get_pointbyid is %s' % str(self.datalist))
+            print e
             return None
 
     def set_textctrl_datas(self, id):

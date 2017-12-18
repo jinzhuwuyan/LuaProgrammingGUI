@@ -11,21 +11,41 @@ try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
+__version__ =  ','.join(list('0010'))
 
 class Control():
 
     def __init__(self, parent, tree=None):
-        self.version = '.'.join(list('0010'))
         self.parent = parent
         self.tree = tree
-        #change
+        self.version = None
+        self.func_str = None
+        self.func_child = None
+        self.command = None
+        self.change_way = None
+        self.func_data = None
+        self.func_paras = None
+        self.func_items = None
+        self.func_selection = None
+        self.file_path = None
+        self.rename_list = None
+        self.help_msg_path = None
+        self.help_msg = None
+        self.pos = None
+        self.model = None
+        self.repeat_time = None
+        self.init_control()
+
+
+    def init_control(self):
+        # change
         self.func_str, self.func_child, self.command, \
-            self.change_way, self.func_data, \
-            self._func_items, self._func_str, self._func_selection, \
-            self._funcs_paras, self._funcs_unlimit,\
-            self.index_1, self.index_2, self.file_path, \
-            self.rename_list, self.help_msg_path, self.help_msg,\
-            self.pos = [None] * 17
+        self.change_way, self.func_data, \
+        self._func_items, self._func_str, self._func_selection, \
+        self._funcs_paras, self._funcs_unlimit, \
+        self.index_1, self.index_2, self.file_path, \
+        self.rename_list, self.help_msg_path, self.help_msg, \
+        self.pos = [None] * 17
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
@@ -42,47 +62,52 @@ class Control():
         pub.sendMessage('refresh_paras', data=refresh_data,
                             pos=self.get_current_pos())
 
-    def _refresh_parasdata(self, refresh_type = 'get', data = None):
 
-        refresh_data = None
+    def _get_funcs_paras_bypos(self, data, pos):
+        _tmp = None
+        for idx, p in enumerate(pos):
+            if idx == 0:
+                _tmp = data[p]
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
+        func_str, child, paras = _tmp
+        return paras
+
+
+    def _refresh_item_data(self,  data, pos, refresh_data):
+        _tmp = None
+        for idx, p in enumerate(pos):
+
+
+            if idx == 0:
+                _tmp = data[p]
+                if len(pos) == 1:
+                    func_str, child_tmp, _ = _tmp
+                    _tmp = (func_str, child_tmp, refresh_data)
+                else:
+                    pass
+            elif idx + 1 == len(pos):
+                _, child, _ = _tmp
+                func_str, child_tmp, _ = child[p]
+                child[p] = (func_str, child_tmp, refresh_data)
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
+
+
+    def _refresh_parasdata(self, refresh_type='get', data=None):
+        refresh_data = {}
         selection_indexs = self.get_current_pos()
-        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (str(refresh_type), str(data), str(selection_indexs)))
-        # print 'select_item is ', str(selection_indexs)
-        if selection_indexs and len(selection_indexs) > 1:
-            self.index_1 = selection_indexs[0]
-            self.index_2 = selection_indexs[1]
-            # print self.model.items
-            if refresh_type == 'get':
-                _, _tmp_item, _ = self.model.items[self.index_1]
-                _, _, refresh_data = _tmp_item[self.index_2]
-            elif data and refresh_type == 'refresh':
-                    _tmp_key1, _tmp_item1, _tmp_paras1 = self.model.items[self.index_1]
-                    _tmp_key2, _tmp_item2, refresh_data = _tmp_item1[self.index_2]
-                    _tmp_item1[self.index_2] = (_tmp_key2, _tmp_item2, data)
-                    self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, _tmp_paras1)
-                    self.request_showdata_refresh()
-            else:
-                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
+        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (
+        str(refresh_type), str(data), str(selection_indexs)))
+        if refresh_type == 'get':
 
-        elif selection_indexs and len(selection_indexs) == 1:
-            self.index_1 = selection_indexs[0]
-            self.index_2 = None
-            if refresh_type == 'get':
-                _, _, refresh_data = self.model.items[self.index_1]
-            elif data and refresh_type == 'refresh':
-                controlfile_tools.log_bystatus('refreshing data %s' % str(data))
-                _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
-                self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
-                self.request_showdata_refresh()
-            else:
-                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
+            refresh_data = self._get_funcs_paras_bypos(self.model.items, selection_indexs)
         else:
-            refresh_data = {}
-
-        controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
-                                       % (str(refresh_type), str(data), str(self.model.items)), 'e')
-
+            self._refresh_item_data(self.model.items, selection_indexs, data)
         return refresh_data
+
 
 
     def get_current_pos(self):
@@ -214,7 +239,7 @@ class Control():
         if not limit:
             (item_str, itemlist, item_data) = obj[index]
             itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
-            obj[index] = (item_str, itemlist, item_data)
+            # obj[index] = (item_str, itemlist, item_data)
         else:
             obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
         print 'Enter by limit is %s' % str(limit)
@@ -249,7 +274,7 @@ class Control():
         return None
 
 
-    def _control_model(self, command = 'delete', data = ('', [], {})):
+    def _control_model1(self, command = 'delete', data = ('', [], {})):
         self._refresh_func_init()
         controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
         (self.func_str, self.func_child, self._funcs_paras) = data
@@ -315,7 +340,80 @@ class Control():
                 # childitemdata.append((self.func_str, {}, []))
         self.refresh_tree()
 
+    def _control_model(self, command = 'delete', data = ('', [], {})):
+        self._refresh_func_init()
+        controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
+        (self.func_str, self.func_child, self._funcs_paras) = data
+        self.command = command
+        select_item = self.tree.GetSelection()
 
+        controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
+        childitem = self.model.items
+
+        try:
+            controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
+        except Exception as e:
+            controlfile_tools.log_bystatus(str(e))
+            controlfile_tools.log_bystatus('selection is None')
+
+        if select_item:
+            controlfile_tools.log_bystatus('selection is %s' %
+                                           str(self.tree.GetIndexOfItem(select_item)), 'i')
+            select_items = self.tree.GetIndexOfItem(select_item)
+            self.pos = list(select_items)
+            select_item_str = self.tree.GetItemText(select_item)
+            controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
+                                           (select_items, select_item_str), 'i')
+            _tmp = None
+
+            for idx, pos in enumerate(list(select_items)):
+                if idx == 0:
+                     _tmp = childitem
+                elif idx + 1 == len(select_items):
+                    func_str, _, _ = _tmp[pos]
+                    if self.__get_limited_checkvalue((func_str, _tmp, {})):
+                        _, _tmp, _ = _tmp[pos]
+                    else:
+                        _tmp = _tmp
+                else:
+                    func_str, _tmp, _ = _tmp[pos]
+            self._control_command(_tmp, select_items[-1], limit=not self._check_func_str(select_item_str))
+
+            # if len(select_items) > 2:
+            #
+            #     controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
+            #     controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
+            #
+            # elif len(select_items) == 1:
+            #     (self.index_1,) = select_items
+            #     self.index_2 = None
+            #     controlfile_tools.log_bystatus('index_1 is %s' % str(self.index_1), 'i')
+            #     childitem = self._control_command(childitem, self.index_1, limit=not self._check_func_str(select_item_str))
+            #
+            # elif len(select_items) == 2:
+            #
+            #     (self.index_1, self.index_2,) = select_items
+            #     (item_str, itemlist, paraslist) = childitem[self.index_1]
+            #     controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
+            #
+            #
+            #     itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
+            #     if itemlist and self.command != 'change':
+            #         childitem[self.index_1] = (item_str, itemlist, paraslist)
+            # else:
+            #     controlfile_tools.log_bystatus('index is %s' % '0', 'i')
+            #     if self.command == 'add':
+            #         childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
+            #         self.index_1, self.index_2 = [None] * 2
+
+
+        else:
+            # 初始化的时候调用此函数添加第一个节点
+            if self.command == 'add':
+                childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
+                self.index_1, self.index_2 = [None] * 2
+                # childitemdata.append((self.func_str, {}, []))
+        self.refresh_tree()
 
     def _control_command(self, obj, index, limit = False):
 
@@ -338,34 +436,6 @@ class Control():
                             controlfile_tools.log_bystatus('跳转成功！')
                         else:
                             controlfile_tools.log_bystatus('跳转失败！')
-                        # for inx, value in enumerate(self.pos):
-                        #     if inx + 1 == len(self.pos):
-                        #         func_str, child, paras = __tmp[-1]
-                        #         if isinstance(child, list):
-                        #             child.append(obj[index])
-                        #             del obj[index]
-                        #         __tmp[-1] = func_str, child, paras
-                        #
-                        #     else:
-                        #         if parentitem:
-                        #             parentitem = parentitem[value]
-                        #         else:
-                        #             parentitem = self.model.items[value]
-                        #         __tmp.append(parentitem)
-                        # # __tmp.reverse()
-                        # while __tmp and len(self.pos) > 1:
-                        #     last_one_index = self.pos[-1]
-                        #     last_two_index = self.pos[-2]
-                        #     # __tmp[last_one_index] = func_str, child, paras
-                        #
-                        #     func_str_parent, child_parent, paras_parent = __tmp[last_two_index]
-                        #     child_parent[last_two_index] = __tmp[last_one_index]
-                        #     __tmp[last_two_index] = func_str_parent, child_parent, paras_parent
-                        #     self.pos.pop()
-                        # lastindex = self.pos.pop()
-                        # self.model.items[lastindex] = __tmp[0]
-                        # del __tmp[:]
-                        # return obj
 
                     else:
                         (func_str, child, paras) = obj[index - 1]
@@ -379,49 +449,6 @@ class Control():
                             controlfile_tools.log_bystatus('跳转成功！')
                         else:
                             controlfile_tools.log_bystatus('跳转失败！')
-                        # for inx, value in enumerate(self.pos):
-                        #     parentitem = self.__get_loop_data(parentitem, value)
-                        #     __tmp.append(parentitem)
-                        #     if value == self.pos[-1]:
-                        #         func_str, child, paras = __tmp[-1]
-                        #         del child[index]
-                        #         __tmp[-1] = (func_str, child, paras)
-                        #         if parent_bother_right:
-                        #             _, child_tmp, _ = parent_bother_right
-                        #             child_tmp
-                        #     elif value == self.pos[-2]:
-                        #         _, parentitem_child, _ = __tmp[-2]
-                        #
-                        #         if 0 < value < len(__tmp[-2]) - 1:
-                        #
-                        #             parent_bother_left = value - 1
-                        #             parent_bother_right = value + 1
-                        #         elif value == 0 and len(__tmp[-2]) > 1:
-                        #
-                        #             parent_bother_left = None
-                        #             parent_bother_right = value + 1
-                        #         elif value == len(__tmp[-2]) - 1 and len(__tmp[-2]) > 1:
-                        #             parent_bother_left = value - 1
-                        #             parent_bother_right = None
-                        #         else:
-                        #             parent_bother_left = None
-                        #             parent_bother_right = None
-                        #     else:
-                        #         pass
-                        #
-                        # while __tmp and len(self.pos) > 1:
-                        #     last_two_index = self.pos[-1]
-                        #
-                        #     # __tmp[last_one_index] = func_str, child, paras
-                        #
-                        #     func_str_parent, child_parent, paras_parent = __tmp[-2]
-                        #     child_parent[last_two_index] = __tmp[-1]
-                        #     __tmp[-2] = func_str_parent, child_parent, paras_parent
-                        #     self.pos.pop()
-                        # lastindex = self.pos.pop()
-                        # self.model.items[lastindex] = __tmp[0]
-                        # del __tmp[:]
-                        # return obj
                     else:
                         (func_str, child, paras) = obj[index + 1]
                         child.append(obj[index])

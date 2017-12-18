@@ -105,19 +105,19 @@ class Function_List_Control():
                 self.name_reference_list, self.help_msg_path, )
         pub.sendMessage('refresh_func_ret', data=data)
 
-    # def Refresh(self, obj = None):
-    #     """
-    #     refresh the listbox's selection
-    #     :param obj: listbox instance
-    #     :return:
-    #     """
-    #     self._select_obj = obj
-    #     if self._select_obj:
-    #         self._current_select = self._select_obj.GetSelection()
-    #         self._select_str = self._select_obj.GetStringSelection()
-    #         if self._current_select != wx.NOT_FOUND:
-    #             pub.sendMessage('UnSelectAll_controlprocess')
-    #             pub.sendMessage('remove_all_paras')
+    def Refresh(self, obj = None):
+        """
+        refresh the listbox's selection
+        :param obj: listbox instance
+        :return:
+        """
+        self._select_obj = obj
+        if self._select_obj:
+            self._current_select = self._select_obj.GetSelection()
+            self._select_str = self._select_obj.GetStringSelection()
+            if self._current_select != wx.NOT_FOUND:
+                pub.sendMessage('UnSelectAll_controlprocess')
+                pub.sendMessage('remove_all_paras')
     #
     # def _unselete_all(self):
     #     for i in range(len(self._select_obj.GetSelections())):
