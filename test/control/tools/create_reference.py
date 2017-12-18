@@ -1,6 +1,6 @@
 import os
 import yaml
-current_path = '.'
+current_path, _ = os.path.split(__file__)
 create_type = 'reference'
 _file_path = ''
 _data = ''
@@ -31,17 +31,17 @@ funcs = {
     'ELSE': default_none_data,
 }
 references = {
-    'control_path': os.path.join(get_abspath(current_path), '../../control'),
+    'control_path': get_abspath(os.path.join(current_path, '../../control')),
     # 'data_path': os.path.join(get_abspath(current_path), '../../data'),
     # 'view_path': os.path.join(get_abspath(current_path), '../../view'),
-    'func_path': os.path.join(get_abspath(current_path), '../../control/funcs_data.yml'),
+    'func_path': get_abspath(os.path.join(current_path, '../../control/funcs_data.yml')),
     # 'default_func_filename': 'funcs_data.yml',
     'unlimit_func': ['IF', 'ELIF', 'ELSE'],
-    'file_path': os.path.join(get_abspath(current_path), 'test.lts'),
+    'file_path': get_abspath(os.path.join(current_path, 'test.lts')),
     'rename_list': {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
                     'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off',
                     'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif'},
-    'help_msg_path': os.path.join(get_abspath(current_path), 'help_msg.yml')
+    'help_msg_path': get_abspath(os.path.join(current_path, 'help_msg.yml'))
 }
 
 

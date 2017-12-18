@@ -9,7 +9,7 @@ from LuaProgrammingGUI.test.control.tools import view_tools
 class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 	def __init__( self, parent, id, pos, size, style ):
 		GUI_functionlist.Panel_ChooseFunc.__init__( self, parent )
-		self.func_path = os.path.abspath('./LuaProgrammingGUI/test/control/reference.yml')
+		self.func_path = None
 		self.current_data = None
 		self._control = None
 		self.config()
@@ -18,11 +18,12 @@ class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 	# Handlers for Panel_ChooseFunc events.
 	def update_func( self, event ):
 		# TODO: Implement update_func
-		self._control.Refresh(event.EventObject)
+		self._control.refresh(event.EventObject)
 
 	
 	def config(self):
-
+		current_path, _ = os.path.split(__file__)
+		self.func_path = os.path.abspath(os.path.join(current_path, '../../control/reference.yml'))
 		self._control = control_function.Function_List_Control(self, self.func_path)
 		self._control.init_control()
 		# 加载函数列表数据
