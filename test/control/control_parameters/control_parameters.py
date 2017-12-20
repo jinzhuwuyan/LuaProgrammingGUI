@@ -7,7 +7,7 @@ from LuaProgrammingGUI.test.control.tools import command_tools
 from LuaProgrammingGUI.test.control.tools import controlfile_tools
 from LuaProgrammingGUI.test.view.view_parameters import Panel_edit_paras_overwrite
 from LuaProgrammingGUI.test.view.view_parameters import Panel_choose_pointlist_overwrite
-
+from LuaProgrammingGUI.test.view.view_parameters import Panel_edit_if_condition_overwrite
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -104,6 +104,7 @@ class Control():
                 else:
                     continue
             controlfile_tools.log_bystatus('keys is .....%s' % str(check_list), 'i')
+
             self._refresh_paraslist(check_list)
             # for key in check_list:
             #     panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
@@ -118,6 +119,8 @@ class Control():
         sizer.Layout()
 
     def _refresh_paraslist(self, check_list):
+        controlfile_tools.log_bystatus('check_list is %s ' % str(check_list))
+
         if len(check_list) == 1 and check_list[0] == 'choose_point':
             key = check_list[0]
             id_str = (self.model.showcontent[key][0]).replace('P', '')
@@ -128,6 +131,13 @@ class Control():
             self.controllist[0] = panel
             controlfile_tools.log_bystatus('Sending show content to other paras panel, %s' % str(self.model.showcontent))
             # pub.sendMessage('get_paras_main_data', data=(self.model.showcontent, ))
+
+        elif len(check_list) == 1 and check_list[0] == 'condition':
+
+            panel = Panel_edit_if_condition_overwrite.Panel_edit_ifcondition(self._parent)
+            self._parent.GetSizer().Add(panel, 0, 0, 5)
+            self.controllist[0] = panel
+
         else:
             for key in check_list:
                 panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,

@@ -18,7 +18,9 @@ class ShowDataControl():
         # pub.subscribe(self._unselete_all, 'unselete_process_all')
 
     def refresh_tree(self):
+
         self.parent.m_treeControl_showdata.RefreshItems()
+        self.parent.m_treeControl_showdata.UnselectAll()
         # selection = self.parent.m_treeControl_showdata.GetSelection()
         # if  selection \
         #         and self.parent.m_treeControl_showdata.GetItemText(selection, 0) not in self.unlimit_funcs:

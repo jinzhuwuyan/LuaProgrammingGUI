@@ -154,6 +154,7 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
     def __init__(self, *args, **kwargs):
         kwargs['style'] = wx.TR_DEFAULT_STYLE | wx.TR_FULL_ROW_HIGHLIGHT
         super(VirtualTreeListCtrl, self).__init__(*args, **kwargs)
+        self.checked = None
         self.AddColumn('命令')
         self.AddColumn('值')
         for art in wx.ART_TIP, wx.ART_WARNING:
@@ -175,6 +176,15 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         return func_str if column == 0 else paras_str
 
 
+    def OnItemChecked(self, event):
+        print 'ItemChecked.....'
+        item = event.GetItem()
+        itemIndex = self.GetIndexOfItem(item)
+        if self.GetItemType(item) == 2:
+            # It's a radio item; reset other items on the same level
+            for nr in range(self.GetChildrenCount(self.GetItemParent(item))):
+                self.checked[itemIndex[:-1]+(nr,)] = False
+        self.checked[itemIndex] = True
 
     def get_itembypos(self, item, pos):
 
@@ -187,18 +197,53 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
             return self.get_itembypos(child, pos)
 
 
+class VirtualTreeListCtrl_ControlIF(DemoTreeMixin, wx.gizmos.TreeListCtrl):
+    def __init__(self, *args, **kwargs):
+        kwargs['style'] = wx.TR_DEFAULT_STYLE | wx.TR_FULL_ROW_HIGHLIGHT
+        super(VirtualTreeListCtrl_ControlIF, self).__init__(*args, **kwargs)
+        self.checked = None
+        self.AddColumn('条件')
+        self.AddColumn('操作')
+        self.AddColumn('值')
+        for art in wx.ART_TIP, wx.ART_WARNING:
+            self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER,
+                                                        (16, 16)))
+
+    def OnGetItemText(self, indices, column=0):
+        # Return a different label depending on column.
+        _pos = list(indices)[::-1]
+        print "indices's type is %s, _pos is %s" % (str(type(indices)), str(_pos))
+        _item = self.get_itembypos(self.model.items, _pos)
+        print 'Get Item in TreeListCtrl, no pos item is %s, items is %s, column is %d' \
+              % (str(self.model.items), str(_item), column)
+        func_str = _item[0]
+        child = _item[1]
+        paras = _item[2]
+        print 'Get Item in TreeListCtrl, func_str is %s, child is %s, paras is %s' % (str(func_str), str(child), str(paras))
+        paras_str = ','.join([str(para[0]) for para in paras.values()])
+        para_list = {0: paras['condition'], 1: paras['operation'], 2: paras['value']}
+        return para_list[column]
 
 
-    # def OnGetItemImage(self, indices, which, column=0):
-    #     # Also change the image of the other columns when the item has
-    #     # children.
-    #     if column == 0:
-    #         return super(VirtualTreeListCtrl, self).OnGetItemImage(indices,
-    #                                                                which)
-    #     elif self.OnGetChildrenCount(indices):
-    #         return 4
-    #     else:
-    #         return 3
+    def OnItemChecked(self, event):
+        print 'ItemChecked.....'
+        item = event.GetItem()
+        itemIndex = self.GetIndexOfItem(item)
+        if self.GetItemType(item) == 2:
+            # It's a radio item; reset other items on the same level
+            for nr in range(self.GetChildrenCount(self.GetItemParent(item))):
+                self.checked[itemIndex[:-1]+(nr,)] = False
+        self.checked[itemIndex] = True
+
+    def get_itembypos(self, item, pos):
+
+        index = pos.pop()
+        print 'item[index] is %s' % str(item[index])
+        func_str, child, paras = item[index]
+        if not pos:
+            return func_str, child, paras
+        else:
+            return self.get_itembypos(child, pos)
 
 
 class VirtualCustomTreeCtrl(DemoTreeMixin, 

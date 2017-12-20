@@ -11,6 +11,7 @@ from wxPanel_overwrite import Panel
 import wx
 import wx.xrc
 from TreeMixin import VirtualTreeCtrl
+from TreeMixin import VirtualTreeListCtrl
 
 ###########################################################################
 ## Class Panel_controlprocess
@@ -63,7 +64,7 @@ class Panel_controlprocess ( Panel ):
 		self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.control.model, log=self.log)
 		sizer_controldata.Add( self.m_treeControl_show, 1, wx.EXPAND, 5 )
 		
-		self.m_treeControl_showdata = VirtualTreeCtrl(self, treemodel=self.showdatacontrol.model, log=self.log)
+		self.m_treeControl_showdata = VirtualTreeListCtrl(self, treemodel=self.showdatacontrol.model, log=self.log)
 		sizer_controldata.Add( self.m_treeControl_showdata, 1, wx.EXPAND, 5 )
 		
 		

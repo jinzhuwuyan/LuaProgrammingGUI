@@ -25,7 +25,7 @@ class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 		current_path, _ = os.path.split(__file__)
 		self.func_path = os.path.abspath(os.path.join(current_path, '../../control/reference.yml'))
 		self._control = control_function.Function_List_Control(self, self.func_path)
-		self._control.init_control()
+		# self._control.init_control()
 		# 加载函数列表数据
 		self.m_listBox_choosefunction.SetItems(self._control.func_paras_keys)
 

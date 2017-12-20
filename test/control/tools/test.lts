@@ -1,39 +1,36 @@
 Author: ysw
-Last_Edit_time: Thu Dec 14 16:36:07 2017
+Last_Edit_time: Wed Dec 20 14:01:54 2017
 ProgramBlocks:
 - !!python/tuple
-  - !!python/unicode 'MOVE'
-  - []
-  - choose_point: !!python/tuple [P1, str]
-- !!python/tuple
-  - !!python/unicode 'IF'
+  - IF
   - - !!python/tuple
-      - !!python/unicode 'GO'
+      - GO
       - []
       - choose_point: !!python/tuple [P1, str]
-  - condition: !!python/tuple ['', str]
-- !!python/tuple
-  - !!python/unicode 'ELIF'
-  - - !!python/tuple
-      - !!python/unicode 'IF'
+    - !!python/tuple
+      - MOVE
+      - []
+      - choose_point: !!python/tuple [P1, str]
+    - !!python/tuple
+      - IF
       - - !!python/tuple
-          - !!python/unicode 'GO'
+          - GO
           - []
           - choose_point: !!python/tuple [P1, str]
-      - condition: !!python/tuple ['', str]
-  - &id001
-    condition: !!python/tuple ['', str]
+        - !!python/tuple
+          - GO
+          - []
+          - choose_point: !!python/tuple [P1, str]
+      - &id001
+        condition: !!python/tuple ['', str]
+  - *id001
 - !!python/tuple
-  - !!python/unicode 'IF'
+  - IF
   - - !!python/tuple
-      - !!python/unicode 'GO'
+      - GO
       - []
       - choose_point: !!python/tuple [P1, str]
   - *id001
-- !!python/tuple
-  - !!python/unicode 'IF'
-  - []
-  - condition: !!python/tuple ['0', str]
-Repeat_time: 10
+Repeat_time: 1
 encoding: utf-8
-version: 0.0.1.0
+version: null

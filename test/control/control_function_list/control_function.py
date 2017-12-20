@@ -27,6 +27,7 @@ class Function_List_Control():
         # 当前选中的函数名
         self._select_str = None
 
+        self.init_control()
 
     def init_control(self):
         self.model = function_object.container()
@@ -99,8 +100,8 @@ class Function_List_Control():
 
 
     def _send_funcs_data(self):
-
-        data = (self.func_paras, self.func_str, self.func_selection, self.func_paras,
+        print self.func_paras, self.func_str,
+        data = (self.func_paras, self.func_str, self.func_selection,
                 self.funcs_hashierarchy, self.project_file_path,
                 self.name_reference_list, self.help_msg_path, )
         pub.sendMessage('refresh_func_ret', data=data)
