@@ -18,7 +18,7 @@ from LuaProgrammingGUI.test.view.view_process.TreeMixin  import VirtualTreeListC
 class If_Condition_Panel ( wx.Panel ):
 	
 	def __init__( self, parent ):
-		wx.Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL )
+		wx.Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 500,-1 ), style = wx.TAB_TRAVERSAL )
 		
 		topsizer = wx.FlexGridSizer( 2, 1, 0, 0 )
 		topsizer.AddGrowableCol( 0 )
@@ -28,7 +28,7 @@ class If_Condition_Panel ( wx.Panel ):
 		
 		head_sizer = wx.GridSizer( 4, 3, 0, 0 )
 		
-		self.m_radioBtn_allneed = wx.RadioButton( self, wx.ID_ANY, u"全部必须满足", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn_allneed = wx.RadioButton( self, wx.ID_ANY, u"全部必须满足", wx.DefaultPosition, wx.DefaultSize, wx.RB_GROUP )
 		head_sizer.Add( self.m_radioBtn_allneed, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		self.m_staticText4 = wx.StaticText( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -42,28 +42,33 @@ class If_Condition_Panel ( wx.Panel ):
 		self.m_staticText_.Wrap( -1 )
 		head_sizer.Add( self.m_staticText_, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"操作", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText2.Wrap( -1 )
-		head_sizer.Add( self.m_staticText2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"值", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"条件值", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
 		head_sizer.Add( self.m_staticText3, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"操作值", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText2.Wrap( -1 )
+		head_sizer.Add( self.m_staticText2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		m_choice_chooseconditionChoices = []
 		self.m_choice_choosecondition = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_chooseconditionChoices, 0 )
 		self.m_choice_choosecondition.SetSelection( 0 )
 		head_sizer.Add( self.m_choice_choosecondition, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		m_choice_choosecontrolChoices = []
-		self.m_choice_choosecontrol = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_choosecontrolChoices, 0 )
-		self.m_choice_choosecontrol.SetSelection( 0 )
-		head_sizer.Add( self.m_choice_choosecontrol, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		conditionvalue_sizer = wx.BoxSizer( wx.HORIZONTAL )
 		
 		m_choice_choosevalueChoices = []
 		self.m_choice_choosevalue = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_choosevalueChoices, 0 )
 		self.m_choice_choosevalue.SetSelection( 0 )
-		head_sizer.Add( self.m_choice_choosevalue, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		conditionvalue_sizer.Add( self.m_choice_choosevalue, 1, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		head_sizer.Add( conditionvalue_sizer, 1, wx.EXPAND, 5 )
+		
+		m_choice_choosecontrolChoices = []
+		self.m_choice_choosecontrol = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_choosecontrolChoices, 0 )
+		self.m_choice_choosecontrol.SetSelection( 0 )
+		head_sizer.Add( self.m_choice_choosecontrol, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		self.m_button_add = wx.Button( self, wx.ID_ANY, u"增加条件", wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
 		head_sizer.Add( self.m_button_add, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.LEFT|wx.RIGHT, 5 )
@@ -84,14 +89,13 @@ class If_Condition_Panel ( wx.Panel ):
 		
 		self.SetSizer( topsizer )
 		self.Layout()
-		topsizer.Fit( self )
 		
 		# Connect Events
 		self.m_radioBtn_allneed.Bind( wx.EVT_RADIOBUTTON, self.set_choose_mode )
 		self.m_radioBtn_onlyone.Bind( wx.EVT_RADIOBUTTON, self.set_choose_mode )
 		self.m_choice_choosecondition.Bind( wx.EVT_CHOICE, self.choose_condition )
-		self.m_choice_choosecontrol.Bind( wx.EVT_CHOICE, self.choose_operation )
 		self.m_choice_choosevalue.Bind( wx.EVT_CHOICE, self.choose_value )
+		self.m_choice_choosecontrol.Bind( wx.EVT_CHOICE, self.choose_operation )
 		self.m_button_add.Bind( wx.EVT_BUTTON, self.add_condition )
 		self.m_button_delete.Bind( wx.EVT_BUTTON, self.delete_condition )
 	
@@ -107,10 +111,10 @@ class If_Condition_Panel ( wx.Panel ):
 	def choose_condition( self, event ):
 		event.Skip()
 	
-	def choose_operation( self, event ):
+	def choose_value( self, event ):
 		event.Skip()
 	
-	def choose_value( self, event ):
+	def choose_operation( self, event ):
 		event.Skip()
 	
 	def add_condition( self, event ):

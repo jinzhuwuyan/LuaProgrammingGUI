@@ -3,6 +3,7 @@ import yaml
 import wx
 import time
 import sys
+import os
 from LuaProgrammingGUI.test.control.tools import command_tools
 from LuaProgrammingGUI.test.control.tools import controlfile_tools
 from LuaProgrammingGUI.test.data.object_process import process_object
@@ -107,6 +108,7 @@ class Control():
                 refresh_data = self._get_funcs_paras_bypos(self.model.items, selection_indexs)
             else:
                 self._refresh_item_data(self.model.items, selection_indexs, data)
+                self.tree.RefreshItems()
             return refresh_data
         else:
             return None
@@ -278,71 +280,6 @@ class Control():
         return None
 
 
-    def _control_model1(self, command = 'delete', data = ('', [], {})):
-        self._refresh_func_init()
-        controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
-        (self.func_str, self.func_child, self._funcs_paras) = data
-        self.command = command
-        select_item = self.tree.GetSelection()
-
-        # show_item = _panel_functionlist.data.get_selectionstr()
-        controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
-        childitem = self.model.items
-
-        # childitemdata = self.model.modeldata
-        try:
-            controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
-        except Exception as e:
-            controlfile_tools.log_bystatus(str(e))
-            controlfile_tools.log_bystatus('selection is None')
-
-        if select_item:
-            controlfile_tools.log_bystatus('selection is %s' %
-                                           str(self.tree.GetIndexOfItem(select_item)), 'i')
-            select_items = self.tree.GetIndexOfItem(select_item)
-            self.pos = list(select_items)
-            select_item_str = self.tree.GetItemText(select_item)
-            controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
-                                           (select_items, select_item_str), 'i')
-            if self.command == 'change':
-                controlfile_tools.log_bystatus(
-                    'Check Change type is %s' % str(self.check_process_hierarchy(childitem, list(select_items),
-                                                                             self.change_way)))
-            if len(select_items) > 2:
-
-                controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
-                controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
-
-            elif len(select_items) == 1:
-                (self.index_1,) = select_items
-                self.index_2 = None
-                controlfile_tools.log_bystatus('index_1 is %s' % str(self.index_1), 'i')
-                childitem = self._control_command(childitem, self.index_1, limit=not self._check_func_str(select_item_str))
-
-            elif len(select_items) == 2:
-
-                (self.index_1, self.index_2,) = select_items
-                (item_str, itemlist, paraslist) = childitem[self.index_1]
-                controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
-
-
-                itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
-                if itemlist and self.command != 'change':
-                    childitem[self.index_1] = (item_str, itemlist, paraslist)
-            else:
-                controlfile_tools.log_bystatus('index is %s' % '0', 'i')
-                if self.command == 'add':
-                    childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-                    self.index_1, self.index_2 = [None] * 2
-
-
-        else:
-            # 初始化的时候调用此函数添加第一个节点
-            if self.command == 'add':
-                childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-                self.index_1, self.index_2 = [None] * 2
-                # childitemdata.append((self.func_str, {}, []))
-        self.refresh_tree()
 
     def _control_model(self, command = 'delete', data = ('', [], {})):
         self._refresh_func_init()
@@ -354,50 +291,8 @@ class Control():
         self.pos = list(select_items) if select_items else None
 
         self._control_command(data, self.pos, limit=False)
-        # if select_item and self.tree.GetIndexOfItem(select_item):
-        #     controlfile_tools.log_bystatus('selection is %s' %
-        #                                    str(self.tree.GetIndexOfItem(select_item)), 'i')
-        #     select_items = self.tree.GetIndexOfItem(select_item)
-        #     self.pos = list(select_items)
-        #     select_item_str = self.tree.GetItemText(select_item)
-        #     controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
-        #                                    (select_items, select_item_str), 'i')
-        #
-        #     # if len(select_items) > 2:
-        #     #
-        #     #     controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
-        #     #     controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
-        #     #
-        #     # elif len(select_items) == 1:
-        #     #     (self.index_1,) = select_items
-        #     #     self.index_2 = None
-        #     #     controlfile_tools.log_bystatus('index_1 is %s' % str(self.index_1), 'i')
-        #     #     childitem = self._control_command(childitem, self.index_1, limit=not self._check_func_str(select_item_str))
-        #     #
-        #     # elif len(select_items) == 2:
-        #     #
-        #     #     (self.index_1, self.index_2,) = select_items
-        #     #     (item_str, itemlist, paraslist) = childitem[self.index_1]
-        #     #     controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
-        #     #
-        #     #
-        #     #     itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
-        #     #     if itemlist and self.command != 'change':
-        #     #         childitem[self.index_1] = (item_str, itemlist, paraslist)
-        #     # else:
-        #     #     controlfile_tools.log_bystatus('index is %s' % '0', 'i')
-        #     #     if self.command == 'add':
-        #     #         childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-        #     #         self.index_1, self.index_2 = [None] * 2
-        #
-        #
-        # else:
-        #     # 初始化的时候调用此函数添加第一个节点
-        #     if self.command == 'add':
-        #         childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-        #         self.index_1, self.index_2 = [None] * 2
-        #         # childitemdata.append((self.func_str, {}, []))
         self.refresh_tree()
+
     def print_allerrmsg(self, result):
         for i in result:
             if isinstance(i, list) \
@@ -416,40 +311,6 @@ class Control():
             self.model.items = add_control.items
             # controlfile_tools.log_bystatus('after adding items is %s' % str(self.model.items))
         elif self.command == 'change':
-            # __tmp = []
-            # parentitem = None
-            # func_str, child, paras = [None] * 3
-            # parent_bother_left, parent_bother_right = [None] * 2
-            # if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
-            #     obj = self._change_obj_pos(obj, index)
-            # else:
-            #     if self.change_way == 'up':
-            #
-            #         if index == 0:
-            #
-            #             if self.__set_tree_value_jumpout(self.model.items[:], self.pos, self.change_way):
-            #                 controlfile_tools.log_bystatus('跳转成功！')
-            #             else:
-            #                 controlfile_tools.log_bystatus('跳转失败！')
-            #
-            #         else:
-            #             (func_str, child, paras) = obj[index - 1]
-            #             child.append(obj[index])
-            #             obj[index - 1] = (func_str, child, paras)
-            #             del obj[index]
-            #             return obj
-            #     else:
-            #         if index + 1 == len(obj):
-            #             if self.__set_tree_value_jumpout(self.model.items[:], self.pos, self.change_way):
-            #                 controlfile_tools.log_bystatus('跳转成功！')
-            #             else:
-            #                 controlfile_tools.log_bystatus('跳转失败！')
-            #         else:
-            #             (func_str, child, paras) = obj[index + 1]
-            #             child.append(obj[index])
-            #             obj[index + 1] = (func_str, child, paras)
-            #             del obj[index]
-            #             return obj
             change_control = TreeItemController()
             change_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
             self.print_allerrmsg(
@@ -489,15 +350,6 @@ class Control():
         del __tmp[-1] # 以便使用parent item来做控制
         delete_pos = pos[-1]
         del __tmp[-1][1][delete_pos]
-        # del pos[-1]
-        # generate_data = __tmp[::-1]
-        # generate_pos = pos[::-1]
-        # for inx, p in enumerate(generate_pos):
-        #     if inx + 1 < len(generate_pos):
-        #         func_str, func_child, func_paras = generate_data[inx+1]
-        #         func_child[generate_pos[inx+1]] = generate_data[inx]
-        #     else:
-        #         self.model.items[p] = generate_data[inx]
         return True
 
     def __get_loop_data(self, parentitem, index):
@@ -521,22 +373,28 @@ class Control():
     ## Addon functions
 
     def import_prj_fromdisk(self):
-        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=self.file_path,
+
+        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=os.getcwd(),
                       wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*')
         if dlg.ShowModal() == wx.ID_OK:
             self.file_path = dlg.GetPath()
+            self.load_from_disk()
         else:
             pass
-        self.load_from_disk()
+
 
     def output_to_folder(self):
-        dlg = wx.DirDialog(parent=self.parent, message='Plese Set your path to save project file!',
-                           defaultPath=self.file_path, name='view.lts')
+        dlg = wx.FileDialog(
+            self.parent, message="请填写需要保存的工程文件名，并选中一个路径进行保存！", defaultDir=os.getcwd(),
+            defaultFile="", wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*', style=wx.SAVE
+        )
+
         if dlg.ShowModal() == wx.ID_OK:
             self.file_path = dlg.GetPath()
+            self.save_to_disk()
         else:
             pass
-        self.save_to_disk()
+
 
     def load_help_msg(self):
         controlfile_tools.log_bystatus('help_msg_path is %s' % self.help_msg_path)

@@ -203,8 +203,9 @@ class VirtualTreeListCtrl_ControlIF(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         super(VirtualTreeListCtrl_ControlIF, self).__init__(*args, **kwargs)
         self.checked = None
         self.AddColumn('条件')
-        self.AddColumn('操作')
-        self.AddColumn('值')
+        self.AddColumn('条件值')
+        self.AddColumn('操作值')
+
         for art in wx.ART_TIP, wx.ART_WARNING:
             self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER,
                                                         (16, 16)))
@@ -221,7 +222,7 @@ class VirtualTreeListCtrl_ControlIF(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         paras = _item[2]
         print 'Get Item in TreeListCtrl, func_str is %s, child is %s, paras is %s' % (str(func_str), str(child), str(paras))
         paras_str = ','.join([str(para[0]) for para in paras.values()])
-        para_list = {0: paras['condition'], 1: paras['operation'], 2: paras['value']}
+        para_list = {0: func_str, 1: paras['condition_value'], 2: paras['operation_value']}
         return para_list[column]
 
 

@@ -10,7 +10,6 @@
 from wxPanel_overwrite import Panel
 import wx
 import wx.xrc
-from TreeMixin import VirtualTreeCtrl
 from TreeMixin import VirtualTreeListCtrl
 
 ###########################################################################
@@ -60,9 +59,6 @@ class Panel_controlprocess ( Panel ):
 		topsizer.Add( self.m_toolBar_main, 0, wx.EXPAND, 5 )
 		
 		sizer_controldata = wx.BoxSizer( wx.HORIZONTAL )
-		
-		self.m_treeControl_show = VirtualTreeCtrl(self, treemodel=self.control.model, log=self.log)
-		sizer_controldata.Add( self.m_treeControl_show, 1, wx.EXPAND, 5 )
 		
 		self.m_treeControl_showdata = VirtualTreeListCtrl(self, treemodel=self.showdatacontrol.model, log=self.log)
 		sizer_controldata.Add( self.m_treeControl_showdata, 1, wx.EXPAND, 5 )

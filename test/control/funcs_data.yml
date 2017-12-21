@@ -1,16 +1,16 @@
-ACCEL: &id004
+ACCEL: &id003
   value: !!python/tuple [0.0, float]
 DELAY:
   time: !!python/tuple [0, float]
-ELIF: &id001
-  condition: !!python/tuple ['', str]
-ELSE: {}
-GO: &id002
+GO: &id001
   choose_point: !!python/tuple [P1, str]
-IF: *id001
-MOVE: *id002
-'OFF': &id003
+IF:
+  condition: !!python/tuple
+  - []
+  - list
+MOVE: *id001
+'OFF': &id002
   value: !!python/tuple [0, int]
-'ON': *id003
-SPEED: *id004
-STOP: *id003
+'ON': *id002
+SPEED: *id003
+STOP: *id002

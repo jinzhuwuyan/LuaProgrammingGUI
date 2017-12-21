@@ -42,7 +42,7 @@ class Function_List_Control():
         else:
 
             dlg = wx.FileDialog(parent=self.parent, message='加载配置文件有误，请选择一个有效的配置文件！', defaultDir=self.reference_path,
-                                wildcard='yml files (*.yml)|*.lts|All files (*.*)|*.*')
+                                wildcard='yml files (*.yml)|*.yml|All files (*.*)|*.*')
             if dlg.ShowModal() == wx.ID_OK:
                 self.reference_path = dlg.GetPath()
                 self.init_control()
