@@ -15,7 +15,7 @@ class IFConditionControl():
 
     def __init__(self, parent, control_data_path):
         self.parent = parent
-        self.default_item = (u'判断输入IO', [], {'condition_value': u'0', 'operation_value': u'已开启'})
+        self.default_item = (u'判断输入信号', [], {'condition_value': u'in(0)', 'operation_value': u'已开启'})
         self.control_condition_data = None
         self.model = None
         self.tree = None

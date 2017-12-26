@@ -133,7 +133,8 @@ class Handle_Msg(object):
                                                                         self.get_cmd_paras('for'))
         return head_instance, end_instance
 
-
+    def parse_if_condition_strings(self, if_conditions):
+        pass
 
 if __name__ == '__main__':
 
