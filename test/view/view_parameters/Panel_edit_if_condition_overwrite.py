@@ -10,33 +10,20 @@ from LuaProgrammingGUI.test.control.tools import controlfile_tools
 # Implementing If_Condition_Panel
 class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
 
-        def __init__(self, parent):
+        def __init__(self, parent, condition_data_path):
 
-            self.ifcontrol = IFConditionControl(self, 'LuaProgrammingGUI/test/control/if_condition_data.yml')
+            self.ifcontrol = IFConditionControl(self, control_data_path=condition_data_path)
             self.log = logging
             GUI_IF_Codition.If_Condition_Panel.__init__( self, parent )
+            controlfile_tools.log_bystatus('after init if condition panel')
             self.parent = parent
-            self.condition_data_path = 'LuaProgrammingGUI/test/control/if_condition_data.yml'
             self.control_condition_data = None
-            self.conditions = [u'判断输入IO', u'判断输出IO', u'判断位置']
-            self.operations = {u'判断输入IO': [u'已开启', u'未开启'], u'判断输出IO': [u'已开启1', u'未开启1'], u'判断位置': [u'已到达', u'未到达'] }
-            self.values = {u'判断输入IO': [unicode(in_io) for in_io in range(64)],
-                           u'判断输出IO': [unicode(out_io) for out_io in range(32)],
-                           u'判断位置': [unicode('P%d' % pos) for pos in range(100)]}
-
-            # # 初始化条件控制语句列表控件
-            # self.ifcontrol.tree = self.showconditiontree
-            self.ifcontrol.parse_condition_data()
-            # self.init_ifcondition_paneldata()
-            self.refresh_choiceboxs(0, 9, 0)
-            self.ifcontrol.model.items = [(u'判断输入IO', [], {'condition_value': u'9', 'operation_value': u'已开启'}),
-                                          (u'判断输出IO', [], {'condition_value': u'11', 'operation_value': u'未开启1'}),
-                                          (u'判断位置', [], {'condition_value': u'P9', 'operation_value': u'已到达'}),
-                                          ]
-            self.showconditiontree.RefreshItems()
             self.showconditiontree.Bind(wx.EVT_TREE_SEL_CHANGED, self.change_tree_selection)
+            self.ifcontrol.set_tree(self.showconditiontree)
+            self.ifcontrol.refresh_tree()
+            # self.ifcontrol.refresh_choiceboxs()
 
-
+            # controlfile_tools.log_bystatus('self.showconditiontree.GetCurrentItem() is %s' % str(self.showconditiontree.GetItemPyData(self.showconditiontree.GetCurrentItem())))
 
         # Handlers for If_Condition_Panel events.
         def set_choose_mode( self, event ):
@@ -49,7 +36,7 @@ class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
 
         def delete_condition( self, event ):
             # TODO: Implement delete_condition
-            self.ifcontrol.delete_conditon(event.EventObject)
+            self.ifcontrol.delete_condition(event.EventObject)
 
         def choose_condition( self, event ):
             # TODO: Implement choose_condition
@@ -61,8 +48,8 @@ class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
                 select_id, condition_str, condition_value = selection_info
                 new_item_str = self.m_choice_choosecondition.GetStringSelection()
                 _tmp_value = {}
-                _tmp_value['condition_value'] = self.values[new_item_str][0]
-                _tmp_value['operation_value'] = self.operations[new_item_str][0]
+                _tmp_value['condition_value'] = self.ifcontrol.values[new_item_str][0]
+                _tmp_value['operation_value'] = self.ifcontrol.operations[new_item_str][0]
 
                 newitem = (new_item_str, [], _tmp_value)
                 self.ifcontrol.model.items[select_id] = newitem
@@ -98,49 +85,9 @@ class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
                 pass
 
         def change_tree_selection(self, event):
-            selection_info = self.ifcontrol.get_tree_item_info(event.EventObject)
-            if selection_info:
+            self.ifcontrol.change_tree_selection(event.EventObject)
 
-                    select_id, condition_str, condition_value = selection_info
-                    operation_list = self.operations[condition_str]
-                    controlfile_tools.log_bystatus('operation_id is %s, value_id is %s' % (str(operation_list), condition_value['operation_value']))
-                    operation_id = self.ifcontrol.get_condition_id(operation_list, condition_value['operation_value'])
-                    value_list = self.values[condition_str]
-                    value_id = self.ifcontrol.get_condition_id(value_list, condition_value['condition_value'])
-                    controlfile_tools.log_bystatus('operation_id is %d, value_id is %d' % (operation_id, value_id))
-                    if operation_id != -1 and value_id != -1:
 
-                        self.refresh_choiceboxs(select_id, value_id, operation_id)
-                    else:
-                        pass
-            else:
-                pass
-
-        def init_ifcondition_paneldata(self):
-            try:
-                with open(os.path.abspath(self.condition_data_path)) as f:
-                    self.control_condition_data = yaml.load(f.read())
-                    self.parse_condition_data()
-                    # self.refresh_choiceboxs()
-            except Exception as e:
-                print e
-                wx.MessageBox('初始化界面失败！请询问技术人员具体原因！')
-
-        def parse_condition_data(self):
-            del self.conditions[:]
-            del self.operations[:]
-            if self.control_condition_data:
-                condition = self.control_condition_data[-1]
-                (condition_str, value) = condition
-
-                for v in self.parse_value(value):
-                    self.values.append(v)
-                for c in self.control_condition_data:
-                    (condition_str, _) = condition
-                    self.conditions.append(condition_str)
-                # self.parent.refresh_choiceboxs()
-            else:
-                pass
 
         def parse_value(self, value):
             if isinstance(value, list):
@@ -158,15 +105,17 @@ class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
             # print 'self.ifcontrol.conditions is %s' % str(self.ifcontrol.conditions)
             # print 'self.ifcontrol.operations is %s' % str(self.ifcontrol.operations)
             # print 'self.ifcontrol.values is %s' % str(self.ifcontrol.values)
-            self.m_choice_choosecondition.SetItems(self.conditions)
+            self.m_choice_choosecondition.SetItems(self.ifcontrol.conditions)
             self.m_choice_choosecondition.SetSelection(condition_index)
-            self.m_choice_choosecontrol.SetItems(self.operations[unicode(self.m_choice_choosecondition.GetStringSelection())])
-            self.m_choice_choosevalue.SetItems(self.values[unicode(self.m_choice_choosecondition.GetStringSelection())])
+            self.m_choice_choosecontrol.SetItems(self.ifcontrol.operations[unicode(self.m_choice_choosecondition.GetStringSelection())])
+            self.m_choice_choosevalue.SetItems(self.ifcontrol.values[unicode(self.m_choice_choosecondition.GetStringSelection())])
             self.m_choice_choosecondition.Refresh()
             self.m_choice_choosecontrol.Refresh()
             self.m_choice_choosevalue.Refresh()
             self.m_choice_choosecontrol.SetSelection(control_index)
             self.m_choice_choosevalue.SetSelection(value_index)
+            controlfile_tools.log_bystatus('refresh_choiceboxs is %s' % str(self.ifcontrol.model.items))
+            self.ifcontrol.refresh_tree()
 
 if __name__ == '__main__':
     app = wx.App()

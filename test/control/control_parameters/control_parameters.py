@@ -21,6 +21,7 @@ class Control():
         self.pts_path = pts_path
         self.model = parameters_object.container()
         self.controllist = {}
+        self.if_conditiondata_path = None
         pub.subscribe(self.refresh_paras_panel1, 'refresh_paras')
         pub.subscribe(self._remove_allcontrols, 'remove_all_paras')
         pub.subscribe(self._get_MainMsg, 'get_main_msg')
@@ -85,12 +86,11 @@ class Control():
     def refresh_paras_panel1(self, data, pos):
         # TODO: Implement refresh_paras_panel
         # show_content = self.control.load_show_content( data, pos )
-        controlfile_tools.log_bystatus('Entering refresh_paras_panel1... %s' % data )
+        controlfile_tools.log_bystatus('Entering refresh_paras_panel1... %s' % str(data) )
         self.controllist.clear()
         self._remove_allcontrols()
         ##-----------------------init value------------------
         reorder_list = [list('XYZUVW'), 'J1,J2,J3,J4,J5,J6'.split(',')]
-        keys_list = None
         self.model.showcontent = data
         print 'data is ', self.model.showcontent, '.......'
         sizer = self._parent.GetSizer()
@@ -106,11 +106,7 @@ class Control():
             controlfile_tools.log_bystatus('keys is .....%s' % str(check_list), 'i')
 
             self._refresh_paraslist(check_list)
-            # for key in check_list:
-            #     panel = Panel_edit_paras_overwrite.panel_edit_paras(self._parent, control=self, key=key,
-            #                                                         value=self.model.showcontent[key])
-            #     sizer.Add(panel, 0, 0, 5)
-            #     self.controllist[key] = panel
+
             controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"
                                            % (len(data), data), 'i')
 
@@ -132,11 +128,12 @@ class Control():
             controlfile_tools.log_bystatus('Sending show content to other paras panel, %s' % str(self.model.showcontent))
             # pub.sendMessage('get_paras_main_data', data=(self.model.showcontent, ))
 
-        elif len(check_list) == 1 and check_list[0] == 'condition':
-
-            panel = Panel_edit_if_condition_overwrite.Panel_edit_ifcondition(self._parent)
+        elif check_list and 'condition' in check_list:
+            self.if_conditiondata_path = 'LuaProgrammingGUI/test/control/if_condition_data.yml'
+            panel = Panel_edit_if_condition_overwrite.Panel_edit_ifcondition(self._parent, self.if_conditiondata_path)
             self._parent.GetSizer().Add(panel, 0, 0, 5)
             self.controllist[0] = panel
+            pub.sendMessage('get_if_condition_paras', data=(self.model.showcontent))
 
         else:
             for key in check_list:

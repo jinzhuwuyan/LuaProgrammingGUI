@@ -19,7 +19,9 @@ class TreeModel(object):
 
     def GetItem(self, indices):
         text, children, childrendata = 'root', self.items, {}
+        print 'Getting item is %s, indices is %s  ' % (str(self.items), str(indices))
         for index in indices:
+            print 'children[index] is %s' % str(children[index])
             text, children, childrendata = children[index]
         return text, children, childrendata
 
@@ -172,7 +174,7 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         child = _item[1]
         paras = _item[2]
         print 'Get Item in TreeListCtrl, func_str is %s, child is %s, paras is %s' % (str(func_str), str(child), str(paras))
-        paras_str = ','.join([str(para[0]) for para in paras.values()])
+        paras_str = ','.join([str(para[0] if isinstance(para, tuple) or isinstance(para, list) else para) for para in paras.values()])
         return func_str if column == 0 else paras_str
 
 

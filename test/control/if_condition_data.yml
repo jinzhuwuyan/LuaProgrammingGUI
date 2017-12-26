@@ -1,6 +1,59 @@
-- !!python/tuple
-  - TargetOkStatus
-  - [0]
-- !!python/tuple
-  - IOStatus
-  - Point: [0]
+condition: ["\u5224\u65AD\u8F93\u5165IO", "\u5224\u65AD\u8F93\u51FAIO", "\u5224\u65AD\
+    \u4F4D\u7F6E"]
+operation:
+  "\u5224\u65AD\u4F4D\u7F6E": ["\u5DF2\u5230\u8FBE", "\u672A\u5230\u8FBE"]
+  "\u5224\u65AD\u8F93\u5165IO": ["\u5DF2\u5F00\u542F", "\u672A\u5F00\u542F"]
+  "\u5224\u65AD\u8F93\u51FAIO": ["\u5DF2\u5F00\u542F1", "\u672A\u5F00\u542F1"]
+value:
+  "\u5224\u65AD\u4F4D\u7F6E": [!!python/unicode 'P0', !!python/unicode 'P1', !!python/unicode 'P2',
+    !!python/unicode 'P3', !!python/unicode 'P4', !!python/unicode 'P5', !!python/unicode 'P6',
+    !!python/unicode 'P7', !!python/unicode 'P8', !!python/unicode 'P9', !!python/unicode 'P10',
+    !!python/unicode 'P11', !!python/unicode 'P12', !!python/unicode 'P13', !!python/unicode 'P14',
+    !!python/unicode 'P15', !!python/unicode 'P16', !!python/unicode 'P17', !!python/unicode 'P18',
+    !!python/unicode 'P19', !!python/unicode 'P20', !!python/unicode 'P21', !!python/unicode 'P22',
+    !!python/unicode 'P23', !!python/unicode 'P24', !!python/unicode 'P25', !!python/unicode 'P26',
+    !!python/unicode 'P27', !!python/unicode 'P28', !!python/unicode 'P29', !!python/unicode 'P30',
+    !!python/unicode 'P31', !!python/unicode 'P32', !!python/unicode 'P33', !!python/unicode 'P34',
+    !!python/unicode 'P35', !!python/unicode 'P36', !!python/unicode 'P37', !!python/unicode 'P38',
+    !!python/unicode 'P39', !!python/unicode 'P40', !!python/unicode 'P41', !!python/unicode 'P42',
+    !!python/unicode 'P43', !!python/unicode 'P44', !!python/unicode 'P45', !!python/unicode 'P46',
+    !!python/unicode 'P47', !!python/unicode 'P48', !!python/unicode 'P49', !!python/unicode 'P50',
+    !!python/unicode 'P51', !!python/unicode 'P52', !!python/unicode 'P53', !!python/unicode 'P54',
+    !!python/unicode 'P55', !!python/unicode 'P56', !!python/unicode 'P57', !!python/unicode 'P58',
+    !!python/unicode 'P59', !!python/unicode 'P60', !!python/unicode 'P61', !!python/unicode 'P62',
+    !!python/unicode 'P63', !!python/unicode 'P64', !!python/unicode 'P65', !!python/unicode 'P66',
+    !!python/unicode 'P67', !!python/unicode 'P68', !!python/unicode 'P69', !!python/unicode 'P70',
+    !!python/unicode 'P71', !!python/unicode 'P72', !!python/unicode 'P73', !!python/unicode 'P74',
+    !!python/unicode 'P75', !!python/unicode 'P76', !!python/unicode 'P77', !!python/unicode 'P78',
+    !!python/unicode 'P79', !!python/unicode 'P80', !!python/unicode 'P81', !!python/unicode 'P82',
+    !!python/unicode 'P83', !!python/unicode 'P84', !!python/unicode 'P85', !!python/unicode 'P86',
+    !!python/unicode 'P87', !!python/unicode 'P88', !!python/unicode 'P89', !!python/unicode 'P90',
+    !!python/unicode 'P91', !!python/unicode 'P92', !!python/unicode 'P93', !!python/unicode 'P94',
+    !!python/unicode 'P95', !!python/unicode 'P96', !!python/unicode 'P97', !!python/unicode 'P98',
+    !!python/unicode 'P99']
+  "\u5224\u65AD\u8F93\u5165IO": [!!python/unicode '0', !!python/unicode '1', !!python/unicode '2',
+    !!python/unicode '3', !!python/unicode '4', !!python/unicode '5', !!python/unicode '6',
+    !!python/unicode '7', !!python/unicode '8', !!python/unicode '9', !!python/unicode '10',
+    !!python/unicode '11', !!python/unicode '12', !!python/unicode '13', !!python/unicode '14',
+    !!python/unicode '15', !!python/unicode '16', !!python/unicode '17', !!python/unicode '18',
+    !!python/unicode '19', !!python/unicode '20', !!python/unicode '21', !!python/unicode '22',
+    !!python/unicode '23', !!python/unicode '24', !!python/unicode '25', !!python/unicode '26',
+    !!python/unicode '27', !!python/unicode '28', !!python/unicode '29', !!python/unicode '30',
+    !!python/unicode '31', !!python/unicode '32', !!python/unicode '33', !!python/unicode '34',
+    !!python/unicode '35', !!python/unicode '36', !!python/unicode '37', !!python/unicode '38',
+    !!python/unicode '39', !!python/unicode '40', !!python/unicode '41', !!python/unicode '42',
+    !!python/unicode '43', !!python/unicode '44', !!python/unicode '45', !!python/unicode '46',
+    !!python/unicode '47', !!python/unicode '48', !!python/unicode '49', !!python/unicode '50',
+    !!python/unicode '51', !!python/unicode '52', !!python/unicode '53', !!python/unicode '54',
+    !!python/unicode '55', !!python/unicode '56', !!python/unicode '57', !!python/unicode '58',
+    !!python/unicode '59', !!python/unicode '60', !!python/unicode '61', !!python/unicode '62',
+    !!python/unicode '63']
+  "\u5224\u65AD\u8F93\u51FAIO": [!!python/unicode '0', !!python/unicode '1', !!python/unicode '2',
+    !!python/unicode '3', !!python/unicode '4', !!python/unicode '5', !!python/unicode '6',
+    !!python/unicode '7', !!python/unicode '8', !!python/unicode '9', !!python/unicode '10',
+    !!python/unicode '11', !!python/unicode '12', !!python/unicode '13', !!python/unicode '14',
+    !!python/unicode '15', !!python/unicode '16', !!python/unicode '17', !!python/unicode '18',
+    !!python/unicode '19', !!python/unicode '20', !!python/unicode '21', !!python/unicode '22',
+    !!python/unicode '23', !!python/unicode '24', !!python/unicode '25', !!python/unicode '26',
+    !!python/unicode '27', !!python/unicode '28', !!python/unicode '29', !!python/unicode '30',
+    !!python/unicode '31']

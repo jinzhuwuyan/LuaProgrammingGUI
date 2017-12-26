@@ -5,8 +5,12 @@ DELAY:
 GO: &id001
   choose_point: !!python/tuple [P1, str]
 IF:
+  check_allconditions: true
   condition: !!python/tuple
-  - []
+  - - !!python/tuple
+      - "\u5224\u65AD\u8F93\u5165IO"
+      - []
+      - {condition_value: !!python/unicode '0', operation_value: "\u5DF2\u5F00\u542F"}
   - list
 MOVE: *id001
 'OFF': &id002

@@ -62,6 +62,11 @@ class If_Condition_Panel ( wx.Panel ):
 		self.m_choice_choosevalue.SetSelection( 0 )
 		conditionvalue_sizer.Add( self.m_choice_choosevalue, 1, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
+		self.m_bpButton_edit_setting = wx.BitmapButton( self, wx.ID_ANY, wx.ArtProvider.GetBitmap( wx.ART_HELP_SIDE_PANEL, wx.ART_BUTTON ), wx.DefaultPosition, wx.DefaultSize, wx.BU_AUTODRAW )
+		self.m_bpButton_edit_setting.Enable( False )
+		
+		conditionvalue_sizer.Add( self.m_bpButton_edit_setting, 0, wx.ALL, 5 )
+		
 		
 		head_sizer.Add( conditionvalue_sizer, 1, wx.EXPAND, 5 )
 		
@@ -95,6 +100,7 @@ class If_Condition_Panel ( wx.Panel ):
 		self.m_radioBtn_onlyone.Bind( wx.EVT_RADIOBUTTON, self.set_choose_mode )
 		self.m_choice_choosecondition.Bind( wx.EVT_CHOICE, self.choose_condition )
 		self.m_choice_choosevalue.Bind( wx.EVT_CHOICE, self.choose_value )
+		self.m_bpButton_edit_setting.Bind( wx.EVT_BUTTON, self.edit_setting )
 		self.m_choice_choosecontrol.Bind( wx.EVT_CHOICE, self.choose_operation )
 		self.m_button_add.Bind( wx.EVT_BUTTON, self.add_condition )
 		self.m_button_delete.Bind( wx.EVT_BUTTON, self.delete_condition )
@@ -112,6 +118,9 @@ class If_Condition_Panel ( wx.Panel ):
 		event.Skip()
 	
 	def choose_value( self, event ):
+		event.Skip()
+	
+	def edit_setting( self, event ):
 		event.Skip()
 	
 	def choose_operation( self, event ):

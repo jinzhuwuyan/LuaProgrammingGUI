@@ -53,10 +53,15 @@ class Control():
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
+        # pub.subscribe(self.refresh_paras_again, 'refresh_paras_again')
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
         self._refresh_func_init()
 
 ##########################################control parameters panel#########################################
+    # def refresh_paras_again(self):
+    #     controlfile_tools.log_bystatus('refresh again')
+    #     self.refresh_current_selection()
+
     def refresh_current_selection(self):
 
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
@@ -67,7 +72,6 @@ class Control():
 
     def _get_funcs_paras_bypos(self, data, pos):
         _tmp = None
-        _pos = pos
         for idx, p in enumerate(pos):
             if idx == 0:
                 _tmp = data[p]
@@ -96,7 +100,24 @@ class Control():
             else:
                 _, child, _ = _tmp
                 _tmp = child[p]
+        return _tmp
 
+    def replace_freshobj_bypos(self, data, pos, freshobj):
+        _tmp = None
+        for idx, p in enumerate(pos):
+
+            if idx == 0:
+                _tmp = data[p]
+                func_str, child_tmp, _= _tmp
+                data[p] = freshobj
+
+            elif idx + 1 == len(pos):
+                _, child, _ = _tmp
+                func_str, child_tmp, _ = child[p]
+                child[p] = freshobj
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
 
     def _refresh_parasdata(self, refresh_type='get', data=None):
         refresh_data = {}
@@ -105,10 +126,19 @@ class Control():
         str(refresh_type), str(data), str(selection_indexs)))
         if selection_indexs:
             if refresh_type == 'get':
+                controlfile_tools.log_bystatus('self.model.items is %s' % str(self.model.items))
                 refresh_data = self._get_funcs_paras_bypos(self.model.items, selection_indexs)
+                controlfile_tools.log_bystatus('refresh_data in _refresh_parasdata is %s' % str(self.model.items))
+
             else:
-                self._refresh_item_data(self.model.items, selection_indexs, data)
-                self.tree.RefreshItems()
+                controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
+                refresh_obj = self._refresh_item_data(self.model.items, selection_indexs, data)
+                controlfile_tools.log_bystatus('get refresh obj is %s' % str(refresh_obj))
+                self.replace_freshobj_bypos(self.model.items, selection_indexs, refresh_obj)
+                controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
+                controlfile_tools.log_bystatus('after refreshing, self.model.items is %s' % str(self.model.items))
+
+                self.refresh_tree()
             return refresh_data
         else:
             return None

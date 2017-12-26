@@ -1,3 +1,4 @@
+#! encoding: utf-8
 import os
 import yaml
 current_path, _ = os.path.split(__file__)
@@ -11,7 +12,7 @@ def get_abspath(reative_path):
 default_coord_data = {'X': (0.00,'float'), 'Y': (0.00, 'float'), 'Z': (0.00, 'float'), 'U': (0.00,'float'), 'V': (0.00, 'float'), 'W': (0.00, 'float')}
 default_ja_data = {'J1': (0.00,'float'), 'J2': (0.00, 'float'), 'J3': (0.00, 'float'), 'J4': (0.00,'float'), 'J5': (0.00, 'float'), 'J6': (0.00, 'float')}
 default_data = {'value': (0.00, 'float')}
-default_condition_data = {'condition': ([], 'list')}
+default_condition_data = {'condition': ([(u'判断输入信号', [], {'condition_value': u'getInput(0)', 'operation_value': u'有信号'})], 'list'), 'check_allconditions': True}
 default_none_data = {}
 default_time_data = {'time': (0, 'float')}
 default_value_data = {'value': (0, 'int')}

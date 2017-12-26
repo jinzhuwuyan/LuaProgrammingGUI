@@ -1,14 +1,16 @@
 Author: ysw
-Last_Edit_time: Wed Dec 20 17:03:32 2017
+Last_Edit_time: Tue Dec 26 09:35:58 2017
 ProgramBlocks:
 - !!python/tuple
   - IF
-  - - !!python/tuple
-      - IF
-      - []
-      - &id001
-        condition: !!python/tuple ['', str]
-  - *id001
+  - []
+  - check_allconditions: true
+    condition: !!python/tuple
+    - - !!python/tuple
+        - "\u5224\u65AD\u4F4D\u7F6E"
+        - []
+        - {condition_value: !!python/unicode 'P0', operation_value: "\u5DF2\u5230\u8FBE"}
+    - list
 Repeat_time: 1
 encoding: utf-8
 version: null
