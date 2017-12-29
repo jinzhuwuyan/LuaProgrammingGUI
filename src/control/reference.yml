@@ -1,0 +1,7 @@
+control_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control
+file_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/test.lts
+func_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/funcs_data.yml
+help_msg_path: /home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/test/control/tools/help_msg.yml
+rename_list: {ACCEL: setAccel, DELAY: luaSleep, ELIF: elif, ELSE: else, GO: go, IF: if,
+  MOVE: move, 'OFF': 'off', 'ON': 'on', SPEED: setSpeed, STOP: emgStop}
+unlimit_func: [IF, ELIF, ELSE]

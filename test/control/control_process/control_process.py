@@ -1,6 +1,7 @@
 #! encoding: utf-8
 import yaml
 import wx
+import copy
 import time
 import sys
 import os
@@ -13,6 +14,7 @@ try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
+
 __version__ =  ','.join(list('0010'))
 
 class Control():
@@ -91,16 +93,25 @@ class Control():
                 if len(pos) == 1:
                     func_str, child_tmp, _ = _tmp
                     _tmp = (func_str, child_tmp, refresh_data)
+                    data[p] = _tmp
                 else:
                     pass
             elif idx + 1 == len(pos):
+                controlfile_tools.log_bystatus('_refresh_item_data in last item tmp is %s, refresh_data is %s' % (str(_tmp), str(refresh_data)))
                 _, child, _ = _tmp
+                controlfile_tools.log_bystatus('_refresh_item_data in last item child is %s' % (str(child)))
                 func_str, child_tmp, _ = child[p]
+                controlfile_tools.log_bystatus('_refresh_item_data in last item child[p] is %s' % (str(child[p])))
                 child[p] = (func_str, child_tmp, refresh_data)
+                _tmp = child[p]
+                controlfile_tools.log_bystatus('_refresh_item_data in last item tmp is %s, refresh_data is %s' % (str(_tmp), str(refresh_data)))
             else:
                 _, child, _ = _tmp
                 _tmp = child[p]
         return _tmp
+
+
+
 
     def replace_freshobj_bypos(self, data, pos, freshobj):
         _tmp = None
@@ -109,7 +120,11 @@ class Control():
             if idx == 0:
                 _tmp = data[p]
                 func_str, child_tmp, _= _tmp
-                data[p] = freshobj
+                if func_str in self._funcs_unlimit and len(pos) == 1:
+                    data[p] = freshobj
+                    break
+                else:
+                    pass
 
             elif idx + 1 == len(pos):
                 _, child, _ = _tmp
@@ -129,17 +144,19 @@ class Control():
                 controlfile_tools.log_bystatus('self.model.items is %s' % str(self.model.items))
                 refresh_data = self._get_funcs_paras_bypos(self.model.items, selection_indexs)
                 controlfile_tools.log_bystatus('refresh_data in _refresh_parasdata is %s' % str(self.model.items))
-
+                return refresh_data
             else:
+                # self._refresh_item_data(self.model.items, selection_indexs, data)
+                # self.tree.RefreshItems()
                 controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
                 refresh_obj = self._refresh_item_data(self.model.items, selection_indexs, data)
                 controlfile_tools.log_bystatus('get refresh obj is %s' % str(refresh_obj))
                 self.replace_freshobj_bypos(self.model.items, selection_indexs, refresh_obj)
                 controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
                 controlfile_tools.log_bystatus('after refreshing, self.model.items is %s' % str(self.model.items))
+                #只刷新数据，不取消选中
+                self.request_showdata_onlyrefreshdata()
 
-                self.refresh_tree()
-            return refresh_data
         else:
             return None
 
@@ -269,6 +286,9 @@ class Control():
         controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
         pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], self._funcs_unlimit, ))
 
+    def request_showdata_onlyrefreshdata(self):
+        controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
+        pub.sendMessage('refresh_show_onlyrefreshdata', data=(self.model.items[:], self._funcs_unlimit, ))
 
     def _add_obj_bylimit(self, obj, index, limit = False):
 
@@ -523,7 +543,7 @@ class Control():
         return self._func_selection
 
     def get_selection_paras(self):
-        return self._func_items[self._func_str]
+        return copy.deepcopy(self._func_items)[self._func_str]
 
     def get_funcsitems(self):
         self._refresh_func_init()

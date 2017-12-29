@@ -14,8 +14,13 @@ class ShowDataControl():
         self.parent = parent
         self.model = process_object.container()
         self.unlimit_funcs = None
+        # 刷新且取消选中
         pub.subscribe(self.refresh_show_modeldata, 'refresh_show_modeldata')
+        # 刷新且不取消选中
+        pub.subscribe(self.refresh_show_onlyrefreshdata, 'refresh_show_onlyrefreshdata')
         # pub.subscribe(self._unselete_all, 'unselete_process_all')
+
+
 
     def refresh_tree(self):
 
@@ -45,3 +50,10 @@ class ShowDataControl():
         self.model.items = items
         controlfile_tools.log_bystatus('Refresh showdata by process control %s ' % str(self.model.items))
         self.refresh_tree()
+
+    def refresh_show_onlyrefreshdata(self, data):
+        (items, self.unlimit_funcs) = data
+        # self.model.items = self.translate_modeldata(items)
+        self.model.items = items
+        controlfile_tools.log_bystatus('Refresh showdata by process control %s ' % str(self.model.items))
+        self.parent.m_treeControl_showdata.RefreshItems()

@@ -1,3 +1,4 @@
+#! encoding: utf-8
 from core.cmds2 import Command
 from core.cmds2 import CommandManager
 try:
@@ -25,9 +26,13 @@ class Abstract_CommandManager(CommandManager):
 
         if cmdName in self.__data_none_list:
             return cmds
+
         if isinstance(dict_strs, list):
             for key in dict_strs:
-                _tmp.append(list(data[key])[0])
+                if cmdName == 'if':
+                    _tmp.append(data[key])
+                else:
+                    _tmp.append(data[key][0])
             cmds.data = tuple(_tmp)
         else:
             raise Exception("dict_strs isn't list type!! %s" % (str(dict_strs)))
@@ -35,6 +40,10 @@ class Abstract_CommandManager(CommandManager):
             return cmds, end_cmd
         else:
             return cmds
+
+    def genCmd_if_condition(self, cmdName, data, dict_strs, check_allconditions):
+        cmds, end_cmd = self.genCmd_overwrite(cmdName, data, dict_strs)
+        pass
 
 class Abstract_Command(Command):
     def __init__(self, CmdID, commandName, commandType, PairID):
@@ -128,8 +137,30 @@ class Set_Accel_Go(Abstract_Command):
 class IF(Abstract_Command):
     def __init__(self, CmdID, inputPairID):
         Abstract_Command.__init__(self, CmdID, commandName='if', commandType='HEAD', PairID=inputPairID)
+        self.condition_strs = ''
+        self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
+
+    def generate_if_condition(self):
+        print 'generating if condition is ',self.data
+
+    def genCode(self):
+        return self.gen_str() % self.condition_strs
 
     def gen_str(self):
+        self.generate_if_condition()
+        __condition_values = []
+        value, check_allcondition = self.data
+        check_str = ' and ' if check_allcondition else ' or '
+        if isinstance(value, tuple):
+            # value = ([], 'list')
+            for condition in value[0]:
+                # ([(u'xxx', [], {condition_value: 'xxxx', operation_value: 'xxxx1'})], 'list')
+                func_str, _, paras = condition
+                condition_str = ''.join([paras['condition_value'], self.operations_values[paras['operation_value']]])
+                __condition_values.append(condition_str)
+        self.condition_strs = tuple([check_str.join(__condition_values)])
+
+
         return ''.join([self.commandName, " (%s) then"])
 
 class ELIF(Abstract_Command):

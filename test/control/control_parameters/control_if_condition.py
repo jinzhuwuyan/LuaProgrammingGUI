@@ -15,20 +15,37 @@ class IFConditionControl():
 
     def __init__(self, parent, control_data_path):
         self.parent = parent
-        self.default_item = (u'判断输入信号', [], {'condition_value': u'in(0)', 'operation_value': u'已开启'})
+        # 默认添加的item
+        self.default_item = None
+        # 控制if条件面板数据，配置文件容器
         self.control_condition_data = None
+        # 数据模型
         self.model = None
+        # 显示条件树
         self.tree = None
+        # 条件列表控件
         self.choice_conditions = None
+        # 操作值列表控件
         self.choice_controls = None
-        self.choice_conditions = None
+        # 条件值列表控件
+        self.choice_values = None
+        # 选择全部满足控件
         self.radio_allcondition = None
+        # 选择只满足一个条件控件
         self.radio_onlyonecondition = None
+        # 条件控件数据
         self.conditions = None
+        # 操作控件数据
         self.operations = None
+        # 值控件数据
         self.values = None
+        # 请求刷新ifcondition数据的内容
         self.refresh_data = None
+        # 检查是否选择了全部满足的变量
         self.check_allconditions = None
+        # 操作值所对应的实际内容值
+        self.operation_values = None
+        # if 条件数据地址
         self.condition_data_path = control_data_path
         self.config()
 
@@ -36,14 +53,10 @@ class IFConditionControl():
 
         # 初始化if条件列表的数据模型
         self.model = conditiontree_object.Condition_Tree_Container()
-        # 初始化刷新数据内容
-        self.refresh_data = {'condition': (self.model.items, 'list'), 'check_allconditions': self.check_allconditions}
         # 初始化if条件参数控件的数据
         self.init_ifcondition_paneldata()
         # 初始化对应控制语句的参数数据
         pub.subscribe(self.refresh_paras, 'get_if_condition_paras')
-
-
 
     def refresh_paras(self, data):
         # 初始化条件控制语句列表控件
@@ -56,11 +69,8 @@ class IFConditionControl():
         controlfile_tools.log_bystatus('para[condition] is %s' % str(data['condition'][0]))
         controlfile_tools.log_bystatus('recv refresh self.model.items is %s' % str(self.model.items))
         controlfile_tools.log_bystatus('recv refresh self.check_allconditions is %s' % str(self.check_allconditions))
-
         self.refresh_tree()
         self.parent.Refresh()
-        # self.parse_condition_data()
-        # self.refresh_choiceboxs()
 
     def set_tree(self, tree):
         self.tree = tree
@@ -86,21 +96,21 @@ class IFConditionControl():
 
         self.refresh_data['condition'] = (self.model.items[:], 'list')
         controlfile_tools.log_bystatus("set_choose_mode's refresh_data is %s " % str(self.refresh_data))
-        pub.sendMessage('save_paras', refresh_type='refresh', data=self.refresh_data)
-        controlfile_tools.log_bystatus("set_choose_mode's refresh_data is %s " % str(self.refresh_data))
+        self.save_paras()
 
 
 
     def add_condition(self, obj):
+        __default_item = (u'判断输入信号', [], {'condition_value': u'getInput(0)', 'operation_value': u'有信号'})
         tree_selection_info = self.get_tree_item_info(self.tree)
         if tree_selection_info:
             select_id, condition_str, condition_value = tree_selection_info
-            self.model.items.insert(select_id + 1, self.default_item)
+            self.model.items.insert(select_id + 1, __default_item)
         else:
-            self.model.items.append(self.default_item)
+            self.model.items.append(__default_item)
         self.refresh_tree()
         self.unselect_tree()
-        pub.sendMessage('save_paras', refresh_type='refresh', data=self.refresh_data)
+        self.save_paras()
 
     def delete_condition(self, obj):
 
@@ -113,22 +123,58 @@ class IFConditionControl():
             self.choice_values.Clear()
             self.refresh_tree()
             self.unselect_tree()
-            pub.sendMessage('save_paras', refresh_type='refresh', data=self.refresh_data)
+            self.save_paras()
         else:
             wx.MessageBox(u'请选中一个条件进行删除！')
 
 
+    def save_paras(self):
+        self.refresh_data['condition'] = (self.model.items[:], 'list')
+        pub.sendMessage('save_paras', refresh_type='refresh', data=self.refresh_data)
+
     def choose_condition(self, obj):
 
-        pass
+        self.refresh_choiceboxs(obj.GetSelection(), 0, 0)
+
+        selection_info = self.get_tree_item_info(self.tree)
+        if selection_info:
+            select_id, condition_str, condition_value = selection_info
+            new_item_str = self.choice_conditions.GetStringSelection()
+            _tmp_value = {}
+            _tmp_value['condition_value'] = self.values[new_item_str][0]
+            _tmp_value['operation_value'] = self.operations[new_item_str][0]
+
+            newitem = (new_item_str, [], _tmp_value)
+            self.model.items[select_id] = newitem
+            self.tree.RefreshItems()
+            self.save_paras()
+        else:
+            pass
 
     def choose_operation(self, obj):
 
-        pass
+        selection_info = self.get_tree_item_info(self.tree)
+        if selection_info:
+            select_id, condition_str, condition_value = selection_info
+            _, _, select_value = self.model.items[select_id]
+            select_value['operation_value'] = unicode(self.choice_controls.GetStringSelection())
+            self.tree.RefreshItems()
+            self.save_paras()
+        else:
+            pass
 
     def choose_value(self, obj):
 
-        pass
+        selection_info = self.get_tree_item_info(self.tree)
+        if selection_info:
+            select_id, condition_str, condition_value = selection_info
+            _, _, select_value = self.model.items[select_id]
+            select_value['condition_value'] = unicode(self.choice_values.GetStringSelection())
+            controlfile_tools.log_bystatus('select_value is %s' % str(select_value))
+            self.tree.RefreshItems()
+            self.save_paras()
+        else:
+            pass
 
     def get_tree_item_info(self, obj):
         select_item = obj.GetSelection()
@@ -163,6 +209,9 @@ class IFConditionControl():
         self.conditions = self.control_condition_data['condition']
         self.values = self.control_condition_data['value']
         self.operations = self.control_condition_data['operation']
+        self.default_item = self.control_condition_data['default_append_item']
+        self.refresh_data = self.control_condition_data['default_refresh_data']
+        self.operation_values = self.control_condition_data['operation_values']
         controlfile_tools.log_bystatus('condition is %s, value is %s, operation is %s '
                                        % (str(self.conditions), str(self.values), str(self.operations)) )
 

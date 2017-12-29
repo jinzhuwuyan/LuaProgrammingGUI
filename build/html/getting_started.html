@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lua自动编程界面介绍 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="controlprocess" href="control.html" />
+    <link rel="prev" title="Welcome to LuaProgrammingGUI’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><h1 style="font-size: 3em;">Sampledoc</h1></a>
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to LuaProgrammingGUI’s documentation!</a></li>
+      <li>Next: <a href="control.html" title="next chapter">controlprocess</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lua">
+<span id="getting-started"></span><h1>Lua自动编程界面介绍<a class="headerlink" href="#lua" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing-docdir">
+<span id="id1"></span><h2>目录结构<a class="headerlink" href="#installing-docdir" title="Permalink to this headline">¶</a></h2>
+<p>目录结构打印:</p>
+<div class="highlight-default"><div class="highlight"><pre>├── build               编译html文件的生成文件
+├── config.py           自动生成docs的配置文件
+├── demos               应用Lua自动编程界面的demos(重要)
+├── dependencies        依赖
+├── __init__.py
+├── __init__.pyc
+├── Main.py             主程序入口文件
+├── Main.pyc
+├── make.bat
+├── Makefile            编译html文件的MakeFile
+├── README.md
+├── source              编译html文件的源文件
+├── src                 已发布版本的文件目录
+└── test                测试开发版本的文件目录(重要)
+</pre></div>
+</div>
+</div>
+<div class="section" id="important-dir">
+<span id="id2"></span><h2>重要文件目录<a class="headerlink" href="#important-dir" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>目录</td>
+<td>说明</td>
+</tr>
+<tr class="row-even"><td>demos</td>
+<td>包含底层自动转出代码的引擎及对Commands重写的文件</td>
+</tr>
+<tr class="row-odd"><td>test</td>
+<td>包含所有自动Lua编程GUI的逻辑代码及调用demos中的引擎写命令的逻辑</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, yan_sw.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/getting_started.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
