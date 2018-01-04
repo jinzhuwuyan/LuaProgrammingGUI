@@ -211,12 +211,11 @@ class Control():
         self._control_model('add', data)
 
     def delete_item(self):
-        if self.model.items:
-            self._control_model('delete')
+        self._control_model('delete')
 
     def change_item_position(self, change_way = 'up'):
-        self.change_way = change_way
-        self._control_model('change')
+            self.change_way = change_way
+            self._control_model('change')
 
     def save_to_disk(self):
         # TODO: 保存当前数据进行文件
@@ -224,13 +223,16 @@ class Control():
         if self.file_path:
             try:
                 print 'saving file.',self.model.items
-                controlfile_tools.save(self.file_path, self.generate_prj_data())
-                commands_data = self.orgnize_commands()
-                pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
-                return True, '保存成功！'
+                if self.model.items:
+                    controlfile_tools.save(self.file_path, self.generate_prj_data())
+                    commands_data = self.orgnize_commands()
+                    pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
+                    return True, '保存成功！'
+                else:
+                    return False, '为了确保程序正常退出，请至少添加一个延时操作DELAY!'
             except Exception as e:
                 exceptions = sys.exc_info()
-                return False, '保存失败，请检查第%d行错误原因！' % exceptions[2].tb_lineno
+                return False, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
         else:
             # load filepath
             return False, '请检查文件路径%s是否正确？' % self.file_path
@@ -357,21 +359,30 @@ class Control():
             # obj = self._add_obj_bylimit(obj, index, limit=limit)
             add_control = TreeItemController()
             add_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
-            self.print_allerrmsg(add_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
-            self.model.items = add_control.items
+            if self.get_selection_paras():
+                self.print_allerrmsg(add_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
+                self.model.items = add_control.items
+            else:
+                wx.MessageBox(u'请选择左侧函数列表中需要添加的函数！')
             # controlfile_tools.log_bystatus('after adding items is %s' % str(self.model.items))
         elif self.command == 'change':
             change_control = TreeItemController()
             change_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
-            self.print_allerrmsg(
-                change_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras()), change_way=self.change_way))
-            self.model.items = change_control.items
+            if self.pos:
+                self.print_allerrmsg(
+                    change_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras()), change_way=self.change_way))
+                self.model.items = change_control.items
+            else:
+                wx.MessageBox(u'请选择需要改变位置的函数！')
 
         elif self.command == 'delete':
             delete_control = TreeItemController()
             delete_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
-            self.print_allerrmsg(delete_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
-            self.model.items = delete_control.items
+            if self.pos:
+                self.print_allerrmsg(delete_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
+                self.model.items = delete_control.items
+            else:
+                wx.MessageBox(u'请选择需要删除的函数！')
             # obj = self._delete_obj(obj, index)
 
         return obj
@@ -448,8 +459,9 @@ class Control():
 
     def load_help_msg(self):
         controlfile_tools.log_bystatus('help_msg_path is %s' % self.help_msg_path)
-        data = controlfile_tools.loadyaml(self.help_msg_path)
-        return data
+        with open(self.help_msg_path, 'r') as f:
+            data = unicode(f.read())
+            return data
 
     def get_help(self, func_str):
         return self.help_msg.get(func_str, None)
@@ -543,7 +555,8 @@ class Control():
         return self._func_selection
 
     def get_selection_paras(self):
-        return copy.deepcopy(self._func_items)[self._func_str]
+        print '获取到paras为%s' % str(copy.deepcopy(self._func_items).get(self._func_str, None))
+        return copy.deepcopy(self._func_items).get(self._func_str, None)
 
     def get_funcsitems(self):
         self._refresh_func_init()

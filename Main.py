@@ -7,9 +7,9 @@ from control.tools import command_tools
 # from test.control.tools import  create_reference
 import os
 if __name__ == '__main__':
-    # app = wx.App()
-    # Frame_Main(None).Show(True)
-    # app.MainLoop()
+     app = wx.App()
+     Frame_Main(None).Show(True)
+     app.MainLoop()
     # print dir(command_tools)
     # print command_tools.__doc__
     # print command_tools.__file__
