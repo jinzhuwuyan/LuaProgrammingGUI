@@ -38,7 +38,7 @@ funcs = {
 
 def rewrite_funcs_data():
 
-    with open('../reference.yml', 'r') as f1:
+    with open(os.path.abspath(os.path.join(current_path, '../reference.yml')), 'r') as f1:
         references = yaml.load(f1.read())
         _file_path = os.path.join(references['control_path'], 'funcs_data.yml')
         _data = funcs

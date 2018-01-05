@@ -1,0 +1,29 @@
+<map id="inheritanceaaf2571540" name="inheritanceaaf2571540">
+<area shape="rect" id="node1" href="#view.view_process.TreeMixin.DemoTreeMixin" target="_top" title="view.view_process.TreeMixin.DemoTreeMixin" alt="" coords="343,16,430,23"/>
+<area shape="rect" id="node10" href="#view.view_process.TreeMixin.VirtualCustomTreeCtrl" target="_top" title="view.view_process.TreeMixin.VirtualCustomTreeCtrl" alt="" coords="667,41,766,48"/>
+<area shape="rect" id="node12" href="#view.view_process.TreeMixin.VirtualTreeCtrl" target="_top" title="view.view_process.TreeMixin.VirtualTreeCtrl" alt="" coords="457,16,541,23"/>
+<area shape="rect" id="node14" href="#view.view_process.TreeMixin.VirtualTreeListCtrl" target="_top" title="view.view_process.TreeMixin.VirtualTreeListCtrl" alt="" coords="453,30,545,38"/>
+<area shape="rect" id="node16" href="#view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF" target="_top" title="view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF" alt="" coords="444,45,554,52"/>
+<area shape="rect" id="node2" title="This is a mixin class that can be used to allow for virtual tree" alt="" coords="255,2,324,9"/>
+<area shape="rect" id="node3" title="This is a mixin class that can be used to easily implement" alt="" coords="252,16,327,23"/>
+<area shape="rect" id="node4" title="This is a mixin class that can be used to save and restore" alt="" coords="250,30,329,38"/>
+<area shape="rect" id="node5" href="#view.view_process.TreeMixin.TesPanel" target="_top" title="view.view_process.TreeMixin.TesPanel" alt="" coords="349,74,424,81"/>
+<area shape="rect" id="node6" title="Proxy of C++ Panel class" alt="" coords="269,74,310,81"/>
+<area shape="rect" id="node24" title="Proxy of C++ ScrolledWindow class" alt="" coords="357,88,416,95"/>
+<area shape="rect" id="node7" href="#view.view_process.TreeMixin.TreeModel" target="_top" title="TreeModel holds the domain objects that are shown in the different" alt="" coords="2,45,79,52"/>
+<area shape="rect" id="node8" href="#view.view_process.TreeMixin.TreeNotebook" target="_top" title="view.view_process.TreeMixin.TreeNotebook" alt="" coords="568,59,653,67"/>
+<area shape="rect" id="node9" title="Proxy of C++ Notebook class" alt="" coords="475,59,523,67"/>
+<area shape="rect" id="node11" title=":class:`CustomTreeCtrl` is a class that mimics the behaviour of :class:`TreeCtrl`, with almost the" alt="" coords="569,81,652,88"/>
+<area shape="rect" id="node13" title="Proxy of C++ TreeCtrl class" alt="" coords="364,30,409,38"/>
+<area shape="rect" id="node15" title="Proxy of C++ TreeListCtrl class" alt="" coords="363,45,410,52"/>
+<area shape="rect" id="node17" title="Proxy of C++ BookCtrlBase class" alt="" coords="362,59,411,67"/>
+<area shape="rect" id="node18" title="This is the base class for a control or &#39;widget&#39;." alt="" coords="271,45,308,52"/>
+<area shape="rect" id="node19" title="Proxy of C++ WithImages class" alt="" coords="267,59,312,67"/>
+<area shape="rect" id="node20" title="wx.Window is the base class for all windows and represents any visible" alt="" coords="175,59,213,67"/>
+<area shape="rect" id="node21" title="Proxy of C++ EvtHandler class" alt="" coords="93,59,137,67"/>
+<area shape="rect" id="node22" title="The base class for most wx objects, although in wxPython not" alt="" coords="23,59,58,67"/>
+<area shape="rect" id="node23" title="Proxy of C++ PyScrolledWindow class" alt="" coords="467,84,531,91"/>
+<area shape="rect" id="node25" title="Proxy of C++ ScrollHelper class" alt="" coords="263,88,316,95"/>
+<area shape="rect" id="node26" title="This class attempts to hide the differences in API between the" alt="" coords="151,9,236,16"/>
+<area shape="rect" id="node27" title="This class provides methods that are not part of the API of any " alt="" coords="159,23,228,31"/>
+</map>

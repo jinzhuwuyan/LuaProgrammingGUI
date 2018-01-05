@@ -49,6 +49,15 @@ Lua自动编程界面介绍
 实现效果
 =============================
 
+集成在主界面作为自动编程功能
+-----------------------------
+
+.. image:: _static/add_with_Main_panel.png
+
+独立实现的效果
+-----------------------------
+
+.. image:: _static/only_one_panel.png
 
 .. _execution_principle:
 
@@ -60,3 +69,23 @@ Lua自动编程界面介绍
 #. 功能间调用关系模型
 
 #. 分功能模型
+
+.. _simple_model:
+
+简单模型
+----------------------------
+
+简单的来讲， 软件模型是典型的MVC结构。
+通过publisher机制对界面数据与底层数据之间的交互进行解耦，统一由Controller进行管理。
+
+
+.. _link_relationship_between_functions:
+
+
+功能间调用关系模型
+----------------------------
+relationships:
+
+
+
+

@@ -20,8 +20,10 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/control/control_process/'))
-sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/'))
+sys.path.insert(0, os.path.abspath('.'))
 
+sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/'))
+sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -38,7 +40,10 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.githubpages',
+    'sphinx.ext.inheritance_diagram']
+
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

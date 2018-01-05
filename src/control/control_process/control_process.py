@@ -9,6 +9,8 @@ import copy
 import time
 import sys
 import os
+current_path = os.path.split(os.path.abspath(__file__))[0]
+sys.path.insert(0, os.path.abspath(os.path.join(current_path, '../../')))
 from control.tools import command_tools
 from control.tools import controlfile_tools
 from data.object_process import process_object
@@ -62,7 +64,6 @@ class Control():
         self.repeat_time = 1
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
-        pub.subscribe(self._refresh_parasdata, 'save_paras')
         # pub.subscribe(self.refresh_paras_again, 'refresh_paras_again')
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
         self._refresh_func_init()
@@ -572,3 +573,9 @@ class Control():
         (self._func_items, self._func_str, self._func_selection,
                         self._funcs_unlimit, self.file_path, self.rename_list, self.help_msg_path) = data
         controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))
+
+
+if __name__ == '__main__':
+    print 'Test'
+    control = Control(None, None)
+    print control.file_path

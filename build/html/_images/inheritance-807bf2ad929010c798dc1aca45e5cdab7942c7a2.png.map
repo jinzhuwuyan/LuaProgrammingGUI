@@ -1,0 +1,22 @@
+<map id="inheritancea57d772ceb" name="inheritancea57d772ceb">
+<area shape="rect" id="node2" title="This is a mixin class that can be used to allow for virtual tree" alt="" coords="263,2,325,12"/>
+<area shape="rect" id="node3" title="This is a mixin class that can be used to easily implement" alt="" coords="259,22,329,32"/>
+<area shape="rect" id="node4" title="This is a mixin class that can be used to save and restore" alt="" coords="256,42,332,52"/>
+<area shape="rect" id="node6" title="Proxy of C++ Panel class" alt="" coords="270,102,318,112"/>
+<area shape="rect" id="node24" title="Proxy of C++ ScrolledWindow class" alt="" coords="351,122,425,132"/>
+<area shape="rect" id="node7" title="TreeModel holds the domain objects that are shown in the different" alt="" coords="2,62,62,72"/>
+<area shape="rect" id="node9" title="Proxy of C++ Notebook class" alt="" coords="467,82,526,92"/>
+<area shape="rect" id="node11" title=":class:`CustomTreeCtrl` is a class that mimics the behaviour of :class:`TreeCtrl`, with almost the" alt="" coords="568,111,657,122"/>
+<area shape="rect" id="node13" title="Proxy of C++ TreeCtrl class" alt="" coords="361,42,415,52"/>
+<area shape="rect" id="node15" title="Proxy of C++ TreeListCtrl class" alt="" coords="359,62,417,72"/>
+<area shape="rect" id="node17" title="Proxy of C++ BookCtrlBase class" alt="" coords="358,82,418,92"/>
+<area shape="rect" id="node18" title="This is the base class for a control or &#39;widget&#39;." alt="" coords="273,62,316,72"/>
+<area shape="rect" id="node19" title="Proxy of C++ WithImages class" alt="" coords="267,82,321,92"/>
+<area shape="rect" id="node20" title="wx.Window is the base class for all windows and represents any visible" alt="" coords="173,82,217,92"/>
+<area shape="rect" id="node21" title="Proxy of C++ EvtHandler class" alt="" coords="81,82,134,92"/>
+<area shape="rect" id="node22" title="The base class for most wx objects, although in wxPython not" alt="" coords="11,82,53,92"/>
+<area shape="rect" id="node23" title="Proxy of C++ PyScrolledWindow class" alt="" coords="456,116,537,127"/>
+<area shape="rect" id="node25" title="Proxy of C++ ScrollHelper class" alt="" coords="261,122,327,132"/>
+<area shape="rect" id="node26" title="This class attempts to hide the differences in API between the" alt="" coords="153,12,237,23"/>
+<area shape="rect" id="node27" title="This class provides methods that are not part of the API of any " alt="" coords="164,32,226,43"/>
+</map>

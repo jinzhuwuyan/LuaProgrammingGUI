@@ -78,6 +78,8 @@
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_path</span><span class="p">,</span> <span class="s1">&#39;../../&#39;</span><span class="p">)))</span>
 <span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">command_tools</span>
 <span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">controlfile_tools</span>
 <span class="kn">from</span> <span class="nn">data.object_process</span> <span class="k">import</span> <span class="n">process_object</span>
@@ -131,7 +133,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="c1"># refresh func data from function list panel</span>
         <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_funcs_data</span><span class="p">,</span> <span class="s1">&#39;refresh_func_ret&#39;</span><span class="p">)</span>
-        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refresh_parasdata</span><span class="p">,</span> <span class="s1">&#39;save_paras&#39;</span><span class="p">)</span>
         <span class="c1"># pub.subscribe(self.refresh_paras_again, &#39;refresh_paras_again&#39;)</span>
         <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unselete_all</span><span class="p">,</span> <span class="s1">&#39;UnSelectAll_controlprocess&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
@@ -641,6 +642,12 @@
         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_selection</span><span class="p">,</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span>
         <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_get_funcs_data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Test&#39;</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="n">Control</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">control</span><span class="o">.</span><span class="n">file_path</span>
 </pre></div>
 
           </div>
