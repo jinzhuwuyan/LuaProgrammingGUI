@@ -12,7 +12,35 @@ except ImportError:
     from pubsub import pub
 
 class IFConditionControl():
+    """
+                .. admonition:: Class Infos
 
+                        |  *class_description*:
+                        |        Maintain the if condition panel paras
+                        |
+                        |  *class_chinese_description*:
+                        |        初始化if条件树(:meth:`refresh_paras`)
+                        |        if条件树的数据维护控制(:meth:`add_condition`, :meth:`delete_condition`, :meth:`change_tree_selection`)
+                        |        刷新条件树参数(:meth:`save_paras`)
+                        |
+                        |
+                        |
+                        | The **initilization** of :class:`IFConditionControl` is:
+                        |        control = (view_instance, control_data_path)
+                        |
+                        |
+                        | **Parameters of initilization**:
+                        |
+                        |       **view_instance** : :class:`~view.view_parameters.Panel_edit_if_condition_overwrite.Panel_edit_ifcondition`  or its subclass
+                        |
+                        |       **control_data_path** : str
+                        |               the exist path of initilizing the condition panel's data
+                        |
+                        |
+                        |
+                        |
+
+    """
     def __init__(self, parent, control_data_path):
         self.parent = parent
         # 默认添加的item
@@ -50,7 +78,7 @@ class IFConditionControl():
         self.config()
 
     def config(self):
-
+        """config the control"""
         # 初始化if条件列表的数据模型
         self.model = conditiontree_object.Condition_Tree_Container()
         # 初始化if条件参数控件的数据
@@ -59,6 +87,11 @@ class IFConditionControl():
         pub.subscribe(self.refresh_paras, 'get_if_condition_paras')
 
     def refresh_paras(self, data):
+        """
+        reinit the paras controls with the condition data
+        :param `data`: the condition data for initilization
+        :type `data`: dict
+        """
         # 初始化条件控制语句列表控件
 
         controlfile_tools.log_bystatus('recv refresh if conditions paras data is %s' % str(data))
@@ -73,6 +106,7 @@ class IFConditionControl():
         self.parent.Refresh()
 
     def set_tree(self, tree):
+        """set if condition tree and init other controls of parent"""
         self.tree = tree
 
         self.choice_conditions = self.parent.m_choice_choosecondition

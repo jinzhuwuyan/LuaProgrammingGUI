@@ -1,9 +1,11 @@
 #! encoding: utf-8
 """
-    Author: yan_sw
-    Date: Saturday, 15:29, 2018-01-06
-    Description:
-        Control the para panel which need to choose a point as an paras value
+**Module Info**::
+
+   Author: yan_sw
+   Date: 2018-01-08 13:53
+   Description:
+       Control the para panel which need to choose a point as an paras value
 
 """
 import wx
@@ -16,23 +18,27 @@ except ImportError:
 
 class ChoosePoinListControl():
     """
-        A Class to Control the Point List initlization and refresh the paras data when the point has changed
-        The initilization of :class:`~control.control_parameters.control_choose_pointlist` is:
-            ``control = ChoosePointListControl(view_instance, datalist)``
+            .. admonition:: Class Description
 
-        Attributes
-        ----------
-        conrtol : instance
-            The instance of :class:`~control.control_parameters.control_choose_pointlist`
+                    |   Class for which function need to choose a point as parameter and show the detailed information of
+                    | chosen point. When a point have been chosen, it ought to update the paras data.
+                    |
+                    | 此类用于维护函数的参数点数据更新及被选中的点数据的显示(:meth:`set_textctrl_datas`)
+                    |
+                    |
+                    | The **initilization** of :class:`ChoosePointListControl` is:
+                    |        ``control = ChoosePointListControl(view_instance, datalist)``
+                    |
+                    |
+                    | **Parameters of initilization**:
+                    |
+                    |       **view_instance** : :class:`~view.view_parameters.Panel_choose_pointlist_overwrite`  or its subclass
+                    |           A view instance with a combo box
+                    |
+                    |       **datalist** : list
+                    |           A data list which is loaded from a pts file with yaml type
 
-        Parameters
-        ----------
-        view_instance : :class:`~view.view_parameters.Panel_choose_pointlist_overwrite`  or its subclass
-
-        datalist : list
-            datalist must be yaml data which is loaded from point file.
-
-        """
+    """
     def __init__(self, parent, datalist):
         # X_value textCtrl to show
         self.tc_X = None
@@ -88,7 +94,22 @@ class ChoosePoinListControl():
             return None
 
     def set_textctrl_datas(self, id):
-        """set the point data to these value TextCtrl by comboBox selection"""
+        """
+        set the point data to these value TextCtrl by comboBox selection
+        :param `id`: the combox id
+        :type `id`: int
+
+        :rtype: tuple
+
+
+
+        .. attention::
+
+                | The return format is (isFunctionTargetOk, showmsg)
+                | if isFunctionTargetOk is False, then will show the showmsg
+
+        """
+
         controlfile_tools.log_bystatus('selection id is %d' % id)
         show_point = self.get_pointbyid(id - 1)
         if show_point:
@@ -126,14 +147,17 @@ class ChoosePoinListControl():
 
 
     def select_elbow(self, pos):
+        """refresh elbow value of the point data"""
         self.parent.m_choice_elbow.SetSelection(pos)
         self.parent.m_choice_elbow.Refresh()
 
     def select_handmode(self, pos):
+        """refresh the handmode value of the point data"""
         self.parent.m_choice_handmode.SetSelection(pos)
         self.parent.m_choice_handmode.Refresh()
 
     def select_pointlist(self, pos):
+        """refresh the selection of the pointlist"""
         self.parent.m_comboBox_pointlist.SetSelection(pos)
         self.parent.m_comboBox_pointlist.Refresh()
 
@@ -142,5 +166,6 @@ class ChoosePoinListControl():
         return self.get_id_fromstring(value)
 
     def refresh_datalist(self, datalist):
+        """ refresh datalist which have been initilized"""
         self.datalist = datalist
 

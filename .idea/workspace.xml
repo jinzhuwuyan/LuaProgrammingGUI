@@ -2,52 +2,423 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/doctrees/control.doctree" afterPath="$PROJECT_DIR$/../../build/doctrees/control.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/../../build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/doctrees/getting_started.doctree" afterPath="$PROJECT_DIR$/../../build/doctrees/getting_started.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/../../build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/objects.inv" afterPath="$PROJECT_DIR$/../../build/html/objects.inv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Main.py" afterPath="$PROJECT_DIR$/../../Main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/_modules/index.html" afterPath="$PROJECT_DIR$/../../build/html/_modules/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/_sources/getting_started.rst.txt" afterPath="$PROJECT_DIR$/../../build/html/_sources/getting_started.rst.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/genindex.html" afterPath="$PROJECT_DIR$/../../build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/getting_started.html" afterPath="$PROJECT_DIR$/../../build/html/getting_started.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/py-modindex.html" afterPath="$PROJECT_DIR$/../../build/html/py-modindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../build/html/searchindex.js" afterPath="$PROJECT_DIR$/../../build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../demos/luaprogramme/control/Data_Handler.py" afterPath="$PROJECT_DIR$/../../demos/luaprogramme/control/Data_Handler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../source/conf.py" afterPath="$PROJECT_DIR$/../../source/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../source/getting_started.rst" afterPath="$PROJECT_DIR$/../../source/getting_started.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/control/control_parameters/control_parameters.py" afterPath="$PROJECT_DIR$/../../src/control/control_parameters/control_parameters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/data/object_function_list/function_object.py" afterPath="$PROJECT_DIR$/../../src/data/object_function_list/function_object.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/data/object_parameters/conditiontree_object.py" afterPath="$PROJECT_DIR$/../../src/data/object_parameters/conditiontree_object.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/LuaProgrammingPanel.py" afterPath="$PROJECT_DIR$/../../src/view/LuaProgrammingPanel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_function_list/Panel_ChooseFunc_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_parameters/GUI_IF_Codition.py" afterPath="$PROJECT_DIR$/../../src/view/view_parameters/GUI_IF_Codition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_choose_pointlist_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_choose_pointlist_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_control_paras_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_control_paras_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_edit_if_condition_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_parameters/Panel_edit_if_condition_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_process/Panel_controlprocess_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/view/view_process/wxPanel_overwrite.py" afterPath="$PROJECT_DIR$/../../src/view/view_process/wxPanel_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" afterPath="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" afterPath="$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py" afterPath="$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_parameters/control_parameters.py" afterPath="$PROJECT_DIR$/../../test/control/control_parameters/control_parameters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_process/control_process.py" afterPath="$PROJECT_DIR$/../../test/control/control_process/control_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/control_process/control_process_showdata.py" afterPath="$PROJECT_DIR$/../../test/control/control_process/control_process_showdata.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/control/tools/view_tools.py" afterPath="$PROJECT_DIR$/../../test/control/tools/view_tools.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/data/object_function_list/function_object.py" afterPath="$PROJECT_DIR$/../../test/data/object_function_list/function_object.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/data/object_parameters/conditiontree_object.py" afterPath="$PROJECT_DIR$/../../test/data/object_parameters/conditiontree_object.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/data/object_process/process_object.py" afterPath="$PROJECT_DIR$/../../test/data/object_process/process_object.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/LuaProgrammingPanel.py" afterPath="$PROJECT_DIR$/../../test/view/LuaProgrammingPanel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_function_list/Panel_ChooseFunc_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_parameters/GUI_IF_Codition.py" afterPath="$PROJECT_DIR$/../../test/view/view_parameters/GUI_IF_Codition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_choose_pointlist_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_choose_pointlist_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_control_paras_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_control_paras_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_edit_if_condition_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_parameters/Panel_edit_if_condition_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_process/Panel_controlprocess_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_process/Panel_controlprocess_overwrite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/view/view_process/wxPanel_overwrite.py" afterPath="$PROJECT_DIR$/../../test/view/view_process/wxPanel_overwrite.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/Design_images/only_one_panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/closed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer31.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer33.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer34.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer41.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer51.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer52.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer53.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer54.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer55.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer56.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/evthandler_unlink_after.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/evthandler_unlink_before.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcell_descent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcontcell_alignv.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcontcell_indent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlwin_border.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_events_chain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_events_winstack.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_cont.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_contbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_hello.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_00.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_05.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_07.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_08.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_09.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_splitter_3d.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_1_thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_2_thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_3_thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_4_thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/api.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/appearance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/available.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/background.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/base.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_blue.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_grey.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/central_bar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/class_hierarchy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/class_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/contributed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/description.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/events.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/extra_styles.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/file_info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/function_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/globals.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/indices.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/layout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/license.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/link.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/method_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/minus2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/module_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/mondrian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/navigation.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/note.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/orange_gradient.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/other_info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/overload.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/package_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_main.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_small.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_title.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/platforms.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/plus2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/property_summary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/python.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/seealso.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/state.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/styles.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/sub_classes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/super_classes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/table_contents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ticks_green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ticks_red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/todo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/todo_big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/usage.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/viewmag.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/whatsnew.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-apply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cdrom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-clear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-convert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-execute.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-file.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-find-and-replace.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-floppy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-back-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-forward-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-first-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-last-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-harddisk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-indent-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-index.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-jump-to-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-fill.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-network.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-paste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-preferences.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-print-preview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-quit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-redo-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-revert-to-saved-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-save-as.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-color.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-font.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-sort-ascending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-sort-descending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-spell-check.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-strikethrough.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-undelete-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-underline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-undo-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-unindent-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-fit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-in.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/no_appearance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.animationctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.bitmapcombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.calendarctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.commandlinkbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.datepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.hyperlinkctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.ownerdrawncombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.richtooltip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.timepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.bitmapbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.checkbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.checklistbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.choice.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.choicebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.collapsiblepane.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.colourpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.combobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.comboctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dataview.dataviewctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dataview.dataviewtreectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dirpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.filectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.filepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.fontpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.gauge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.genericdirctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listbook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.notebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.radiobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.radiobutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.scrollbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.searchctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.slider.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinctrldouble.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.staticbitmap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.staticbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.statictext.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.textctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.togglebutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.treectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.animationctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.bitmapcombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.calendarctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.datepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.hyperlinkctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.ownerdrawncombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.richtooltip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.timepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.bitmapbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.checkbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.checklistbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.choice.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.choicebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.collapsiblepane.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.colourpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.combobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.comboctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dataview.dataviewctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dataview.dataviewtreectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dirpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.filepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.fontpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.frame.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.gauge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.genericdirctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listbook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.notebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.radiobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.radiobutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.scrollbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.searchctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.slider.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinctrldouble.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.staticbitmap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.staticbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.statictext.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.textctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.togglebutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.treectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.animationctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.bitmapcombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.calendarctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.commandlinkbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.datepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.hyperlinkctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.ownerdrawncombobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.richtooltip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.timepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.aui.auimdiparentframe.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.aui.framemanager.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.bitmapbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.checkbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.checklistbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.choice.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.choicebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.collapsiblepane.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.colourpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.combobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.comboctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dataview.dataviewctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dataview.dataviewtreectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dialog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dirpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.filepickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.fontpickerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.frame.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.gauge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.genericdirctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.advancedsplash.advancedsplash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aquabutton.aquabutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.auibar.auitoolbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.auibook.auinotebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.framemanager.auimanager.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.balloontip.balloontip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.buttonpanel.buttonpanel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.cubecolourdialog.cubecolourdialog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.customtreectrl.customtreectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.flatmenu.flatmenubar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.flatnotebook.flatnotebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.floatspin.floatspin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.fmcustomizedlg.fmcustomizedlg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.foldpanelbar.foldpanelbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.fourwaysplitter.fourwaysplitter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.genericmessagedialog.genericmessagedialog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.gradientbutton.gradientbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.hyperlink.hyperlinkctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.hypertreelist.hypertreelist.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.infobar.infobar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.knobctrl.knobctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.labelbook.flatimagebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.labelbook.labelbook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.multidirdialog.multidirdialog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.peakmeter.peakmeterctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.piectrl.piectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.piectrl.progresspie.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pybusyinfo.pybusyinfo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pycollapsiblepane.pycollapsiblepane.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pygauge.pygauge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pyprogress.pyprogress.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.bar.ribbonbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.buttonbar.ribbonbuttonbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.gallery.ribbongallery.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.page.ribbonpage.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.panel.ribbonpanel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.toolbar.ribbontoolbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.rulerctrl.rulerctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmapbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptextbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptexttogglebutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptogglebutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shortcuteditor.shortcuteditor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.speedmeter.speedmeter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.supertooltip.supertooltip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.thumbnailctrl.thumbnailctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.toasterbox.toasterbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ultimatelistctrl.ultimatelistctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.xlsgrid.xlsgrid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.zoombar.zoombar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listbook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.miniframe.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.notebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.radiobox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.radiobutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.scrollbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.searchctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.slider.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinbutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinctrldouble.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.staticbitmap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.staticbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.statictext.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.textctrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.togglebutton.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.treectrl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.wizard.pywizardpage.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.wizard.wizardpagesimple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/basic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/gallery.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/phoenix.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/pygments.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/tables.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/header.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/jquery.collapse.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/jquery.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/sidebar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/toggle_visibility.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/indexsidebar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/main.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/searchbox.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/sourcelink.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../source/control.rst" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/control.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/control.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/../build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/index.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/objects.inv" afterPath="$PROJECT_DIR$/../build/html/objects.inv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/.buildinfo" afterPath="$PROJECT_DIR$/../build/html/.buildinfo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control_process.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control_process.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/index.html" afterPath="$PROJECT_DIR$/../build/html/_modules/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/control.html" afterPath="$PROJECT_DIR$/../build/html/control.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex.html" afterPath="$PROJECT_DIR$/../build/html/genindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/getting_started.html" afterPath="$PROJECT_DIR$/../build/html/getting_started.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/index.html" afterPath="$PROJECT_DIR$/../build/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/py-modindex.html" afterPath="$PROJECT_DIR$/../build/html/py-modindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/search.html" afterPath="$PROJECT_DIR$/../build/html/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/searchindex.js" afterPath="$PROJECT_DIR$/../build/html/searchindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/_templates/layout.html" afterPath="$PROJECT_DIR$/../source/_templates/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/conf.py" afterPath="$PROJECT_DIR$/../source/conf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/getting_started.rst" afterPath="$PROJECT_DIR$/../source/getting_started.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/index.rst" afterPath="$PROJECT_DIR$/../source/index.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/control/control_parameters/control_choose_pointlist.py" afterPath="$PROJECT_DIR$/../src/control/control_parameters/control_choose_pointlist.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" afterPath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,29 +430,49 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$create_reference.coverage" NAME="create_reference Coverage Results" MODIFIED="1511164850126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$controlfile_tools.coverage" NAME="controlfile_tools Coverage Results" MODIFIED="1511164928880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1512112643394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../demos/luaprogramme" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1512112643394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/demos/luaprogramme" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$TreeMixin.coverage" NAME="TreeMixin Coverage Results" MODIFIED="1510802501140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/view/control_process" />
-    <SUITE FILE_PATH="coverage/_$control_function.coverage" NAME="control_function Coverage Results" MODIFIED="1515226645785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../test/control/control_function_list" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$cmds2.coverage" NAME="cmds2 Coverage Results" MODIFIED="1512094091608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../demos/luaprogramme/command_class/core" />
+    <SUITE FILE_PATH="coverage/_$control_function.coverage" NAME="control_function Coverage Results" MODIFIED="1515226645785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/control_function_list" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$cmds2.coverage" NAME="cmds2 Coverage Results" MODIFIED="1512094091608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/demos/luaprogramme/command_class/core" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$parameters_object.coverage" NAME="parameters_object Coverage Results" MODIFIED="1510906925005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/data/control_parameters" />
-    <SUITE FILE_PATH="coverage/_$walk_dictionary_to_clean_dirty_msg.coverage" NAME="walk_dictionary_to_clean_dirty_msg Coverage Results" MODIFIED="1515228218994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../test/control/tools" />
+    <SUITE FILE_PATH="coverage/_$walk_dictionary_to_clean_dirty_msg.coverage" NAME="walk_dictionary_to_clean_dirty_msg Coverage Results" MODIFIED="1515228218994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$_core.coverage" NAME="_core Coverage Results" MODIFIED="1511245803605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/usr/local/wxPython/wx" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$TextDialogClass.coverage" NAME="TextDialogClass Coverage Results" MODIFIED="1512112633069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../test/view/view_tools" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$TextDialogClass.coverage" NAME="TextDialogClass Coverage Results" MODIFIED="1512112633069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/test/view/view_tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Panel_ChooseFunc_overwrite.coverage" NAME="Panel_ChooseFunc_overwrite Coverage Results" MODIFIED="1510816023934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/view/function_list" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$create_funcs_datas.coverage" NAME="create_funcs_datas Coverage Results" MODIFIED="1510817776205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
-    <SUITE FILE_PATH="coverage/_$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1515229262111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
+    <SUITE FILE_PATH="coverage/_$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1515229262111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$command_tools.coverage" NAME="command_tools Coverage Results" MODIFIED="1511242541671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Data_Handler.coverage" NAME="Data_Handler Coverage Results" MODIFIED="1512100849471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../demos/luaprogramme/control" />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Data_Handler.coverage" NAME="Data_Handler Coverage Results" MODIFIED="1512100849471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/demos/luaprogramme/control" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1511312995466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$" />
-    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512121845746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
+    <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512121845746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="getting_started.rst" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../source/getting_started.rst">
+      <file leaf-file-name="control_choose_pointlist.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+            <state relative-caret-position="113">
+              <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="control_if_condition.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Panel_edit_if_condition_overwrite.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-288">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,62 +525,62 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/test/data/control_process/process_object.py" />
-        <option value="$USER_HOME$/test/control/control_function.py" />
-        <option value="$USER_HOME$/test/control/control_process.py" />
-        <option value="$USER_HOME$/test/view/function_list/Panel_ChooseFunc_overwrite.py" />
-        <option value="$USER_HOME$/test/data/function_list/function_object.py" />
-        <option value="$USER_HOME$/test/data/object_process/process_object.py" />
-        <option value="$USER_HOME$/test/view/view_process/TreeMixin.py" />
-        <option value="$USER_HOME$/test/view/view_parameters/Panel_control_paras_overwrite.py" />
-        <option value="$USER_HOME$/test/data/object_parameters/parameters_object.py" />
-        <option value="$USER_HOME$/test/control/tools/command_tools.py" />
-        <option value="$USER_HOME$/test/view/view_parameters/Panel_edit_paras_overwrite.py" />
-        <option value="$USER_HOME$/test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
-        <option value="$USER_HOME$/Main.py" />
-        <option value="$USER_HOME$/test/control/control_parameters/control_parameters.py" />
-        <option value="$USER_HOME$/test/data/object_function_list/function_object.py" />
-        <option value="$USER_HOME$/test/view/view_process/GUI_controlprocess.py" />
         <option value="$USER_HOME$/test/control/tools/create_reference.py" />
         <option value="$USER_HOME$/test/view/view_process/Panel_controlprocess_overwrite.py" />
         <option value="$USER_HOME$/test/view/MainView.py" />
         <option value="$USER_HOME$/test/control/control_function_list/control_function.py" />
         <option value="$USER_HOME$/test/control/control_process/control_process.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/cmds2.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/commands/commonCmd.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/GenerateCodeClass.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/commands/CommonCmd.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/control/Handle_Msg_Thread.py" />
-        <option value="$PROJECT_DIR$/../../../test/test.lts" />
-        <option value="$PROJECT_DIR$/../../../test/test.lts.py" />
-        <option value="$PROJECT_DIR$/../../../test/control/tools/command_tools.py" />
-        <option value="$PROJECT_DIR$/../../../test/view/view_process/Panel_controlprocess_overwrite.py" />
-        <option value="$PROJECT_DIR$/../../../test/view/view_tools/TextDialog.py" />
-        <option value="$PROJECT_DIR$/../../../test/view/view_tools/TextDialogClass.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/command_class/core/cmds2.py" />
-        <option value="$PROJECT_DIR$/../../../test/test.lts.lua" />
-        <option value="$PROJECT_DIR$/../../../test/control/control_parameters/control_parameters.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/control/Data_Handler.py" />
-        <option value="$PROJECT_DIR$/../../../demos/luaprogramme/command_class/CommonCmd.py" />
-        <option value="$PROJECT_DIR$/../../../test/control/tools/create_reference.py" />
-        <option value="$PROJECT_DIR$/../../../test/view/view_process/TreeMixin.py" />
-        <option value="$PROJECT_DIR$/../../../Main.py" />
-        <option value="$PROJECT_DIR$/../../../test/view/MainView.py" />
-        <option value="$PROJECT_DIR$/../../../test/control/control_process/control_process.py" />
-        <option value="$PROJECT_DIR$/../../source/getting_started.rst" />
+        <option value="/demos/luaprogramme/cmds2.py" />
+        <option value="/demos/luaprogramme/commands/commonCmd.py" />
+        <option value="/demos/luaprogramme/GenerateCodeClass.py" />
+        <option value="/demos/luaprogramme/commands/CommonCmd.py" />
+        <option value="/demos/luaprogramme/control/Handle_Msg_Thread.py" />
+        <option value="/test/test.lts" />
+        <option value="/test/test.lts.py" />
+        <option value="/test/control/tools/command_tools.py" />
+        <option value="/test/view/view_process/Panel_controlprocess_overwrite.py" />
+        <option value="/test/view/view_tools/TextDialog.py" />
+        <option value="/test/view/view_tools/TextDialogClass.py" />
+        <option value="/demos/luaprogramme/command_class/core/cmds2.py" />
+        <option value="/test/test.lts.lua" />
+        <option value="/test/control/control_parameters/control_parameters.py" />
+        <option value="/demos/luaprogramme/control/Data_Handler.py" />
+        <option value="/demos/luaprogramme/command_class/CommonCmd.py" />
+        <option value="/test/control/tools/create_reference.py" />
+        <option value="/test/view/view_process/TreeMixin.py" />
+        <option value="/Main.py" />
+        <option value="/test/view/MainView.py" />
+        <option value="/test/control/control_process/control_process.py" />
+        <option value="$USER_HOME$/source/getting_started.rst" />
+        <option value="$USER_HOME$/source/conf.py" />
+        <option value="$USER_HOME$/test/control/control_function_list/control_function.py" />
+        <option value="$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$USER_HOME$/test/control/control_parameters/control_if_condition.py" />
+        <option value="$USER_HOME$/test/control/control_parameters/control_parameters.py" />
+        <option value="$USER_HOME$/test/control/control_process/control_process.py" />
+        <option value="$USER_HOME$/test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
+        <option value="$USER_HOME$/Main.py" />
+        <option value="$USER_HOME$/test/control/control_function_list/control_function.py" />
+        <option value="$USER_HOME$/src/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$USER_HOME$/source/getting_started.rst" />
+        <option value="$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$PROJECT_DIR$/../../source/index.rst" />
         <option value="$PROJECT_DIR$/../../source/conf.py" />
-        <option value="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
         <option value="$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" />
-        <option value="$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py" />
-        <option value="$PROJECT_DIR$/../../test/control/control_parameters/control_parameters.py" />
-        <option value="$PROJECT_DIR$/../../test/control/control_process/control_process.py" />
-        <option value="$PROJECT_DIR$/../../test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
-        <option value="$PROJECT_DIR$/../../Main.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
+        <option value="$PROJECT_DIR$/../../source/getting_started.rst" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/asasa.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasasaqqq.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasa.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/aaaaaa.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasasa.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" />
       </list>
     </option>
   </component>
@@ -200,10 +591,50 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="77" />
-    <option name="y" value="43" />
-    <option name="width" value="1855" />
-    <option name="height" value="1021" />
+    <option name="x" value="84" />
+    <option name="y" value="89" />
+    <option name="width" value="1853" />
+    <option name="height" value="985" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JSON</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+          <State>
+            <id>docker-compose</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyTypeCheckerInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -220,6 +651,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,61 +668,21 @@
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_function_list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_function_list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_parameters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_process" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -320,55 +713,7 @@
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_function_list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_parameters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="object_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="view_function_list" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -377,48 +722,32 @@
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="view_parameters" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="view_process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="view_tools" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../source/_static/images/Design_images" />
+      <recent name="$PROJECT_DIR$/../../source/_static/images" />
+      <recent name="$PROJECT_DIR$/../../source/_static" />
+      <recent name="$PROJECT_DIR$/../../source/_templates" />
+      <recent name="/demos/luaprogramme/control" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../../../demos/luaprogramme/commands/core" />
+      <recent name="/demos/luaprogramme/commands/core" />
       <recent name="$USER_HOME$/test/control/control_parameters" />
       <recent name="$USER_HOME$/test/control/control_process" />
       <recent name="$USER_HOME$/test/control/control_function_list" />
       <recent name="$USER_HOME$/test/control" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../../../demos/luaprogramme/control" />
-      <recent name="$PROJECT_DIR$/../../../demos/luaprogramme/command_class/core" />
-      <recent name="$PROJECT_DIR$/../../../demos/luaprogramme" />
-      <recent name="$PROJECT_DIR$/../../../test/control/tools" />
-      <recent name="$USER_HOME$/test/view/control_process" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -441,13 +770,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../demos/luaprogramme" />
+      <option name="WORKING_DIRECTORY" value="/demos/luaprogramme" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../demos/luaprogramme/Main.py" />
+      <option name="SCRIPT_NAME" value="/demos/luaprogramme/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -459,13 +788,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../.." />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../Main.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -477,13 +806,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../.." />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../Main.py" />
+      <option name="SCRIPT_NAME" value="/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -583,13 +912,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../test/control/control_function_list" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/test/control/control_function_list" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/test/control/control_function_list/control_function.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -601,13 +930,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../test/control/tools" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/test/control/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -632,6 +961,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="" />
@@ -643,20 +975,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="77" y="43" width="1855" height="1021" extended-state="0" />
+    <frame x="84" y="89" width="1853" height="985" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3753943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3524775" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3045822" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3753943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3673709" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491096" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42797056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42797056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -708,287 +1041,74 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../test/view/view_parameters/GUI_control_parameters.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/control/control_parameters/control_parameters.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/view/view_process/Panel_controlprocess_overwrite.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/test.lts" />
-    <entry file="file://$PROJECT_DIR$/../../../test/control/tools/controlfile_tools.py" />
-    <entry file="file://$PROJECT_DIR$/../../../demos/luaprogramme/command_class/core/cmds2.py" />
-    <entry file="file://$PROJECT_DIR$/../../../demos/luaprogramme/control/Data_Handler.py" />
-    <entry file="file://$PROJECT_DIR$/../../../demos/luaprogramme/command_class/CommonCmd.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/test.lts.lua" />
-    <entry file="file://$PROJECT_DIR$/../../../test/control/tools/create_reference.py" />
-    <entry file="file:///usr/local/wxPython/wx/lib/mixins/treemixin.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/view/view_process/TreeMixin.py" />
-    <entry file="file://$PROJECT_DIR$/../../../Main.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/view/MainView.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/../../../test/control/control_process/control_process.py" />
-    <entry file="file://$PROJECT_DIR$/../../test/view/LuaProgrammingPanel.py">
+    <entry file="file://$USER_HOME$/test/control/control_process/TreeItemsControl.py" />
+    <entry file="file://$USER_HOME$/test/control/tools/colorstreamhandler.py" />
+    <entry file="file://$USER_HOME$/test/data/object_parameters/parameters_object.py" />
+    <entry file="file://$USER_HOME$/test/data/object_parameters/conditiontree_object.py" />
+    <entry file="file://$USER_HOME$/test/data/object_process/process_object.py" />
+    <entry file="file://$USER_HOME$/test/view/view_function_list/GUI_functionlist.py" />
+    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_choose_pointlist.py" />
+    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_control_paras_overwrite.py" />
+    <entry file="file://$USER_HOME$/test/view/view_tools/TextDialogClass.py" />
+    <entry file="file://$USER_HOME$/test/view/view_tools/FloatSpin.py" />
+    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_edit_if_condition_overwrite.py" />
+    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_edit_paras_overwrite.py" />
+    <entry file="file://$USER_HOME$/src/data/object_parameters/conditiontree_object.py" />
+    <entry file="file://$USER_HOME$/src/control/control_process/control_process_showdata.py" />
+    <entry file="file://$USER_HOME$/src/control/control_process/control_process.py" />
+    <entry file="file://$USER_HOME$/src/data/object_function_list/function_object.py" />
+    <entry file="file://$USER_HOME$/src/data/object_process/process_object.py" />
+    <entry file="file://$USER_HOME$/src/control/control_function_list/control_function.py" />
+    <entry file="file://$USER_HOME$/src/data/object_parameters/parameters_object.py" />
+    <entry file="file://$USER_HOME$/test/view/MainView.py" />
+    <entry file="file://$USER_HOME$/test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
+    <entry file="file://$USER_HOME$/Main.py" />
+    <entry file="file://$USER_HOME$/test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
+    <entry file="file://$USER_HOME$/source/getting_started.rst" />
+    <entry file="file://$USER_HOME$/src/control/control_function_list/control_function.py" />
+    <entry file="file://$USER_HOME$/src/control/control_process/control_process.py" />
+    <entry file="file://$USER_HOME$/source/conf.py" />
+    <entry file="file://$USER_HOME$/source/getting_started.rst" />
+    <entry file="file://$USER_HOME$/src/control/control_parameters/control_choose_pointlist.py" />
+    <entry file="file://$USER_HOME$/test/control/control_function_list/control_function.py" />
+    <entry file="file://$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
+    <entry file="file://$PROJECT_DIR$/../../source/control.rst" />
+    <entry file="file://$PROJECT_DIR$/../../source/index.rst" />
+    <entry file="file://$PROJECT_DIR$/../../source/_static/default.css" />
+    <entry file="file://$PROJECT_DIR$/../../source/_templates/indexsidebar.html" />
+    <entry file="file://$PROJECT_DIR$/../../source/_static/css/basic.css" />
+    <entry file="file://$PROJECT_DIR$/../../source/_static/javascript/sidebar.js" />
+    <entry file="file://$PROJECT_DIR$/../../source/_static/javascript/toggle_visibility.js" />
+    <entry file="file://$PROJECT_DIR$/../../source/conf.py" />
+    <entry file="file://$PROJECT_DIR$/../../source/_templates/layout.html" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" />
+    <entry file="file://$PROJECT_DIR$/../../source/getting_started.rst" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/asasa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/reference.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="293">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_choose_pointlist_overwrite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#19#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../source/control.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../source/conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_function_list/control_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_parameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#19#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_process/control_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_process/control_process_showdata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <marker date="1515228220339" expanded="false" signature="19:109" ph="import ..." />
-            <marker date="1515228220339" expanded="true" signature="222:2302" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="255:678" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="709:1092" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="834:1092" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="1098:1189" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="1236:1634" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="1304:1614" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="1389:1614" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="1679:1950" ph="..." />
-            <marker date="1515228220339" expanded="true" signature="2001:2302" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_process/TreeItemsControl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/tools/colorstreamhandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/data/object_parameters/parameters_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/data/object_parameters/conditiontree_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/data/object_process/process_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_function_list/GUI_functionlist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#316#325#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_choose_pointlist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_control_paras_overwrite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_tools/TextDialogClass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_tools/FloatSpin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="63" lean-forward="false" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_edit_paras_overwrite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="e#19#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/data/object_parameters/conditiontree_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/control/control_process/control_process_showdata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="45" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/control/control_process/control_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-          <folding>
-            <element signature="e#52#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/data/object_function_list/function_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-427">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#18#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/data/object_process/process_object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/control/control_function_list/control_function.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasasaqqq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#18#27#0" expanded="true" />
-          </folding>
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/data/object_parameters/parameters_object.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/aaaaaa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasa.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -996,46 +1116,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/MainView.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasasa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#316#390#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/view/view_function_list/Panel_ChooseFunc_overwrite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Main.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../test/control/tools/walk_dictionary_to_clean_dirty_msg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        <state relative-caret-position="113">
+          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../source/getting_started.rst">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+        <state relative-caret-position="36">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-288">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>

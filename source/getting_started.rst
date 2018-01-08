@@ -1,3 +1,7 @@
+.. raw:: html
+
+    <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script>
+
 .. _getting_started:
 
 
@@ -84,21 +88,32 @@ Lua自动编程界面介绍
 
 功能间调用关系模型
 ----------------------------
+.. raw:: html
 
-:mod: `control.control_function_list.control_function`
-Class Description::
+   <div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
+   <img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+   Inheritance diagram for class <strong>AcceleratorEntry</strong>:
+   </div>
+   <div id="toggleBlock-summary" style="display:block;"></div>
+   <div id="toggleBlock-content" style="display:none;">
+   <p class="graphviz">
+   <center><img src="_static/images/Design_images/only_one_panel.png" alt="Inheritance diagram of AcceleratorEntry" usemap="#dummy" class="inheritance"/></center>
+   </div>
+   <script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+   <map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
+   </p>
+xaasas
 
-    Author: yan_sw
-    Date: Saturday, 14:47, 2018-01-06
-    Description:
-        Control the functions which user have programmed for the TreeListCtrl View as well
-    as the tree data
+
+.. attention::
+
+   Please attentio
+
+
 
 .. automodule:: control.control_function_list.control_function
-
-.. autoclass:: control.control_function_list.control_function.Function_List_Control
     :members:
-    :undoc-members:
+
 
 
 

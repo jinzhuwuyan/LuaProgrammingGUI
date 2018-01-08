@@ -1,4 +1,10 @@
 #! encoding: utf-8
+"""
+    Author: yan_sw
+    Date: Monday, 10:44, 2018-01-08
+    Description:
+        Maintain the panel control which need choose one point as a parameter.
+"""
 import wx
 from control.tools import command_tools
 from control.tools import controlfile_tools
@@ -6,9 +12,45 @@ try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
-
+# Main Control Class
 class ChoosePoinListControl():
+    """
+        .. admonition:: Class Description
 
+                Class for which function need to choose a point as parameter and show the detailed
+            information of chosen point. When a point have been chosen, it ought to update the
+            paras data.
+
+                此类用于维护函数的参数点数据更新及被选中的点数据的显示(:py:mod:`set_textctrl_datas`)
+
+            **Fast Link**->>
+
+
+                .. raw:: html
+
+                    <a class="reference internal" href='#control.control_parameters.control_choose_pointlist.ChoosePointListControl.set_textctrl_datas'>  set_textctrl_datas </a> <i>  || </i>
+
+
+
+
+            The **initilization** of ChoosePointListControl is:
+                        ``control = ChoosePointListControl(view_instance, datalist)``
+
+            **Attributes of initilization** :
+
+                *conrtol* : instance
+                    The instance of ChoosePointListControl
+
+
+            **Parameters of initilization**:
+
+                *view_instance* : :class:`~view.view_parameters.Panel_choose_pointlist_overwrite`  or its subclass
+                    This instance must have an ListBox to Refresh
+
+                *datalist* : str
+                    An file which always named funcs_data.yml exists in your disk and always locate in control/
+
+    """
     def __init__(self, parent, datalist):
         data = (parent, datalist)
         self.init_data(data)

@@ -1,7 +1,7 @@
 #!encoding: utf-8
 """
     Author: yan_sw
-    Date: Saturday, 14:47, 2018-01-06
+    Date: Monday, 10:44, 2018-01-08
     Description:
         Control the functions which user have programmed for the TreeListCtrl View as well
         as the tree data
@@ -10,6 +10,7 @@
 import wx
 
 from data.object_function_list import function_object
+
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -17,22 +18,31 @@ except ImportError:
 # Main control Class
 class Function_List_Control():
     """
-    Class to Control Function list in order to refresh the function list user chosen
-    and send the chosen functions data to TreeListCtrl
-    The initilization of Funtion_List_Control is:
-        ``control = Function_List_Control(view_instance, func_path)``
+    .. admonition:: Class Description
 
-    Attributes
-    ----------
-    conrtol : instance
-        The instance of Function_List_Control
-    Parameters
-    ----------
-    view_instance : :class:`~view.view_fuction_list.Panel_ChooseFunc_overwrite`  or its subclass
-        This instance must have an ListBox to Refresh
+            Class to Control Function list in order to refresh the function list user chosen
+        and send the chosen functions data to TreeListCtrl
 
-    func_path : str
-        An file which always named funcs_data.yml exists in your disk and always locate in control/
+            此类用于响应函数列表的选中(:py:meth:`refresh`)以及响应外界请求获取当前选中
+        函数数据的订阅(:py:meth:`send_funcs_data`)
+
+
+        The **initilization** of Funtion_List_Control is:
+                    ``control = Function_List_Control(view_instance, func_path)``
+
+        **Attributes of initilization** :
+
+            *conrtol* : instance
+                The instance of Function_List_Control
+
+
+        **Parameters of initilization**:
+
+            *view_instance* : :class:`~view.view_fuction_list.Panel_ChooseFunc_overwrite`  or its subclass
+                This instance must have an ListBox to Refresh
+
+            *func_path* : str
+                An file which always named funcs_data.yml exists in your disk and always locate in control/
 
     """
     def __init__(self, parent, func_path = None):
@@ -64,9 +74,9 @@ class Function_List_Control():
             self._funcs_paras = self.model.funcs_data
             self._reference_data = self.model.reference_data
             # 订阅需要返回刷新的函数数据内容
-            pub.subscribe(self._send_funcs_data, 'refresh_funcs')
+            pub.subscribe(self.send_funcs_data, 'refresh_funcs')
             # process function界面初始化过程中，先发送函数数据
-            self._send_funcs_data()
+            self.send_funcs_data()
         else:
 
             dlg = wx.FileDialog(parent=self.parent, message='加载配置文件有误，请选择一个有效的配置文件！', defaultDir=self.reference_path,
@@ -125,7 +135,7 @@ class Function_List_Control():
         return self._reference_data.get('help_msg_path', None)
 
 
-    def _send_funcs_data(self):
+    def send_funcs_data(self):
         """Send function data to who have sendMessage('refresh_funcs') through Publisher"""
         print self.func_paras, self.func_str,
         data = (self.func_paras, self.func_str, self.func_selection,
@@ -144,3 +154,5 @@ class Function_List_Control():
             if self._current_select != wx.NOT_FOUND:
                 pub.sendMessage('UnSelectAll_controlprocess')
                 pub.sendMessage('remove_all_paras')
+
+

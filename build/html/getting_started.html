@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Lua自动编程界面介绍 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/phoenix.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -23,52 +23,90 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="controlprocess" href="control.html" />
     <link rel="prev" title="Welcome to LuaProgrammingGUI’s documentation!" href="index.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
   <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><img src="_static/images/sphinxdocs/phoenix_small.png" alt=""/></li>
+        <li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+        <li class="reltitle"> Lua自动编程界面介绍</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to LuaProgrammingGUI’s documentation!"
+             accesskey="P">previous</a> |</li>
 
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-<a href="index.html"><h1 style="font-size: 3em;">Sampledoc</h1></a>
-</div>
-
-
-
+        </ul>
+    </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to LuaProgrammingGUI’s documentation!</a></li>
-      <li>Next: <a href="control.html" title="next chapter">controlprocess</a></li>
-  </ul></li>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lua自动编程界面介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-docdir">目录结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-dir">重要文件目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#realization-result">实现效果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-principle">运行模型</a></li>
 </ul>
-</div>
+</li>
+</ul>
+
+    <div id="sourcelink" role="note" aria-label="source link">
+        <a href="_sources/getting_started.rst.txt"
+           rel="nofollow">Show page source</a>
+    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h4>Search</h4>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Lua自动编程界面介绍</a><ul>
+<li><a class="reference internal" href="#installing-docdir">目录结构</a></li>
+<li><a class="reference internal" href="#important-dir">重要文件目录</a></li>
+<li><a class="reference internal" href="#realization-result">实现效果</a><ul>
+<li><a class="reference internal" href="#id4">集成在主界面作为自动编程功能</a></li>
+<li><a class="reference internal" href="#id5">独立实现的效果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#execution-principle">运行模型</a><ul>
+<li><a class="reference internal" href="#simple-model">简单模型</a></li>
+<li><a class="reference internal" href="#link-relationship-between-functions">功能间调用关系模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
         </div>
       </div>
 
+
     <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="lua">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="_static/images/sphinxdocs/phoenix_top.png" alt="Phoenix Logo" />
+      </div>
+    
+      
+  <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script><div class="section" id="lua">
 <span id="getting-started"></span><h1>Lua自动编程界面介绍<a class="headerlink" href="#lua" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installing-docdir">
 <span id="id1"></span><h2>目录结构<a class="headerlink" href="#installing-docdir" title="Permalink to this headline">¶</a></h2>
@@ -135,46 +173,61 @@
 </div>
 <div class="section" id="link-relationship-between-functions">
 <span id="id8"></span><h3>功能间调用关系模型<a class="headerlink" href="#link-relationship-between-functions" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">mod:</th><td class="field-body"><cite>control.control_function_list.control_function</cite></td>
-</tr>
-</tbody>
-</table>
-<p>Class Description:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">Author</span><span class="p">:</span> <span class="n">yan_sw</span>
-<span class="n">Date</span><span class="p">:</span> <span class="n">Saturday</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>
-<span class="n">Description</span><span class="p">:</span>
-    <span class="n">Control</span> <span class="n">the</span> <span class="n">functions</span> <span class="n">which</span> <span class="n">user</span> <span class="n">have</span> <span class="n">programmed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">TreeListCtrl</span> <span class="n">View</span> <span class="k">as</span> <span class="n">well</span>
-<span class="k">as</span> <span class="n">the</span> <span class="n">tree</span> <span class="n">data</span>
-</pre></div>
+<div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>AcceleratorEntry</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img src="_static/images/Design_images/only_one_panel.png" alt="Inheritance diagram of AcceleratorEntry" usemap="#dummy" class="inheritance"/></center>
+</div>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
+</p><p>xaasas</p>
+<a href='#control.control_function_list.control_function.Function_List_Control.refresh'> refresh </a><p>a sasasasa</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Please attentio</p>
 </div>
 <span class="target" id="module-control.control_function_list.control_function"></span><p>Author: yan_sw
-Date: Saturday, 14:47, 2018-01-06
+Date: Monday, 10:44, 2018-01-08
 Description:</p>
 <blockquote>
 <div>Control the functions which user have programmed for the TreeListCtrl View as well
 as the tree data</div></blockquote>
 <dl class="class">
 <dt id="control.control_function_list.control_function.Function_List_Control">
-<em class="property">class </em><code class="descclassname">control.control_function_list.control_function.</code><code class="descname">Function_List_Control</code><span class="sig-paren">(</span><em>parent</em>, <em>func_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class to Control Function list in order to refresh the function list user chosen
-and send the chosen functions data to TreeListCtrl
-The initilization of Funtion_List_Control is:</p>
+<em class="property">class </em><code class="descname">Function_List_Control</code><span class="sig-paren">(</span><em>parent</em>, <em>func_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-description admonition">
+<p class="first admonition-title">Class Description</p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">control</span> <span class="pre">=</span> <span class="pre">Function_List_Control(view_instance,</span> <span class="pre">func_path)</span></code></div></blockquote>
+<div>Class to Control Function list in order to refresh the function list user chosen</div></blockquote>
+<p>and send the chosen functions data to TreeListCtrl</p>
+<blockquote>
+<div>此类用于响应函数列表的选中(<a class="reference internal" href="#control.control_function_list.control_function.Function_List_Control.refresh" title="control.control_function_list.control_function.Function_List_Control.refresh"><code class="xref py py-meth docutils literal"><span class="pre">refresh</span></code></a>)以及响应外界请求获取当前选中</div></blockquote>
+<p>函数数据的订阅(<a class="reference internal" href="#control.control_function_list.control_function.Function_List_Control.send_funcs_data" title="control.control_function_list.control_function.Function_List_Control.send_funcs_data"><code class="xref py py-meth docutils literal"><span class="pre">send_funcs_data</span></code></a>)</p>
 <dl class="docutils">
-<dt>conrtol <span class="classifier-delimiter">:</span> <span class="classifier">instance</span></dt>
+<dt>The <strong>initilization</strong> of Funtion_List_Control is:</dt>
+<dd><code class="docutils literal"><span class="pre">control</span> <span class="pre">=</span> <span class="pre">Function_List_Control(view_instance,</span> <span class="pre">func_path)</span></code></dd>
+</dl>
+<p><strong>Attributes of initilization</strong> :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><em>conrtol</em> <span class="classifier-delimiter">:</span> <span class="classifier">instance</span></dt>
 <dd>The instance of Function_List_Control</dd>
 </dl>
-<dl class="docutils">
-<dt>view_instance <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref py py-class docutils literal"><span class="pre">Panel_ChooseFunc_overwrite</span></code>  or its subclass</span></dt>
+</div></blockquote>
+<p><strong>Parameters of initilization</strong>:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><em>view_instance</em> <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref py py-class docutils literal"><span class="pre">Panel_ChooseFunc_overwrite</span></code>  or its subclass</span></dt>
 <dd>This instance must have an ListBox to Refresh</dd>
-<dt>func_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dt><em>func_path</em> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
 <dd>An file which always named funcs_data.yml exists in your disk and always locate in control/</dd>
 </dl>
+</div></blockquote>
+</div>
 <dl class="attribute">
 <dt id="control.control_function_list.control_function.Function_List_Control.func_paras">
 <code class="descname">func_paras</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_paras" title="Permalink to this definition">¶</a></dt>
@@ -241,6 +294,12 @@ The initilization of Funtion_List_Control is:</p>
 <dd><p>refresh the function selection as well as reinit the other function panel.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="control.control_function_list.control_function.Function_List_Control.send_funcs_data">
+<code class="descname">send_funcs_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control.send_funcs_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.send_funcs_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send function data to who have sendMessage(‘refresh_funcs’) through Publisher</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -248,25 +307,13 @@ The initilization of Funtion_List_Control is:</p>
 </div>
 
 
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2017, yan_sw.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/getting_started.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
     </div>
-
-    
-
-    
   </body>
 </html>

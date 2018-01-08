@@ -11,7 +11,6 @@ Welcome to LuaProgrammingGUI's documentation!
    :caption: Contents:
 
    getting_started
-   control
 .. image:: _static/basic_screenshot.png
 
 
