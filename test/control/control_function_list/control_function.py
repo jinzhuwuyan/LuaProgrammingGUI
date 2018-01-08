@@ -1,13 +1,40 @@
 #!encoding: utf-8
+"""
+    Author: yan_sw
+    Date: Saturday, 14:47, 2018-01-06
+    Description:
+        Control the functions which user have programmed for the TreeListCtrl View as well
+        as the tree data
+
+"""
 import wx
-from LuaProgrammingGUI.test.data.object_function_list import function_object
+
+from data.object_function_list import function_object
 try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
-
+# Main control Class
 class Function_List_Control():
+    """
+    Class to Control Function list in order to refresh the function list user chosen
+    and send the chosen functions data to TreeListCtrl
+    The initilization of Funtion_List_Control is:
+        ``control = Function_List_Control(view_instance, func_path)``
 
+    Attributes
+    ----------
+    conrtol : instance
+        The instance of Function_List_Control
+    Parameters
+    ----------
+    view_instance : :class:`~view.view_fuction_list.Panel_ChooseFunc_overwrite`  or its subclass
+        This instance must have an ListBox to Refresh
+
+    func_path : str
+        An file which always named funcs_data.yml exists in your disk and always locate in control/
+
+    """
     def __init__(self, parent, func_path = None):
 
         # function list界面
@@ -30,6 +57,7 @@ class Function_List_Control():
         self.init_control()
 
     def init_control(self):
+        """init control"""
         self.model = function_object.container()
         # 判断配置文件路径是否为空, 如果为空，不初始化报错，否则初始化数据容器
         if self.reference_path and self.model.init_container(self.reference_path):
@@ -52,54 +80,53 @@ class Function_List_Control():
 
     @property
     def func_selection(self):
-
+        """A function which has been current selected"""
         return self._current_select
 
     @property
     def func_str(self):
-
+        """The function's name"""
         return self._select_str
 
-    # @property
-    # def func_paras(self):
-    #
-    #     _default_para =  {}
-    #     return self._funcs_paras.get(self._select_str, _default_para)
 
     @property
     def func_paras_keys(self):
-
+        """The function paras dictionary keys"""
         return self._funcs_paras.keys()
 
     @property
     def func_paras_values(self):
-
+        """The function paras dictionary values"""
         return self._funcs_paras.values()
 
     @property
     def func_paras(self):
-
+        """The function paras"""
         return self._funcs_paras
 
     @property
     def funcs_hashierarchy(self):
-
+        """Check whether the function is condition function"""
         return self._reference_data.get('unlimit_func', None)
 
     @property
     def project_file_path(self):
+        """The default project file path, default name is test.lts"""
         return self._reference_data.get('file_path', None)
 
     @property
     def name_reference_list(self):
+        """An dictionary consist of the function name translation"""
         return self._reference_data.get('rename_list', None)
 
     @property
     def help_msg_path(self):
+        """The path of help message, default filename is help_msg.yml"""
         return self._reference_data.get('help_msg_path', None)
 
 
     def _send_funcs_data(self):
+        """Send function data to who have sendMessage('refresh_funcs') through Publisher"""
         print self.func_paras, self.func_str,
         data = (self.func_paras, self.func_str, self.func_selection,
                 self.funcs_hashierarchy, self.project_file_path,
@@ -108,9 +135,7 @@ class Function_List_Control():
 
     def refresh(self, obj = None):
         """
-        refresh the listbox's selection
-        :param obj: listbox instance
-        :return:
+        refresh the function selection as well as reinit the other function panel.
         """
         self._select_obj = obj
         if self._select_obj:
@@ -119,7 +144,3 @@ class Function_List_Control():
             if self._current_select != wx.NOT_FOUND:
                 pub.sendMessage('UnSelectAll_controlprocess')
                 pub.sendMessage('remove_all_paras')
-    #
-    # def _unselete_all(self):
-    #     for i in range(len(self._select_obj.GetSelections())):
-    #         self._select_obj.Deselect(i)

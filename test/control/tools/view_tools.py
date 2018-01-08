@@ -5,7 +5,7 @@ except ImportError:
     from pubsub import pub
 
 from threading import Thread
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from control.tools import controlfile_tools
 
 def config_control(self, id, pos, size, style):
 

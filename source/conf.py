@@ -19,11 +19,8 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/control/control_process/'))
-sys.path.insert(0, os.path.abspath('.'))
-
-sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/'))
-sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/'))
+print os.path.abspath('./test/')
+sys.path.insert(0, os.path.abspath('../test/'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.

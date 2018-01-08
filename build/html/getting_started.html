@@ -131,12 +131,118 @@
 <div class="section" id="simple-model">
 <span id="id7"></span><h3>简单模型<a class="headerlink" href="#simple-model" title="Permalink to this headline">¶</a></h3>
 <p>简单的来讲， 软件模型是典型的MVC结构。
-通过publisher机制对界面与数据之间的交互进行解耦，统一由Controller进行管理。</p>
+通过publisher机制对界面数据与底层数据之间的交互进行解耦，统一由Controller进行管理。</p>
 </div>
 <div class="section" id="link-relationship-between-functions">
 <span id="id8"></span><h3>功能间调用关系模型<a class="headerlink" href="#link-relationship-between-functions" title="Permalink to this headline">¶</a></h3>
-<p>relationships:</p>
-<p><cite>~wx.CommandEvent</cite>                                                               This event class contains information about command events, which originate from a variety of simple controls.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">mod:</th><td class="field-body"><cite>control.control_function_list.control_function</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Class Description:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">Author</span><span class="p">:</span> <span class="n">yan_sw</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Saturday</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>
+<span class="n">Description</span><span class="p">:</span>
+    <span class="n">Control</span> <span class="n">the</span> <span class="n">functions</span> <span class="n">which</span> <span class="n">user</span> <span class="n">have</span> <span class="n">programmed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">TreeListCtrl</span> <span class="n">View</span> <span class="k">as</span> <span class="n">well</span>
+<span class="k">as</span> <span class="n">the</span> <span class="n">tree</span> <span class="n">data</span>
+</pre></div>
+</div>
+<span class="target" id="module-control.control_function_list.control_function"></span><p>Author: yan_sw
+Date: Saturday, 14:47, 2018-01-06
+Description:</p>
+<blockquote>
+<div>Control the functions which user have programmed for the TreeListCtrl View as well
+as the tree data</div></blockquote>
+<dl class="class">
+<dt id="control.control_function_list.control_function.Function_List_Control">
+<em class="property">class </em><code class="descclassname">control.control_function_list.control_function.</code><code class="descname">Function_List_Control</code><span class="sig-paren">(</span><em>parent</em>, <em>func_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to Control Function list in order to refresh the function list user chosen
+and send the chosen functions data to TreeListCtrl
+The initilization of Funtion_List_Control is:</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">control</span> <span class="pre">=</span> <span class="pre">Function_List_Control(view_instance,</span> <span class="pre">func_path)</span></code></div></blockquote>
+<dl class="docutils">
+<dt>conrtol <span class="classifier-delimiter">:</span> <span class="classifier">instance</span></dt>
+<dd>The instance of Function_List_Control</dd>
+</dl>
+<dl class="docutils">
+<dt>view_instance <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref py py-class docutils literal"><span class="pre">Panel_ChooseFunc_overwrite</span></code>  or its subclass</span></dt>
+<dd>This instance must have an ListBox to Refresh</dd>
+<dt>func_path <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>An file which always named funcs_data.yml exists in your disk and always locate in control/</dd>
+</dl>
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.func_paras">
+<code class="descname">func_paras</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_paras" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function paras</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.func_paras_keys">
+<code class="descname">func_paras_keys</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_paras_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function paras dictionary keys</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.func_paras_values">
+<code class="descname">func_paras_values</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_paras_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function paras dictionary values</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.func_selection">
+<code class="descname">func_selection</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function which has been current selected</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.func_str">
+<code class="descname">func_str</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.func_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function’s name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.funcs_hashierarchy">
+<code class="descname">funcs_hashierarchy</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.funcs_hashierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the function is condition function</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.help_msg_path">
+<code class="descname">help_msg_path</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.help_msg_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path of help message, default filename is help_msg.yml</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_function_list.control_function.Function_List_Control.init_control">
+<code class="descname">init_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control.init_control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.init_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>init control</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.name_reference_list">
+<code class="descname">name_reference_list</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.name_reference_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>An dictionary consist of the function name translation</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="control.control_function_list.control_function.Function_List_Control.project_file_path">
+<code class="descname">project_file_path</code><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.project_file_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default project file path, default name is test.lts</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_function_list.control_function.Function_List_Control.refresh">
+<code class="descname">refresh</code><span class="sig-paren">(</span><em>obj=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_function_list/control_function.html#Function_List_Control.refresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_function_list.control_function.Function_List_Control.refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh the function selection as well as reinit the other function panel.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 </div>

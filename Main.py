@@ -1,11 +1,16 @@
 import wx
-from test.view.MainView import Frame_Main
+
 import os
 import sys
-sys.path.insert(0, os.path.abspath('/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI/src/'))
+current_path, _ = os.path.split(os.path.abspath(__file__))
+print current_path, os.path.join(current_path, 'test/'), os.path.join(current_path, 'test/view')
+sys.path.insert(0, os.path.abspath(current_path))
+sys.path.insert(0, os.path.abspath(os.path.join(current_path, 'test/')))
+sys.path.insert(0, os.path.abspath(os.path.join(current_path, 'test/view')))
 from control.tools import command_tools
 # from test.control.tools import  create_reference
 import os
+from test.view.MainView import Frame_Main
 if __name__ == '__main__':
      app = wx.App()
      Frame_Main(None).Show(True)

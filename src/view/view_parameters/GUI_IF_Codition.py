@@ -9,7 +9,7 @@
 
 import wx
 import wx.xrc
-from LuaProgrammingGUI.test.view.view_process.TreeMixin  import VirtualTreeListCtrl_ControlIF
+from view.view_process.TreeMixin  import VirtualTreeListCtrl_ControlIF
 
 ###########################################################################
 ## Class If_Condition_Panel

@@ -76,7 +76,7 @@ Lua自动编程界面介绍
 ----------------------------
 
 简单的来讲， 软件模型是典型的MVC结构。
-通过publisher机制对界面与数据之间的交互进行解耦，统一由Controller进行管理。
+通过publisher机制对界面数据与底层数据之间的交互进行解耦，统一由Controller进行管理。
 
 
 .. _link_relationship_between_functions:
@@ -84,9 +84,22 @@ Lua自动编程界面介绍
 
 功能间调用关系模型
 ----------------------------
-relationships:
 
-`~wx.CommandEvent`                                                               This event class contains information about command events, which originate from a variety of simple controls.
+:mod: `control.control_function_list.control_function`
+Class Description::
+
+    Author: yan_sw
+    Date: Saturday, 14:47, 2018-01-06
+    Description:
+        Control the functions which user have programmed for the TreeListCtrl View as well
+    as the tree data
+
+.. automodule:: control.control_function_list.control_function
+
+.. autoclass:: control.control_function_list.control_function.Function_List_Control
+    :members:
+    :undoc-members:
+
 
 
 

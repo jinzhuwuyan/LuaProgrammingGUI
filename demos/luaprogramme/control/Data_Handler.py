@@ -5,7 +5,7 @@ import yaml
 
 from LuaProgrammingGUI.demos.luaprogramme.command_class.core import cmds2
 from LuaProgrammingGUI.demos.luaprogramme.command_class import CommonCmd
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from control.tools import controlfile_tools
 
 try:
     from wx.lib.pubsub import pub

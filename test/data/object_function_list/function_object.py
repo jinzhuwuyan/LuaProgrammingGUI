@@ -1,7 +1,7 @@
 #！encoding: utf-8
 import os
 import yaml
-from LuaProgrammingGUI.test.control.tools import controlfile_tools as file_control
+from control.tools import controlfile_tools as file_control
 class container():
     def __init__(self):
 

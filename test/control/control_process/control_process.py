@@ -5,11 +5,11 @@ import copy
 import time
 import sys
 import os
-from LuaProgrammingGUI.test.control.tools import command_tools
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
-from LuaProgrammingGUI.test.data.object_process import process_object
-from LuaProgrammingGUI.test.control.control_process import control_process_showdata
-from LuaProgrammingGUI.test.control.control_process.TreeItemsControl import TreeItemController
+from control.tools import command_tools
+from control.tools import controlfile_tools
+from data.object_process import process_object
+from control.control_process import control_process_showdata
+from control.control_process.TreeItemsControl import TreeItemController
 try:
     from wx.lib.pubsub import pub
 except ImportError:

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>control.control_function_list.control_function &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><h1 style="font-size: 3em;">Sampledoc</h1></a>
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for control.control_function_list.control_function</h1><div class="highlight"><pre>
+<span class="ch">#!encoding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Author: yan_sw</span>
+<span class="sd">    Date: Saturday, 14:47, 2018-01-06</span>
+<span class="sd">    Description:</span>
+<span class="sd">        Control the functions which user have programmed for the TreeListCtrl View as well</span>
+<span class="sd">        as the tree data</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">wx</span>
+
+<span class="kn">from</span> <span class="nn">data.object_function_list</span> <span class="k">import</span> <span class="n">function_object</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wx.lib.pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+<span class="c1"># Main control Class</span>
+<div class="viewcode-block" id="Function_List_Control"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control">[docs]</a><span class="k">class</span> <span class="nc">Function_List_Control</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to Control Function list in order to refresh the function list user chosen</span>
+<span class="sd">    and send the chosen functions data to TreeListCtrl</span>
+<span class="sd">    The initilization of Funtion_List_Control is:</span>
+<span class="sd">        ``control = Function_List_Control(view_instance, func_path)``</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    conrtol : instance</span>
+<span class="sd">        The instance of Function_List_Control</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view_instance : :class:`~view.view_fuction_list.Panel_ChooseFunc_overwrite`  or its subclass</span>
+<span class="sd">        This instance must have an ListBox to Refresh</span>
+
+<span class="sd">    func_path : str</span>
+<span class="sd">        An file which always named funcs_data.yml exists in your disk and always locate in control/</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">func_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># function list界面</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="c1"># 配置文件路径</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_path</span> <span class="o">=</span> <span class="n">func_path</span>
+        <span class="c1"># 数据model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 函数参数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 配置文件数据</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 当前选中的函数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_select_obj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 当前选中的函数位置</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_select</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 当前选中的函数名</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_select_str</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_control</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Function_List_Control.init_control"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control.init_control">[docs]</a>    <span class="k">def</span> <span class="nf">init_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;init control&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">function_object</span><span class="o">.</span><span class="n">container</span><span class="p">()</span>
+        <span class="c1"># 判断配置文件路径是否为空, 如果为空，不初始化报错，否则初始化数据容器</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_path</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">init_container</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">funcs_data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">reference_data</span>
+            <span class="c1"># 订阅需要返回刷新的函数数据内容</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_send_funcs_data</span><span class="p">,</span> <span class="s1">&#39;refresh_funcs&#39;</span><span class="p">)</span>
+            <span class="c1"># process function界面初始化过程中，先发送函数数据</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_funcs_data</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;加载配置文件有误，请选择一个有效的配置文件！&#39;</span><span class="p">,</span> <span class="n">defaultDir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_path</span><span class="p">,</span>
+                                <span class="n">wildcard</span><span class="o">=</span><span class="s1">&#39;yml files (*.yml)|*.yml|All files (*.*)|*.*&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reference_path</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">init_control</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">&#39;初始化界面失败！&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;初始化界面失败！&#39;</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">func_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A function which has been current selected&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_select</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">func_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function&#39;s name&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_str</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">func_paras_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function paras dictionary keys&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">func_paras_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function paras dictionary values&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">func_paras</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function paras&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">funcs_hashierarchy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check whether the function is condition function&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unlimit_func&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">project_file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The default project file path, default name is test.lts&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;file_path&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name_reference_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;An dictionary consist of the function name translation&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rename_list&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">help_msg_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The path of help message, default filename is help_msg.yml&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;help_msg_path&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_send_funcs_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send function data to who have sendMessage(&#39;refresh_funcs&#39;) through Publisher&quot;&quot;&quot;</span>
+        <span class="nb">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_paras</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_paras</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_selection</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">funcs_hashierarchy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_file_path</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name_reference_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">,</span> <span class="p">)</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_func_ret&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Function_List_Control.refresh"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control.refresh">[docs]</a>    <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        refresh the function selection as well as reinit the other function panel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_select_obj</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_obj</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_select</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_obj</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_select_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_obj</span><span class="o">.</span><span class="n">GetStringSelection</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_select</span> <span class="o">!=</span> <span class="n">wx</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">:</span>
+                <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;UnSelectAll_controlprocess&#39;</span><span class="p">)</span>
+                <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;remove_all_paras&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, yan_sw.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

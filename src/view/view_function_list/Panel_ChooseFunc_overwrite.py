@@ -1,8 +1,8 @@
 #! encoding: utf-8
 import GUI_functionlist
 import os
-from LuaProgrammingGUI.test.control.control_function_list import control_function
-from LuaProgrammingGUI.test.control.tools import view_tools
+from control.control_function_list import control_function
+from control.tools import view_tools
 
 
 # Implementing Panel_ChooseFunc

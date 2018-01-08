@@ -5,8 +5,8 @@ import wx
 import yaml
 import GUI_IF_Codition
 import logging
-from LuaProgrammingGUI.test.control.control_parameters.control_if_condition import IFConditionControl
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from control.control_parameters.control_if_condition import IFConditionControl
+from control.tools import controlfile_tools
 # Implementing If_Condition_Panel
 class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
 

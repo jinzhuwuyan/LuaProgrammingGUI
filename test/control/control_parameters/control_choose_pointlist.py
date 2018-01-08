@@ -1,22 +1,64 @@
 #! encoding: utf-8
+"""
+    Author: yan_sw
+    Date: Saturday, 15:29, 2018-01-06
+    Description:
+        Control the para panel which need to choose a point as an paras value
+
+"""
 import wx
-from LuaProgrammingGUI.test.control.tools import command_tools
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from control.tools import command_tools
+from control.tools import controlfile_tools
 try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
 
 class ChoosePoinListControl():
+    """
+        A Class to Control the Point List initlization and refresh the paras data when the point has changed
+        The initilization of :class:`~control.control_parameters.control_choose_pointlist` is:
+            ``control = ChoosePointListControl(view_instance, datalist)``
 
+        Attributes
+        ----------
+        conrtol : instance
+            The instance of :class:`~control.control_parameters.control_choose_pointlist`
+
+        Parameters
+        ----------
+        view_instance : :class:`~view.view_parameters.Panel_choose_pointlist_overwrite`  or its subclass
+
+        datalist : list
+            datalist must be yaml data which is loaded from point file.
+
+        """
     def __init__(self, parent, datalist):
-        data = (parent, datalist)
-        self.init_data(data)
+        # X_value textCtrl to show
+        self.tc_X = None
+        # Y_value textCtrl to show
+        self.tc_Y = None
+        # Z_value textCtrl to show
+        self.tc_Z = None
+        # U_value textCtrl to show
+        self.tc_U = None
+        # V_value textCtrl to show
+        self.tc_V = None
+        # W_value textCtrl to show
+        self.tc_W = None
+
+        self.parent = None
+        # datalist for initing point list
+        self.datalist = None
+        # an comboBox
+        self.pointchooseBox = None
+        # the data for refreshing
         self.showcontent = {}
-        print 'datalists len is %d' % len(datalist)
-        controlfile_tools.log_bystatus('Enter ChoosePointListControl')
+
+        self.init_data((parent, datalist))
 
     def init_data(self, data):
+        """init data"""
         (parent, datalist, ) = data
         self.parent = parent
         self.datalist = datalist
@@ -30,13 +72,14 @@ class ChoosePoinListControl():
         self.parent.m_comboBox_pointlist.SetSelection(0) if len(self.datalist) > 0 else None
 
     def set_list_data(self):
+        """init the point data for comboxBox"""
         _tmp = []
         for data in self.datalist:
             _tmp.append(''.join(['P-', str(data['Id'])]))
         self.parent.m_comboBox_pointlist.SetItems(_tmp)
 
     def get_pointbyid(self, id):
-
+        """return the point by comboBox selection"""
         try:
             return  self.datalist[id]
         except Exception as e:
@@ -45,6 +88,7 @@ class ChoosePoinListControl():
             return None
 
     def set_textctrl_datas(self, id):
+        """set the point data to these value TextCtrl by comboBox selection"""
         controlfile_tools.log_bystatus('selection id is %d' % id)
         show_point = self.get_pointbyid(id - 1)
         if show_point:
@@ -65,6 +109,7 @@ class ChoosePoinListControl():
             return False, '请检查点文件内容是否有错!'
 
     def get_id_fromstring(self, value):
+        """Get the selection from comboBox value"""
         try:
             match_result, match_result_msg = command_tools.re_match(value=value, pattern='P-(\d+)')
             print match_result, match_result_msg, len(self.datalist)
@@ -93,6 +138,7 @@ class ChoosePoinListControl():
         self.parent.m_comboBox_pointlist.Refresh()
 
     def check_value_availablity(self, value):
+        """return id if the comboBox value is correct"""
         return self.get_id_fromstring(value)
 
     def refresh_datalist(self, datalist):

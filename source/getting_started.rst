@@ -84,7 +84,21 @@ Lua自动编程界面介绍
 
 功能间调用关系模型
 ----------------------------
-relationships:
+
+:mod: `control.control_function_list.control_function`
+Class Description::
+
+    Author: yan_sw
+    Date: Saturday, 14:47, 2018-01-06
+    Description:
+        Control the functions which user have programmed for the TreeListCtrl View as well
+    as the tree data
+
+.. automodule:: control.control_function_list.control_function
+
+.. autoclass:: control.control_function_list.control_function.Function_List_Control
+    :members:
+    :undoc-members:
 
 
 

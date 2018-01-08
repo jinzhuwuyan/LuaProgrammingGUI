@@ -1,6 +1,6 @@
 import sys
 import wx
-from LuaProgrammingGUI.test.data.object_process import process_object
+from data.object_process import process_object
 
 class Panel(wx.Panel):
     def __init__(self, *args, **kwargs):

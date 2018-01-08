@@ -3,8 +3,8 @@ import sys
 import wx
 import yaml
 import Panel_choose_pointlist
-from LuaProgrammingGUI.test.control.control_parameters.control_choose_pointlist import ChoosePoinListControl
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
+from control.control_parameters.control_choose_pointlist import ChoosePoinListControl
+from control.tools import controlfile_tools
 
 # Implementing Panel_choose_pointlist
 class Panel_Choose_Point( Panel_choose_pointlist.choose_pointlist ):

@@ -129,7 +129,7 @@ class Control():
             # pub.sendMessage('get_paras_main_data', data=(self.model.showcontent, ))
 
         elif check_list and 'condition' in check_list:
-            self.if_conditiondata_path = 'LuaProgrammingGUI/test/control/if_condition_data.yml'
+            self.if_conditiondata_path = 'control/if_condition_data.yml'
             panel = Panel_edit_if_condition_overwrite.Panel_edit_ifcondition(self._parent, self.if_conditiondata_path)
             self._parent.GetSizer().Add(panel, 0, 0, 5)
             self.controllist[0] = panel

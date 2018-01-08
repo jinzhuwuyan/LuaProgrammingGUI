@@ -1,6 +1,6 @@
 #! encoding: utf-8
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
-from LuaProgrammingGUI.test.data.object_process import process_object
+from control.tools import controlfile_tools
+from data.object_process import process_object
 
 try:
     from wx.lib.pubsub import pub

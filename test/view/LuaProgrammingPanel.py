@@ -1,4 +1,4 @@
-from LuaProgrammingGUI.test.control.tools import view_tools
+from control.tools import view_tools
 import Panel_luaprogramming
 class LuaProgrammingPanel(Panel_luaprogramming.Panel_luaprogramming):
     def __init__(self, parent, id, pos, size, style):

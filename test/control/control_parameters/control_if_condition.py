@@ -2,9 +2,9 @@
 import wx
 import os
 import yaml
-from LuaProgrammingGUI.test.control.tools import command_tools
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
-from LuaProgrammingGUI.test.data.object_parameters import conditiontree_object
+from control.tools import command_tools
+from control.tools import controlfile_tools
+from data.object_parameters import conditiontree_object
 
 try:
     from wx.lib.pubsub import pub
