@@ -2,423 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/Design_images/only_one_panel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/closed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/open.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer31.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer33.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer34.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer41.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer51.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer52.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer53.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer54.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer55.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/boxsizer56.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/evthandler_unlink_after.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/evthandler_unlink_before.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcell_descent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcontcell_alignv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlcontcell_indent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/htmlwin_border.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_events_chain.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_events_winstack.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_cont.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_contbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_html_hello.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_00.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_01.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_02.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_03.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_04.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_05.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_06.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_07.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_08.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_09.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_10.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_sizer_11.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/overviews/overview_splitter_3d.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_1_thumb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_2_thumb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_3_thumb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ShortcutEditor_4_thumb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/api.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/appearance.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/arrows.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/available.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/base.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_blue.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_grey.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/cell_grey.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/central_bar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/class_hierarchy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/class_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/contributed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/description.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/events.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/extra_styles.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/file_info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/function_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/globals.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/indices.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/layout.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/license.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/link.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/method_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/minus2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/module_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/mondrian.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/navigation.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/note.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/orange_gradient.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/other_info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/overload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/package_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_main.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_small.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_small.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_title.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/phoenix_top.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/platforms.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/plus2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/property_summary.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/python.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/seealso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/state.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/styles.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/sub_classes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/super_classes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/table_contents.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ticks_green.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/ticks_red.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/todo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/todo_big.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/usage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/user.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/viewmag.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/warning.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/sphinxdocs/whatsnew.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-apply.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-bold.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cancel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cdrom.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-convert.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-cut.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-edit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-execute.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-find-and-replace.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-find.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-floppy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-back-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-forward-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-go-up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-bottom.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-first-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-last-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-goto-top.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-harddisk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-help.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-indent-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-index.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-italic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-jump-to-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-center.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-fill.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-justify-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-network.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-no.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-ok.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-open.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-paste.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-preferences.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-print-preview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-print.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-properties.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-quit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-redo-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-remove.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-revert-to-saved-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-save-as.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-save.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-all.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-color.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-select-font.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-sort-ascending.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-sort-descending.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-spell-check.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-stop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-strikethrough.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-undelete-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-underline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-undo-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-unindent-ltr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-yes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-fit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-in.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/stock/gtk-zoom-out.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/no_appearance.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.animationctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.bitmapcombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.calendarctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.commandlinkbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.datepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.hyperlinkctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.ownerdrawncombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.richtooltip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.adv.timepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.bitmapbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.checkbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.checklistbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.choice.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.choicebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.collapsiblepane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.colourpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.combobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.comboctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dataview.dataviewctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dataview.dataviewtreectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.dirpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.filectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.filepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.fontpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.gauge.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.genericdirctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listbook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.listview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.notebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.radiobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.radiobutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.scrollbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.searchctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.slider.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.spinctrldouble.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.staticbitmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.staticbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.statictext.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.textctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.togglebutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxgtk/wx.treectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.animationctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.bitmapcombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.calendarctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.datepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.hyperlinkctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.ownerdrawncombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.richtooltip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.adv.timepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.bitmapbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.checkbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.checklistbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.choice.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.choicebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.collapsiblepane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.colourpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.combobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.comboctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dataview.dataviewctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dataview.dataviewtreectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.dirpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.filepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.fontpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.frame.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.gauge.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.genericdirctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listbook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.listctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.notebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.radiobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.radiobutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.scrollbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.searchctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.slider.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.spinctrldouble.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.staticbitmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.staticbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.statictext.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.textctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.togglebutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmac/wx.treectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.animationctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.bitmapcombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.calendarctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.commandlinkbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.datepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.hyperlinkctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.ownerdrawncombobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.richtooltip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.adv.timepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.aui.auimdiparentframe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.aui.framemanager.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.bitmapbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.checkbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.checklistbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.choice.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.choicebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.collapsiblepane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.colourpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.combobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.comboctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dataview.dataviewctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dataview.dataviewtreectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dialog.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.dirpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.filepickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.fontpickerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.frame.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.gauge.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.genericdirctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.advancedsplash.advancedsplash.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aquabutton.aquabutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.auibar.auitoolbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.auibook.auinotebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.aui.framemanager.auimanager.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.balloontip.balloontip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.buttonpanel.buttonpanel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.cubecolourdialog.cubecolourdialog.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.customtreectrl.customtreectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.flatmenu.flatmenubar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.flatnotebook.flatnotebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.floatspin.floatspin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.fmcustomizedlg.fmcustomizedlg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.foldpanelbar.foldpanelbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.fourwaysplitter.fourwaysplitter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.genericmessagedialog.genericmessagedialog.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.gradientbutton.gradientbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.hyperlink.hyperlinkctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.hypertreelist.hypertreelist.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.infobar.infobar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.knobctrl.knobctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.labelbook.flatimagebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.labelbook.labelbook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.multidirdialog.multidirdialog.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.peakmeter.peakmeterctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.piectrl.piectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.piectrl.progresspie.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pybusyinfo.pybusyinfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pycollapsiblepane.pycollapsiblepane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pygauge.pygauge.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.pyprogress.pyprogress.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.bar.ribbonbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.buttonbar.ribbonbuttonbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.gallery.ribbongallery.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.page.ribbonpage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.panel.ribbonpanel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ribbon.toolbar.ribbontoolbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.rulerctrl.rulerctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmapbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptextbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptexttogglebutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shapedbutton.sbitmaptogglebutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.shortcuteditor.shortcuteditor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.speedmeter.speedmeter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.supertooltip.supertooltip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.thumbnailctrl.thumbnailctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.toasterbox.toasterbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.ultimatelistctrl.ultimatelistctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.xlsgrid.xlsgrid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.lib.agw.zoombar.zoombar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listbook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.listctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.miniframe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.notebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.radiobox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.radiobutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.scrollbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.searchctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.slider.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinbutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.spinctrldouble.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.staticbitmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.staticbox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.statictext.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.textctrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.togglebutton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.treectrl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.wizard.pywizardpage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/images/widgets/fullsize/wxmsw/wx.wizard.wizardpagesimple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/gallery.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/phoenix.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/css/tables.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/header.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/jquery.collapse.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/jquery.cookie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/sidebar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_static/javascript/toggle_visibility.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/indexsidebar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/searchbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../source/_templates/sourcelink.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../source/control.rst" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/control.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/control.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/../build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/objects.inv" afterPath="$PROJECT_DIR$/../build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/.buildinfo" afterPath="$PROJECT_DIR$/../build/html/.buildinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control_process.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control_process.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/index.html" afterPath="$PROJECT_DIR$/../build/html/_modules/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/control.html" afterPath="$PROJECT_DIR$/../build/html/control.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex.html" afterPath="$PROJECT_DIR$/../build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/getting_started.html" afterPath="$PROJECT_DIR$/../build/html/getting_started.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/index.html" afterPath="$PROJECT_DIR$/../build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/py-modindex.html" afterPath="$PROJECT_DIR$/../build/html/py-modindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/search.html" afterPath="$PROJECT_DIR$/../build/html/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/searchindex.js" afterPath="$PROJECT_DIR$/../build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/_templates/layout.html" afterPath="$PROJECT_DIR$/../source/_templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/conf.py" afterPath="$PROJECT_DIR$/../source/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/getting_started.rst" afterPath="$PROJECT_DIR$/../source/getting_started.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/index.rst" afterPath="$PROJECT_DIR$/../source/index.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/control/control_parameters/control_choose_pointlist.py" afterPath="$PROJECT_DIR$/../src/control/control_parameters/control_choose_pointlist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" afterPath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -452,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="113">
-              <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -462,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -471,8 +55,8 @@
       <file leaf-file-name="Panel_edit_if_condition_overwrite.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -976,7 +560,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="84" y="89" width="1853" height="985" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -984,7 +567,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3753943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3673709" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491096" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491096" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1127,7 +710,7 @@
     <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
-          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1135,15 +718,15 @@
     <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
