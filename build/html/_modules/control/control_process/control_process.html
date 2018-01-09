@@ -1,0 +1,702 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>control.control_process.control_process &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+          <li><a href="../../index.html" accesskey="U">
+              Module code</a> &#187;</li>
+        <li class="reltitle"> control.control_process.control_process</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../../index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="../../../_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <h1>Source code for control.control_process.control_process</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">**Module Info**::</span>
+
+<span class="sd">   @Author     : yan_sw</span>
+<span class="sd">   @Time       : 2018-01-08 13:53</span>
+<span class="sd">   @Description:</span>
+<span class="sd">       This class is the main class for maintaining the treelistctrl data as well as reflect the view event.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">command_tools</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">controlfile_tools</span>
+<span class="kn">from</span> <span class="nn">data.object_process</span> <span class="k">import</span> <span class="n">process_object</span>
+<span class="kn">from</span> <span class="nn">control.control_process</span> <span class="k">import</span> <span class="n">control_process_showdata</span>
+<span class="kn">from</span> <span class="nn">control.control_process.TreeItemsControl</span> <span class="k">import</span> <span class="n">TreeItemController</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wx.lib.pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+
+<span class="n">__version__</span> <span class="o">=</span>  <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;0010&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Control"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control">[docs]</a><span class="k">class</span> <span class="nc">Control</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                .. admonition:: Class Infos</span>
+
+<span class="sd">                        |  *class_description*:</span>
+<span class="sd">                        |        The core function of controlling the treelistctrl data as well as saving it as a project.</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |  *class_chinese_description*:</span>
+<span class="sd">                        |       刷新当前函数参数面板(:meth:`refresh_current_selection`)</span>
+<span class="sd">                        |       增加函数(:meth:`control.control_process.TreeItemsControl.control_model`)</span>
+<span class="sd">                        |       删除函数(:meth:`control.control_process.TreeItemsControl.control_model`)</span>
+<span class="sd">                        |       改变函数位置(:meth:`control.control_process.TreeItemsControl.control_model`)</span>
+<span class="sd">                        |       保存(:meth:`save_to_disk`)</span>
+<span class="sd">                        |       恢复上次操作(:meth:`load_from_disk`)</span>
+<span class="sd">                        |       修改循环时间(:meth:`modify_runtime`)</span>
+<span class="sd">                        |       打开工程文件(:meth:`import_prj_fromdisk`)</span>
+<span class="sd">                        |       另存为工程文件(:meth:`output_to_folder`)</span>
+<span class="sd">                        |       帮助(:meth:`load_help_msg`)</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        | The **initilization** of :class:`~control.control_process.control_process.Control` is:</span>
+<span class="sd">                        |        control = control.control_process.control_process.Control(view_instance, tree)</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        | **Parameters of initilization**:</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |       **view_instance** : :class:`~view.view_process.Panel_controlprocess_overwrite`  or its subclass</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |       **tree**: wx.TreeListCtrl</span>
+<span class="sd">                        |</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_child</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">change_way</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_paras</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_items</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_selection</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">help_msg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_control</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">init_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># change</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_child</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">change_way</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_data</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_selection</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">index_1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="mi">17</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">process_object</span><span class="o">.</span><span class="n">container</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># refresh func data from function list panel</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_funcs_data</span><span class="p">,</span> <span class="s1">&#39;refresh_func_ret&#39;</span><span class="p">)</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refresh_parasdata</span><span class="p">,</span> <span class="s1">&#39;save_paras&#39;</span><span class="p">)</span>
+        <span class="c1"># pub.subscribe(self.refresh_paras_again, &#39;refresh_paras_again&#39;)</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unselete_all</span><span class="p">,</span> <span class="s1">&#39;UnSelectAll_controlprocess&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
+
+<span class="c1">##########################################control parameters panel#########################################</span>
+    <span class="c1"># def refresh_paras_again(self):</span>
+    <span class="c1">#     controlfile_tools.log_bystatus(&#39;refresh again&#39;)</span>
+    <span class="c1">#     self.refresh_current_selection()</span>
+
+<div class="viewcode-block" id="Control.refresh_current_selection"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.refresh_current_selection">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_current_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh current selected func and func data, show para panel&quot;&quot;&quot;</span>
+        <span class="n">refresh_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_parasdata</span><span class="p">(</span><span class="n">refresh_type</span> <span class="o">=</span> <span class="s1">&#39;get&#39;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;refresh_data ...&#39;</span><span class="p">,</span> <span class="n">refresh_data</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_paras&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">refresh_data</span><span class="p">,</span>
+                            <span class="n">pos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_current_pos</span><span class="p">())</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_get_funcs_paras_bypos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get funcs paras from data by pos</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_tmp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span> <span class="o">=</span> <span class="n">_tmp</span>
+        <span class="k">return</span> <span class="n">paras</span>
+
+
+    <span class="k">def</span> <span class="nf">_refresh_item_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">refresh_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;generate parent data to refresh according to refresh_data as well as pos &quot;&quot;&quot;</span>
+        <span class="n">_tmp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                    <span class="n">_tmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">refresh_data</span><span class="p">)</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_refresh_item_data in last item tmp is </span><span class="si">%s</span><span class="s1">, refresh_data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_tmp</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">refresh_data</span><span class="p">)))</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_refresh_item_data in last item child is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">)))</span>
+                <span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_refresh_item_data in last item child[p] is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
+                <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">refresh_data</span><span class="p">)</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_refresh_item_data in last item tmp is </span><span class="si">%s</span><span class="s1">, refresh_data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_tmp</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">refresh_data</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">_tmp</span>
+
+
+
+
+<div class="viewcode-block" id="Control.replace_freshobj_bypos"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.replace_freshobj_bypos">[docs]</a>    <span class="k">def</span> <span class="nf">replace_freshobj_bypos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">freshobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        replace the obj with freshobj according to pos</span>
+
+<span class="sd">        :param `data`: items data</span>
+<span class="sd">        :type `data`: list</span>
+<span class="sd">        :param `pos`: position of replace obj</span>
+<span class="sd">        :type `pos`: list</span>
+<span class="sd">        :param `freshobj`: fresh obj</span>
+<span class="sd">        :type `freshobj`: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_tmp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+                <span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">_</span><span class="o">=</span> <span class="n">_tmp</span>
+                <span class="k">if</span> <span class="n">func_str</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">freshobj</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+            <span class="k">elif</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="n">func_str</span><span class="p">,</span> <span class="n">child_tmp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+                <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">freshobj</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">p</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">_refresh_parasdata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refresh_type</span><span class="o">=</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh or get paras data(`Main Control`)&quot;&quot;&quot;</span>
+        <span class="n">refresh_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">selection_indexs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_pos</span><span class="p">()</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_refresh_parasdata </span><span class="si">%s</span><span class="s1">, data is </span><span class="si">%s</span><span class="s1">, current_pos is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">refresh_type</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">selection_indexs</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">selection_indexs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">refresh_type</span> <span class="o">==</span> <span class="s1">&#39;get&#39;</span><span class="p">:</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;self.model.items is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+                <span class="n">refresh_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_funcs_paras_bypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">selection_indexs</span><span class="p">)</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;refresh_data in _refresh_parasdata is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+                <span class="k">return</span> <span class="n">refresh_data</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># self._refresh_item_data(self.model.items, selection_indexs, data)</span>
+                <span class="c1"># self.tree.RefreshItems()</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;get func_paras by pos is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_funcs_paras_bypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">selection_indexs</span><span class="p">)))</span>
+                <span class="n">refresh_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_item_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">selection_indexs</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;get refresh obj is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">refresh_obj</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">replace_freshobj_bypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">selection_indexs</span><span class="p">,</span> <span class="n">refresh_obj</span><span class="p">)</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;get func_paras by pos is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_funcs_paras_bypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">selection_indexs</span><span class="p">)))</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;after refreshing, self.model.items is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+                <span class="c1">#只刷新数据，不取消选中</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">request_showdata_onlyrefreshdata</span><span class="p">()</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+
+
+
+<div class="viewcode-block" id="Control.get_current_pos"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.get_current_pos">[docs]</a>    <span class="k">def</span> <span class="nf">get_current_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;get the position according to tree selection&quot;&quot;&quot;</span>
+        <span class="n">_pos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">select_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">select_item</span><span class="o">.</span><span class="n">m_pItem</span><span class="p">:</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;Enter getpos from get_current_pos&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">select_item</span><span class="p">)):</span>
+                <span class="n">_pos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;Tree control for showing programming process &quot;</span>
+                                           <span class="s2">&quot;don&#39;t have selection!&quot;</span><span class="p">)</span>
+            <span class="k">pass</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;select_item is </span><span class="si">%s</span><span class="s1">, get_current_pos is </span><span class="si">%s</span><span class="s1">&#39;</span>
+                                       <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">select_item</span><span class="o">.</span><span class="n">m_pItem</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">_pos</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">_pos</span></div>
+
+
+<div class="viewcode-block" id="Control.update_modeldata"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.update_modeldata">[docs]</a>    <span class="k">def</span> <span class="nf">update_modeldata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;update new_value to data by pos&quot;&quot;&quot;</span>
+        <span class="n">command_tools</span><span class="o">.</span><span class="n">set_dict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span></div>
+
+
+
+<span class="c1">##########################################control programming process panel################################</span>
+
+<div class="viewcode-block" id="Control.set_tree"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.set_tree">[docs]</a>    <span class="k">def</span> <span class="nf">set_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;set process tree&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span></div>
+
+    <span class="k">def</span> <span class="nf">unselect_items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;UnselectAll items!&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">UnselectAll</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">modify_runtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">NumberEntryDialog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;请输入需要循环执行的次数&#39;</span><span class="p">,</span> <span class="s1">&#39;次数（默认0为无限循环）：&#39;</span><span class="p">,</span> <span class="s1">&#39;输入循环次数弹框&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
+            <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">&#39;设置成功！&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s1">&#39;Cancle it!&#39;</span>
+
+<div class="viewcode-block" id="Control.append_item"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.append_item">[docs]</a>    <span class="k">def</span> <span class="nf">append_item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;控制显示数据&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_selectionstr</span><span class="p">(),</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selection_paras</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_control_model</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">delete_item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_control_model</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">change_item_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change_way</span> <span class="o">=</span> <span class="s1">&#39;up&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">change_way</span> <span class="o">=</span> <span class="n">change_way</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_control_model</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Control.save_to_disk"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.save_to_disk">[docs]</a>    <span class="k">def</span> <span class="nf">save_to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;save the project data into disk as well as generate commands to lua4 Panel&quot;&quot;&quot;</span>
+        <span class="nb">print</span> <span class="s1">&#39;self.file_path&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="s1">&#39;saving file.&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+                    <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_prj_data</span><span class="p">())</span>
+                    <span class="n">commands_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orgnize_commands</span><span class="p">()</span>
+                    <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_lua_panel&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">commands_data</span><span class="p">,</span> <span class="p">))</span>
+                    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;保存成功！&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;为了确保程序正常退出，请至少添加一个延时操作DELAY!&#39;</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">exceptions</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;保存失败，请检查第</span><span class="si">%d</span><span class="s1">行错误原因！请联系技术人员解决问题！&#39;</span> <span class="o">%</span> <span class="n">exceptions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tb_lineno</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># load filepath</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;请检查文件路径</span><span class="si">%s</span><span class="s1">是否正确？&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span></div>
+
+    <span class="k">def</span> <span class="nf">generate_prj_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_tmp</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;ProgramBlocks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;Repeat_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;Last_Edit_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;Author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ysw&#39;</span>
+        <span class="c1"># _tmp[&#39;version&#39;] = &#39;.&#39;.join(list(&#39;0010&#39;))</span>
+        <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span>
+
+        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">_tmp</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">orgnize_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">from</span> <span class="nn">LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler</span> <span class="k">import</span> <span class="n">Handle_Msg</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">Handle_Msg</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">commands_data</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">generate_data_from_gui</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">)</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span>
+            <span class="s1">&#39;Generating command data is </span><span class="si">%s</span><span class="s1">, repeat_time is </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">commands_data</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span><span class="p">))</span>
+        <span class="n">head_instance</span><span class="p">,</span> <span class="n">end_instance</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">get_repeat_lua_for</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">Cmd_Manager</span><span class="o">.</span><span class="n">pg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head_instance</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">generate_commands</span><span class="p">(</span><span class="n">commands_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">Cmd_Manager</span><span class="o">.</span><span class="n">pg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_instance</span><span class="p">)</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">+</span> <span class="s1">&#39;.lua&#39;</span><span class="p">,</span> <span class="n">handler</span><span class="o">.</span><span class="n">output_commands</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">handler</span><span class="o">.</span><span class="n">output_commands</span><span class="p">()</span>
+
+
+
+<div class="viewcode-block" id="Control.load_from_disk"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.load_from_disk">[docs]</a>    <span class="k">def</span> <span class="nf">load_from_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;load Project data with file_path&quot;&quot;&quot;</span>
+        <span class="nb">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">:</span>
+            <span class="n">filedata</span> <span class="o">=</span> <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">loadyaml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">filedata</span><span class="p">[</span><span class="s1">&#39;ProgramBlocks&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span> <span class="o">=</span> <span class="n">filedata</span><span class="p">[</span><span class="s1">&#39;Repeat_time&#39;</span><span class="p">]</span>
+            <span class="nb">print</span> <span class="s1">&#39;loading ...&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">refresh_tree</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># load filepath</span>
+            <span class="k">pass</span></div>
+
+    <span class="k">def</span> <span class="nf">refresh_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">request_showdata_refresh</span><span class="p">()</span>
+        <span class="c1"># self.parent.m_treeControl_show.RefreshItems()</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;refreshing_tree.....&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Control.request_showdata_refresh"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.request_showdata_refresh">[docs]</a>    <span class="k">def</span> <span class="nf">request_showdata_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh data of treelistctrl as well as unselect all selection&quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;show data refresh is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:]))</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_show_modeldata&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="p">))</span></div>
+
+<div class="viewcode-block" id="Control.request_showdata_onlyrefreshdata"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.request_showdata_onlyrefreshdata">[docs]</a>    <span class="k">def</span> <span class="nf">request_showdata_onlyrefreshdata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;only refresh data of treelistctrl&quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;show data refresh is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:]))</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_show_onlyrefreshdata&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="p">))</span></div>
+
+
+
+    <span class="k">def</span> <span class="nf">_rename_func_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;translate the func str to command str&quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;func_str is </span><span class="si">%s</span><span class="s1">, final_str is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">[</span><span class="n">func_str</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">[</span><span class="n">func_str</span><span class="p">]</span>
+
+
+    <span class="k">def</span> <span class="nf">_control_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})):</span>
+        <span class="sd">&quot;&quot;&quot;main control of controlling the change of data &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Entering control model, data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_child</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span>
+        <span class="n">select_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()</span>
+        <span class="n">select_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">select_item</span><span class="p">)</span> <span class="k">if</span> <span class="n">select_item</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">select_items</span><span class="p">)</span> <span class="k">if</span> <span class="n">select_items</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_control_command</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refresh_tree</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Control.print_allerrmsg"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.print_allerrmsg">[docs]</a>    <span class="k">def</span> <span class="nf">print_allerrmsg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;print all errmsg if there exists errmsg&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> \
+                <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">print_allerrmsg</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">unicode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_control_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        truly control function data with command</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span><span class="p">:</span>
+            <span class="c1"># obj = self._add_obj_bylimit(obj, index, limit=limit)</span>
+            <span class="n">add_control</span> <span class="o">=</span> <span class="n">TreeItemController</span><span class="p">()</span>
+            <span class="n">add_control</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selection_paras</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">print_allerrmsg</span><span class="p">(</span><span class="n">add_control</span><span class="o">.</span><span class="n">control_model</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">),</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">),</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selection_paras</span><span class="p">())))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">add_control</span><span class="o">.</span><span class="n">items</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">u&#39;请选择左侧函数列表中需要添加的函数！&#39;</span><span class="p">)</span>
+            <span class="c1"># controlfile_tools.log_bystatus(&#39;after adding items is %s&#39; % str(self.model.items))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;change&#39;</span><span class="p">:</span>
+            <span class="n">change_control</span> <span class="o">=</span> <span class="n">TreeItemController</span><span class="p">()</span>
+            <span class="n">change_control</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">print_allerrmsg</span><span class="p">(</span>
+                    <span class="n">change_control</span><span class="o">.</span><span class="n">control_model</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">),</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">),</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selection_paras</span><span class="p">()),</span> <span class="n">change_way</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">change_way</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">change_control</span><span class="o">.</span><span class="n">items</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">u&#39;请选择需要改变位置的函数！&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;delete&#39;</span><span class="p">:</span>
+            <span class="n">delete_control</span> <span class="o">=</span> <span class="n">TreeItemController</span><span class="p">()</span>
+            <span class="n">delete_control</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">print_allerrmsg</span><span class="p">(</span><span class="n">delete_control</span><span class="o">.</span><span class="n">control_model</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">),</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">),</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selection_paras</span><span class="p">())))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">delete_control</span><span class="o">.</span><span class="n">items</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">u&#39;请选择需要删除的函数！&#39;</span><span class="p">)</span>
+            <span class="c1"># obj = self._delete_obj(obj, index)</span>
+
+
+    <span class="k">def</span> <span class="nf">__set_tree_value_jumpout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treedata</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">check_type</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+        <span class="n">__tmp_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">__tmp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="n">__tmp_data</span> <span class="o">=</span> <span class="n">treedata</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">__tmp_data</span> <span class="k">else</span> <span class="n">__tmp_data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+            <span class="n">__tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">__tmp_data</span><span class="p">)</span>
+        <span class="n">setdata</span> <span class="o">=</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">func_str_grandfather</span><span class="p">,</span> <span class="n">func_child_grandfather</span><span class="p">,</span> <span class="n">func_paras_grandfather</span><span class="p">)</span> <span class="o">=</span> <span class="n">__tmp</span><span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">func_child_grandfather</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">setdata</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func_child_grandfather</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">setdata</span><span class="p">)</span>
+                <span class="n">__tmp</span><span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">func_str_grandfather</span><span class="p">,</span> <span class="n">func_child_grandfather</span><span class="p">,</span> <span class="n">func_paras_grandfather</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">setdata</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">setdata</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">del</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 以便使用parent item来做控制</span>
+        <span class="n">delete_pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="n">delete_pos</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">__get_loop_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parentitem</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">parentitem</span><span class="p">:</span>
+            <span class="n">parentitem_str</span><span class="p">,</span> <span class="n">parentitem_child</span><span class="p">,</span> <span class="n">parentitem_paras</span> <span class="o">=</span> <span class="n">parentitem</span>
+            <span class="n">parentitem</span> <span class="o">=</span> <span class="n">parentitem_child</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parentitem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">parentitem</span>
+
+    <span class="k">def</span> <span class="nf">_check_func_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_str</span><span class="p">):</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;func_str is </span><span class="si">%s</span><span class="s2">, _funcs_unlimit is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">func_str</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">)),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func_str</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span>
+
+    <span class="k">def</span> <span class="nf">_unselete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_unselect_all items is </span><span class="si">%s</span><span class="s1">, tree is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">RefreshItems</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">UnselectAll</span><span class="p">()</span>
+
+
+    <span class="c1">## Addon functions</span>
+
+<div class="viewcode-block" id="Control.import_prj_fromdisk"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.import_prj_fromdisk">[docs]</a>    <span class="k">def</span> <span class="nf">import_prj_fromdisk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;import project data from disk file&quot;&quot;&quot;</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Please Choose A project file&#39;</span><span class="p">,</span> <span class="n">defaultDir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
+                      <span class="n">wildcard</span><span class="o">=</span><span class="s1">&#39;Lts files (*.lts)|*.lts|All files (*.*)|*.*&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_from_disk</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Control.output_to_folder"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.output_to_folder">[docs]</a>    <span class="k">def</span> <span class="nf">output_to_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;save current project data edited on the panel to disk&quot;&quot;&quot;</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;请填写需要保存的工程文件名，并选中一个路径进行保存！&quot;</span><span class="p">,</span> <span class="n">defaultDir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
+            <span class="n">defaultFile</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">wildcard</span><span class="o">=</span><span class="s1">&#39;Lts files (*.lts)|*.lts|All files (*.*)|*.*&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">SAVE</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Control.load_help_msg"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.load_help_msg">[docs]</a>    <span class="k">def</span> <span class="nf">load_help_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;load help msg&quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;help_msg_path is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">unicode</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">data</span></div>
+
+    <span class="k">def</span> <span class="nf">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Control.check_process_hierarchy"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.check_process_hierarchy">[docs]</a>    <span class="k">def</span> <span class="nf">check_process_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">check_type</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        check the position whether can be jump out or not</span>
+
+<span class="sd">        :param `data`: item data</span>
+<span class="sd">        :type `data`: list</span>
+<span class="sd">        :param `pos`: check position</span>
+<span class="sd">        :type `pos`: list</span>
+<span class="sd">        :param `check_type`: check up or down</span>
+<span class="sd">        :rtype: int</span>
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">            |</span>
+<span class="sd">            | return -1 equals to data None or index None.</span>
+<span class="sd">            | return 0  equals to normal change, up is up, down is down.</span>
+<span class="sd">            |</span>
+<span class="sd">            |</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Enter check_process_hierarchy....&#39;</span><span class="p">)</span>
+        <span class="n">first_index</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">pos</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">_tmp_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">first_index</span><span class="p">]</span> <span class="k">if</span> <span class="n">data</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_tmp_value is </span><span class="si">%s</span><span class="s1">, first_index is </span><span class="si">%d</span><span class="s1">, data is </span><span class="si">%s</span><span class="s1">, pos is </span><span class="si">%s</span><span class="s1"> &#39;</span>
+                                       <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_tmp_value</span><span class="p">),</span> <span class="n">first_index</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">_tmp_value</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># &lt;list&gt;</span>
+            <span class="k">del</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;check_process pos is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">_tmp_value</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>  <span class="c1"># &lt;list&gt;</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_current_func_islimited</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">&#39;child[value]取值有误， child Is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
+                        <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">_tmp_value</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_current_func_islimited</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">first_index</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s1">&#39;数据为空！！！&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="nf">__check_current_func_islimited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        考虑到函数自身是否应该上(下)跳或直接移动</span>
+<span class="sd">        :param data:</span>
+<span class="sd">        :param index:</span>
+<span class="sd">        :param check_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span> <span class="k">else</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">!=</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">parentdata</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">parentdata</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">parentdata</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+
+    <span class="k">def</span> <span class="nf">__get_limited_checkvalue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">check_value</span><span class="p">):</span>
+
+        <span class="p">(</span><span class="n">func_str_tmp</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">check_value</span>
+        <span class="k">if</span> <span class="n">func_str_tmp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1">##########################################control function list panel################################</span>
+    <span class="k">def</span> <span class="nf">get_selectionstr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span>
+
+    <span class="k">def</span> <span class="nf">get_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_selection</span>
+
+    <span class="k">def</span> <span class="nf">get_selection_paras</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;获取到paras为</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_funcsitems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_func_init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span>
+
+    <span class="k">def</span> <span class="nf">_refresh_func_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_funcs&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_funcs_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func_items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func_selection</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_funcs_unlimit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;_get_funcs_data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span></div>
+</pre></div>
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

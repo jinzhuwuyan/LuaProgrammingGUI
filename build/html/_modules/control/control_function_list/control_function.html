@@ -29,9 +29,7 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul class="row1">
-        <li><img src="_static/images/sphinxdocs/phoenix_small.png" alt=""/></li>
-        <li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
-        <li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> |&nbsp;</li>
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
         <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
           <li><a href="../../index.html" accesskey="U">
               Module code</a> &#187;</li>
@@ -48,9 +46,13 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h3><a href="../../../index.html">Table Of Contents</a></h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">目录列表</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../treeitemcontrol.html">树节点数据逻辑控制</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -71,17 +73,20 @@
   <div class="documentwrapper">
     <div class="body headerfix">
       <div class="headerimage">
-      <img src="../../../_static/images/sphinxdocs/phoenix_top.png" alt="Phoenix Logo" />
+      <img src="../../../_static/images/Design_images/RR_logo.png" alt="RR Logo" />
       </div>
     
       
   <h1>Source code for control.control_function_list.control_function</h1><div class="highlight"><pre>
-<span class="ch">#!encoding: utf-8</span>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Author: yan_sw</span>
-<span class="sd">    Date: Monday, 10:44, 2018-01-08</span>
-<span class="sd">    Description:</span>
-<span class="sd">        Control the functions which user have programmed for the TreeListCtrl View as well</span>
+<span class="sd">**Module Info**::</span>
+
+<span class="sd">   @Author     : yan_sw</span>
+<span class="sd">   @Time       : 2018-01-09 14:53</span>
+<span class="sd">   @Description:</span>
+<span class="sd">       Control the functions which user have programmed for the TreeListCtrl View as well</span>
 <span class="sd">        as the tree data</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -94,15 +99,15 @@
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pubsub</span> <span class="k">import</span> <span class="n">pub</span>
 <span class="c1"># Main control Class</span>
-<div class="viewcode-block" id="Function_List_Control"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control">[docs]</a><span class="k">class</span> <span class="nc">Function_List_Control</span><span class="p">():</span>
+<div class="viewcode-block" id="Function_List_Control"><a class="viewcode-back" href="../../../functionlistcontrol.html#control.control_function_list.control_function.Function_List_Control">[docs]</a><span class="k">class</span> <span class="nc">Function_List_Control</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    .. admonition:: Class Description</span>
 
 <span class="sd">            Class to Control Function list in order to refresh the function list user chosen</span>
 <span class="sd">        and send the chosen functions data to TreeListCtrl</span>
 
-<span class="sd">            此类用于响应函数列表的选中(:py:meth:`refresh`)以及响应外界请求获取当前选中</span>
-<span class="sd">        函数数据的订阅(:py:meth:`send_funcs_data`)</span>
+<span class="sd">            此类用于响应函数列表的选中(:meth:`refresh`)以及响应外界请求获取当前选中</span>
+<span class="sd">        函数数据的订阅(:meth:`send_funcs_data`)</span>
 
 
 <span class="sd">        The **initilization** of Funtion_List_Control is:</span>
@@ -144,7 +149,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">init_control</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Function_List_Control.init_control"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control.init_control">[docs]</a>    <span class="k">def</span> <span class="nf">init_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Function_List_Control.init_control"><a class="viewcode-back" href="../../../functionlistcontrol.html#control.control_function_list.control_function.Function_List_Control.init_control">[docs]</a>    <span class="k">def</span> <span class="nf">init_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;init control&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">function_object</span><span class="o">.</span><span class="n">container</span><span class="p">()</span>
         <span class="c1"># 判断配置文件路径是否为空, 如果为空，不初始化报错，否则初始化数据容器</span>
@@ -213,7 +218,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;help_msg_path&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Function_List_Control.send_funcs_data"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control.send_funcs_data">[docs]</a>    <span class="k">def</span> <span class="nf">send_funcs_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Function_List_Control.send_funcs_data"><a class="viewcode-back" href="../../../functionlistcontrol.html#control.control_function_list.control_function.Function_List_Control.send_funcs_data">[docs]</a>    <span class="k">def</span> <span class="nf">send_funcs_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Send function data to who have sendMessage(&#39;refresh_funcs&#39;) through Publisher&quot;&quot;&quot;</span>
         <span class="nb">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_paras</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_paras</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_selection</span><span class="p">,</span>
@@ -221,7 +226,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">name_reference_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">help_msg_path</span><span class="p">,</span> <span class="p">)</span>
         <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_func_ret&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Function_List_Control.refresh"><a class="viewcode-back" href="../../../getting_started.html#control.control_function_list.control_function.Function_List_Control.refresh">[docs]</a>    <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Function_List_Control.refresh"><a class="viewcode-back" href="../../../functionlistcontrol.html#control.control_function_list.control_function.Function_List_Control.refresh">[docs]</a>    <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        refresh the function selection as well as reinit the other function panel.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

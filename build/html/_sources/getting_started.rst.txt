@@ -68,11 +68,10 @@ Lua自动编程界面介绍
 运行模型
 =============================
 
-#. 简单模型
+#. :ref:`simple_model`
 
-#. 功能间调用关系模型
+#. :ref:`link_relationship_between_functions`
 
-#. 分功能模型
 
 .. _simple_model:
 
@@ -88,38 +87,28 @@ Lua自动编程界面介绍
 
 功能间调用关系模型
 ----------------------------
-.. raw:: html
 
-   <div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
-   <img id="toggleBlock-trigger" src="_static/images/closed.png"/>
-   Inheritance diagram for class <strong>AcceleratorEntry</strong>:
-   </div>
-   <div id="toggleBlock-summary" style="display:block;"></div>
-   <div id="toggleBlock-content" style="display:none;">
-   <p class="graphviz">
-   <center><img src="_static/images/Design_images/only_one_panel.png" alt="Inheritance diagram of AcceleratorEntry" usemap="#dummy" class="inheritance"/></center>
-   </div>
-   <script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
-   <map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
-   </p>
-xaasas
-
-.. raw:: html
-
-    <a href='#control.control_function_list.control_function.Function_List_Control.refresh'> refresh </a>
-
-a sasasasa
-
-.. attention::
-
-   Please attentio
+.. image:: _static/images/Design_images/luaprogramming_model_communication.png
 
 
+.. _control_model:
 
-.. automodule:: control.control_function_list.control_function
-    :members:
+控制模型
+===========================
+| 相对于界面层的数据刷新显示以及数据模型层的数据结构，控制层提供了界面数据的刷新及界面控件的响应，数据模型的存取修改以及转化等功能。
+| 因此独立对控制层的逻辑进行进一步分析。
 
+.. _control_relationship:
 
+控制交互关系图
+---------------------------
 
+.. image:: _static/images/Design_images/lua_programming_control_model.png
 
+.. _controlmodel_analyze:
+
+控制模块分析
+---------------------------
+
+未完待续........
 

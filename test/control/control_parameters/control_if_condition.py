@@ -122,6 +122,11 @@ class IFConditionControl():
         self.tree.UnselectAll()
 
     def set_choose_mode(self, obj):
+        """
+        set all conditions satisfy or only one condition satisfy
+        :param `obj`: event Object
+        :type `obj`: wx.Event
+        """
         self.check_allconditions = self.radio_allcondition.GetValue()
         self.radio_allcondition.SetValue(self.check_allconditions)
         self.radio_onlyonecondition.SetValue(not self.check_allconditions)
@@ -135,6 +140,7 @@ class IFConditionControl():
 
 
     def add_condition(self, obj):
+        """add one condiiton"""
         __default_item = (u'判断输入信号', [], {'condition_value': u'getInput(0)', 'operation_value': u'有信号'})
         tree_selection_info = self.get_tree_item_info(self.tree)
         if tree_selection_info:
@@ -147,7 +153,7 @@ class IFConditionControl():
         self.save_paras()
 
     def delete_condition(self, obj):
-
+        """delete selected condition"""
         tree_selection_info = self.get_tree_item_info(self.tree)
         if tree_selection_info:
             select_id, condition_str, condition_value = tree_selection_info
@@ -163,11 +169,16 @@ class IFConditionControl():
 
 
     def save_paras(self):
+        """save condition paras to control process panel"""
         self.refresh_data['condition'] = (self.model.items[:], 'list')
         pub.sendMessage('save_paras', refresh_type='refresh', data=self.refresh_data)
 
     def choose_condition(self, obj):
-
+        """
+        choose condition control to set condition value and refresh other operation and value controls
+        :param `obj`: condition control
+        :type `obj`: wx.Choice
+        """
         self.refresh_choiceboxs(obj.GetSelection(), 0, 0)
 
         selection_info = self.get_tree_item_info(self.tree)
@@ -186,7 +197,7 @@ class IFConditionControl():
             pass
 
     def choose_operation(self, obj):
-
+        """choose operation value"""
         selection_info = self.get_tree_item_info(self.tree)
         if selection_info:
             select_id, condition_str, condition_value = selection_info
@@ -198,7 +209,7 @@ class IFConditionControl():
             pass
 
     def choose_value(self, obj):
-
+        """choose value"""
         selection_info = self.get_tree_item_info(self.tree)
         if selection_info:
             select_id, condition_str, condition_value = selection_info
@@ -211,6 +222,16 @@ class IFConditionControl():
             pass
 
     def get_tree_item_info(self, obj):
+        """
+        get condition infos by condition tree selection
+        :param `obj`:  condition tree
+        :type `obj`: wx.TreeListCtrl
+        :return: (selection id, condition string, condition value)
+        :rtype: tuple
+        :exception:
+            there are no selection, then return None
+
+        """
         select_item = obj.GetSelection()
         selection = obj.GetIndexOfItem(select_item)
         if len(selection) > 0:
@@ -221,6 +242,16 @@ class IFConditionControl():
             return None
 
     def get_condition_id(self, condition_list, condition_value):
+        """
+        get condition position with condition list
+        :param `condition_list`: condition list
+        :type `condition_list`: list
+        :param `condition_value`: checkvalue
+        :type `condition_value`: str
+        :return: position id
+        :exception:
+            if condition list don't have check value, then return -1
+        """
         for idx, value in enumerate(condition_list):
             if unicode(value) == unicode(condition_value):
                 return idx
@@ -229,6 +260,7 @@ class IFConditionControl():
         return -1
 
     def init_ifcondition_paneldata(self):
+        """init condition panel data"""
         try:
             with open(os.path.abspath(self.condition_data_path)) as f:
                 self.control_condition_data = yaml.load(f.read())
@@ -240,6 +272,7 @@ class IFConditionControl():
             wx.MessageBox('初始化界面失败！请询问技术人员具体原因！')
 
     def parse_condition_data(self):
+        """parse condition data to variable"""
         self.conditions = self.control_condition_data['condition']
         self.values = self.control_condition_data['value']
         self.operations = self.control_condition_data['operation']
@@ -250,6 +283,7 @@ class IFConditionControl():
                                        % (str(self.conditions), str(self.values), str(self.operations)) )
 
     def init_choiceboxs(self, condition_idx):
+        """init choices controls with condition value chosen"""
         # 条件列表刷新初始化
         self.choice_conditions.SetItems(self.conditions)
         self.choice_conditions.Refresh()
@@ -264,6 +298,7 @@ class IFConditionControl():
         self.choice_values.Refresh()
 
     def refresh_choiceboxs(self, condition_index, value_index, control_index):
+        """set condition, value, control selection with indexs"""
         self.init_choiceboxs(condition_index)
         self.choice_conditions.SetSelection(condition_index)
         self.choice_controls.SetSelection(control_index)
@@ -272,6 +307,7 @@ class IFConditionControl():
 
 
     def change_tree_selection(self, obj):
+        """change condition tree condition and change the choices selection"""
         selection_info = self.get_tree_item_info(obj)
         if selection_info:
 

@@ -1,9 +1,12 @@
-#!encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-    Author: yan_sw
-    Date: Monday, 10:44, 2018-01-08
-    Description:
-        Control the functions which user have programmed for the TreeListCtrl View as well
+**Module Info**::
+
+   @Author     : yan_sw
+   @Time       : 2018-01-09 14:53
+   @Description:
+       Control the functions which user have programmed for the TreeListCtrl View as well
         as the tree data
 
 """
@@ -23,8 +26,8 @@ class Function_List_Control():
             Class to Control Function list in order to refresh the function list user chosen
         and send the chosen functions data to TreeListCtrl
 
-            此类用于响应函数列表的选中(:py:meth:`refresh`)以及响应外界请求获取当前选中
-        函数数据的订阅(:py:meth:`send_funcs_data`)
+            此类用于响应函数列表的选中(:meth:`refresh`)以及响应外界请求获取当前选中
+        函数数据的订阅(:meth:`send_funcs_data`)
 
 
         The **initilization** of Funtion_List_Control is:

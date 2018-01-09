@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fb1e65-9c86-4cb3-8bc7-f28b5c5388a0" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../source/_static/default.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/../build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/getting_started.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/../build/doctrees/index.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/objects.inv" afterPath="$PROJECT_DIR$/../build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control/control_function_list/control_function.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/control/control_parameters/control_choose_pointlist.html" afterPath="$PROJECT_DIR$/../build/html/_modules/control/control_parameters/control_choose_pointlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_modules/index.html" afterPath="$PROJECT_DIR$/../build/html/_modules/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/getting_started.rst.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" afterPath="$PROJECT_DIR$/../build/html/_sources/index.rst.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-C.html" afterPath="$PROJECT_DIR$/../build/html/genindex-C.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-F.html" afterPath="$PROJECT_DIR$/../build/html/genindex-F.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-G.html" afterPath="$PROJECT_DIR$/../build/html/genindex-G.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-H.html" afterPath="$PROJECT_DIR$/../build/html/genindex-H.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-I.html" afterPath="$PROJECT_DIR$/../build/html/genindex-I.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-N.html" afterPath="$PROJECT_DIR$/../build/html/genindex-N.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-P.html" afterPath="$PROJECT_DIR$/../build/html/genindex-P.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-R.html" afterPath="$PROJECT_DIR$/../build/html/genindex-R.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-S.html" afterPath="$PROJECT_DIR$/../build/html/genindex-S.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex-all.html" afterPath="$PROJECT_DIR$/../build/html/genindex-all.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/genindex.html" afterPath="$PROJECT_DIR$/../build/html/genindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/getting_started.html" afterPath="$PROJECT_DIR$/../build/html/getting_started.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/index.html" afterPath="$PROJECT_DIR$/../build/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/py-modindex.html" afterPath="$PROJECT_DIR$/../build/html/py-modindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/search.html" afterPath="$PROJECT_DIR$/../build/html/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/html/searchindex.js" afterPath="$PROJECT_DIR$/../build/html/searchindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/_templates/layout.html" afterPath="$PROJECT_DIR$/../source/_templates/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/getting_started.rst" afterPath="$PROJECT_DIR$/../source/getting_started.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../source/index.rst" afterPath="$PROJECT_DIR$/../source/index.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" afterPath="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_parameters/control_parameters.py" afterPath="$PROJECT_DIR$/../test/control/control_parameters/control_parameters.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_process/TreeItemsControl.py" afterPath="$PROJECT_DIR$/../test/control/control_process/TreeItemsControl.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_process/control_process.py" afterPath="$PROJECT_DIR$/../test/control/control_process/control_process.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test/control/control_process/control_process_showdata.py" afterPath="$PROJECT_DIR$/../test/control/control_process/control_process_showdata.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,37 +62,71 @@
     <SUITE FILE_PATH="coverage/_$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1515229262111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$command_tools.coverage" NAME="command_tools Coverage Results" MODIFIED="1511242541671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/test/control/tools" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Data_Handler.coverage" NAME="Data_Handler Coverage Results" MODIFIED="1512100849471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/demos/luaprogramme/control" />
+    <SUITE FILE_PATH="coverage/_$Main__3_.coverage" NAME="Main (3) Coverage Results" MODIFIED="1515463880119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main__2_.coverage" NAME="Main (2) Coverage Results" MODIFIED="1511312995466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$" />
     <SUITE FILE_PATH="coverage/LuaProgrammingGUI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512121845746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="control_choose_pointlist.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
+      <file leaf-file-name="treeitemcontrol.rst" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../source/treeitemcontrol.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control_if_condition.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
+      <file leaf-file-name="getting_started.rst" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../source/getting_started.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panel_edit_if_condition_overwrite.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
+      <file leaf-file-name="index.rst" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../source/index.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../source/conf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3186">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../source/_templates/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../source/_templates/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="32" column="118" lean-forward="false" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#916#922#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,19 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/test/control/tools/create_reference.py" />
-        <option value="$USER_HOME$/test/view/view_process/Panel_controlprocess_overwrite.py" />
-        <option value="$USER_HOME$/test/view/MainView.py" />
-        <option value="$USER_HOME$/test/control/control_function_list/control_function.py" />
-        <option value="$USER_HOME$/test/control/control_process/control_process.py" />
-        <option value="/demos/luaprogramme/cmds2.py" />
-        <option value="/demos/luaprogramme/commands/commonCmd.py" />
-        <option value="/demos/luaprogramme/GenerateCodeClass.py" />
-        <option value="/demos/luaprogramme/commands/CommonCmd.py" />
-        <option value="/demos/luaprogramme/control/Handle_Msg_Thread.py" />
-        <option value="/test/test.lts" />
-        <option value="/test/test.lts.py" />
-        <option value="/test/control/tools/command_tools.py" />
         <option value="/test/view/view_process/Panel_controlprocess_overwrite.py" />
         <option value="/test/view/view_tools/TextDialog.py" />
         <option value="/test/view/view_tools/TextDialogClass.py" />
@@ -153,18 +209,31 @@
         <option value="$USER_HOME$/src/control/control_parameters/control_choose_pointlist.py" />
         <option value="$USER_HOME$/source/getting_started.rst" />
         <option value="$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
-        <option value="$PROJECT_DIR$/../../source/index.rst" />
-        <option value="$PROJECT_DIR$/../../source/conf.py" />
+        <option value="$USER_HOME$/source/index.rst" />
+        <option value="$USER_HOME$/source/conf.py" />
+        <option value="$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$USER_HOME$/test/control/control_function_list/control_function.py" />
+        <option value="$USER_HOME$/source/getting_started.rst" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/asasa.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/sasasaqqq.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/sasa.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/aaaaaa.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/sasasa.py" />
         <option value="$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" />
-        <option value="$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
-        <option value="$PROJECT_DIR$/../../source/getting_started.rst" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/asasa.py" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasasaqqq.py" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasa.py" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/aaaaaa.py" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/sasasa.py" />
-        <option value="$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py" />
+        <option value="$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py" />
         <option value="$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_function_list/control_function.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_parameters/control_parameters.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_process/control_process.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_process/control_process_showdata.py" />
+        <option value="$PROJECT_DIR$/../test/control/control_process/TreeItemsControl.py" />
+        <option value="$PROJECT_DIR$/../source/parameterscontrol.rst" />
+        <option value="$PROJECT_DIR$/../source/functionlistcontrol.rst" />
+        <option value="$PROJECT_DIR$/../source/processcontrol.rst" />
+        <option value="$PROJECT_DIR$/../source/treeitemcontrol.rst" />
+        <option value="$PROJECT_DIR$/../source/index.rst" />
+        <option value="$PROJECT_DIR$/../source/_templates/layout.html" />
+        <option value="$PROJECT_DIR$/../source/getting_started.rst" />
       </list>
     </option>
   </component>
@@ -175,8 +244,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="84" />
-    <option name="y" value="89" />
+    <option name="x" value="67" />
+    <option name="y" value="61" />
     <option name="width" value="1853" />
     <option name="height" value="985" />
   </component>
@@ -235,8 +304,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,7 +329,7 @@
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="_static" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -284,27 +353,33 @@
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_function_list" type="462c0819:PsiDirectoryNode" />
+              <item name="control_process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="control_parameters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="view_parameters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="view_process" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="LuaProgrammingGUI" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="view_tools" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -314,24 +389,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../source/_static/images/Design_images" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../../source/_static/images/Design_images" />
-      <recent name="$PROJECT_DIR$/../../source/_static/images" />
-      <recent name="$PROJECT_DIR$/../../source/_static" />
-      <recent name="$PROJECT_DIR$/../../source/_templates" />
-      <recent name="/demos/luaprogramme/control" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../source/_static/images/Design_images" />
       <recent name="/demos/luaprogramme/commands/core" />
       <recent name="$USER_HOME$/test/control/control_parameters" />
       <recent name="$USER_HOME$/test/control/control_process" />
       <recent name="$USER_HOME$/test/control/control_function_list" />
-      <recent name="$USER_HOME$/test/control" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../source/_static/images/Design_images" />
+      <recent name="$PROJECT_DIR$/../source/_static/images" />
+      <recent name="$PROJECT_DIR$/../source" />
+      <recent name="$USER_HOME$/source/_static/images/Design_images" />
+      <recent name="$USER_HOME$/source/_static/images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -346,25 +421,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main (2)">
-    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="/demos/luaprogramme" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="LuaProgrammingGUI" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="/demos/luaprogramme/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.Main (3)">
     <configuration name="Main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -379,6 +436,24 @@
       <module name="LuaProgrammingGUI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$USER_HOME$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="Main (3)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="LuaProgrammingGUI" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -527,18 +602,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Main (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Python.control_function" />
-      <item index="3" class="java.lang.String" itemvalue="Python.walk_dictionary_to_clean_dirty_msg" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Main (2)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.control_function" />
+      <item index="2" class="java.lang.String" itemvalue="Python.walk_dictionary_to_clean_dirty_msg" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Main (2)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Main (3)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Main (2)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.walk_dictionary_to_clean_dirty_msg" />
-        <item index="2" class="java.lang.String" itemvalue="Python.control_function" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Main (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Main (3)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Main (2)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.walk_dictionary_to_clean_dirty_msg" />
+        <item index="3" class="java.lang.String" itemvalue="Python.control_function" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -559,17 +634,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="84" y="89" width="1853" height="985" extended-state="0" />
+    <frame x="67" y="61" width="1853" height="985" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3753943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3673709" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491096" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40962443" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491096" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29442692" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42797056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -587,7 +664,6 @@
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -624,74 +700,103 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/test/control/control_process/TreeItemsControl.py" />
-    <entry file="file://$USER_HOME$/test/control/tools/colorstreamhandler.py" />
-    <entry file="file://$USER_HOME$/test/data/object_parameters/parameters_object.py" />
-    <entry file="file://$USER_HOME$/test/data/object_parameters/conditiontree_object.py" />
-    <entry file="file://$USER_HOME$/test/data/object_process/process_object.py" />
-    <entry file="file://$USER_HOME$/test/view/view_function_list/GUI_functionlist.py" />
-    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_choose_pointlist.py" />
-    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_control_paras_overwrite.py" />
-    <entry file="file://$USER_HOME$/test/view/view_tools/TextDialogClass.py" />
-    <entry file="file://$USER_HOME$/test/view/view_tools/FloatSpin.py" />
-    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_edit_if_condition_overwrite.py" />
-    <entry file="file://$USER_HOME$/test/view/view_parameters/Panel_edit_paras_overwrite.py" />
-    <entry file="file://$USER_HOME$/src/data/object_parameters/conditiontree_object.py" />
-    <entry file="file://$USER_HOME$/src/control/control_process/control_process_showdata.py" />
-    <entry file="file://$USER_HOME$/src/control/control_process/control_process.py" />
-    <entry file="file://$USER_HOME$/src/data/object_function_list/function_object.py" />
-    <entry file="file://$USER_HOME$/src/data/object_process/process_object.py" />
-    <entry file="file://$USER_HOME$/src/control/control_function_list/control_function.py" />
-    <entry file="file://$USER_HOME$/src/data/object_parameters/parameters_object.py" />
-    <entry file="file://$USER_HOME$/test/view/MainView.py" />
-    <entry file="file://$USER_HOME$/test/view/view_function_list/Panel_ChooseFunc_overwrite.py" />
-    <entry file="file://$USER_HOME$/Main.py" />
-    <entry file="file://$USER_HOME$/test/control/tools/walk_dictionary_to_clean_dirty_msg.py" />
-    <entry file="file://$USER_HOME$/source/getting_started.rst" />
-    <entry file="file://$USER_HOME$/src/control/control_function_list/control_function.py" />
-    <entry file="file://$USER_HOME$/src/control/control_process/control_process.py" />
+    <entry file="file://$USER_HOME$/source/index.rst" />
+    <entry file="file://$USER_HOME$/source/_static/default.css" />
+    <entry file="file://$USER_HOME$/source/_templates/indexsidebar.html" />
+    <entry file="file://$USER_HOME$/source/_static/css/basic.css" />
+    <entry file="file://$USER_HOME$/source/_static/javascript/sidebar.js" />
+    <entry file="file://$USER_HOME$/source/_static/javascript/toggle_visibility.js" />
     <entry file="file://$USER_HOME$/source/conf.py" />
-    <entry file="file://$USER_HOME$/source/getting_started.rst" />
-    <entry file="file://$USER_HOME$/src/control/control_parameters/control_choose_pointlist.py" />
-    <entry file="file://$USER_HOME$/test/control/control_function_list/control_function.py" />
+    <entry file="file://$USER_HOME$/source/_templates/layout.html" />
     <entry file="file://$USER_HOME$/test/control/control_parameters/control_choose_pointlist.py" />
-    <entry file="file://$PROJECT_DIR$/../../source/control.rst" />
-    <entry file="file://$PROJECT_DIR$/../../source/index.rst" />
-    <entry file="file://$PROJECT_DIR$/../../source/_static/default.css" />
-    <entry file="file://$PROJECT_DIR$/../../source/_templates/indexsidebar.html" />
-    <entry file="file://$PROJECT_DIR$/../../source/_static/css/basic.css" />
-    <entry file="file://$PROJECT_DIR$/../../source/_static/javascript/sidebar.js" />
-    <entry file="file://$PROJECT_DIR$/../../source/_static/javascript/toggle_visibility.js" />
-    <entry file="file://$PROJECT_DIR$/../../source/conf.py" />
-    <entry file="file://$PROJECT_DIR$/../../source/_templates/layout.html" />
+    <entry file="file://$USER_HOME$/source/getting_started.rst" />
+    <entry file="file://$USER_HOME$/test/control/control_function_list/control_function.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/asasa.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/sasasaqqq.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/aaaaaa.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/sasa.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/sasasa.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_if_condition.py" />
+    <entry file="file://$PROJECT_DIR$/../../test/view/view_parameters/Panel_edit_if_condition_overwrite.py" />
     <entry file="file://$PROJECT_DIR$/../../test/control/control_parameters/control_choose_pointlist.py" />
-    <entry file="file://$PROJECT_DIR$/../../source/getting_started.rst" />
-    <entry file="file://$PROJECT_DIR$/../../test/control/control_function_list/control_function.py" />
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/asasa.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="-648">
+          <caret line="95" column="36" lean-forward="false" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasasaqqq.py">
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/distutils/command/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="267">
+          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/aaaaaa.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/tools/command_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="-324">
+          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasa.py">
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/view/view_process/Panel_controlprocess_overwrite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="82" column="49" lean-forward="false" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../build/html/_modules/control_process.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="283" column="48" lean-forward="false" selection-start-line="283" selection-start-column="48" selection-end-line="283" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_function_list/control_function.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_function_list/control_function.py</OriginalElement>
+          <nodes>
+            <node x="" y="">test.control.control_function_list.control_function.Function_List_Control</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="270.0" y="256.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/_templates/sourcelink.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -699,34 +804,272 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/sasasa.py">
+    <entry file="file://$PROJECT_DIR$/../source/_templates/searchbox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_choose_pointlist.py">
+    <entry file="file://$PROJECT_DIR$/../source/_templates/indexsidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_if_condition.py">
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_choose_pointlist.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_choose_pointlist.py</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">test.control.control_parameters.control_choose_pointlist.ChoosePoinListControl</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="297.0" y="96.5" />
+          <SelectedNodes>
+            <node>test.control.control_parameters.control_choose_pointlist.ChoosePoinListControl</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_if_condition.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_if_condition.py</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">test.control.control_parameters.control_if_condition.IFConditionControl</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="268.0" y="116.5" />
+          <SelectedNodes>
+            <node>test.control.control_parameters.control_if_condition.IFConditionControl</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_parameters.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters/control_parameters.py</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">test.control.control_parameters.control_parameters.Control</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="226.0" y="116.5" />
+          <SelectedNodes>
+            <node>test.control.control_parameters.control_parameters.Control</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_parameters</OriginalElement>
+          <nodes>
+            <node x="581.0" y="0.0">test.control.control_parameters.control_choose_pointlist.ChoosePoinListControl</node>
+            <node x="1276.666666666666" y="6.000000000000568">test.control.control_parameters.control_parameters.Control</node>
+            <node x="0.0" y="0.0">test.control.control_parameters.control_if_condition.IFConditionControl</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="-1172.666666666667" y="88.33333333333314" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_function_list/control_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/view/view_parameters/Panel_edit_if_condition_overwrite.py">
+    <entry file="file://$PROJECT_DIR$/../source/_static/default.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_parameters/control_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="181" column="36" lean-forward="false" selection-start-line="181" selection-start-column="36" selection-end-line="181" selection-end-column="36" />
+          <folding>
+            <element signature="e#275#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_process">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_process</OriginalElement>
+          <nodes>
+            <node x="648.0" y="0.0">test.control.control_process.TreeItemsControl.TreeItemController</node>
+            <node x="0.0" y="0.0">test.control.control_process.control_process.Control</node>
+            <node x="-578.5714285714284" y="4.714285714285751">test.control.control_process.control_process_showdata.ShowDataControl</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="-307.14285714285717" y="99.85714285714283" />
+          <SelectedNodes>
+            <node>test.control.control_process.control_process.Control</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_process/control_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="50" column="110" lean-forward="false" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="110" />
+          <folding>
+            <element signature="e#258#269#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/functionlistcontrol.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="48" column="47" lean-forward="false" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/parameterscontrol.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_process/TreeItemsControl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/processcontrol.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="66" column="62" lean-forward="false" selection-start-line="66" selection-start-column="62" selection-end-line="66" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/control/control_process/control_process_showdata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding>
+            <element signature="e#191#234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/pi/Documents/LuaProgrammingGUI/test/control/control_process/TreeItemsControl.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/control/control_process/TreeItemsControl.py</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">test.control.control_process.TreeItemsControl.TreeItemController</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="244.0" y="96.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/treeitemcontrol.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/_templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="32" column="118" lean-forward="false" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#916#922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/index.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3186">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/_templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../source/getting_started.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding />
         </state>
       </provider>

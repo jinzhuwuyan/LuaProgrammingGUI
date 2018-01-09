@@ -1,6 +1,32 @@
-#! encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+**Module Info**::
+
+   @Author     : yan_sw
+   @Time       : 2018-01-09 13:46
+   @Description:
+       Logic control of the function data, like add, delete, change and so on
+
+"""
 import copy
 class TreeItemController():
+    """
+                .. admonition:: Class Infos
+
+                        |  *class_description*:
+                        |        Logic control of the function data, like add, delete, change and so on
+                        |
+                        |  *class_chinese_description*:
+                        |        增加item(:meth:`add_obj`)
+                        |        删除item(:meth:`delete_obj`)
+                        |        改变item位置(:meth:``)
+                        |
+                        |
+                        | The **initilization** of :class:`~control.control_process.TreeItemsControl.TreeItemController` is:
+                        |        control = TreeItemController()
+
+    """
     def __init__(self):
         self.funcs_unlimit = None
         self.items = None
@@ -8,6 +34,7 @@ class TreeItemController():
         self.rename_list = None
 
     def config(self, items, pos, funcs_unlimit, rename_list):
+        """init variables"""
         self.items = items
         self.pos = pos
         self.funcs_unlimit = funcs_unlimit
@@ -16,9 +43,23 @@ class TreeItemController():
 
 ########################################################main control##################################
     def control_model(self, command, new_item=None, change_way=None):
-            command_funcs_references = {'add': (self._add_obj, (new_item)),
-                                        'delete': (self._delete_obj, ()),
-                                        'change': (self._change_obj, (change_way))}
+            """
+            choose control according command
+
+            :param `command`: like add, delete, change
+            :type `command`: str
+            :param `new_item`: new item obj only for add command
+            :type `new_item`: tuple
+            :param change_way: change way only for change command
+            :type `change_way`: str
+            :return: (TargetOk, err_msg)
+            :rtype: tuple
+
+            """
+            """choose control according command"""
+            command_funcs_references = {'add': (self.add_obj, (new_item)),
+                                        'delete': (self.delete_obj, ()),
+                                        'change': (self.change_obj, (change_way))}
             func, paras = command_funcs_references[command]
             funcs_has_paras = ['add', 'change']
             if paras:
@@ -32,7 +73,8 @@ class TreeItemController():
                               else (False, u'命令%s参数%s传递错误！！' % (str(command), str(paras)))
 
 
-    def _add_obj(self, add_obj):
+    def add_obj(self, add_obj):
+        """add new obj"""
         if len(add_obj) == 3 \
             and isinstance(add_obj[0], str) \
             and isinstance(add_obj[1], list) \
@@ -74,7 +116,8 @@ class TreeItemController():
 
         return True, u'插入成功！'
 
-    def _delete_obj(self):
+    def delete_obj(self):
+        """delete obj according variable self.pos"""
         obj, parent_index = self.get_lastitem(self.pos)
         _pos = self.pos[:]
         if _pos:
@@ -100,7 +143,8 @@ class TreeItemController():
             return False, u'不存在删除位置！'
         return True, u'删除成功！'
 
-    def _change_obj(self, change_way):
+    def change_obj(self, change_way):
+        """change obj with change way"""
         pos = self.pos[:]
         index = pos[-1]
         obj, parent_index = self.get_lastitem(pos)
@@ -177,6 +221,13 @@ class TreeItemController():
 
 
     def get_lastitem(self, select_items):
+        """
+        get the last item according to position from itemdata
+
+        :param `select_items`: position of last item
+        :type `select_items`: list
+        """
+        """"""
         if select_items:
             try:
                 _tmp = None
@@ -235,6 +286,7 @@ class TreeItemController():
     def __check_current_func_islimited(self, data, index, check_type, parentdata=None):
         """
         考虑到函数自身是否应该上(下)跳或直接移动
+
         :param data:def _check_func_str(self, func_str):
         return False
         :param index:
@@ -270,12 +322,23 @@ class TreeItemController():
 
     def check_process_hierarchy(self, data, pos, check_type='up'):
         """
-        return False  equals to normal change, up is up, down is down.
-        return True equals to into or outto the hierarchy.
-        :param data:
-        :param pos:
-        :param check_type:
-        :return:
+        check the position whether can be jump out or not
+
+        :param `data`: item data
+        :type `data`: list
+        :param `pos`: check position
+        :type `pos`: list
+        :param `check_type`: check up or down
+        :rtype: int
+
+        .. attention::
+
+            |
+            | return -1 equals to data None or index None.
+            | return 0  equals to normal change, up is up, down is down.
+            |
+            |
+
         """
         first_index = pos[0] if pos else None
         _tmp_value = data[first_index] if data else None
@@ -296,10 +359,6 @@ class TreeItemController():
 
         else:
             return False
-
-
-
-
 
 
     def __get_limited_checkvalue(self, check_value):

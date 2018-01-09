@@ -1,0 +1,577 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>参数控制 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="函数流程控制" href="processcontrol.html" />
+    <link rel="prev" title="函数列表控制" href="functionlistcontrol.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+        <li class="reltitle"> 参数控制</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="processcontrol.html" title="函数流程控制"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functionlistcontrol.html" title="函数列表控制"
+             accesskey="P">previous</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">参数控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parameter-dir">参数控制目录结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uml">参数控制 UML 模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detail-control-parameters">参数控制模块细节</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+    <div id="sourcelink" role="note" aria-label="source link">
+        <a href="_sources/parameterscontrol.rst.txt"
+           rel="nofollow">Show page source</a>
+    </div>
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">参数控制</a><ul>
+<li><a class="reference internal" href="#parameter-dir">参数控制目录结构</a></li>
+<li><a class="reference internal" href="#uml">参数控制 UML 模型</a></li>
+<li><a class="reference internal" href="#detail-control-parameters">参数控制模块细节</a><ul>
+<li><a class="reference internal" href="#control-choose-pointlist">control_choose_pointlist</a></li>
+<li><a class="reference internal" href="#control-if-condition">control_if_condition</a></li>
+<li><a class="reference internal" href="#control-parameters">control_parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script><div class="section" id="parameters-control">
+<span id="id1"></span><h1>参数控制<a class="headerlink" href="#parameters-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="parameter-dir">
+<span id="id2"></span><h2>参数控制目录结构<a class="headerlink" href="#parameter-dir" title="Permalink to this headline">¶</a></h2>
+<p>目录结构打印:</p>
+<div class="highlight-default"><div class="highlight"><pre>├── control_choose_pointlist.py
+├── control_choose_pointlist.pyc
+├── control_if_condition.py
+├── control_if_condition.pyc
+├── control_parameters.py
+├── control_parameters.pyc
+├── __init__.py
+└── __init__.pyc
+</pre></div>
+</div>
+</div>
+<div class="section" id="uml">
+<span id="uml-paramtercontrol"></span><h2>参数控制 UML 模型<a class="headerlink" href="#uml" title="Permalink to this headline">¶</a></h2>
+<div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>control_parameters</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img src="_static/images/Design_images/control_parameters.png" alt="Inheritance diagram of control_parameters" usemap="#dummy" class="inheritance"/></center>
+</div>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
+</p></div>
+<div class="section" id="detail-control-parameters">
+<span id="id3"></span><h2>参数控制模块细节<a class="headerlink" href="#detail-control-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="control-choose-pointlist">
+<span id="id4"></span><h3>control_choose_pointlist<a class="headerlink" href="#control-choose-pointlist" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-control.control_parameters.control_choose_pointlist"></span><p><strong>Module Info</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">Author</span><span class="p">:</span> <span class="n">yan_sw</span>
+<span class="n">Date</span><span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span> <span class="mi">13</span><span class="p">:</span><span class="mi">53</span>
+<span class="n">Description</span><span class="p">:</span>
+    <span class="n">Control</span> <span class="n">the</span> <span class="n">para</span> <span class="n">panel</span> <span class="n">which</span> <span class="n">need</span> <span class="n">to</span> <span class="n">choose</span> <span class="n">a</span> <span class="n">point</span> <span class="k">as</span> <span class="n">an</span> <span class="n">paras</span> <span class="n">value</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl">
+<em class="property">class </em><code class="descname">ChoosePoinListControl</code><span class="sig-paren">(</span><em>parent</em>, <em>datalist</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-description admonition">
+<p class="first admonition-title">Class Description</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line">Class for which function need to choose a point as parameter and show the detailed information of</div>
+</div>
+<div class="line">chosen point. When a point have been chosen, it ought to update the paras data.</div>
+<div class="line"><br /></div>
+<div class="line">此类用于维护函数的参数点数据更新及被选中的点数据的显示(<a class="reference internal" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_textctrl_datas" title="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_textctrl_datas"><code class="xref py py-meth docutils literal"><span class="pre">set_textctrl_datas</span></code></a>)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">The <strong>initilization</strong> of <code class="xref py py-class docutils literal"><span class="pre">ChoosePointListControl</span></code> is:</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">control</span> <span class="pre">=</span> <span class="pre">ChoosePointListControl(view_instance,</span> <span class="pre">datalist)</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>Parameters of initilization</strong>:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>view_instance</strong> : <code class="xref py py-class docutils literal"><span class="pre">Panel_choose_pointlist_overwrite</span></code>  or its subclass</div>
+<div class="line-block">
+<div class="line">A view instance with a combo box</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>datalist</strong> : list</div>
+<div class="line-block">
+<div class="line">A data list which is loaded from a pts file with yaml type</div>
+</div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.check_value_availablity">
+<code class="descname">check_value_availablity</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.check_value_availablity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.check_value_availablity" title="Permalink to this definition">¶</a></dt>
+<dd><p>return id if the comboBox value is correct</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_id_fromstring">
+<code class="descname">get_id_fromstring</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.get_id_fromstring"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_id_fromstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the selection from comboBox value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_pointbyid">
+<code class="descname">get_pointbyid</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.get_pointbyid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_pointbyid" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the point by comboBox selection</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.init_data">
+<code class="descname">init_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.init_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.init_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>init data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.refresh_datalist">
+<code class="descname">refresh_datalist</code><span class="sig-paren">(</span><em>datalist</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.refresh_datalist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.refresh_datalist" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh datalist which have been initilized</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_elbow">
+<code class="descname">select_elbow</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.select_elbow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_elbow" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh elbow value of the point data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_handmode">
+<code class="descname">select_handmode</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.select_handmode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_handmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh the handmode value of the point data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_pointlist">
+<code class="descname">select_pointlist</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.select_pointlist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_pointlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh the selection of the pointlist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_list_data">
+<code class="descname">set_list_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.set_list_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_list_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>init the point data for comboxBox</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_textctrl_datas">
+<code class="descname">set_textctrl_datas</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_choose_pointlist.html#ChoosePoinListControl.set_textctrl_datas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_textctrl_datas" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the point data to these value TextCtrl by comboBox selection
+:param <cite>id</cite>: the combox id
+:type <cite>id</cite>: int</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line">The return format is (isFunctionTargetOk, showmsg)</div>
+<div class="line">if isFunctionTargetOk is False, then will show the showmsg</div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="control-if-condition">
+<span id="id5"></span><h3>control_if_condition<a class="headerlink" href="#control-if-condition" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-control.control_parameters.control_if_condition"></span><dl class="class">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl">
+<em class="property">class </em><code class="descname">IFConditionControl</code><span class="sig-paren">(</span><em>parent</em>, <em>control_data_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-infos admonition">
+<p class="first admonition-title">Class Infos</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"><em>class_description</em>:</div>
+<div class="line-block">
+<div class="line">Maintain the if condition panel paras</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><em>class_chinese_description</em>:</div>
+<div class="line-block">
+<div class="line">初始化if条件树(<a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl.refresh_paras" title="control.control_parameters.control_if_condition.IFConditionControl.refresh_paras"><code class="xref py py-meth docutils literal"><span class="pre">refresh_paras</span></code></a>)</div>
+<div class="line">if条件树的数据维护控制(<a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl.add_condition" title="control.control_parameters.control_if_condition.IFConditionControl.add_condition"><code class="xref py py-meth docutils literal"><span class="pre">add_condition</span></code></a>, <a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl.delete_condition" title="control.control_parameters.control_if_condition.IFConditionControl.delete_condition"><code class="xref py py-meth docutils literal"><span class="pre">delete_condition</span></code></a>, <a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl.change_tree_selection" title="control.control_parameters.control_if_condition.IFConditionControl.change_tree_selection"><code class="xref py py-meth docutils literal"><span class="pre">change_tree_selection</span></code></a>)</div>
+<div class="line">刷新条件树参数(<a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl.save_paras" title="control.control_parameters.control_if_condition.IFConditionControl.save_paras"><code class="xref py py-meth docutils literal"><span class="pre">save_paras</span></code></a>)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">The <strong>initilization</strong> of <a class="reference internal" href="#control.control_parameters.control_if_condition.IFConditionControl" title="control.control_parameters.control_if_condition.IFConditionControl"><code class="xref py py-class docutils literal"><span class="pre">IFConditionControl</span></code></a> is:</div>
+<div class="line-block">
+<div class="line">control = (view_instance, control_data_path)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>Parameters of initilization</strong>:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>view_instance</strong> : <code class="xref py py-class docutils literal"><span class="pre">Panel_edit_ifcondition</span></code>  or its subclass</div>
+<div class="line"><br /></div>
+<div class="line"><strong>control_data_path</strong> : str</div>
+<div class="line-block">
+<div class="line">the exist path of initilizing the condition panel’s data</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.add_condition">
+<code class="descname">add_condition</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.add_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.add_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one condiiton</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.change_tree_selection">
+<code class="descname">change_tree_selection</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.change_tree_selection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.change_tree_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>change condition tree condition and change the choices selection</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.choose_condition">
+<code class="descname">choose_condition</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.choose_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.choose_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>choose condition control to set condition value and refresh other operation and value controls
+:param <cite>obj</cite>: condition control
+:type <cite>obj</cite>: wx.Choice</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.choose_operation">
+<code class="descname">choose_operation</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.choose_operation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.choose_operation" title="Permalink to this definition">¶</a></dt>
+<dd><p>choose operation value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.choose_value">
+<code class="descname">choose_value</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.choose_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.choose_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>choose value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.config">
+<code class="descname">config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>config the control</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.delete_condition">
+<code class="descname">delete_condition</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.delete_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.delete_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete selected condition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.get_condition_id">
+<code class="descname">get_condition_id</code><span class="sig-paren">(</span><em>condition_list</em>, <em>condition_value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.get_condition_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.get_condition_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>get condition position with condition list
+:param <cite>condition_list</cite>: condition list
+:type <cite>condition_list</cite>: list
+:param <cite>condition_value</cite>: checkvalue
+:type <cite>condition_value</cite>: str
+:return: position id
+:exception:</p>
+<blockquote>
+<div>if condition list don’t have check value, then return -1</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.get_tree_item_info">
+<code class="descname">get_tree_item_info</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.get_tree_item_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.get_tree_item_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>get condition infos by condition tree selection
+:param <cite>obj</cite>:  condition tree
+:type <cite>obj</cite>: wx.TreeListCtrl
+:return: (selection id, condition string, condition value)
+:rtype: tuple
+:exception:</p>
+<blockquote>
+<div>there are no selection, then return None</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.init_choiceboxs">
+<code class="descname">init_choiceboxs</code><span class="sig-paren">(</span><em>condition_idx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.init_choiceboxs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.init_choiceboxs" title="Permalink to this definition">¶</a></dt>
+<dd><p>init choices controls with condition value chosen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.init_ifcondition_paneldata">
+<code class="descname">init_ifcondition_paneldata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.init_ifcondition_paneldata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.init_ifcondition_paneldata" title="Permalink to this definition">¶</a></dt>
+<dd><p>init condition panel data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.parse_condition_data">
+<code class="descname">parse_condition_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.parse_condition_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.parse_condition_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse condition data to variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.refresh_choiceboxs">
+<code class="descname">refresh_choiceboxs</code><span class="sig-paren">(</span><em>condition_index</em>, <em>value_index</em>, <em>control_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.refresh_choiceboxs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.refresh_choiceboxs" title="Permalink to this definition">¶</a></dt>
+<dd><p>set condition, value, control selection with indexs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.refresh_paras">
+<code class="descname">refresh_paras</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.refresh_paras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.refresh_paras" title="Permalink to this definition">¶</a></dt>
+<dd><p>reinit the paras controls with the condition data
+:param <cite>data</cite>: the condition data for initilization
+:type <cite>data</cite>: dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.save_paras">
+<code class="descname">save_paras</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.save_paras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.save_paras" title="Permalink to this definition">¶</a></dt>
+<dd><p>save condition paras to control process panel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.set_choose_mode">
+<code class="descname">set_choose_mode</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.set_choose_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.set_choose_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>set all conditions satisfy or only one condition satisfy
+:param <cite>obj</cite>: event Object
+:type <cite>obj</cite>: wx.Event</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_if_condition.IFConditionControl.set_tree">
+<code class="descname">set_tree</code><span class="sig-paren">(</span><em>tree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_if_condition.html#IFConditionControl.set_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_if_condition.IFConditionControl.set_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>set if condition tree and init other controls of parent</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="control-parameters">
+<span id="id6"></span><h3>control_parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-control.control_parameters.control_parameters"></span><p><strong>Module Info</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@Author</span>     <span class="p">:</span> <span class="n">yan_sw</span>
+<span class="nd">@Time</span>       <span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span> <span class="mi">09</span><span class="p">:</span><span class="mi">03</span>
+<span class="nd">@Description</span><span class="p">:</span>
+      <span class="n">This</span> <span class="k">class</span> <span class="nc">is</span> <span class="n">main</span> <span class="n">control</span> <span class="n">of</span> <span class="n">paras</span> <span class="n">control</span><span class="o">.</span>
+      <span class="n">It</span> <span class="n">have</span> <span class="n">realized</span> <span class="n">the</span> <span class="n">basic</span> <span class="n">function</span> <span class="n">of</span> <span class="n">maintaining</span> <span class="n">paras</span> <span class="n">data</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="control.control_parameters.control_parameters.Control">
+<em class="property">class </em><code class="descname">Control</code><span class="sig-paren">(</span><em>parent</em>, <em>pts_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_parameters.html#Control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_parameters.Control" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-infos admonition">
+<p class="first admonition-title">Class Infos</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"><em>class_description</em>:</div>
+<div class="line-block">
+<div class="line">control to maintain basic condition which don’t have specific panel to choose</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><em>class_chinese_description</em>:</div>
+<div class="line-block">
+<div class="line">根据不同的参数类型选择不同的参数界面(<a class="reference internal" href="#control.control_parameters.control_parameters.Control.refresh_paraslist" title="control.control_parameters.control_parameters.Control.refresh_paraslist"><code class="xref py py-meth docutils literal"><span class="pre">refresh_paraslist</span></code></a>)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">The <strong>initilization</strong> of <code class="xref py py-class docutils literal"><span class="pre">Control</span></code> is:</div>
+<div class="line-block">
+<div class="line">control = (view_instance, pts_path)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>Parameters of initilization</strong>:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>view_instance</strong> : <code class="xref py py-class docutils literal"><span class="pre">Panel_edit_paras_overwrite</span></code>  or its subclass</div>
+<div class="line"><br /></div>
+<div class="line"><strong>pts_path</strong>:  str</div>
+<div class="line-block">
+<div class="line">point file path</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_parameters.control_parameters.Control.load_show_content">
+<code class="descname">load_show_content</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_parameters.html#Control.load_show_content"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_parameters.Control.load_show_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the function paras data with pos from data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_parameters.Control.refresh_paras_panel1">
+<code class="descname">refresh_paras_panel1</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_parameters.html#Control.refresh_paras_panel1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_parameters.Control.refresh_paras_panel1" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh paras panel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – para data</li>
+<li><strong>pos</strong> – not used</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_parameters.Control.refresh_paraslist">
+<code class="descname">refresh_paraslist</code><span class="sig-paren">(</span><em>check_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_parameters.html#Control.refresh_paraslist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_parameters.Control.refresh_paraslist" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh paras panel with check list</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>check_list</strong> (<em>dict</em>) – paras keys</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line">check_list == {‘choose_point’: ????} —-&gt; <code class="xref py py-class docutils literal"><span class="pre">view.view_parameters.Panel_choose_pointlist_overwrite</span></code></div>
+<div class="line"><br /></div>
+<div class="line">check_list == {‘condition’: ????, …..} —-&gt; <code class="xref py py-class docutils literal"><span class="pre">view.view_parameters.Panel_edit_if_condition_overwrite</span></code></div>
+<div class="line"><br /></div>
+<div class="line">check_list == {…..} —-&gt; <code class="xref py py-class docutils literal"><span class="pre">view.view_parameters.Panel_edit_paras_overwrite</span></code></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_parameters.control_parameters.Control.save_content_from_gui">
+<code class="descname">save_content_from_gui</code><span class="sig-paren">(</span><em>text_content</em>, <em>_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_parameters/control_parameters.html#Control.save_content_from_gui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_parameters.control_parameters.Control.save_content_from_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p>save textctrl value to control process</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text_content</strong> (<em>str</em>) – textctrl value</li>
+<li><strong>_type</strong> (<em>str</em>) – traslate type</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line">_type is the type for checking whether text_context can be translated</div>
+<div class="line"><br /></div>
+<div class="line">if the value can’t be translated, then return False</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

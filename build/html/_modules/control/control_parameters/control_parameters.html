@@ -1,0 +1,319 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>control.control_parameters.control_parameters &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+          <li><a href="../../index.html" accesskey="U">
+              Module code</a> &#187;</li>
+        <li class="reltitle"> control.control_parameters.control_parameters</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../../index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="../../../_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <h1>Source code for control.control_parameters.control_parameters</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">**Module Info**::</span>
+
+<span class="sd">   @Author     : yan_sw</span>
+<span class="sd">   @Time       : 2018-01-09 09:03</span>
+<span class="sd">   @Description:</span>
+<span class="sd">         This class is main control of paras control.</span>
+<span class="sd">         It have realized the basic function of maintaining paras data.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">from</span> <span class="nn">data.object_parameters</span> <span class="k">import</span> <span class="n">parameters_object</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">command_tools</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">controlfile_tools</span>
+<span class="kn">from</span> <span class="nn">view.view_parameters</span> <span class="k">import</span> <span class="n">Panel_edit_paras_overwrite</span>
+<span class="kn">from</span> <span class="nn">view.view_parameters</span> <span class="k">import</span> <span class="n">Panel_choose_pointlist_overwrite</span>
+<span class="kn">from</span> <span class="nn">view.view_parameters</span> <span class="k">import</span> <span class="n">Panel_edit_if_condition_overwrite</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wx.lib.pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+
+
+<div class="viewcode-block" id="Control"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_parameters.Control">[docs]</a><span class="k">class</span> <span class="nc">Control</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                .. admonition:: Class Infos</span>
+
+<span class="sd">                        |  *class_description*:</span>
+<span class="sd">                        |        control to maintain basic condition which don&#39;t have specific panel to choose</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |  *class_chinese_description*:</span>
+<span class="sd">                        |        根据不同的参数类型选择不同的参数界面(:meth:`refresh_paraslist`)</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        | The **initilization** of :class:`~condition.control_parameters.control_parameters.Control` is:</span>
+<span class="sd">                        |        control = (view_instance, pts_path)</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        | **Parameters of initilization**:</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |       **view_instance** : :class:`~view.view_parameters.Panel_edit_paras_overwrite`  or its subclass</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |       **pts_path**:  str</span>
+<span class="sd">                        |               point file path</span>
+<span class="sd">                        |</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">pts_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pts_path</span> <span class="o">=</span> <span class="n">pts_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">parameters_object</span><span class="o">.</span><span class="n">container</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">if_conditiondata_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">refresh_paras_panel1</span><span class="p">,</span> <span class="s1">&#39;refresh_paras&#39;</span><span class="p">)</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_remove_allcontrols</span><span class="p">,</span> <span class="s1">&#39;remove_all_paras&#39;</span><span class="p">)</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_MainMsg</span><span class="p">,</span> <span class="s1">&#39;get_main_msg&#39;</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># def unselete_process_all(self):</span>
+    <span class="c1">#     pub.sendMessage(&#39;unselete_process_all&#39;, data = ())</span>
+
+<div class="viewcode-block" id="Control.save_content_from_gui"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_parameters.Control.save_content_from_gui">[docs]</a>    <span class="k">def</span> <span class="nf">save_content_from_gui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text_content</span><span class="p">,</span> <span class="n">_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        save textctrl value to control process</span>
+
+<span class="sd">        :param `text_content`:  textctrl value</span>
+<span class="sd">        :type `text_content`: str</span>
+<span class="sd">        :param `_type`: traslate type</span>
+<span class="sd">        :type `_type`: str</span>
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">            |   _type is the type for checking whether text_context can be translated</span>
+<span class="sd">            |</span>
+<span class="sd">            |   if the value can&#39;t be translated, then return False</span>
+<span class="sd">            |</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;text_content is </span><span class="si">%s</span><span class="s1">, type is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text_content</span><span class="p">,</span> <span class="n">_type</span><span class="p">),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="n">save_data</span> <span class="o">=</span> <span class="n">command_tools</span><span class="o">.</span><span class="n">check_type</span><span class="p">(</span><span class="n">text_content</span><span class="p">,</span> <span class="n">_type</span><span class="p">)</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;save_data is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">save_data</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">save_data</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">request_save_data</span><span class="p">()</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;request saving data </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">save_data</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">request_save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_check</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;self.controllist --&gt;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="p">)</span>
+        <span class="k">if</span>  <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">:</span>
+            <span class="n">showdata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">showdata</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                <span class="n">panel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">panel</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">text_content</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">m_textCtrl_paravalue</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
+                    <span class="n">text_type</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">type</span>
+                    <span class="nb">print</span> <span class="n">text_type</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">text_content</span><span class="p">),</span> <span class="n">text_content</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">command_tools</span><span class="o">.</span><span class="n">check_type</span><span class="p">(</span><span class="n">text_content</span><span class="p">,</span> <span class="n">text_type</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">showdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">text_type</span><span class="p">)</span>
+                        <span class="n">_check</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Save content error!, Please check the value </span><span class="si">%s</span><span class="s1">, &#39;</span>
+                                                       <span class="s1">&#39;and type </span><span class="si">%s</span><span class="s1"> are correct!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text_content</span><span class="p">,</span> <span class="n">text_type</span><span class="p">),</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+                        <span class="n">_check</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Panel got to save is None&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_check</span><span class="p">:</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;send pub.sendMessage save_paras &quot;</span>
+                                               <span class="s2">&quot;refresh_type is </span><span class="si">%s</span><span class="s2">, data is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">,</span> <span class="n">showdata</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+                <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;save_paras&#39;</span><span class="p">,</span> <span class="n">refresh_type</span> <span class="o">=</span> <span class="s1">&#39;refresh&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">showdata</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;check is false, Don&#39;t send paras to synchronize&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;showcontent of panel is None&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Control.load_show_content"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_parameters.Control.load_show_content">[docs]</a>    <span class="k">def</span> <span class="nf">load_show_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;get the function paras data with pos from data&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_paras</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">set_bitmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">btn_obj</span><span class="p">,</span> <span class="n">bitmap_style</span> <span class="o">=</span> <span class="s1">&#39;ok&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">bitmap_style</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">:</span>
+            <span class="n">btn_obj</span><span class="o">.</span><span class="n">SetBitmap</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="s2">u&quot;gtk-ok&quot;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_BUTTON</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">btn_obj</span><span class="o">.</span><span class="n">SetBitmap</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ART_LIST_VIEW</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_BUTTON</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Control.refresh_paras_panel1"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_parameters.Control.refresh_paras_panel1">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_paras_panel1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        refresh paras panel</span>
+
+<span class="sd">        :param data: para data</span>
+<span class="sd">        :param pos:  not used</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: Implement refresh_paras_panel</span>
+        <span class="c1"># show_content = self.control.load_show_content( data, pos )</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Entering refresh_paras_panel1... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_remove_allcontrols</span><span class="p">()</span>
+        <span class="c1">##-----------------------init value------------------</span>
+        <span class="n">reorder_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;XYZUVW&#39;</span><span class="p">),</span> <span class="s1">&#39;J1,J2,J3,J4,J5,J6&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="nb">print</span> <span class="s1">&#39;data is &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">,</span> <span class="s1">&#39;.......&#39;</span>
+        <span class="n">sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">GetSizer</span><span class="p">()</span>
+        <span class="c1">#-------------------Logic-----------------</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">check_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">reorder_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">check_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">check</span><span class="p">:</span>
+                    <span class="n">check_list</span> <span class="o">=</span> <span class="n">check</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;keys is .....</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">check_list</span><span class="p">),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">refresh_paraslist</span><span class="p">(</span><span class="n">check_list</span><span class="p">)</span>
+
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;Find </span><span class="si">%d</span><span class="s2"> controls to layout, data str is </span><span class="si">%s</span><span class="s2">&quot;</span>
+                                           <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">data</span><span class="p">),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s2">&quot;Don&#39;t have any control to refresh!&quot;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Layout</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Control.refresh_paraslist"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_parameters.Control.refresh_paraslist">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_paraslist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">check_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        refresh paras panel with check list</span>
+
+<span class="sd">        :param `check_list`:  paras keys</span>
+<span class="sd">        :type `check_list`: dict</span>
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">            |   check_list == {&#39;choose_point&#39;: ????} ----&gt; :class:`view.view_parameters.Panel_choose_pointlist_overwrite`</span>
+<span class="sd">            |</span>
+<span class="sd">            |   check_list == {&#39;condition&#39;: ????, .....} ----&gt; :class:`view.view_parameters.Panel_edit_if_condition_overwrite`</span>
+<span class="sd">            |</span>
+<span class="sd">            |   check_list == {.....} ----&gt; :class:`view.view_parameters.Panel_edit_paras_overwrite`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;check_list is </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">check_list</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">check_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">check_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;choose_point&#39;</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">check_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">id_str</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">id_str</span><span class="p">)</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;refreshing paraslist ....</span><span class="si">%d</span><span class="s1">, </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">)))</span>
+            <span class="n">panel</span> <span class="o">=</span> <span class="n">Panel_choose_pointlist_overwrite</span><span class="o">.</span><span class="n">Panel_Choose_Point</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pts_path</span><span class="p">,</span> <span class="n">current_selection</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">GetSizer</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">panel</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;Sending show content to other paras panel, </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">))</span>
+            <span class="c1"># pub.sendMessage(&#39;get_paras_main_data&#39;, data=(self.model.showcontent, ))</span>
+
+        <span class="k">elif</span> <span class="n">check_list</span> <span class="ow">and</span> <span class="s1">&#39;condition&#39;</span> <span class="ow">in</span> <span class="n">check_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">if_conditiondata_path</span> <span class="o">=</span> <span class="s1">&#39;control/if_condition_data.yml&#39;</span>
+            <span class="n">panel</span> <span class="o">=</span> <span class="n">Panel_edit_if_condition_overwrite</span><span class="o">.</span><span class="n">Panel_edit_ifcondition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">if_conditiondata_path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">GetSizer</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">panel</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;get_if_condition_paras&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">check_list</span><span class="p">:</span>
+                <span class="n">panel</span> <span class="o">=</span> <span class="n">Panel_edit_paras_overwrite</span><span class="o">.</span><span class="n">panel_edit_paras</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                                                                    <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">showcontent</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">GetSizer</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">controllist</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">panel</span></div>
+
+    <span class="k">def</span> <span class="nf">_remove_allcontrols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">GetSizer</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sizer</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">())):</span>
+            <span class="n">sizer</span><span class="o">.</span><span class="n">Hide</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">sizer</span><span class="o">.</span><span class="n">Remove</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_get_MainMsg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;get pts path from publiser&quot;&quot;&quot;</span>
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;get Msg from Main, </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pts_path</span><span class="p">,</span> <span class="p">)</span> <span class="o">=</span> <span class="n">data</span></div>
+        <span class="c1"># pub.sendMessage(&#39;refresh_choosedatalist&#39;, data=(datalist, ))</span>
+</pre></div>
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

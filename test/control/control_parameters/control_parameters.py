@@ -1,4 +1,15 @@
-#! encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+**Module Info**::
+
+   @Author     : yan_sw
+   @Time       : 2018-01-09 09:03
+   @Description:
+         This class is main control of paras control.
+         It have realized the basic function of maintaining paras data.
+
+"""
 import copy
 import wx
 import yaml
@@ -15,7 +26,29 @@ except ImportError:
 
 
 class Control():
+    """
+                .. admonition:: Class Infos
 
+                        |  *class_description*:
+                        |        control to maintain basic condition which don't have specific panel to choose
+                        |
+                        |  *class_chinese_description*:
+                        |        根据不同的参数类型选择不同的参数界面(:meth:`refresh_paraslist`)
+                        |
+                        |
+                        | The **initilization** of :class:`~condition.control_parameters.control_parameters.Control` is:
+                        |        control = (view_instance, pts_path)
+                        |
+                        |
+                        | **Parameters of initilization**:
+                        |
+                        |       **view_instance** : :class:`~view.view_parameters.Panel_edit_paras_overwrite`  or its subclass
+                        |
+                        |       **pts_path**:  str
+                        |               point file path
+                        |
+
+    """
     def __init__(self, parent, pts_path = None):
         self._parent = parent
         self.pts_path = pts_path
@@ -31,6 +64,22 @@ class Control():
     #     pub.sendMessage('unselete_process_all', data = ())
 
     def save_content_from_gui(self, text_content, _type):
+        """
+        save textctrl value to control process
+
+        :param `text_content`:  textctrl value
+        :type `text_content`: str
+        :param `_type`: traslate type
+        :type `_type`: str
+
+        .. attention::
+
+            |   _type is the type for checking whether text_context can be translated
+            |
+            |   if the value can't be translated, then return False
+            |
+        """
+
         controlfile_tools.log_bystatus('text_content is %s, type is %s' % (text_content, _type), 'i')
         save_data = command_tools.check_type(text_content, _type)
         controlfile_tools.log_bystatus('save_data is %s' % save_data, 'i')
@@ -73,6 +122,7 @@ class Control():
             controlfile_tools.log_bystatus("showcontent of panel is None", 'w')
 
     def load_show_content(self, data, pos):
+        """get the function paras data with pos from data"""
         self.model.model = data
         self.model.pos = pos
         return self.model.get_paras()
@@ -84,6 +134,12 @@ class Control():
             btn_obj.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_LIST_VIEW, wx.ART_BUTTON))
 
     def refresh_paras_panel1(self, data, pos):
+        """
+        refresh paras panel
+
+        :param data: para data
+        :param pos:  not used
+        """
         # TODO: Implement refresh_paras_panel
         # show_content = self.control.load_show_content( data, pos )
         controlfile_tools.log_bystatus('Entering refresh_paras_panel1... %s' % str(data) )
@@ -105,7 +161,7 @@ class Control():
                     continue
             controlfile_tools.log_bystatus('keys is .....%s' % str(check_list), 'i')
 
-            self._refresh_paraslist(check_list)
+            self.refresh_paraslist(check_list)
 
             controlfile_tools.log_bystatus("Find %d controls to layout, data str is %s"
                                            % (len(data), data), 'i')
@@ -114,7 +170,22 @@ class Control():
             controlfile_tools.log_bystatus("Don't have any control to refresh!", 'e')
         sizer.Layout()
 
-    def _refresh_paraslist(self, check_list):
+    def refresh_paraslist(self, check_list):
+        """
+        refresh paras panel with check list
+
+        :param `check_list`:  paras keys
+        :type `check_list`: dict
+
+        .. attention::
+
+            |   check_list == {'choose_point': ????} ----> :class:`view.view_parameters.Panel_choose_pointlist_overwrite`
+            |
+            |   check_list == {'condition': ????, .....} ----> :class:`view.view_parameters.Panel_edit_if_condition_overwrite`
+            |
+            |   check_list == {.....} ----> :class:`view.view_parameters.Panel_edit_paras_overwrite`
+
+        """
         controlfile_tools.log_bystatus('check_list is %s ' % str(check_list))
 
         if len(check_list) == 1 and check_list[0] == 'choose_point':
@@ -150,6 +221,7 @@ class Control():
 
 
     def _get_MainMsg(self, data):
+        """get pts path from publiser"""
         controlfile_tools.log_bystatus('get Msg from Main, %s' % str(data), 'i')
         (self.pts_path, ) = data
         # pub.sendMessage('refresh_choosedatalist', data=(datalist, ))

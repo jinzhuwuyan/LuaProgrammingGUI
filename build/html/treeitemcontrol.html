@@ -1,0 +1,266 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>树节点数据逻辑控制 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="函数流程控制" href="processcontrol.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+        <li class="reltitle"> 树节点数据逻辑控制</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="processcontrol.html" title="函数流程控制"
+             accesskey="P">previous</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">树节点数据逻辑控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#uml-treeitemcontrol">树节点数据逻辑控制模型</a></li>
+</ul>
+</li>
+</ul>
+
+    <div id="sourcelink" role="note" aria-label="source link">
+        <a href="_sources/treeitemcontrol.rst.txt"
+           rel="nofollow">Show page source</a>
+    </div>
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">树节点数据逻辑控制</a><ul>
+<li><a class="reference internal" href="#uml-treeitemcontrol">树节点数据逻辑控制模型</a><ul>
+<li><a class="reference internal" href="#uml">UML模型</a></li>
+<li><a class="reference internal" href="#module-control.control_process.TreeItemsControl">函数接口</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script><div class="section" id="treeitem-control">
+<span id="id1"></span><h1>树节点数据逻辑控制<a class="headerlink" href="#treeitem-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="uml-treeitemcontrol">
+<span id="id2"></span><h2>树节点数据逻辑控制模型<a class="headerlink" href="#uml-treeitemcontrol" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uml">
+<h3>UML模型<a class="headerlink" href="#uml" title="Permalink to this headline">¶</a></h3>
+<div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>treeitemcontrol</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img src="_static/images/Design_images/treeitemcontrol.png" alt="Inheritance diagram of treeitemcontrol" usemap="#dummy" class="inheritance"/></center>
+</div>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
+</p></div>
+<div class="section" id="module-control.control_process.TreeItemsControl">
+<span id="id3"></span><h3>函数接口<a class="headerlink" href="#module-control.control_process.TreeItemsControl" title="Permalink to this headline">¶</a></h3>
+<p><strong>Module Info</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@Author</span>     <span class="p">:</span> <span class="n">yan_sw</span>
+<span class="nd">@Time</span>       <span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span> <span class="mi">13</span><span class="p">:</span><span class="mi">46</span>
+<span class="nd">@Description</span><span class="p">:</span>
+    <span class="n">Logic</span> <span class="n">control</span> <span class="n">of</span> <span class="n">the</span> <span class="n">function</span> <span class="n">data</span><span class="p">,</span> <span class="n">like</span> <span class="n">add</span><span class="p">,</span> <span class="n">delete</span><span class="p">,</span> <span class="n">change</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="control.control_process.TreeItemsControl.TreeItemController">
+<em class="property">class </em><code class="descname">TreeItemController</code><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-infos admonition">
+<p class="first admonition-title">Class Infos</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"><em>class_description</em>:</div>
+<div class="line-block">
+<div class="line">Logic control of the function data, like add, delete, change and so on</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><em>class_chinese_description</em>:</div>
+<div class="line-block">
+<div class="line">增加item(<a class="reference internal" href="#control.control_process.TreeItemsControl.TreeItemController.add_obj" title="control.control_process.TreeItemsControl.TreeItemController.add_obj"><code class="xref py py-meth docutils literal"><span class="pre">add_obj</span></code></a>)</div>
+<div class="line">删除item(<a class="reference internal" href="#control.control_process.TreeItemsControl.TreeItemController.delete_obj" title="control.control_process.TreeItemsControl.TreeItemController.delete_obj"><code class="xref py py-meth docutils literal"><span class="pre">delete_obj</span></code></a>)</div>
+<div class="line">改变item位置(:meth:<a href="#id4"><span class="problematic" id="id5">``</span></a>)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">The <strong>initilization</strong> of <a class="reference internal" href="#control.control_process.TreeItemsControl.TreeItemController" title="control.control_process.TreeItemsControl.TreeItemController"><code class="xref py py-class docutils literal"><span class="pre">TreeItemController</span></code></a> is:</div>
+<div class="line-block">
+<div class="line">control = TreeItemController()</div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.add_obj">
+<code class="descname">add_obj</code><span class="sig-paren">(</span><em>add_obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.add_obj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.add_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>add new obj</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.change_obj">
+<code class="descname">change_obj</code><span class="sig-paren">(</span><em>change_way</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.change_obj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.change_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>change obj with change way</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.check_process_hierarchy">
+<code class="descname">check_process_hierarchy</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em>, <em>check_type='up'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.check_process_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.check_process_hierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>check the position whether can be jump out or not</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>list</em>) – item data</li>
+<li><strong>pos</strong> (<em>list</em>) – check position</li>
+<li><strong>check_type</strong> – check up or down</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line"><br /></div>
+<div class="line">return -1 equals to data None or index None.</div>
+<div class="line">return 0  equals to normal change, up is up, down is down.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.config">
+<code class="descname">config</code><span class="sig-paren">(</span><em>items</em>, <em>pos</em>, <em>funcs_unlimit</em>, <em>rename_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>init variables</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.control_model">
+<code class="descname">control_model</code><span class="sig-paren">(</span><em>command</em>, <em>new_item=None</em>, <em>change_way=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.control_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.control_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>choose control according command</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>command</strong> (<em>str</em>) – like add, delete, change</li>
+<li><strong>new_item</strong> (<em>tuple</em>) – new item obj only for add command</li>
+<li><strong>change_way</strong> (<em>str</em>) – change way only for change command</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(TargetOk, err_msg)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.delete_obj">
+<code class="descname">delete_obj</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.delete_obj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.delete_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete obj according variable self.pos</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.TreeItemsControl.TreeItemController.get_lastitem">
+<code class="descname">get_lastitem</code><span class="sig-paren">(</span><em>select_items</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/TreeItemsControl.html#TreeItemController.get_lastitem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.TreeItemsControl.TreeItemController.get_lastitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the last item according to position from itemdata</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>select_items</strong> (<em>list</em>) – position of last item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

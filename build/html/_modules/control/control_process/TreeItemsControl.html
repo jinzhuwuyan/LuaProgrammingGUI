@@ -1,0 +1,461 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>control.control_process.TreeItemsControl &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+          <li><a href="../../index.html" accesskey="U">
+              Module code</a> &#187;</li>
+        <li class="reltitle"> control.control_process.TreeItemsControl</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../../index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="../../../_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <h1>Source code for control.control_process.TreeItemsControl</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">**Module Info**::</span>
+
+<span class="sd">   @Author     : yan_sw</span>
+<span class="sd">   @Time       : 2018-01-09 13:46</span>
+<span class="sd">   @Description:</span>
+<span class="sd">       Logic control of the function data, like add, delete, change and so on</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<div class="viewcode-block" id="TreeItemController"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController">[docs]</a><span class="k">class</span> <span class="nc">TreeItemController</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                .. admonition:: Class Infos</span>
+
+<span class="sd">                        |  *class_description*:</span>
+<span class="sd">                        |        Logic control of the function data, like add, delete, change and so on</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |  *class_chinese_description*:</span>
+<span class="sd">                        |        增加item(:meth:`add_obj`)</span>
+<span class="sd">                        |        删除item(:meth:`delete_obj`)</span>
+<span class="sd">                        |        改变item位置(:meth:``)</span>
+<span class="sd">                        |</span>
+<span class="sd">                        |</span>
+<span class="sd">                        | The **initilization** of :class:`~control.control_process.TreeItemsControl.TreeItemController` is:</span>
+<span class="sd">                        |        control = TreeItemController()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">funcs_unlimit</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TreeItemController.config"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.config">[docs]</a>    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">funcs_unlimit</span><span class="p">,</span> <span class="n">rename_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;init variables&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">items</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">funcs_unlimit</span> <span class="o">=</span> <span class="n">funcs_unlimit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span> <span class="o">=</span> <span class="n">rename_list</span></div>
+
+
+<span class="c1">########################################################main control##################################</span>
+<div class="viewcode-block" id="TreeItemController.control_model"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.control_model">[docs]</a>    <span class="k">def</span> <span class="nf">control_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">new_item</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">change_way</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            choose control according command</span>
+
+<span class="sd">            :param `command`: like add, delete, change</span>
+<span class="sd">            :type `command`: str</span>
+<span class="sd">            :param `new_item`: new item obj only for add command</span>
+<span class="sd">            :type `new_item`: tuple</span>
+<span class="sd">            :param change_way: change way only for change command</span>
+<span class="sd">            :type `change_way`: str</span>
+<span class="sd">            :return: (TargetOk, err_msg)</span>
+<span class="sd">            :rtype: tuple</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="sd">&quot;&quot;&quot;choose control according command&quot;&quot;&quot;</span>
+            <span class="n">command_funcs_references</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;add&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">add_obj</span><span class="p">,</span> <span class="p">(</span><span class="n">new_item</span><span class="p">)),</span>
+                                        <span class="s1">&#39;delete&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_obj</span><span class="p">,</span> <span class="p">()),</span>
+                                        <span class="s1">&#39;change&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_obj</span><span class="p">,</span> <span class="p">(</span><span class="n">change_way</span><span class="p">))}</span>
+            <span class="n">func</span><span class="p">,</span> <span class="n">paras</span> <span class="o">=</span> <span class="n">command_funcs_references</span><span class="p">[</span><span class="n">command</span><span class="p">]</span>
+            <span class="n">funcs_has_paras</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">paras</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">paras</span><span class="p">)</span> <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">funcs_has_paras</span> \
+                                   <span class="k">else</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;命令</span><span class="si">%s</span><span class="s1">参数</span><span class="si">%s</span><span class="s1">传递错误！！&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">command</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">paras</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">funcs_has_paras</span><span class="p">,</span>
+                       <span class="n">command_funcs_references</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">()</span> <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span> <span class="p">:</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">funcs_has_paras</span><span class="p">,</span>
+                                                   <span class="n">command_funcs_references</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> \
+                              <span class="k">else</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;命令</span><span class="si">%s</span><span class="s1">参数</span><span class="si">%s</span><span class="s1">传递错误！！&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">command</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">paras</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="TreeItemController.add_obj"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.add_obj">[docs]</a>    <span class="k">def</span> <span class="nf">add_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;add new obj&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> \
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">add_obj</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">add_obj</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">add_obj</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">parent_item</span><span class="p">,</span> <span class="n">parent_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parent_item</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">func_str</span><span class="p">,</span> <span class="n">obj_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parent_item</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parent_item</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">parent_index</span><span class="p">:</span>
+                            <span class="n">insert_item</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">parent_index</span><span class="p">)</span>
+                            <span class="n">_</span><span class="p">,</span> <span class="n">insert_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">insert_item</span>
+                            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">insert_child</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                                <span class="n">insert_child</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">add_obj</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">insert_child</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1">#不是if同在第一层，就直接插入</span>
+                            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">add_obj</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span>
+                        <span class="c1"># obj_child.append(add_obj)</span>
+                    <span class="k">else</span><span class="p">:</span>
+
+                        <span class="n">obj_child</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span>
+
+                <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span> <span class="n">e</span>
+                    <span class="nb">print</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;无法插入！请检查数据是否能够正确插入&#39;</span>
+            <span class="k">elif</span> <span class="n">parent_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;获取位置</span><span class="si">%s</span><span class="s1">错误，请确保数据存在该位置的数据！&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;检查当前添加的对象格式</span><span class="si">%s</span><span class="s1">, 不符合(str, list, dict)格式&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">add_obj</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">u&#39;插入成功！&#39;</span></div>
+
+<div class="viewcode-block" id="TreeItemController.delete_obj"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.delete_obj">[docs]</a>    <span class="k">def</span> <span class="nf">delete_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;delete obj according variable self.pos&quot;&quot;&quot;</span>
+        <span class="n">obj</span><span class="p">,</span> <span class="n">parent_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="n">_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:]</span>
+        <span class="k">if</span> <span class="n">_pos</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">_pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">parent_index</span> <span class="ow">and</span> <span class="n">_pos</span><span class="p">:</span>
+
+                <span class="n">parent_item</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">_pos</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">parent_item</span><span class="p">:</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">parent_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parent_item</span>
+                    <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">parent_child</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+
+                        <span class="n">parent_child</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;删除位置超范围&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;当前位置</span><span class="si">%s</span><span class="s1">不存在！&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;删除位置超范围&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">u&#39;不存在删除位置！&#39;</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">u&#39;删除成功！&#39;</span></div>
+
+<div class="viewcode-block" id="TreeItemController.change_obj"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.change_obj">[docs]</a>    <span class="k">def</span> <span class="nf">change_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change_way</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;change obj with change way&quot;&quot;&quot;</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">obj</span><span class="p">,</span> <span class="n">parent_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="n">check_canjump</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_process_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:],</span> <span class="n">change_way</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">check_canjump</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_change_obj_jump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">change_way</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_change_obj_pos</span><span class="p">(</span><span class="n">change_way</span><span class="p">)</span></div>
+<span class="c1">########################################################tools control##################################</span>
+
+
+    <span class="k">def</span> <span class="nf">_change_obj_jump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">change_way</span><span class="p">):</span>
+
+        <span class="n">_pos1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:]</span>
+        <span class="n">_pos1</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">_pos1</span><span class="p">:</span>
+            <span class="n">parent_item</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">_pos1</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">parent_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parent_item</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parent_child</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># _, obj_child, _ = obj</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">change_way</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> \
+            <span class="ow">or</span> <span class="p">(</span><span class="n">change_way</span> <span class="o">==</span> <span class="s1">&#39;down&#39;</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">parent_child</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__set_tree_value_jumpout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:],</span> <span class="n">change_way</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:]</span>
+            <span class="n">_pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">change_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">change_way</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span> <span class="k">else</span> <span class="mi">1</span>
+            <span class="n">_pos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">change_index</span><span class="p">)</span>
+            <span class="n">parent_item</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">_pos</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">parent_item</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="c1"># obj[_pos[-1]] = (func_str, child, paras)</span>
+            <span class="k">del</span> <span class="n">parent_child</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">u&#39;跳出成功！&#39;</span>
+
+    <span class="k">def</span> <span class="nf">get_tree_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># return self.tree.GetIndexOfItem(self.tree.GetSelection())</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">get_selection_paras</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+    <span class="k">def</span> <span class="nf">__set_tree_value_jumpout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treedata</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">check_type</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">__tmp_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">__tmp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="n">__tmp_data</span> <span class="o">=</span> <span class="n">treedata</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">__tmp_data</span> <span class="k">else</span> <span class="n">__tmp_data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+            <span class="n">__tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">__tmp_data</span><span class="p">)</span>
+        <span class="n">setdata</span> <span class="o">=</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">func_str_grandfather</span><span class="p">,</span> <span class="n">func_child_grandfather</span><span class="p">,</span> <span class="n">func_paras_grandfather</span><span class="p">)</span> <span class="o">=</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">func_child_grandfather</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">setdata</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func_child_grandfather</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">setdata</span><span class="p">)</span>
+                <span class="n">__tmp</span><span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">func_str_grandfather</span><span class="p">,</span> <span class="n">func_child_grandfather</span><span class="p">,</span> <span class="n">func_paras_grandfather</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">setdata</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">setdata</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">del</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 以便使用parent item来做控制</span>
+        <span class="n">delete_pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">__tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="n">delete_pos</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+
+
+<div class="viewcode-block" id="TreeItemController.get_lastitem"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.get_lastitem">[docs]</a>    <span class="k">def</span> <span class="nf">get_lastitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">select_items</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get the last item according to position from itemdata</span>
+
+<span class="sd">        :param `select_items`: position of last item</span>
+<span class="sd">        :type `select_items`: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">select_items</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_tmp</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">select_items</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">_tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+                    <span class="k">elif</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">select_items</span><span class="p">):</span>
+                        <span class="n">func_str</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                        <span class="n">_</span><span class="p">,</span> <span class="n">item_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                        <span class="n">_tmp</span> <span class="o">=</span> <span class="n">item_child</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">_</span><span class="p">,</span> <span class="n">item_child</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_tmp</span>
+                        <span class="n">_tmp</span> <span class="o">=</span> <span class="n">item_child</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+                <span class="c1"># 如果是第一层的节点，说明需要直接在第一层内添加，故置为None. 否则取父母的位置出来</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">select_items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">parent_index</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">_tmp_pos</span> <span class="o">=</span> <span class="n">select_items</span><span class="p">[:]</span>
+                    <span class="n">_tmp_pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="n">parent_index</span> <span class="o">=</span> <span class="n">_tmp_pos</span>
+                <span class="k">return</span> <span class="n">_tmp</span><span class="p">,</span> <span class="n">parent_index</span>
+
+            <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">e</span>
+                <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_rename_func_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rename_list</span><span class="p">[</span><span class="n">func_str</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_change_obj_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change_way</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">move_count</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[:]</span>
+        <span class="n">_pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">_pos</span><span class="p">:</span>
+            <span class="n">lastitem</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lastitem</span><span class="p">(</span><span class="n">_pos</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">lastitem</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span>
+        <span class="k">if</span> <span class="n">change_way</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">move_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="n">obj</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="n">move_count</span><span class="p">],</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="n">move_count</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">change_way</span> <span class="o">==</span> <span class="s1">&#39;down&#39;</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-</span> <span class="n">move_count</span><span class="p">:</span>
+
+            <span class="n">obj</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">move_count</span><span class="p">],</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">obj</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">move_count</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">u&#39;正常切换成功！&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__check_current_func_islimited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        考虑到函数自身是否应该上(下)跳或直接移动</span>
+
+<span class="sd">        :param data:def _check_func_str(self, func_str):</span>
+<span class="sd">        return False</span>
+<span class="sd">        :param index:</span>
+<span class="sd">        :param check_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span> <span class="k">else</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">!=</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">parentdata</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_type</span> <span class="o">==</span> <span class="s1">&#39;up&#39;</span><span class="p">:</span>
+                <span class="n">check_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">check_value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">parentdata</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">parentdata</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_limited_checkvalue</span><span class="p">(</span><span class="n">parentdata</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="TreeItemController.check_process_hierarchy"><a class="viewcode-back" href="../../../treeitemcontrol.html#control.control_process.TreeItemsControl.TreeItemController.check_process_hierarchy">[docs]</a>    <span class="k">def</span> <span class="nf">check_process_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">check_type</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        check the position whether can be jump out or not</span>
+
+<span class="sd">        :param `data`: item data</span>
+<span class="sd">        :type `data`: list</span>
+<span class="sd">        :param `pos`: check position</span>
+<span class="sd">        :type `pos`: list</span>
+<span class="sd">        :param `check_type`: check up or down</span>
+<span class="sd">        :rtype: int</span>
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">            |</span>
+<span class="sd">            | return -1 equals to data None or index None.</span>
+<span class="sd">            | return 0  equals to normal change, up is up, down is down.</span>
+<span class="sd">            |</span>
+<span class="sd">            |</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">first_index</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">pos</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">_tmp_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">first_index</span><span class="p">]</span> <span class="k">if</span> <span class="n">data</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">_tmp_value</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">_tmp_value</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_current_func_islimited</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="p">(</span><span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span><span class="p">)</span> <span class="o">=</span> <span class="n">child</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">_tmp_value</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_current_func_islimited</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">first_index</span><span class="p">,</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">parentdata</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__get_limited_checkvalue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">check_value</span><span class="p">):</span>
+        <span class="n">func_str</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">check_value</span>
+        <span class="k">return</span> <span class="n">func_str</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">funcs_unlimit</span></div>
+
+
+
+</pre></div>
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
