@@ -10,7 +10,6 @@ class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 	def __init__( self, parent, id, pos, size, style ):
 		GUI_functionlist.Panel_ChooseFunc.__init__( self, parent )
 		self.func_path = None
-		self.current_data = None
 		self._control = None
 		self.config()
 		view_tools.config_control(self, id, pos, size, style)
@@ -22,7 +21,7 @@ class Panel_ChooseFunc( GUI_functionlist.Panel_ChooseFunc ):
 
 	
 	def config(self):
-		current_path, _ = os.path.split(__file__)
+		current_path, _ = os.path.split(os.path.abspath(__file__))
 		self.func_path = os.path.abspath(os.path.join(current_path, '../../control/reference.yml'))
 		self._control = control_function.Function_List_Control(self, self.func_path)
 		# self._control.init_control()

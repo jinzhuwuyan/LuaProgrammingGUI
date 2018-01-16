@@ -18,4 +18,3 @@ Welcome to LuaProgrammingGUI's documentation!
    parameterscontrol
    processcontrol
    treeitemcontrol
-
