@@ -306,6 +306,9 @@ class Control():
 
     def orgnize_commands(self):
 
+        import mm
+        modelitems = mm.Document(self.model.items)
+        modelitems.write('~/Documents/modelitems.xls')
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
