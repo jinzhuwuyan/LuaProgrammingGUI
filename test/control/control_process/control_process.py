@@ -282,6 +282,10 @@ class Control():
                     controlfile_tools.save(self.file_path, self.generate_prj_data())
                     commands_data = self.orgnize_commands()
                     pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
+                    print self.generate_prj_data()
+                    # import mm
+                    # modelitems = mm.DataModel
+                    # modelitems.write('~/Documents/modelitems.xls')
                     return True, '保存成功！'
                 else:
                     return False, '为了确保程序正常退出，请至少添加一个延时操作DELAY!'
@@ -293,6 +297,46 @@ class Control():
             return False, '请检查文件路径%s是否正确？' % self.file_path
 
     def generate_prj_data(self):
+
+        """
+        |
+        |   Generate the project data of tree model
+        |
+
+        .. attention::
+
+               It is neccessary to specific the data structure of project file
+
+               - ProgramBlocks: model data
+               - Repeat_time: int
+               - Last_Edit_time: time
+               - encoding: utf-8
+               - Author: ysw
+               - version: str
+
+
+        ..  admonition:: tree model data's data structure
+
+
+               tree model data ===> [(?), (?), (?), ...]
+
+               ? =====> function str<str>, function child<list>, function paras<dict>
+
+               example:
+                   [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
+                   there are only one if and move function in this model
+
+                   [('if', [('move', [], {choose_point: (P1, str)})], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)})]
+                   this model is different from the one before, because if has its children `move`
+
+               Tips:
+                   Only control function like if, while and so on can have child.
+
+
+
+
+        """
+
         _tmp = {}
         _tmp['ProgramBlocks'] = self.model.items
         _tmp['Repeat_time'] = self.repeat_time
@@ -306,9 +350,7 @@ class Control():
 
     def orgnize_commands(self):
 
-        import mm
-        modelitems = mm.Document(self.model.items)
-        modelitems.write('~/Documents/modelitems.xls')
+
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)

@@ -232,6 +232,56 @@ Inheritance diagram for class <strong>processcontrol</strong>:
 </dd></dl>
 
 <dl class="method">
+<dt id="control.control_process.control_process.Control.generate_prj_data">
+<code class="descname">generate_prj_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.generate_prj_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.generate_prj_data" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Generate the project data of tree model</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line">It is neccessary to specific the data structure of project file</div>
+<div class="line"><br /></div>
+<div class="line">- ProgramBlocks: model data</div>
+<div class="line">- Repeat_time: int</div>
+<div class="line">- Last_Edit_time: time</div>
+<div class="line">- encoding: utf-8</div>
+<div class="line">- Author: ysw</div>
+<div class="line">- version: str</div>
+</div>
+</div>
+<div class="admonition-model-data-s-data-structure admonition">
+<p class="first admonition-title">model data’s data structure</p>
+<div class="last line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">model data ===&gt; [(?), (?), (?), …]</div>
+<div class="line"><br /></div>
+<div class="line">? =====&gt; function str&lt;str&gt;, function child&lt;list&gt;, function paras&lt;dict&gt;</div>
+<div class="line"><br /></div>
+<div class="line">example:</div>
+<div class="line-block">
+<div class="line">[(‘if’, [], {condition_value: ‘’, operation_value: ‘’}), (‘move’, [], {choose_point: (P1, str)}})]</div>
+<div class="line">there are only one if and move function in this model</div>
+<div class="line"><br /></div>
+<div class="line">[(‘if’, [(‘move’, [], {choose_point: (P1, str)})], {condition_value: ‘’, operation_value: ‘’}), (‘move’, [], {choose_point: (P1, str)})]</div>
+<div class="line">this model is different from the one before, because if has its children <cite>move</cite></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Tips:</div>
+<div class="line-block">
+<div class="line">Only control function like if, while and so on can have child.</div>
+</div>
+</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="control.control_process.control_process.Control.get_current_pos">
 <code class="descname">get_current_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.get_current_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.get_current_pos" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the position according to tree selection</p>
