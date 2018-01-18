@@ -292,7 +292,10 @@ class control():
                     pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                     print self.generate_prj_data()
                     # import mm
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
                     # modelitems = mm.DataModel
                     # modelitems.write('~/Documents/modelitems.xls')
                     return True, '保存成功！'
@@ -332,7 +335,10 @@ class control():
                ? =====> function str<str>, function child<list>, function paras<dict>
 
                example:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
                    [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
                    there are only one if and move function in this model
 
@@ -345,7 +351,10 @@ class control():
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
         """
 
         _tmp = {}
@@ -363,6 +372,10 @@ class control():
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 91ed2f4... fix bug
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
