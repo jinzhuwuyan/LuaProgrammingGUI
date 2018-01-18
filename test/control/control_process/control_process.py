@@ -293,7 +293,10 @@ class control():
                     print self.generate_prj_data()
                     # import mm
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
 =======
 >>>>>>> 91ed2f4... fix bug
                     # modelitems = mm.DataModel
@@ -336,7 +339,10 @@ class control():
 
                example:
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
 =======
 >>>>>>> 91ed2f4... fix bug
                    [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
@@ -352,7 +358,10 @@ class control():
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91ed2f4... fix bug
 =======
 >>>>>>> 91ed2f4... fix bug
         """
@@ -371,10 +380,13 @@ class control():
     def orgnize_commands(self, file_path):
 
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
 
+>>>>>>> 91ed2f4... fix bug
+=======
 >>>>>>> 91ed2f4... fix bug
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
