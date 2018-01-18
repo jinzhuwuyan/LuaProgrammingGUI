@@ -292,15 +292,10 @@ class control():
                     pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                     print self.generate_prj_data()
                     # import mm
-<<<<<<< HEAD
-                    # modelitems = mm.datamodel
-                    # modelitems.write('~/documents/modelitems.xls')
-                    return true, '保存成功！'
-=======
+
                     # modelitems = mm.DataModel
                     # modelitems.write('~/Documents/modelitems.xls')
                     return True, '保存成功！'
->>>>>>> 91ed2f4... fix bug
                 else:
                     return false, '为了确保程序正常退出，请至少添加一个延时操作delay!'
             except exception as e:
@@ -314,24 +309,11 @@ class control():
 
         """
         |
-<<<<<<< HEAD
-        |   generate the project data of tree model
-=======
         |   Generate the project data of tree model
->>>>>>> 91ed2f4... fix bug
         |
 
         .. attention::
 
-<<<<<<< HEAD
-               it is neccessary to specific the data structure of project file
-
-               - programblocks: model data
-               - repeat_time: int
-               - last_edit_time: time
-               - encoding: utf-8
-               - author: ysw
-=======
                It is neccessary to specific the data structure of project file
 
                - ProgramBlocks: model data
@@ -339,7 +321,6 @@ class control():
                - Last_Edit_time: time
                - encoding: utf-8
                - Author: ysw
->>>>>>> 91ed2f4... fix bug
                - version: str
 
 
@@ -351,16 +332,7 @@ class control():
                ? =====> function str<str>, function child<list>, function paras<dict>
 
                example:
-<<<<<<< HEAD
-                   [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (p1, str)}})]
-                   there are only one if and move function in this model
 
-                   [('if', [('move', [], {choose_point: (p1, str)})], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (p1, str)})]
-                   this model is different from the one before, because if has its children `move`
-
-               tips:
-                   only control function like if, while and so on can have child.
-=======
                    [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
                    there are only one if and move function in this model
 
@@ -369,7 +341,7 @@ class control():
 
                Tips:
                    Only control function like if, while and so on can have child.
->>>>>>> 91ed2f4... fix bug
+
 
 
 
@@ -390,14 +362,9 @@ class control():
     def orgnize_commands(self, file_path):
 
 
-<<<<<<< HEAD
-        from luaprogramminggui.demos.luaprogramme.control.data_handler import handle_msg
-        handler = handle_msg(self)
-=======
 
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
->>>>>>> 91ed2f4... fix bug
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
         controlfile_tools.log_bystatus(
             'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
