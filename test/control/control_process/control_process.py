@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-**module info**::
+**Module Info**::
 
-   @author     : yan_sw
-   @time       : 2018-01-08 13:53
-   @description:
-       this class is the main class for maintaining the treelistctrl data as well as reflect the view event.
+   @Author     : yan_sw
+   @Time       : 2018-01-08 13:53
+   @Description:
+       This class is the main class for maintaining the treelistctrl data as well as reflect the view event.
 
 """
 import yaml
@@ -19,26 +19,26 @@ from control.tools import command_tools
 from control.tools import controlfile_tools
 from data.object_process import process_object
 from control.control_process import control_process_showdata
-from control.control_process.treeitemscontrol import treeitemcontroller
+from control.control_process.TreeItemsControl import TreeItemController
 try:
     from wx.lib.pubsub import pub
-except importerror:
+except ImportError:
     from pubsub import pub
 
 __version__ =  ','.join(list('0010'))
 
-class control():
+class Control():
     """
-                .. admonition:: class infos
+                .. admonition:: Class Infos
 
                         |  *class_description*:
-                        |        the core function of controlling the treelistctrl data as well as saving it as a project.
+                        |        The core function of controlling the treelistctrl data as well as saving it as a project.
                         |
                         |  *class_chinese_description*:
                         |       刷新当前函数参数面板(:meth:`refresh_current_selection`)
-                        |       增加函数(:meth:`control.control_process.treeitemscontrol.control_model`)
-                        |       删除函数(:meth:`control.control_process.treeitemscontrol.control_model`)
-                        |       改变函数位置(:meth:`control.control_process.treeitemscontrol.control_model`)
+                        |       增加函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+                        |       删除函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+                        |       改变函数位置(:meth:`control.control_process.TreeItemsControl.control_model`)
                         |       保存(:meth:`save_to_disk`)
                         |       恢复上次操作(:meth:`load_from_disk`)
                         |       修改循环时间(:meth:`modify_runtime`)
@@ -47,39 +47,39 @@ class control():
                         |       帮助(:meth:`load_help_msg`)
                         |
                         |
-                        | the **initilization** of :class:`~control.control_process.control_process.control` is:
-                        |        control = control.control_process.control_process.control(view_instance, tree)
+                        | The **initilization** of :class:`~control.control_process.control_process.Control` is:
+                        |        control = control.control_process.control_process.Control(view_instance, tree)
                         |
                         |
-                        | **parameters of initilization**:
+                        | **Parameters of initilization**:
                         |
-                        |       **view_instance** : :class:`~view.view_process.panel_controlprocess_overwrite`  or its subclass
+                        |       **view_instance** : :class:`~view.view_process.Panel_controlprocess_overwrite`  or its subclass
                         |
                         |
-                        |       **tree**: wx.treelistctrl
+                        |       **tree**: wx.TreeListCtrl
                         |
 
     """
-    def __init__(self, parent, tree=none):
+    def __init__(self, parent, tree=None):
         self.parent = parent
         self.tree = tree
-        self.version = none
-        self.func_str = none
-        self.func_child = none
-        self.command = none
-        self.change_way = none
-        self.func_data = none
-        self.func_paras = none
-        self.func_items = none
-        self.func_selection = none
-        self.file_path = none
-        self.rename_list = none
-        self.help_msg_path = none
-        self.help_msg = none
-        self.pos = none
-        self.model = none
-        self.repeat_time = none
-        self.file_path_rewrite = none
+        self.version = None
+        self.func_str = None
+        self.func_child = None
+        self.command = None
+        self.change_way = None
+        self.func_data = None
+        self.func_paras = None
+        self.func_items = None
+        self.func_selection = None
+        self.file_path = None
+        self.rename_list = None
+        self.help_msg_path = None
+        self.help_msg = None
+        self.pos = None
+        self.model = None
+        self.repeat_time = None
+        self.file_path_rewrite = None
         self.init_control()
 
 
@@ -91,15 +91,14 @@ class control():
         self._funcs_paras, self._funcs_unlimit, \
         self.index_1, self.index_2, self.file_path, \
         self.rename_list, self.help_msg_path, self.help_msg, \
-        self.pos = [none] * 17
-        self.model = process_object.eontainer()
+        self.pos = [None] * 17
+        self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
         # pub.subscribe(self.refresh_paras_again, 'refresh_paras_again')
-        pub.subscribe(self._unselete_all, 'unselectall_controlprocess')
-        pub.subscribe(self._get_rewrite_filepath, 'rewrite_filepath')
+        pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
         self._refresh_func_init()
 
 ##########################################control parameters panel#########################################
@@ -111,7 +110,7 @@ class control():
         """refresh current selected func and func data, show para panel"""
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
-        pub.sendmessage('refresh_paras', data=refresh_data,
+        pub.sendMessage('refresh_paras', data=refresh_data,
                             pos=self.get_current_pos())
 
 
@@ -119,7 +118,7 @@ class control():
         """
         get funcs paras from data by pos
         """
-        _tmp = none
+        _tmp = None
         for idx, p in enumerate(pos):
             if idx == 0:
                 _tmp = data[p]
@@ -132,7 +131,7 @@ class control():
 
     def _refresh_item_data(self,  data, pos, refresh_data):
         """generate parent data to refresh according to refresh_data as well as pos """
-        _tmp = none
+        _tmp = None
         for idx, p in enumerate(pos):
 
             if idx == 0:
@@ -171,7 +170,7 @@ class control():
         :param `freshobj`: fresh obj
         :type `freshobj`: tuple
         """
-        _tmp = none
+        _tmp = None
         for idx, p in enumerate(pos):
 
             if idx == 0:
@@ -191,8 +190,8 @@ class control():
                 _, child, _ = _tmp
                 _tmp = child[p]
 
-    def _refresh_parasdata(self, refresh_type='get', data=none):
-        """refresh or get paras data(`main control`)"""
+    def _refresh_parasdata(self, refresh_type='get', data=None):
+        """refresh or get paras data(`Main Control`)"""
         refresh_data = {}
         selection_indexs = self.get_current_pos()
         controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (
@@ -205,7 +204,7 @@ class control():
                 return refresh_data
             else:
                 # self._refresh_item_data(self.model.items, selection_indexs, data)
-                # self.tree.refreshitems()
+                # self.tree.RefreshItems()
                 controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
                 refresh_obj = self._refresh_item_data(self.model.items, selection_indexs, data)
                 controlfile_tools.log_bystatus('get refresh obj is %s' % str(refresh_obj))
@@ -216,7 +215,7 @@ class control():
                 self.request_showdata_onlyrefreshdata()
 
         else:
-            return none
+            return None
 
 
 
@@ -224,17 +223,17 @@ class control():
     def get_current_pos(self):
         """get the position according to tree selection"""
         _pos = []
-        select_item = self.tree.getselection()
-        if select_item.m_pitem:
-            controlfile_tools.log_bystatus("enter getpos from get_current_pos")
-            for i in list(self.tree.getindexofitem(select_item)):
+        select_item = self.tree.GetSelection()
+        if select_item.m_pItem:
+            controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+            for i in list(self.tree.GetIndexOfItem(select_item)):
                 _pos.append(i)
         else:
-            controlfile_tools.log_bystatus("tree control for showing programming process "
+            controlfile_tools.log_bystatus("Tree control for showing programming process "
                                            "don't have selection!")
             pass
         controlfile_tools.log_bystatus('select_item is %s, get_current_pos is %s'
-                                       % (str(select_item.m_pitem), str(_pos)))
+                                       % (str(select_item.m_pItem), str(_pos)))
         return _pos
 
 
@@ -246,27 +245,21 @@ class control():
 
 ##########################################control programming process panel################################
 
-    def _get_rewrite_filepath(self, data):
-
-        self.file_path_rewrite = data
-        self.load_from_disk()
-
-
     def set_tree(self, tree):
         """set process tree"""
         self.tree = tree
 
     def unselect_items(self):
-        controlfile_tools.log_bystatus('unselectall items!')
-        self.tree.unselectall()
+        controlfile_tools.log_bystatus('UnselectAll items!')
+        self.tree.UnselectAll()
 
     def modify_runtime(self):
-        dlg = wx.numberentrydialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
-        if dlg.showmodal() == wx.id_ok:
-            self.repeat_time = dlg.getvalue()
-            wx.messagebox('设置成功！')
+        dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.repeat_time = dlg.GetValue()
+            wx.MessageBox('设置成功！')
         else:
-            print 'cancle it!'
+            print 'Cancle it!'
 
     def append_item(self):
         """控制显示数据"""
@@ -282,7 +275,7 @@ class control():
 
     def save_to_disk(self, file_path):
         """save the project data into disk as well as generate commands to lua4 panel"""
-        if self.file_path:
+        if file_path:
             try:
                 print 'saving file.',self.model.items
                 if self.model.items:
@@ -292,24 +285,17 @@ class control():
                     pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                     print self.generate_prj_data()
                     # import mm
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 91ed2f4... fix bug
-=======
->>>>>>> 91ed2f4... fix bug
                     # modelitems = mm.DataModel
                     # modelitems.write('~/Documents/modelitems.xls')
                     return True, '保存成功！'
                 else:
-                    return false, '为了确保程序正常退出，请至少添加一个延时操作delay!'
-            except exception as e:
+                    return False, '为了确保程序正常退出，请至少添加一个延时操作delay!'
+            except Exception as e:
                 exceptions = sys.exc_info()
-                return false, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
+                return False, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
         else:
             # load filepath
-            return false, '请检查文件路径%s是否正确？' % self.file_path
+            return False, '请检查文件路径%s是否正确？' % file_path
 
     def generate_prj_data(self):
 
@@ -338,13 +324,6 @@ class control():
                ? =====> function str<str>, function child<list>, function paras<dict>
 
                example:
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 91ed2f4... fix bug
-=======
->>>>>>> 91ed2f4... fix bug
                    [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
                    there are only one if and move function in this model
 
@@ -357,21 +336,14 @@ class control():
 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 91ed2f4... fix bug
-=======
->>>>>>> 91ed2f4... fix bug
         """
 
         _tmp = {}
-        _tmp['programblocks'] = self.model.items
-        _tmp['repeat_time'] = self.repeat_time
-        _tmp['last_edit_time'] = time.asctime( time.localtime(time.time()))
+        _tmp['ProgramBlocks'] = self.model.items
+        _tmp['Repeat_time'] = self.repeat_time
+        _tmp['Last_Edit_time'] = time.asctime( time.localtime(time.time()))
         _tmp['encoding'] = 'utf-8'
-        _tmp['author'] = 'ysw'
+        _tmp['Author'] = 'ysw'
         # _tmp['version'] = '.'.join(list('0010'))
         _tmp['version'] = self.version
 
@@ -380,26 +352,18 @@ class control():
     def orgnize_commands(self, file_path):
 
 
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 91ed2f4... fix bug
-=======
->>>>>>> 91ed2f4... fix bug
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
         handler = Handle_Msg(self)
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
         controlfile_tools.log_bystatus(
             'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
         head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
-        handler.cmd_manager.pg.append(head_instance)
+        handler.Cmd_manager.pg.append(head_instance)
         handler.generate_commands(commands_data, self.repeat_time)
-        handler.cmd_manager.pg.append(end_instance)
+        handler.Cmd_manager.pg.append(end_instance)
         controlfile_tools.save(file_path + '.lua', handler.output_commands())
         return handler.output_commands()
-
 
 
     def load_from_disk(self):

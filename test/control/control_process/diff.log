@@ -1,0 +1,275 @@
+4c4
+< **module info**::
+---
+> **Module Info**::
+6,9c6,9
+<    @author     : yan_sw
+<    @time       : 2018-01-08 13:53
+<    @description:
+<        this class is the main class for maintaining the treelistctrl data as well as reflect the view event.
+---
+>    @Author     : yan_sw
+>    @Time       : 2018-01-08 13:53
+>    @Description:
+>        This class is the main class for maintaining the treelistctrl data as well as reflect the view event.
+22c22
+< from control.control_process.treeitemscontrol import treeitemcontroller
+---
+> from control.control_process.TreeItemsControl import TreeItemController
+25c25
+< except importerror:
+---
+> except ImportError:
+30c30
+< class control():
+---
+> class Control():
+32c32
+<                 .. admonition:: class infos
+---
+>                 .. admonition:: Class Infos
+35c35
+<                         |        the core function of controlling the treelistctrl data as well as saving it as a project.
+---
+>                         |        The core function of controlling the treelistctrl data as well as saving it as a project.
+39,41c39,41
+<                         |       增加函数(:meth:`control.control_process.treeitemscontrol.control_model`)
+<                         |       删除函数(:meth:`control.control_process.treeitemscontrol.control_model`)
+<                         |       改变函数位置(:meth:`control.control_process.treeitemscontrol.control_model`)
+---
+>                         |       增加函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+>                         |       删除函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+>                         |       改变函数位置(:meth:`control.control_process.TreeItemsControl.control_model`)
+50,51c50,51
+<                         | the **initilization** of :class:`~control.control_process.control_process.control` is:
+<                         |        control = control.control_process.control_process.control(view_instance, tree)
+---
+>                         | The **initilization** of :class:`~control.control_process.control_process.Control` is:
+>                         |        control = control.control_process.control_process.Control(view_instance, tree)
+54c54
+<                         | **parameters of initilization**:
+---
+>                         | **Parameters of initilization**:
+56c56
+<                         |       **view_instance** : :class:`~view.view_process.panel_controlprocess_overwrite`  or its subclass
+---
+>                         |       **view_instance** : :class:`~view.view_process.Panel_controlprocess_overwrite`  or its subclass
+59c59
+<                         |       **tree**: wx.treelistctrl
+---
+>                         |       **tree**: wx.TreeListCtrl
+63c63
+<     def __init__(self, parent, tree=none):
+---
+>     def __init__(self, parent, tree=None):
+66,82c66,81
+<         self.version = none
+<         self.func_str = none
+<         self.func_child = none
+<         self.command = none
+<         self.change_way = none
+<         self.func_data = none
+<         self.func_paras = none
+<         self.func_items = none
+<         self.func_selection = none
+<         self.file_path = none
+<         self.rename_list = none
+<         self.help_msg_path = none
+<         self.help_msg = none
+<         self.pos = none
+<         self.model = none
+<         self.repeat_time = none
+<         self.file_path_rewrite = none
+---
+>         self.version = None
+>         self.func_str = None
+>         self.func_child = None
+>         self.command = None
+>         self.change_way = None
+>         self.func_data = None
+>         self.func_paras = None
+>         self.func_items = None
+>         self.func_selection = None
+>         self.file_path = None
+>         self.rename_list = None
+>         self.help_msg_path = None
+>         self.help_msg = None
+>         self.pos = None
+>         self.model = None
+>         self.repeat_time = None
+94,95c93,94
+<         self.pos = [none] * 17
+<         self.model = process_object.eontainer()
+---
+>         self.pos = [None] * 17
+>         self.model = process_object.container()
+101,102c100
+<         pub.subscribe(self._unselete_all, 'unselectall_controlprocess')
+<         pub.subscribe(self._get_rewrite_filepath, 'rewrite_filepath')
+---
+>         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
+114c112
+<         pub.sendmessage('refresh_paras', data=refresh_data,
+---
+>         pub.sendMessage('refresh_paras', data=refresh_data,
+122c120
+<         _tmp = none
+---
+>         _tmp = None
+135c133
+<         _tmp = none
+---
+>         _tmp = None
+174c172
+<         _tmp = none
+---
+>         _tmp = None
+194,195c192,193
+<     def _refresh_parasdata(self, refresh_type='get', data=none):
+<         """refresh or get paras data(`main control`)"""
+---
+>     def _refresh_parasdata(self, refresh_type='get', data=None):
+>         """refresh or get paras data(`Main Control`)"""
+208c206
+<                 # self.tree.refreshitems()
+---
+>                 # self.tree.RefreshItems()
+219c217
+<             return none
+---
+>             return None
+227,230c225,228
+<         select_item = self.tree.getselection()
+<         if select_item.m_pitem:
+<             controlfile_tools.log_bystatus("enter getpos from get_current_pos")
+<             for i in list(self.tree.getindexofitem(select_item)):
+---
+>         select_item = self.tree.GetSelection()
+>         if select_item.m_pItem:
+>             controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+>             for i in list(self.tree.GetIndexOfItem(select_item)):
+233c231
+<             controlfile_tools.log_bystatus("tree control for showing programming process "
+---
+>             controlfile_tools.log_bystatus("Tree control for showing programming process "
+237c235
+<                                        % (str(select_item.m_pitem), str(_pos)))
+---
+>                                        % (str(select_item.m_pItem), str(_pos)))
+249,254d246
+<     def _get_rewrite_filepath(self, data):
+< 
+<         self.file_path_rewrite = data
+<         self.load_from_disk()
+< 
+< 
+260,261c252,253
+<         controlfile_tools.log_bystatus('unselectall items!')
+<         self.tree.unselectall()
+---
+>         controlfile_tools.log_bystatus('UnselectAll items!')
+>         self.tree.UnselectAll()
+264,267c256,259
+<         dlg = wx.numberentrydialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
+<         if dlg.showmodal() == wx.id_ok:
+<             self.repeat_time = dlg.getvalue()
+<             wx.messagebox('设置成功！')
+---
+>         dlg = wx.NumberEntryDialog(self.parent, '请输入需要循环执行的次数', '次数（默认0为无限循环）：', '输入循环次数弹框', self.repeat_time, 0, 100000)
+>         if dlg.ShowModal() == wx.ID_OK:
+>             self.repeat_time = dlg.GetValue()
+>             wx.MessageBox('设置成功！')
+269c261
+<             print 'cancle it!'
+---
+>             print 'Cancle it!'
+283,284c275,277
+<     def save_to_disk(self, file_path):
+<         """save the project data into disk as well as generate commands to lua4 panel"""
+---
+>     def save_to_disk(self):
+>         """save the project data into disk as well as generate commands to lua4 Panel"""
+>         print 'self.file_path', self.file_path
+289,291c282,283
+<                     controlfile_tools.save(file_path, self.generate_prj_data())
+< 
+<                     commands_data = self.orgnize_commands(file_path)
+---
+>                     controlfile_tools.save(self.file_path, self.generate_prj_data())
+>                     commands_data = self.orgnize_commands()
+299,300c291,292
+<                     return false, '为了确保程序正常退出，请至少添加一个延时操作delay!'
+<             except exception as e:
+---
+>                     return False, '为了确保程序正常退出，请至少添加一个延时操作DELAY!'
+>             except Exception as e:
+302c294
+<                 return false, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
+---
+>                 return False, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
+305c297
+<             return false, '请检查文件路径%s是否正确？' % self.file_path
+---
+>             return False, '请检查文件路径%s是否正确？' % self.file_path
+342a335,337
+> 
+> 
+> 
+346,348c341,343
+<         _tmp['programblocks'] = self.model.items
+<         _tmp['repeat_time'] = self.repeat_time
+<         _tmp['last_edit_time'] = time.asctime( time.localtime(time.time()))
+---
+>         _tmp['ProgramBlocks'] = self.model.items
+>         _tmp['Repeat_time'] = self.repeat_time
+>         _tmp['Last_Edit_time'] = time.asctime( time.localtime(time.time()))
+350c345
+<         _tmp['author'] = 'ysw'
+---
+>         _tmp['Author'] = 'ysw'
+356,357c351
+<     def orgnize_commands(self, file_path):
+< 
+---
+>     def orgnize_commands(self):
+364c358
+<             'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
+---
+>             'Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
+366c360
+<         handler.cmd_manager.pg.append(head_instance)
+---
+>         handler.Cmd_Manager.pg.append(head_instance)
+368,369c362,363
+<         handler.cmd_manager.pg.append(end_instance)
+<         controlfile_tools.save(file_path + '.lua', handler.output_commands())
+---
+>         handler.Cmd_Manager.pg.append(end_instance)
+>         controlfile_tools.save(self.file_path + '.lua', handler.output_commands())
+375c369
+<         """load project data with file_path"""
+---
+>         """load Project data with file_path"""
+377,382c371
+<         if self.file_path_rewrite:
+<             filedata = controlfile_tools.loadyaml(self.file_path_rewrite)
+<             self.model.items = filedata.get('ProgramBlocks', [])
+<             self.repeat_time = filedata.get('Repeat_time', 1)
+<             print 'loading ...', self.model.items
+<         elif self.file_path:
+---
+>         if self.file_path:
+387c376
+< 
+---
+>             self.refresh_tree()
+390,392c379
+<             wx.MessageBox('加载工程文件失败！请选择一个有效的工程进行加载!')
+< 
+<         self.refresh_tree()
+---
+>             pass
+541c528
+<             self.save_to_disk(self.file_path)
+---
+>             self.save_to_disk()
