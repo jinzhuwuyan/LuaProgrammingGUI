@@ -381,8 +381,8 @@ class Control():
             else:
                 try:
 
-                    self.model.items = filedata.get('ProgramBlocks', [])
-                    self.repeat_time = filedata.get('Repeat_time', 1)
+                    self.model.items = filedata.get['ProgramBlocks']
+                    self.repeat_time = filedata.get['Repeat_time']
                 except KeyError as e:
                     print e
                     wx.MessageBox(u'加载的工程文件不符合格式！请联系技术人员检查工程文件是否损坏！')
