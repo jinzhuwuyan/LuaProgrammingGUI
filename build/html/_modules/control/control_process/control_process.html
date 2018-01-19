@@ -362,6 +362,10 @@
                     <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_prj_data</span><span class="p">())</span>
                     <span class="n">commands_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orgnize_commands</span><span class="p">()</span>
                     <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;refresh_lua_panel&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">commands_data</span><span class="p">,</span> <span class="p">))</span>
+                    <span class="nb">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_prj_data</span><span class="p">()</span>
+                    <span class="c1"># import mm</span>
+                    <span class="c1"># modelitems = mm.DataModel</span>
+                    <span class="c1"># modelitems.write(&#39;~/Documents/modelitems.xls&#39;)</span>
                     <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;保存成功！&#39;</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;为了确保程序正常退出，请至少添加一个延时操作DELAY!&#39;</span>
@@ -372,7 +376,47 @@
             <span class="c1"># load filepath</span>
             <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;请检查文件路径</span><span class="si">%s</span><span class="s1">是否正确？&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span></div>
 
-    <span class="k">def</span> <span class="nf">generate_prj_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Control.generate_prj_data"><a class="viewcode-back" href="../../../processcontrol.html#control.control_process.control_process.Control.generate_prj_data">[docs]</a>    <span class="k">def</span> <span class="nf">generate_prj_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        |</span>
+<span class="sd">        |   Generate the project data of tree model</span>
+<span class="sd">        |</span>
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">            |   It is neccessary to specific the data structure of project file</span>
+<span class="sd">            |</span>
+<span class="sd">            |   - ProgramBlocks: model data</span>
+<span class="sd">            |   - Repeat_time: int</span>
+<span class="sd">            |   - Last_Edit_time: time</span>
+<span class="sd">            |   - encoding: utf-8</span>
+<span class="sd">            |   - Author: ysw</span>
+<span class="sd">            |   - version: str</span>
+
+
+<span class="sd">        ..  admonition:: model data&#39;s data structure</span>
+
+<span class="sd">           |</span>
+<span class="sd">           |    model data ===&gt; [(?), (?), (?), ...]</span>
+<span class="sd">           |</span>
+<span class="sd">           |    ? =====&gt; function str&lt;str&gt;, function child&lt;list&gt;, function paras&lt;dict&gt;</span>
+<span class="sd">           |</span>
+<span class="sd">           |    example:</span>
+<span class="sd">           |        [(&#39;if&#39;, [], {condition_value: &#39;&#39;, operation_value: &#39;&#39;}), (&#39;move&#39;, [], {choose_point: (P1, str)}})]</span>
+<span class="sd">           |        there are only one if and move function in this model</span>
+<span class="sd">           |</span>
+<span class="sd">           |        [(&#39;if&#39;, [(&#39;move&#39;, [], {choose_point: (P1, str)})], {condition_value: &#39;&#39;, operation_value: &#39;&#39;}), (&#39;move&#39;, [], {choose_point: (P1, str)})]</span>
+<span class="sd">           |        this model is different from the one before, because if has its children `move`</span>
+<span class="sd">           |</span>
+<span class="sd">           |    Tips:</span>
+<span class="sd">           |        Only control function like if, while and so on can have child.</span>
+
+
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">_tmp</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;ProgramBlocks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span>
         <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;Repeat_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repeat_time</span>
@@ -382,9 +426,10 @@
         <span class="c1"># _tmp[&#39;version&#39;] = &#39;.&#39;.join(list(&#39;0010&#39;))</span>
         <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span>
 
-        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">_tmp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">_tmp</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">orgnize_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
 
         <span class="kn">from</span> <span class="nn">LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler</span> <span class="k">import</span> <span class="n">Handle_Msg</span>
         <span class="n">handler</span> <span class="o">=</span> <span class="n">Handle_Msg</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>

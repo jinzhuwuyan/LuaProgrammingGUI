@@ -1,5 +1,5 @@
 Author: ysw
-Last_Edit_time: Thu Jan  4 11:43:09 2018
+Last_Edit_time: Wed Jan 17 15:23:01 2018
 ProgramBlocks:
 - !!python/tuple
   - IF
@@ -12,6 +12,10 @@ ProgramBlocks:
         - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
             \u53F7"}
     - list
+- !!python/tuple
+  - GO
+  - []
+  - choose_point: !!python/tuple [P1, str]
 Repeat_time: 1
 encoding: utf-8
 version: null
