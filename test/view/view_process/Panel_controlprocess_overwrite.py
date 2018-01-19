@@ -53,8 +53,14 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement save_change
 		self.change_status = False
 
-		ret, ret_msg = self.control.save_to_disk()
+		ret, ret_msg = self.control.save_to_disk(self.control.file_path)
 		wx.MessageBox(ret_msg)
+		if self.control.file_path_rewrite:
+			ret_file_rewrite, ret_msg_file_rewrite = self.control.save_to_disk(self.control.file_path_rewrite)
+			print 'The result of saving to disk for lua Programming is %s' % ret_msg_file_rewrite
+		else:
+			pass
+
 
 	def redo_edit( self, event ):
 		# TODO: Implement redo_edit
