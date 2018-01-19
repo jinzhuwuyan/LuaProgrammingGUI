@@ -376,9 +376,18 @@ class Control():
         print self.file_path
         if self.file_path_rewrite:
             filedata = controlfile_tools.loadyaml(self.file_path_rewrite)
-            self.model.items = filedata.get('ProgramBlocks', [])
-            self.repeat_time = filedata.get('Repeat_time', 1)
-            print 'loading ...', self.model.items
+            if filedata is None:
+                self.model.items = []
+            else:
+                try:
+
+                    self.model.items = filedata.get('ProgramBlocks', [])
+                    self.repeat_time = filedata.get('Repeat_time', 1)
+                except KeyError as e:
+                    print e
+                    wx.MessageBox(u'加载的工程文件不符合格式！请联系技术人员检查工程文件是否损坏！')
+                except Exception as e:
+                    print e
         elif self.file_path:
             filedata = controlfile_tools.loadyaml(self.file_path)
             self.model.items = filedata['ProgramBlocks']
