@@ -99,6 +99,7 @@ class Control():
         pub.subscribe(self._refresh_parasdata, 'save_paras')
         # pub.subscribe(self.refresh_paras_again, 'refresh_paras_again')
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
+        pub.subscribe(self._rewrite_filepath, 'rewrite_filepath')
         self._refresh_func_init()
 
 ##########################################control parameters panel#########################################
@@ -244,6 +245,10 @@ class Control():
 
 
 ##########################################control programming process panel################################
+
+    def _rewrite_filepath(self, data):
+        self.file_path_rewrite = data
+        self.load_from_disk()
 
     def set_tree(self, tree):
         """set process tree"""

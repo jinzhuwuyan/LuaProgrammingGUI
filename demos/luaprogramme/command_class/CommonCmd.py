@@ -16,7 +16,7 @@ class Abstract_CommandManager(CommandManager):
         self.__Exec_cmd_nameList = Exec_cmd_nameList
         self.__data_none_list = data_none_list
 
-    def genCmd_overwrite(self, cmdName, data, dict_strs):
+    def genCmd_overwrite(self, cmdName, data, dict_strs, operation_values = None):
         _tmp = []
         end_cmd = None
         if cmdName in self.__Exec_cmd_nameList:
@@ -34,6 +34,7 @@ class Abstract_CommandManager(CommandManager):
                 else:
                     _tmp.append(data[key][0])
             cmds.data = tuple(_tmp)
+            cmds.operations_values = operation_values
         else:
             raise Exception("dict_strs isn't list type!! %s" % (str(dict_strs)))
         if end_cmd:
@@ -138,7 +139,8 @@ class IF(Abstract_Command):
     def __init__(self, CmdID, inputPairID):
         Abstract_Command.__init__(self, CmdID, commandName='if', commandType='HEAD', PairID=inputPairID)
         self.condition_strs = ''
-        self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
+        self.operations_values = None
+        # self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
 
     def generate_if_condition(self):
         print 'generating if condition is ',self.data
