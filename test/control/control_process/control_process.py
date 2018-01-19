@@ -359,9 +359,9 @@ class Control():
         controlfile_tools.log_bystatus(
             'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
         head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
-        handler.Cmd_manager.pg.append(head_instance)
+        handler.Cmd_Manager.pg.append(head_instance)
         handler.generate_commands(commands_data, self.repeat_time)
-        handler.Cmd_manager.pg.append(end_instance)
+        handler.Cmd_Manager.pg.append(end_instance)
         controlfile_tools.save(file_path + '.lua', handler.output_commands())
         return handler.output_commands()
 
