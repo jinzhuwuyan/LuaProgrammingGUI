@@ -1,7 +1,9 @@
 #! encoding: utf-8
 import yaml
 import os
-current_path, _ = os.path.split(__file__)
+current_path, _ = os.path.split(os.path.abspath(__file__))
+
+
 conditions = [u'判断输入信号', u'判断输出信号', u'判断位置']
 operations = {u'判断输入信号': [u'有信号', u'无信号'], u'判断输出信号': [u'有信号', u'无信号'], u'判断位置': [u'已到达', u'未到达'] }
 values = {u'判断输入信号': [unicode('getInput(%d)' % in_io) for in_io in range(64)],
@@ -17,7 +19,16 @@ condition_data['operation_values'] = operation_values
 condition_data['value'] = values
 condition_data['default_append_item'] = default_append_item
 condition_data['default_refresh_data'] = default_refresh_data
-with open(os.path.abspath(os.path.join(current_path, '../if_condition_data.yml')), 'w') as f:
-    f.write(yaml.dump(condition_data))
-    f.close()
+
+
+IF_CONDITION_PATHS = ['../if_condition_data.yml', '../../../demos/luaprogramme/command_class/if_condition_data.yml']
+
+def write_if_condition_values(filepath):
+
+    with open(os.path.abspath(os.path.join(current_path, filepath)), 'w') as f:
+        f.write(yaml.dump(condition_data))
+        f.close()
+
+for p in IF_CONDITION_PATHS:
+    write_if_condition_values(p)
 

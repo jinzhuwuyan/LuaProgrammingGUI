@@ -282,6 +282,7 @@ class Control():
         """save the project data into disk as well as generate commands to lua4 panel"""
         if file_path:
             try:
+                print 'file_path is %s' % file_path
                 print 'saving file.',self.model.items
                 if self.model.items:
                     controlfile_tools.save(file_path, self.generate_prj_data())
@@ -367,6 +368,9 @@ class Control():
         handler.Cmd_Manager.pg.append(head_instance)
         handler.generate_commands(commands_data, self.repeat_time)
         handler.Cmd_Manager.pg.append(end_instance)
+        controlfile_tools.log_bystatus(
+            'saving commands into lua file %s' % file_path + '.lua'
+        )
         controlfile_tools.save(file_path + '.lua', handler.output_commands())
         return handler.output_commands()
 
@@ -374,8 +378,9 @@ class Control():
     def load_from_disk(self):
         """load project data with file_path"""
         print self.file_path
-        if self.file_path_rewrite:
-            filedata = controlfile_tools.loadyaml(self.file_path_rewrite)
+        file_path = self.file_path_rewrite if self.file_path_rewrite else self.file_path
+        if file_path:
+            filedata = controlfile_tools.loadyaml(file_path)
             if filedata is None:
                 self.model.items = []
             else:
@@ -388,11 +393,11 @@ class Control():
                     wx.MessageBox(u'加载的工程文件不符合格式！请联系技术人员检查工程文件是否损坏！')
                 except Exception as e:
                     print e
-        elif self.file_path:
-            filedata = controlfile_tools.loadyaml(self.file_path)
-            self.model.items = filedata['ProgramBlocks']
-            self.repeat_time = filedata['Repeat_time']
-            print 'loading ...', self.model.items
+        # elif self.file_path:
+        #     filedata = controlfile_tools.loadyaml(self.file_path)
+        #     self.model.items = filedata['ProgramBlocks']
+        #     self.repeat_time = filedata['Repeat_time']
+        #     print 'loading ...', self.model.items
 
         else:
             # load filepath

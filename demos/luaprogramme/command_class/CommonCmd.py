@@ -1,6 +1,8 @@
 #! encoding: utf-8
 from core.cmds2 import Command
 from core.cmds2 import CommandManager
+import yaml
+import os
 try:
     from wx.lib.pubsub import pub
 except ImportError:
@@ -144,16 +146,23 @@ class IF(Abstract_Command):
         if if_condition_filepath:
             self.if_condition_filepath = if_condition_filepath
         else:
-            self.if_condition_filepath = 'if_condition_data.yml'
-
+            current_path, _ = os.path.split(os.path.abspath(__file__))
+            self.if_condition_filepath = os.path.join(current_path, 'if_condition_data.yml')
+        print 'init If Condition value'
         self.init_if_data(self.if_condition_filepath)
 
     def init_if_data(self, if_condition_filepath):
+       print 'if condition filepath is %s' % if_condition_filepath
+       with open(if_condition_filepath, 'r') as f:
+           try:
+                if_conditiondata = f.read()
+                if_condition_yamldata = yaml.load(if_conditiondata)
+                print 'Init operation values .....\n%s' % str(if_condition_yamldata)
+                self.operations_values = if_condition_yamldata['operation_values']
+                print 'operations values is %s' % str(self.operations_values)
+           except Exception as e:
+               print e
 
-       with open(if_condition_filepath) as f:
-           if_conditiondata = f.read()
-           import yaml
-           yaml.load(if_conditiondata)
 
     def generate_if_condition(self):
         print 'generating if condition is ',self.data

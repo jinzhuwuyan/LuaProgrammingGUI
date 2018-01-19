@@ -1,5 +1,5 @@
 Author: ysw
-Last_Edit_time: Fri Jan 19 15:19:47 2018
+Last_Edit_time: Fri Jan 19 16:41:53 2018
 ProgramBlocks:
 - !!python/tuple
   - IF
@@ -7,10 +7,10 @@ ProgramBlocks:
   - check_allconditions: true
     condition: !!python/tuple
     - - !!python/tuple
-        - "\u5224\u65AD\u4F4D\u7F6E"
+        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
         - []
-        - {condition_value: !!python/unicode 'getTargetOk(P0)', operation_value: "\u672A\u5230\
-            \u8FBE"}
+        - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
+            \u53F7"}
     - list
 Repeat_time: 1
 encoding: utf-8
