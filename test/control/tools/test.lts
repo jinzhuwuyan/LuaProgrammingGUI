@@ -1,17 +1,22 @@
 Author: ysw
-Last_Edit_time: Fri Jan 19 16:41:53 2018
+Last_Edit_time: Sat Jan 20 13:25:17 2018
 ProgramBlocks:
 - !!python/tuple
-  - IF
+  - MOVE
   - []
-  - check_allconditions: true
-    condition: !!python/tuple
-    - - !!python/tuple
-        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
-        - []
-        - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
-            \u53F7"}
-    - list
+  - choose_point: &id001 !!python/tuple [P1, str]
+- !!python/tuple
+  - MOVE
+  - []
+  - choose_point: *id001
+- !!python/tuple
+  - MOVE
+  - []
+  - choose_point: *id001
+- !!python/tuple
+  - MOVE
+  - []
+  - choose_point: *id001
 Repeat_time: 1
 encoding: utf-8
 version: null

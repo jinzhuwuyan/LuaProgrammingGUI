@@ -55,6 +55,7 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 
 		ret, ret_msg = self.control.save_to_disk(self.control.file_path)
 		wx.MessageBox(ret_msg)
+		print 'the path of filepath_rewrite is %s' % self.control.file_path_rewrite
 		if self.control.file_path_rewrite:
 			ret_file_rewrite, ret_msg_file_rewrite = self.control.save_to_disk(self.control.file_path_rewrite)
 			print 'The result of saving to disk for lua Programming is %s' % ret_msg_file_rewrite

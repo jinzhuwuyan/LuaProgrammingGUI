@@ -248,6 +248,7 @@ class Control():
 
     def _rewrite_filepath(self, data):
         self.file_path_rewrite = data
+        print 'receving the file path rewriten is %s' % self.file_path_rewrite
         self.load_from_disk()
 
     def set_tree(self, tree):
@@ -377,7 +378,7 @@ class Control():
 
     def load_from_disk(self):
         """load project data with file_path"""
-        print self.file_path
+        print 'filepath is %s, rewrite file path is %s' % (self.file_path, self.file_path_rewrite)
         file_path = self.file_path_rewrite if self.file_path_rewrite else self.file_path
         if file_path:
             filedata = controlfile_tools.loadyaml(file_path)
@@ -386,8 +387,8 @@ class Control():
             else:
                 try:
 
-                    self.model.items = filedata.get['ProgramBlocks']
-                    self.repeat_time = filedata.get['Repeat_time']
+                    self.model.items = filedata['ProgramBlocks']
+                    self.repeat_time = filedata['Repeat_time']
                 except KeyError as e:
                     print e
                     wx.MessageBox(u'加载的工程文件不符合格式！请联系技术人员检查工程文件是否损坏！')
