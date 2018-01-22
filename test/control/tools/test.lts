@@ -1,5 +1,5 @@
 Author: ysw
-Last_Edit_time: Sat Jan 20 13:25:17 2018
+Last_Edit_time: Sat Jan 20 16:08:45 2018
 ProgramBlocks:
 - !!python/tuple
   - MOVE
@@ -12,11 +12,15 @@ ProgramBlocks:
 - !!python/tuple
   - MOVE
   - []
-  - choose_point: *id001
+  - choose_point: !!python/tuple [P1, str]
 - !!python/tuple
   - MOVE
   - []
   - choose_point: *id001
+- !!python/tuple
+  - SPEED
+  - []
+  - value: !!python/tuple [-1.0, float]
 Repeat_time: 1
 encoding: utf-8
 version: null

@@ -54,7 +54,9 @@ class Control():
         self.pts_path = pts_path
         self.model = parameters_object.container()
         self.controllist = {}
+        self.function_name = None
         self.if_conditiondata_path = None
+        self.check_value = {''}
         pub.subscribe(self.refresh_paras_panel1, 'refresh_paras')
         pub.subscribe(self._remove_allcontrols, 'remove_all_paras')
         pub.subscribe(self._get_MainMsg, 'get_main_msg')
@@ -226,3 +228,18 @@ class Control():
         controlfile_tools.log_bystatus('get Msg from Main, %s' % str(data), 'i')
         (self.pts_path, ) = data
         # pub.sendMessage('refresh_choosedatalist', data=(datalist, ))
+
+
+    def set_functionname(self, func_name):
+        self.function_name = func_name
+
+    def check_functionlimits(self, func_name, value):
+
+        return self.check_value[func_name](value)
+
+
+    def check_speed_or_accel_value(self, value):
+        return 0.0 < value < 100.0
+
+    def check_io_value(self, value):
+        return value in [0, 1]
