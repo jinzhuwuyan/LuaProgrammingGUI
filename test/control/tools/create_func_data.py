@@ -17,6 +17,11 @@ default_none_data = {}
 default_time_data = {'time': (0, 'float')}
 default_value_data = {'value': (0, 'int')}
 default_choose_point_data = {'choose_point': ('P1', 'str')}
+
+
+#for data
+for_data = {'循环次数(大于0次)': (1, 'int')}
+
 funcs = {
 
     'GO': default_choose_point_data,
@@ -28,6 +33,8 @@ funcs = {
     'ON': default_value_data,
     'OFF': default_value_data,
     'IF': default_condition_data,
+    'WHILE': default_condition_data,
+    'FOR': for_data,
     # 'ELIF': default_condition_data,
     # 'ELSE': default_none_data,
 }
