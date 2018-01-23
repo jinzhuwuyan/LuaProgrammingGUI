@@ -20,7 +20,7 @@ class Panel_Choose_Point( Panel_choose_pointlist.choose_pointlist ):
 			with open(self.filepath, 'r') as f:
 				data = yaml.load(f.read())
 				self.__control = ChoosePoinListControl(self, data)
-				ret, ret_msg = self.__control.set_textctrl_datas(self.current_selection)
+				ret, ret_msg = self.__control.init_textctrl_datas(self.current_selection)
 				self.m_comboBox_pointlist.SetSelection(self.current_selection - 1)
 				if not ret:
 					wx.MessageBox(ret_msg)
@@ -58,7 +58,7 @@ class Panel_Choose_Point( Panel_choose_pointlist.choose_pointlist ):
 		else:
 			# self.m_comboBox_pointlist.SetValue('P-%d' % ret_msg)
 			self.m_comboBox_pointlist.SetSelection(ret_msg - 1)
-			ret_settext, ret_settext_msg = self.__control.set_textctrl_datas(ret_msg)
+			ret_settext, ret_settext_msg = self.__control.init_textctrl_datas(ret_msg)
 			if not ret_settext:
 				wx.MessageBox(ret_settext_msg)
 

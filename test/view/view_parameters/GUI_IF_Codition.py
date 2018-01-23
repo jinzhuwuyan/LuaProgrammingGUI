@@ -9,7 +9,7 @@
 
 import wx
 import wx.xrc
-from view.view_process.TreeMixin  import VirtualTreeListCtrl_ControlIF
+from LuaProgrammingGUI.test.view.view_process.TreeMixin  import VirtualTreeListCtrl_ControlIF
 
 ###########################################################################
 ## Class If_Condition_Panel
@@ -38,15 +38,15 @@ class If_Condition_Panel ( wx.Panel ):
 		self.m_radioBtn_onlyone = wx.RadioButton( self, wx.ID_ANY, u"满足任意一个", wx.DefaultPosition, wx.DefaultSize, 0 )
 		head_sizer.Add( self.m_radioBtn_onlyone, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
-		self.m_staticText_ = wx.StaticText( self, wx.ID_ANY, u"条件", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText_ = wx.StaticText( self, wx.ID_ANY, u"判断条件对象", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText_.Wrap( -1 )
 		head_sizer.Add( self.m_staticText_, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"条件值", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"条件对象值", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
 		head_sizer.Add( self.m_staticText3, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"操作值", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"条件表达式赋值", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText2.Wrap( -1 )
 		head_sizer.Add( self.m_staticText2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
@@ -55,15 +55,10 @@ class If_Condition_Panel ( wx.Panel ):
 		self.m_choice_choosecondition.SetSelection( 0 )
 		head_sizer.Add( self.m_choice_choosecondition, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
-		conditionvalue_sizer = wx.BoxSizer( wx.HORIZONTAL )
-		
 		m_choice_choosevalueChoices = []
 		self.m_choice_choosevalue = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_choosevalueChoices, 0 )
 		self.m_choice_choosevalue.SetSelection( 0 )
-		conditionvalue_sizer.Add( self.m_choice_choosevalue, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
-		
-		
-		head_sizer.Add( conditionvalue_sizer, 0, wx.EXPAND, 5 )
+		head_sizer.Add( self.m_choice_choosevalue, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
 		m_choice_choosecontrolChoices = []
 		self.m_choice_choosecontrol = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice_choosecontrolChoices, 0 )

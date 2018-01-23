@@ -12,8 +12,7 @@ IF: &id004
   - - !!python/tuple
       - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
       - []
-      - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
-          \u53F7"}
+      - {condition_value: !!python/unicode '0', operation_value: "\u6709\u4FE1\u53F7"}
   - list
 MOVE: *id001
 'OFF': *id002

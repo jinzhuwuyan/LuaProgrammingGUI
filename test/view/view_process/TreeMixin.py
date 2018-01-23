@@ -174,7 +174,16 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         child = _item[1]
         paras = _item[2]
         print 'Get Item in TreeListCtrl, func_str is %s, child is %s, paras is %s' % (str(func_str), str(child), str(paras))
-        paras_str = ','.join([str(para[0] if isinstance(para, tuple) or isinstance(para, list) else para) for para in paras.values()])
+        if 'condition' in paras.keys():
+            condition_paras = paras['condition']
+            # condition_paras ==> ([condition1, condition2, ...], 'list')
+            first_condition = condition_paras[0][0]
+            first_conditionName = first_condition[0]
+            first_conditionValue = first_condition[2]['condition_value']
+            first_conditionOperation = first_condition[2]['operation_value']
+            paras_str = ''.join([first_conditionName, first_conditionValue, first_conditionOperation, ',...'])
+        else:
+            paras_str = ','.join([str(para[0] if isinstance(para, tuple) or isinstance(para, list) else para) for para in paras.values()])
         return func_str if column == 0 else paras_str
 
 

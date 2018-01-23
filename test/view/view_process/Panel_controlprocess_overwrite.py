@@ -74,15 +74,15 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.control.refresh_current_selection()
 
 	def modify_runtime( self, event ):
-
+		self.change_status = True
 		self.control.modify_runtime()
 
 	def import_prj_fromdisk( self, event ):
-
+		self.change_status = True
 		self.control.import_prj_fromdisk()
 
 	def output_to_folder( self, event ):
-
+		self.change_status = False
 		self.control.output_to_folder()
 
 	def show_process_control_help( self, event ):

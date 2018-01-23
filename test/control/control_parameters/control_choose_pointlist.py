@@ -9,6 +9,8 @@
 
 """
 import wx
+import os
+import yaml
 from control.tools import command_tools
 from control.tools import controlfile_tools
 try:
@@ -93,6 +95,27 @@ class ChoosePoinListControl():
             print e
             return None
 
+    def init_textctrl_datas(self, id):
+
+        show_point = self.get_pointbyid(id - 1)
+        if show_point:
+            pos_data = [X, Y, Z, U, V, W] = show_point['Data']
+            elbow, handmode = show_point['Elbow'], show_point['Hand']
+
+            tcctrls = [self.tc_X, self.tc_Y, self.tc_Z, self.tc_U, self.tc_V, self.tc_W]
+            for index, value in enumerate(tcctrls):
+                value.SetValue(str(pos_data[index]))
+            self.select_elbow(0 if show_point['Elbow'] == 'A' else 1)
+            self.select_handmode(0 if show_point['Hand'] == 'L' else 1)
+            # controlfile_tools.log_bystatus('sending save_paras %s' % str(self.showcontent))
+            self.showcontent['choose_point'] = ('P%d' % id, 'str')
+            pub.sendMessage('save_paras', refresh_type='refresh', data=self.showcontent)
+
+            # pub.sendMessage('save_paras', refresh_type = 'refresh', data = ('P%d' % id, 'str'))
+            return True, ''
+        else:
+            return False, '请检查点文件内容是否有错!'
+
     def set_textctrl_datas(self, id):
         """
         set the point data to these value TextCtrl by comboBox selection
@@ -109,23 +132,27 @@ class ChoosePoinListControl():
                 | if isFunctionTargetOk is False, then will show the showmsg
 
         """
-
+        point_templatedata = None
+        point_template_yamldata = None
         controlfile_tools.log_bystatus('selection id is %d' % id)
+        point_template_filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'point_template.yml')
+        with open(point_template_filepath, 'r') as f:
+            point_templatedata = f.read()
+            point_template_yamldata = yaml.load(point_templatedata)
         show_point = self.get_pointbyid(id - 1)
+        if point_templatedata and point_template_yamldata:
+            pass
+        else:
+            return False, '用于检查点有效性的点文件模板没有内容！请检查%s路径下的点文件模板是否正常！' % str(point_template_filepath)
         if show_point:
             pos_data = [X, Y, Z, U, V, W] = show_point['Data']
             elbow, handmode = show_point['Elbow'], show_point['Hand']
-            tcctrls = [self.tc_X, self.tc_Y, self.tc_Z, self.tc_U, self.tc_V, self.tc_W]
-            for index, value in enumerate(tcctrls):
-                value.SetValue(str(pos_data[index]))
-            self.select_elbow(0 if show_point['Elbow'] == 'A' else 1)
-            self.select_handmode(0 if show_point['Hand'] == 'L' else 1)
-            # controlfile_tools.log_bystatus('sending save_paras %s' % str(self.showcontent))
-            self.showcontent['choose_point'] = ('P%d' % id, 'str')
-            pub.sendMessage('save_paras', refresh_type='refresh', data=self.showcontent)
+            if pos_data == point_template_yamldata['Data'] \
+                and elbow == point_template_yamldata['Elbow'] \
+                and handmode == point_template_yamldata['Hand']:
+                wx.MessageBox('当前选中的点不存在数据！请检查是否选择错误！')
+            return self.init_textctrl_datas(id)
 
-            # pub.sendMessage('save_paras', refresh_type = 'refresh', data = ('P%d' % id, 'str'))
-            return True, ''
         else:
             return False, '请检查点文件内容是否有错!'
 

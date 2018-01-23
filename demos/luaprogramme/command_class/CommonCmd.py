@@ -125,6 +125,7 @@ class Condition_Paras_Command(Abstract_Command):
         Abstract_Command.__init__(self, CmdID, commandName=commandName, commandType='HEAD', PairID=PairID)
         self.condition_strs = ''
         self.operations_values = None
+        self.condition_values = None
         # self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
         if condition_filepath:
             self.condition_filepath = condition_filepath
@@ -146,7 +147,9 @@ class Condition_Paras_Command(Abstract_Command):
                 condition_yamldata = yaml.load(conditiondata)
                 print 'Init operation values .....\n%s' % str(condition_yamldata)
                 self.operations_values = condition_yamldata['operation_values']
-                print 'operations values is %s' % str(self.operations_values)
+                self.condition_values = condition_yamldata['condition_values']
+                print 'operations values is %s, condition values is %s' \
+                      % (str(self.operations_values), str(self.condition_values))
            except Exception as e:
                print e
 
@@ -162,13 +165,20 @@ class Condition_Paras_Command(Abstract_Command):
         __condition_values = []
         value, check_allcondition = self.data
         check_str = ' and ' if check_allcondition else ' or '
+        print 'Entering gen_str function......value is %s, check_allcondition is %s'  % (str(value), str(check_allcondition))
         if isinstance(value, tuple):
             # value = ([], 'list')
             for condition in value[0]:
                 # ([(u'xxx', [], {condition_value: 'xxxx', operation_value: 'xxxx1'})], 'list')
                 func_str, _, paras = condition
-                condition_str = ''.join([paras['condition_value'], self.operations_values[paras['operation_value']]])
+                print 'condition_value is %s, condition_value is %s, final command is %s' \
+                      % (str(self.condition_values), str(paras['condition_value']),
+                         self.condition_values[unicode(func_str).replace(u'判断', u'')] % paras['condition_value'])
+                func_value = self.condition_values[unicode(func_str).replace(u'判断', u'')] % paras['condition_value']
+                print 'find condition name is %s, paras is %s' % (func_str, func_value)
+                condition_str = ''.join([func_value, self.operations_values[paras['operation_value']]])
                 __condition_values.append(condition_str)
+
         self.condition_strs = tuple([check_str.join(__condition_values)])
 
 
@@ -232,56 +242,6 @@ class IF(Condition_Paras_Command):
 
     def __init__(self, CmdID, PairID, condition_filepath = None):
         Condition_Paras_Command.__init__(self, CmdID=CmdID, commandName='if', PairID=PairID, condition_filepath=condition_filepath)
-
-# class IF(Abstract_Command):
-#     def __init__(self, CmdID, inputPairID, if_condition_filepath = None):
-#         Abstract_Command.__init__(self, CmdID, commandName='if', commandType='HEAD', PairID=inputPairID)
-#         self.condition_strs = ''
-#         self.operations_values = None
-#         # self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
-#         if if_condition_filepath:
-#             self.if_condition_filepath = if_condition_filepath
-#         else:
-#             current_path, _ = os.path.split(os.path.abspath(__file__))
-#             self.if_condition_filepath = os.path.join(current_path, 'if_condition_data.yml')
-#         print 'init If Condition value'
-#         self.init_if_data(self.if_condition_filepath)
-#
-#     def init_if_data(self, if_condition_filepath):
-#        print 'if condition filepath is %s' % if_condition_filepath
-#        with open(if_condition_filepath, 'r') as f:
-#            try:
-#                 if_conditiondata = f.read()
-#                 if_condition_yamldata = yaml.load(if_conditiondata)
-#                 print 'Init operation values .....\n%s' % str(if_condition_yamldata)
-#                 self.operations_values = if_condition_yamldata['operation_values']
-#                 print 'operations values is %s' % str(self.operations_values)
-#            except Exception as e:
-#                print e
-#
-#
-#     def generate_if_condition(self):
-#         print 'generating if condition is ',self.data
-#
-#     def genCode(self):
-#         return self.gen_str() % self.condition_strs
-#
-#     def gen_str(self):
-#         self.generate_if_condition()
-#         __condition_values = []
-#         value, check_allcondition = self.data
-#         check_str = ' and ' if check_allcondition else ' or '
-#         if isinstance(value, tuple):
-#             # value = ([], 'list')
-#             for condition in value[0]:
-#                 # ([(u'xxx', [], {condition_value: 'xxxx', operation_value: 'xxxx1'})], 'list')
-#                 func_str, _, paras = condition
-#                 condition_str = ''.join([paras['condition_value'], self.operations_values[paras['operation_value']]])
-#                 __condition_values.append(condition_str)
-#         self.condition_strs = tuple([check_str.join(__condition_values)])
-#
-#
-#         return ''.join([self.commandName, " (%s) then"])
 
 class ELIF(Abstract_Command):
     def __init__(self, CmdID, inputPairID):
