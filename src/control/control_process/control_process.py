@@ -271,10 +271,10 @@ class Control():
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
         controlfile_tools.log_bystatus(
             'Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
-        head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
-        handler.Cmd_Manager.pg.append(head_instance)
+        # head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
+        # handler.Cmd_Manager.pg.append(head_instance)
         handler.generate_commands(commands_data, self.repeat_time)
-        handler.Cmd_Manager.pg.append(end_instance)
+        # handler.Cmd_Manager.pg.append(end_instance)
         controlfile_tools.save(self.file_path + '.lua', handler.output_commands())
         return handler.output_commands()
 

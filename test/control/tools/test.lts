@@ -1,26 +1,10 @@
 Author: ysw
-Last_Edit_time: Sat Jan 20 16:08:45 2018
+Last_Edit_time: Tue Jan 23 14:54:37 2018
 ProgramBlocks:
 - !!python/tuple
-  - MOVE
-  - []
-  - choose_point: &id001 !!python/tuple [P1, str]
-- !!python/tuple
-  - MOVE
-  - []
-  - choose_point: *id001
-- !!python/tuple
-  - MOVE
+  - GO
   - []
   - choose_point: !!python/tuple [P1, str]
-- !!python/tuple
-  - MOVE
-  - []
-  - choose_point: *id001
-- !!python/tuple
-  - SPEED
-  - []
-  - value: !!python/tuple [-1.0, float]
 Repeat_time: 1
 encoding: utf-8
 version: null

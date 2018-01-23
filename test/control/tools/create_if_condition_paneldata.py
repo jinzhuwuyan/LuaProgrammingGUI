@@ -21,7 +21,7 @@ condition_data['default_append_item'] = default_append_item
 condition_data['default_refresh_data'] = default_refresh_data
 
 
-IF_CONDITION_PATHS = ['../if_condition_data.yml', '../../../demos/luaprogramme/command_class/if_condition_data.yml']
+IF_CONDITION_PATHS = ['../condition_data.yml', '../../../demos/luaprogramme/command_class/condition_data.yml']
 
 def write_if_condition_values(filepath):
 

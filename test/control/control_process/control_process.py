@@ -111,8 +111,7 @@ class Control():
         """refresh current selected func and func data, show para panel"""
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
-        pub.sendMessage('refresh_paras', data=refresh_data,
-                            pos=self.get_current_pos())
+        pub.sendMessage('refresh_paras', data=(refresh_data, self.func_str))
 
 
     def _get_funcs_paras_bypos(self, data, pos):
@@ -286,8 +285,9 @@ class Control():
                 print 'file_path is %s' % file_path
                 print 'saving file.',self.model.items
                 if self.model.items:
-                    controlfile_tools.save(file_path, self.generate_prj_data())
 
+                    controlfile_tools.save(file_path, self.generate_prj_data())
+                    controlfile_tools.log_bystatus('prj data is %s' % str(self.generate_prj_data()))
                     commands_data = self.orgnize_commands(file_path)
                     pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
                     print self.generate_prj_data()
@@ -359,9 +359,11 @@ class Control():
     def orgnize_commands(self, file_path):
 
 
-
+        controlfile_tools.log_bystatus('Enter orgnizing commands....')
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
+
         handler = Handle_Msg(self)
+        controlfile_tools.log_bystatus('modeldata in orgnize_commands is %s, rename_list is %s' % (str(self.model.items), str(self.rename_list)))
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
         controlfile_tools.log_bystatus(
             'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))

@@ -67,12 +67,15 @@ def check_type(obj, type_str):
         controlfile_tools.log_bystatus("Can't check type is %s" % type_str, 'e')
     try:
         ret = tmp_type(obj)
+        controlfile_tools.log_bystatus("After checking value, ret is %s" % ret, 'e')
+        return  ret
+
     except Exception as e:
         controlfile_tools.log_bystatus('Error encount when try-catch init %s(%s)'
                                        % (str(obj), str(tmp_type)), 'e')
-        ret = None
+        return None
 
-    return ret
+
 
 if __name__ == '__main__':
     print check_type(u'6.00', 'float')

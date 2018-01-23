@@ -15,16 +15,16 @@ except ImportError:
 CMD_OBJ_TUPLE = [CommonCmd.Go, CommonCmd.Move, CommonCmd.Sleep, CommonCmd.Stop,
                  CommonCmd.Set_Accel_Go, CommonCmd.Set_Speed_Go, CommonCmd.IF,
                  CommonCmd.ELIF, CommonCmd.ELSE, CommonCmd.FOR, CommonCmd.WHILE,
-                 cmds2.End, CommonCmd.ON, CommonCmd.OFF]
-CMD_Name_TUPLE = ['go', 'move', 'luaSleep', 'emgStop', 'setAccel', 'setSpeed', 'if', 'elif', 'else', 'for', 'while', 'End', 'on', 'off']
-LIMITED_LIST = ['for', 'if', 'while', 'elif', 'else']
+                 cmds2.End, CommonCmd.ON, CommonCmd.OFF, CommonCmd.WHILE_TRUE]
+CMD_Name_TUPLE = ['go', 'move', 'luaSleep', 'emgStop', 'setAccel', 'setSpeed', 'if', 'elif', 'else', 'for', 'while', 'End', 'on', 'off', 'whiletrue']
+LIMITED_LIST = ['for', 'if', 'while', 'elif', 'else', 'whiletrue']
 check_condition = lambda t: t not in LIMITED_LIST
 EXEC_CMD_NAMELIST = list(filter(check_condition, CMD_Name_TUPLE))
 DATA_DICT_STRS = {#'coord': ['GO', 'MOVE'],
                   'ja': ['goja'],
                   'time': ['luaSleep'],
                   'value': ['emgStop', 'setAccel', 'setSpeed', 'for', 'while', 'on', 'off'],
-                  'condition': ['if', 'elif'],
+                  'condition': ['if', 'elif', 'while'],
                   'choose_point': ['go', 'move'],
                   }
 DATA_NONE_LIST = ['else']
@@ -38,7 +38,7 @@ class Handle_Msg(object):
 
         self.parent = parent
         # self.Cmd_Factory = cmds2.CommandManager(CMD_OBJ_TUPLE, CMD_Name_TUPLE, EXEC_CMD_NAMELIST)
-        self.Cmd_Factory = CommonCmd.Abstract_CommandManager(CMD_OBJ_TUPLE, CMD_Name_TUPLE, EXEC_CMD_NAMELIST, DATA_NONE_LIST)
+        self.Cmd_Factory = CommonCmd.Abstract_CommandManager(CMD_OBJ_TUPLE, CMD_Name_TUPLE, EXEC_CMD_NAMELIST, DATA_NONE_LIST, LIMITED_LIST, DATA_DICT_STRS)
         self.Cmd_Manager = cmds2.Prog()
         self.Cmd_data = None # [(func_str, func_paras, func_child_paras), ...]
         self.__end_instances = []
@@ -163,12 +163,14 @@ class Handle_Msg(object):
         # print 'self.__end_instances....is ....', self.__end_instances
         # return self.output_commands()
     def get_repeat_lua_for(self, repeat_time):
+
+
         if repeat_time == 0:
-            head_instance, end_instance = self.Cmd_Factory.genCmd_overwrite('while', {'value': ('1 < 2', 'str')},
-                                                                            self.get_cmd_paras('while'))
+            head_instance, end_instance = self.Cmd_Factory.genCmd_overwrite('whiletrue', {'value': ('1 < 2', 'str')},
+                                                                            ['value'], isDIY=True)
         else:
             head_instance, end_instance = self.Cmd_Factory.genCmd_overwrite('for', {'value': (repeat_time, 'int')},
-                                                                        self.get_cmd_paras('for'))
+                                                                        ['value'], isDIY=True)
         return head_instance, end_instance
 
     def parse_if_condition_strings(self, if_conditions):

@@ -56,7 +56,9 @@ class Control():
         self.controllist = {}
         self.function_name = None
         self.if_conditiondata_path = None
-        self.check_value = {''}
+        self.check_value = None
+        self.check_value_msg = None
+        self.init_control()
         pub.subscribe(self.refresh_paras_panel1, 'refresh_paras')
         pub.subscribe(self._remove_allcontrols, 'remove_all_paras')
         pub.subscribe(self._get_MainMsg, 'get_main_msg')
@@ -64,6 +66,21 @@ class Control():
     #
     # def unselete_process_all(self):
     #     pub.sendMessage('unselete_process_all', data = ())
+    def init_control(self):
+        self.check_value = {'SPEED': self.check_speed_or_accel_value,
+                            'ACCEL': self.check_speed_or_accel_value,
+                            'DELAY': self.check_naturalnumber_value,
+                            'ON':  self.check_io_value,
+                            'OFF': self.check_io_value,
+                            'FOR': self.check_naturalnumber_value,
+                            }
+        self.check_value_msg = {'SPEED': u'速度必须在0到100之间！',
+                                'ACCEL': u'加速度必须在0到100之间！',
+                                'DELAY': u'等待时间必须大于0！',
+                                'ON': u'开启输出信号必须在0到31之间！',
+                                'OFF': u'关闭输出信号必须在0到31之间！',
+                                'FOR': u'FOR的循环次数必须大于0!',
+                                }
 
     def save_content_from_gui(self, text_content, _type):
         """
@@ -85,12 +102,14 @@ class Control():
         controlfile_tools.log_bystatus('text_content is %s, type is %s' % (text_content, _type), 'i')
         save_data = command_tools.check_type(text_content, _type)
         controlfile_tools.log_bystatus('save_data is %s' % save_data, 'i')
-        if save_data != None:
-            self.request_save_data()
-            controlfile_tools.log_bystatus('request saving data %s' % save_data, 'i')
+        if save_data and self.check_functionlimits(self.function_name, save_data):
+
+                self.request_save_data()
+                controlfile_tools.log_bystatus('request saving data %s' % save_data, 'i')
+                return True
         else:
             return False
-        return True
+
 
     def request_save_data(self):
         _check = False
@@ -135,7 +154,7 @@ class Control():
         else:
             btn_obj.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_LIST_VIEW, wx.ART_BUTTON))
 
-    def refresh_paras_panel1(self, data, pos):
+    def refresh_paras_panel1(self, data):
         """
         refresh paras panel
 
@@ -149,11 +168,11 @@ class Control():
         self._remove_allcontrols()
         ##-----------------------init value------------------
         reorder_list = [list('XYZUVW'), 'J1,J2,J3,J4,J5,J6'.split(',')]
-        self.model.showcontent = data
+        self.model.showcontent, self.function_name = data
         print 'data is ', self.model.showcontent, '.......'
         sizer = self._parent.GetSizer()
         #-------------------Logic-----------------
-        if data:
+        if self.model.showcontent:
             check_list = self.model.showcontent.keys()
             for check in reorder_list:
                 if check_list[0] in check:
@@ -190,7 +209,7 @@ class Control():
         """
         controlfile_tools.log_bystatus('check_list is %s ' % str(check_list))
 
-        if len(check_list) == 1 and check_list[0] == 'choose_point':
+        if len(check_list) == 1 and 'choose_point' in check_list:
             key = check_list[0]
             id_str = (self.model.showcontent[key][0]).replace('P', '')
             id = int(id_str)
@@ -203,7 +222,7 @@ class Control():
 
         elif check_list and 'condition' in check_list:
             import os
-            self.if_conditiondata_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../if_condition_data.yml')
+            self.if_conditiondata_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../condition_data.yml')
             panel = Panel_edit_if_condition_overwrite.Panel_edit_ifcondition(self._parent, self.if_conditiondata_path)
             self._parent.GetSizer().Add(panel, 0, 0, 5)
             self.controllist[0] = panel
@@ -229,17 +248,22 @@ class Control():
         (self.pts_path, ) = data
         # pub.sendMessage('refresh_choosedatalist', data=(datalist, ))
 
+    def get_errormsg(self):
+        return self.check_value_msg[self.function_name]
 
     def set_functionname(self, func_name):
         self.function_name = func_name
 
     def check_functionlimits(self, func_name, value):
+            controlfile_tools.log_bystatus('Checking function limit result is %s' % str(self.check_value[func_name](value)))
+            return self.check_value[func_name](value)
 
-        return self.check_value[func_name](value)
-
-
+### condition to check whether the value of default parameters panel is available.
     def check_speed_or_accel_value(self, value):
         return 0.0 < value < 100.0
 
     def check_io_value(self, value):
-        return value in [0, 1]
+        return value in range(1)
+
+    def check_naturalnumber_value(self, value):
+        return  value > 0

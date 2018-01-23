@@ -10,16 +10,17 @@ def get_abspath(reative_path):
     return os.path.abspath(reative_path)
 
 references = {
+    'demos_path': get_abspath(os.path.join(current_path, '../../../demos')),
     'control_path': get_abspath(os.path.join(current_path, '../../control')),
     # 'data_path': os.path.join(get_abspath(current_path), '../../data'),
     # 'view_path': os.path.join(get_abspath(current_path), '../../view'),
     'func_path': get_abspath(os.path.join(current_path, '../../control/funcs_data.yml')),
     # 'default_func_filename': 'funcs_data.yml',
-    'unlimit_func': ['IF', 'ELIF', 'ELSE'],
+    'unlimit_func': ['IF', 'ELIF', 'ELSE', 'FOR', 'WHILE'],
     'file_path': get_abspath(os.path.join(current_path, 'test.lts')),
     'rename_list': {'GO': 'go', 'MOVE': 'move', 'ACCEL': 'setAccel', 'SPEED': 'setSpeed',
                     'DELAY': 'luaSleep', 'STOP': 'emgStop', 'ON': 'on', 'OFF': 'off',
-                    'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif'},
+                    'IF': 'if', 'ELSE': 'else', 'ELIF': 'elif', 'WHILE': 'while', 'FOR': 'for'},
     'help_msg_path': get_abspath(os.path.join(current_path, 'help_msg.yml'))
 }
 
