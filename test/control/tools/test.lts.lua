@@ -1,4 +1,7 @@
     for i=1,1 do
-        if (getInput(0)==0 or getOutput(4)==0) then
+        if (targetOK(P2)==0) then
+            go(P1)
         end --#END -- 2
+        for i=1,1 do
+        end --#END -- 3
     end --#END -- 1

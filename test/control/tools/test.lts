@@ -1,20 +1,23 @@
 Author: ysw
-Last_Edit_time: Tue Jan 23 16:42:34 2018
+Last_Edit_time: Tue Jan 23 17:44:01 2018
 ProgramBlocks:
 - !!python/tuple
   - IF
-  - []
-  - check_allconditions: false
+  - - !!python/tuple
+      - GO
+      - []
+      - choose_point: !!python/tuple [P1, str]
+  - check_allconditions: true
     condition: !!python/tuple
     - - !!python/tuple
-        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+        - "\u5224\u65AD\u4F4D\u7F6E"
         - []
-        - {condition_value: !!python/unicode '0', operation_value: "\u6709\u4FE1\u53F7"}
-      - !!python/tuple
-        - "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7"
-        - []
-        - {condition_value: !!python/unicode '4', operation_value: "\u6709\u4FE1\u53F7"}
+        - {condition_value: !!python/unicode 'P2', operation_value: "\u5DF2\u5230\u8FBE"}
     - list
+- !!python/tuple
+  - FOR
+  - []
+  - value: !!python/tuple [1, int]
 Repeat_time: 1
 encoding: utf-8
 version: null

@@ -36,7 +36,10 @@ class Panel_edit_ifcondition( GUI_IF_Codition.If_Condition_Panel ):
 
         def delete_condition( self, event ):
             # TODO: Implement delete_condition
-            self.ifcontrol.delete_condition(event.EventObject)
+            if self.showconditiontree.GetCount() > 1:
+                self.ifcontrol.delete_condition(event.EventObject)
+            else:
+                wx.MessageBox('至少需要一个条件！')
 
         def choose_condition( self, event ):
             # TODO: Implement choose_condition

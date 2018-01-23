@@ -17,6 +17,7 @@ operation:
   "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7": ["\u6709\u4FE1\u53F7", "\u65E0\u4FE1\u53F7"]
 operation_values: {"\u5DF2\u5230\u8FBE": !!python/unicode '==0', "\u65E0\u4FE1\u53F7": !!python/unicode '~=0',
   "\u6709\u4FE1\u53F7": !!python/unicode '==0', "\u672A\u5230\u8FBE": !!python/unicode '~=0'}
+remove_values_msg: ["\u7AEF\u53E3", "\u5224\u65AD"]
 value:
   "\u5224\u65AD\u4F4D\u7F6E": [!!python/unicode 'P0', !!python/unicode 'P1', !!python/unicode 'P2',
     !!python/unicode 'P3', !!python/unicode 'P4', !!python/unicode 'P5', !!python/unicode 'P6',
@@ -44,29 +45,26 @@ value:
     !!python/unicode 'P91', !!python/unicode 'P92', !!python/unicode 'P93', !!python/unicode 'P94',
     !!python/unicode 'P95', !!python/unicode 'P96', !!python/unicode 'P97', !!python/unicode 'P98',
     !!python/unicode 'P99']
-  "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7": [!!python/unicode '0', !!python/unicode '1',
-    !!python/unicode '2', !!python/unicode '3', !!python/unicode '4', !!python/unicode '5',
-    !!python/unicode '6', !!python/unicode '7', !!python/unicode '8', !!python/unicode '9',
-    !!python/unicode '10', !!python/unicode '11', !!python/unicode '12', !!python/unicode '13',
-    !!python/unicode '14', !!python/unicode '15', !!python/unicode '16', !!python/unicode '17',
-    !!python/unicode '18', !!python/unicode '19', !!python/unicode '20', !!python/unicode '21',
-    !!python/unicode '22', !!python/unicode '23', !!python/unicode '24', !!python/unicode '25',
-    !!python/unicode '26', !!python/unicode '27', !!python/unicode '28', !!python/unicode '29',
-    !!python/unicode '30', !!python/unicode '31', !!python/unicode '32', !!python/unicode '33',
-    !!python/unicode '34', !!python/unicode '35', !!python/unicode '36', !!python/unicode '37',
-    !!python/unicode '38', !!python/unicode '39', !!python/unicode '40', !!python/unicode '41',
-    !!python/unicode '42', !!python/unicode '43', !!python/unicode '44', !!python/unicode '45',
-    !!python/unicode '46', !!python/unicode '47', !!python/unicode '48', !!python/unicode '49',
-    !!python/unicode '50', !!python/unicode '51', !!python/unicode '52', !!python/unicode '53',
-    !!python/unicode '54', !!python/unicode '55', !!python/unicode '56', !!python/unicode '57',
-    !!python/unicode '58', !!python/unicode '59', !!python/unicode '60', !!python/unicode '61',
-    !!python/unicode '62', !!python/unicode '63']
-  "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7": [!!python/unicode '0', !!python/unicode '1',
-    !!python/unicode '2', !!python/unicode '3', !!python/unicode '4', !!python/unicode '5',
-    !!python/unicode '6', !!python/unicode '7', !!python/unicode '8', !!python/unicode '9',
-    !!python/unicode '10', !!python/unicode '11', !!python/unicode '12', !!python/unicode '13',
-    !!python/unicode '14', !!python/unicode '15', !!python/unicode '16', !!python/unicode '17',
-    !!python/unicode '18', !!python/unicode '19', !!python/unicode '20', !!python/unicode '21',
-    !!python/unicode '22', !!python/unicode '23', !!python/unicode '24', !!python/unicode '25',
-    !!python/unicode '26', !!python/unicode '27', !!python/unicode '28', !!python/unicode '29',
-    !!python/unicode '30', !!python/unicode '31']
+  "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7": ["\u7AEF\u53E30", "\u7AEF\u53E31", "\u7AEF\u53E3\
+      2", "\u7AEF\u53E33", "\u7AEF\u53E34", "\u7AEF\u53E35", "\u7AEF\u53E36", "\u7AEF\u53E3\
+      7", "\u7AEF\u53E38", "\u7AEF\u53E39", "\u7AEF\u53E310", "\u7AEF\u53E311", "\u7AEF\u53E3\
+      12", "\u7AEF\u53E313", "\u7AEF\u53E314", "\u7AEF\u53E315", "\u7AEF\u53E316",
+    "\u7AEF\u53E317", "\u7AEF\u53E318", "\u7AEF\u53E319", "\u7AEF\u53E320", "\u7AEF\u53E3\
+      21", "\u7AEF\u53E322", "\u7AEF\u53E323", "\u7AEF\u53E324", "\u7AEF\u53E325",
+    "\u7AEF\u53E326", "\u7AEF\u53E327", "\u7AEF\u53E328", "\u7AEF\u53E329", "\u7AEF\u53E3\
+      30", "\u7AEF\u53E331", "\u7AEF\u53E332", "\u7AEF\u53E333", "\u7AEF\u53E334",
+    "\u7AEF\u53E335", "\u7AEF\u53E336", "\u7AEF\u53E337", "\u7AEF\u53E338", "\u7AEF\u53E3\
+      39", "\u7AEF\u53E340", "\u7AEF\u53E341", "\u7AEF\u53E342", "\u7AEF\u53E343",
+    "\u7AEF\u53E344", "\u7AEF\u53E345", "\u7AEF\u53E346", "\u7AEF\u53E347", "\u7AEF\u53E3\
+      48", "\u7AEF\u53E349", "\u7AEF\u53E350", "\u7AEF\u53E351", "\u7AEF\u53E352",
+    "\u7AEF\u53E353", "\u7AEF\u53E354", "\u7AEF\u53E355", "\u7AEF\u53E356", "\u7AEF\u53E3\
+      57", "\u7AEF\u53E358", "\u7AEF\u53E359", "\u7AEF\u53E360", "\u7AEF\u53E361",
+    "\u7AEF\u53E362", "\u7AEF\u53E363"]
+  "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7": ["\u7AEF\u53E30", "\u7AEF\u53E31", "\u7AEF\u53E3\
+      2", "\u7AEF\u53E33", "\u7AEF\u53E34", "\u7AEF\u53E35", "\u7AEF\u53E36", "\u7AEF\u53E3\
+      7", "\u7AEF\u53E38", "\u7AEF\u53E39", "\u7AEF\u53E310", "\u7AEF\u53E311", "\u7AEF\u53E3\
+      12", "\u7AEF\u53E313", "\u7AEF\u53E314", "\u7AEF\u53E315", "\u7AEF\u53E316",
+    "\u7AEF\u53E317", "\u7AEF\u53E318", "\u7AEF\u53E319", "\u7AEF\u53E320", "\u7AEF\u53E3\
+      21", "\u7AEF\u53E322", "\u7AEF\u53E323", "\u7AEF\u53E324", "\u7AEF\u53E325",
+    "\u7AEF\u53E326", "\u7AEF\u53E327", "\u7AEF\u53E328", "\u7AEF\u53E329", "\u7AEF\u53E3\
+      30", "\u7AEF\u53E331"]

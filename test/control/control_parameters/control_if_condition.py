@@ -141,7 +141,7 @@ class IFConditionControl():
 
     def add_condition(self, obj):
         """add one condiiton"""
-        __default_item = (u'判断输入信号', [], {'condition_value': u'0', 'operation_value': u'有信号'})
+        __default_item = (u'判断输入信号', [], {'condition_value': u'端口0', 'operation_value': u'有信号'})
         tree_selection_info = self.get_tree_item_info(self.tree)
         if tree_selection_info:
             select_id, condition_str, condition_value = tree_selection_info

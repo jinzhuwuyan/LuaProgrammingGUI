@@ -126,6 +126,7 @@ class Condition_Paras_Command(Abstract_Command):
         self.condition_strs = ''
         self.operations_values = None
         self.condition_values = None
+        self.removes_msg = None
         # self.operations_values = {u'有信号': u'==0', u'无信号': u'!=0', u'已到达': u'==0', u'未到达': u'!=0'}
         if condition_filepath:
             self.condition_filepath = condition_filepath
@@ -148,6 +149,7 @@ class Condition_Paras_Command(Abstract_Command):
                 print 'Init operation values .....\n%s' % str(condition_yamldata)
                 self.operations_values = condition_yamldata['operation_values']
                 self.condition_values = condition_yamldata['condition_values']
+                self.removes_msg = condition_yamldata['remove_values_msg']
                 print 'operations values is %s, condition values is %s' \
                       % (str(self.operations_values), str(self.condition_values))
            except Exception as e:
@@ -171,12 +173,19 @@ class Condition_Paras_Command(Abstract_Command):
             for condition in value[0]:
                 # ([(u'xxx', [], {condition_value: 'xxxx', operation_value: 'xxxx1'})], 'list')
                 func_str, _, paras = condition
+                condition_value = paras['condition_value']
+                operation_value = paras['operation_value']
+                for r_str in self.removes_msg:
+
+                    func_str = unicode(func_str).replace(r_str, u'')
+                    condition_value = unicode(condition_value).replace(r_str, u'')
+
                 print 'condition_value is %s, condition_value is %s, final command is %s' \
                       % (str(self.condition_values), str(paras['condition_value']),
-                         self.condition_values[unicode(func_str).replace(u'判断', u'')] % paras['condition_value'])
-                func_value = self.condition_values[unicode(func_str).replace(u'判断', u'')] % paras['condition_value']
+                         self.condition_values[func_str] % condition_value)
+                func_value = self.condition_values[func_str] % condition_value
                 print 'find condition name is %s, paras is %s' % (func_str, func_value)
-                condition_str = ''.join([func_value, self.operations_values[paras['operation_value']]])
+                condition_str = ''.join([func_value, self.operations_values[operation_value]])
                 __condition_values.append(condition_str)
 
         self.condition_strs = tuple([check_str.join(__condition_values)])
