@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#/home/pi/Documents/LuaProgrammingGUI/test/view/view_function_list/Panel_ChooseFunc_overwrite.py</OriginalElement>
+  <nodes>
+    <node x="0.0" y="179.0">test.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc</node>
+    <node x="46.0" y="0.0">test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="test.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc" target="test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc">
+      <point x="0.0" y="-76.5" />
+      <point x="0.0" y="64.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="285.0" y="373.0" />
+  <SelectedNodes>
+    <node>test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+</Diagram>
+

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lua自动编程界面介绍 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="函数列表控制" href="functionlistcontrol.html" />
+    <link rel="prev" title="Welcome to LuaProgrammingGUI’s documentation!" href="index.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+        <li class="reltitle"> Lua自动编程界面介绍</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functionlistcontrol.html" title="函数列表控制"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to LuaProgrammingGUI’s documentation!"
+             accesskey="P">previous</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lua自动编程界面介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-docdir">目录结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-dir">重要文件目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#realization-result">实现效果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-principle">运行模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-model">控制模型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+    <div id="sourcelink" role="note" aria-label="source link">
+        <a href="_sources/getting_started.rst.txt"
+           rel="nofollow">Show page source</a>
+    </div>
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Lua自动编程界面介绍</a><ul>
+<li><a class="reference internal" href="#installing-docdir">目录结构</a></li>
+<li><a class="reference internal" href="#important-dir">重要文件目录</a></li>
+<li><a class="reference internal" href="#realization-result">实现效果</a><ul>
+<li><a class="reference internal" href="#id4">集成在主界面作为自动编程功能</a></li>
+<li><a class="reference internal" href="#id5">独立实现的效果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#execution-principle">运行模型</a><ul>
+<li><a class="reference internal" href="#simple-model">简单模型</a></li>
+<li><a class="reference internal" href="#link-relationship-between-functions">功能间调用关系模型</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#control-model">控制模型</a><ul>
+<li><a class="reference internal" href="#control-relationship">控制交互关系图</a></li>
+<li><a class="reference internal" href="#controlmodel-analyze">控制模块分析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script><div class="section" id="lua">
+<span id="getting-started"></span><h1>Lua自动编程界面介绍<a class="headerlink" href="#lua" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing-docdir">
+<span id="id1"></span><h2>目录结构<a class="headerlink" href="#installing-docdir" title="Permalink to this headline">¶</a></h2>
+<p>目录结构打印:</p>
+<div class="highlight-default"><div class="highlight"><pre>├── build               编译html文件的生成文件
+├── config.py           自动生成docs的配置文件
+├── demos               应用Lua自动编程界面的demos(重要)
+├── dependencies        依赖
+├── __init__.py
+├── __init__.pyc
+├── Main.py             主程序入口文件
+├── Main.pyc
+├── make.bat
+├── Makefile            编译html文件的MakeFile
+├── README.md
+├── source              编译html文件的源文件
+├── src                 已发布版本的文件目录
+└── test                测试开发版本的文件目录(重要)
+</pre></div>
+</div>
+</div>
+<div class="section" id="important-dir">
+<span id="id2"></span><h2>重要文件目录<a class="headerlink" href="#important-dir" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>目录</td>
+<td>说明</td>
+</tr>
+<tr class="row-even"><td>demos</td>
+<td>包含底层自动转出代码的引擎及对Commands重写的文件</td>
+</tr>
+<tr class="row-odd"><td>test</td>
+<td>包含所有自动Lua编程GUI的逻辑代码及调用demos中的引擎写命令的逻辑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="realization-result">
+<span id="id3"></span><h2>实现效果<a class="headerlink" href="#realization-result" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>集成在主界面作为自动编程功能<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/add_with_Main_panel.png" src="_images/add_with_Main_panel.png" />
+</div>
+<div class="section" id="id5">
+<h3>独立实现的效果<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/only_one_panel.png" src="_images/only_one_panel.png" />
+</div>
+</div>
+<div class="section" id="execution-principle">
+<span id="id6"></span><h2>运行模型<a class="headerlink" href="#execution-principle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#simple-model"><span class="std std-ref">简单模型</span></a></li>
+<li><a class="reference internal" href="#link-relationship-between-functions"><span class="std std-ref">功能间调用关系模型</span></a></li>
+</ol>
+<div class="section" id="simple-model">
+<span id="id7"></span><h3>简单模型<a class="headerlink" href="#simple-model" title="Permalink to this headline">¶</a></h3>
+<p>简单的来讲， 软件模型是典型的MVC结构。
+通过publisher机制对界面数据与底层数据之间的交互进行解耦，统一由Controller进行管理。</p>
+</div>
+<div class="section" id="link-relationship-between-functions">
+<span id="id8"></span><h3>功能间调用关系模型<a class="headerlink" href="#link-relationship-between-functions" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/luaprogramming_model_communication.png" src="_images/luaprogramming_model_communication.png" />
+</div>
+</div>
+<div class="section" id="control-model">
+<span id="id9"></span><h2>控制模型<a class="headerlink" href="#control-model" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">相对于界面层的数据刷新显示以及数据模型层的数据结构，控制层提供了界面数据的刷新及界面控件的响应，数据模型的存取修改以及转化等功能。</div>
+<div class="line">因此独立对控制层的逻辑进行进一步分析。</div>
+</div>
+<div class="section" id="control-relationship">
+<span id="id10"></span><h3>控制交互关系图<a class="headerlink" href="#control-relationship" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/lua_programming_control_model.png" src="_images/lua_programming_control_model.png" />
+</div>
+<div class="section" id="controlmodel-analyze">
+<span id="id11"></span><h3>控制模块分析<a class="headerlink" href="#controlmodel-analyze" title="Permalink to this headline">¶</a></h3>
+<p>未完待续……..</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

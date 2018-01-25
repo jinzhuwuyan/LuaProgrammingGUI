@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#/home/pi/Documents/RR_RC/GUI/src/LuaProgrammingGUI</OriginalElement>
+  <nodes>
+    <node x="8941.859375" y="256.0">LuaProgrammingGUI.test.data.object_process.process_object.container</node>
+    <node x="2559.0" y="1263.0">LuaProgrammingGUI.src.data.object_parameters.parameters_object.container</node>
+    <node x="0.0" y="1032.0">LuaProgrammingGUI.test.control.control_function_list.control_function.Function_List_Control</node>
+    <node x="7100.359375" y="174.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command</node>
+    <node x="2131.0" y="873.0">LuaProgrammingGUI.test.control.control_process.control_process_showdata.ShowDataControl</node>
+    <node x="1165.0" y="1494.0">LuaProgrammingGUI.src.control.tools.view_tools.AsyncMessageHandler</node>
+    <node x="1055.0" y="1648.0">LuaProgrammingGUI.test.control.tools.NewLogger.InitLog</node>
+    <node x="9668.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ELIF</node>
+    <node x="732.0" y="1032.0">LuaProgrammingGUI.src.control.control_process.control_process_showdata.ShowDataControl</node>
+    <node x="288.25" y="480.0">wx._windows.TopLevelWindow</node>
+    <node x="10857.0" y="714.0">LuaProgrammingGUI.test.view.view_parameters.Panel_edit_paras_overwrite.panel_edit_paras</node>
+    <node x="0.0" y="1109.0">LuaProgrammingGUI.src.control.control_parameters.control_if_condition.IFConditionControl</node>
+    <node x="0.0" y="1186.0">LuaProgrammingGUI.test.control.tools.colorstreamhandler._WinColorStreamHandler</node>
+    <node x="326.25" y="632.0">wx._windows.Frame</node>
+    <node x="8167.0" y="714.0">LuaProgrammingGUI.src.view.view_parameters.Panel_edit_paras_overwrite.panel_edit_paras</node>
+    <node x="843.0" y="714.0">LuaProgrammingGUI.test.view.view_process.GUI_controlprocess.Panel_controlprocess</node>
+    <node x="1179.0" y="1417.0">LuaProgrammingGUI.src.control.control_process.control_process.Control</node>
+    <node x="1988.0" y="1186.0">LuaProgrammingGUI.src.control.tools.colorstreamhandler._WinColorStreamHandler</node>
+    <node x="0.0" y="1263.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF</node>
+    <node x="10843.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Set_Accel_Go</node>
+    <node x="3418.0" y="714.0">LuaProgrammingGUI.test.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc</node>
+    <node x="8471.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.GoJa</node>
+    <node x="6850.0" y="714.0">LuaProgrammingGUI.test.view.LuaProgrammingPanel.LuaProgrammingPanel</node>
+    <node x="1840.0" y="1340.0">LuaProgrammingGUI.src.data.object_function_list.function_object.container</node>
+    <node x="1853.0" y="714.0">LuaProgrammingGUI.src.view.view_parameters.Panel_edit_if_condition_overwrite.Panel_edit_ifcondition</node>
+    <node x="1352.0" y="873.0">LuaProgrammingGUI.src.control.control_parameters.control_choose_pointlist.ChoosePoinListControl</node>
+    <node x="0.0" y="1417.0">LuaProgrammingGUI.test.view.view_tools.TextDialogClass.AlphaValidator</node>
+    <node x="10109.359375" y="174.0">LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler.Handle_Msg</node>
+    <node x="583.0" y="1494.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.VirtualTreeListCtrl</node>
+    <node x="3421.265059523809" y="256.0">wx._core.EvtHandler</node>
+    <node x="9073.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.OFF</node>
+    <node x="1764.0" y="1417.0">LuaProgrammingGUI.test.control.tools.view_tools.AsyncMessageHandler</node>
+    <node x="7439.0" y="714.0">LuaProgrammingGUI.src.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc</node>
+    <node x="0.0" y="714.0">LuaProgrammingGUI.test.view.MainView.Frame_Main</node>
+    <node x="9628.0" y="632.0">LuaProgrammingGUI.src.view.Panel_luaprogramming.Panel_luaprogramming</node>
+    <node x="207.0" y="873.0">TreeModel</node>
+    <node x="1539.0" y="1648.0">LuaProgrammingGUI.src.control.tools.NewLogger.InitLog</node>
+    <node x="0.0" y="1340.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.VirtualCustomTreeCtrl</node>
+    <node x="8913.0" y="632.0">LuaProgrammingGUI.test.view.view_parameters.Panel_choose_pointlist.choose_pointlist</node>
+    <node x="10194.0" y="796.0">LuaProgrammingGUI.src.view.view_process.Panel_controlprocess_overwrite.panel_process</node>
+    <node x="3437.265059523809" y="174.0">wx._core.Object</node>
+    <node x="1742.0" y="1494.0">LuaProgrammingGUI.src.view.view_tools.TextDialogClass.DigitValidator</node>
+    <node x="7202.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Set_Speed_Go</node>
+    <node x="617.0" y="1340.0">LuaProgrammingGUI.test.data.object_function_list.function_object.container</node>
+    <node x="8368.359375" y="174.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Prog</node>
+    <node x="8362.859375" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.End</node>
+    <node x="561.0" y="1571.0">LuaProgrammingGUI.test.view.view_tools.TextDialogClass.TextDialog</node>
+    <node x="9489.859375" y="256.0">LuaProgrammingGUI.test.data.object_parameters.conditiontree_object.Condition_Tree_Container</node>
+    <node x="0.0" y="1648.0">LuaProgrammingGUI.test.view.view_tools.FloatSpin.FloatSpinCtrl</node>
+    <node x="5177.265059523809" y="174.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.TreeModel</node>
+    <node x="6847.0" y="632.0">LuaProgrammingGUI.test.view.Panel_luaprogramming.Panel_luaprogramming</node>
+    <node x="10269.0" y="632.0">LuaProgrammingGUI.src.view.view_process.wxPanel_overwrite.Panel</node>
+    <node x="1934.0" y="1263.0">LuaProgrammingGUI.test.data.object_parameters.parameters_object.container</node>
+    <node x="4203.0" y="632.0">LuaProgrammingGUI.src.view.view_parameters.Panel_choose_pointlist.choose_pointlist</node>
+    <node x="2348.0" y="1417.0">LuaProgrammingGUI.test.view.view_tools.TextDialogClass.DigitValidator</node>
+    <node x="653.0" y="1263.0">LuaProgrammingGUI.test.control.control_parameters.control_parameters.Control</node>
+    <node x="2319.0" y="1494.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.VirtualTreeCtrl</node>
+    <node x="4153.0" y="714.0">LuaProgrammingGUI.src.view.view_parameters.Panel_choose_pointlist_overwrite.Panel_Choose_Point</node>
+    <node x="1402.0" y="1109.0">LuaProgrammingGUI.src.control.control_process.TreeItemsControl.TreeItemController</node>
+    <node x="7362.859375" y="82.0">object</node>
+    <node x="2446.0" y="1340.0">LuaProgrammingGUI.test.control.control_process.control_process.Control</node>
+    <node x="5542.11505952381" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ELSE</node>
+    <node x="0.0" y="1571.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeNotebook</node>
+    <node x="2233.0" y="1571.0">LuaProgrammingGUI.src.view.view_tools.TextDialogClass.TextDialog</node>
+    <node x="2697.765059523809" y="174.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.CommandManager</node>
+    <node x="6598.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Sleep</node>
+    <node x="7313.359375" y="0.0">_abcoll.Hashable</node>
+    <node x="10857.5" y="632.0">LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_paras</node>
+    <node x="1122.0" y="1571.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.VirtualTreeCtrl</node>
+    <node x="11501.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.FOR</node>
+    <node x="10218.859375" y="256.0">LuaProgrammingGUI.src.data.object_parameters.conditiontree_object.Condition_Tree_Container</node>
+    <node x="7762.859375" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Repeat</node>
+    <node x="590.0" y="1417.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.VirtualTreeListCtrl</node>
+    <node x="2708.0" y="632.0">LuaProgrammingGUI.test.view.view_parameters.GUI_IF_Codition.If_Condition_Panel</node>
+    <node x="425.0" y="714.0">LuaProgrammingGUI.src.view.MainView.Frame_Main</node>
+    <node x="1230.0" y="1340.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.VirtualCustomTreeCtrl</node>
+    <node x="2076.0" y="1109.0">LuaProgrammingGUI.test.control.tools.colorstreamhandler._AnsiColorStreamHandler</node>
+    <node x="1929.0" y="632.0">LuaProgrammingGUI.src.view.view_parameters.GUI_IF_Codition.If_Condition_Panel</node>
+    <node x="8167.5" y="632.0">LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_paras</node>
+    <node x="3464.0" y="632.0">LuaProgrammingGUI.test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc</node>
+    <node x="4800.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Stop</node>
+    <node x="4864.0" y="632.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.TesPanel</node>
+    <node x="9599.359375" y="174.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeModel</node>
+    <node x="5621.121049679483" y="480.0">wx._windows.Panel</node>
+    <node x="721.0" y="1109.0">LuaProgrammingGUI.test.control.control_process.TreeItemsControl.TreeItemController</node>
+    <node x="5362.0" y="632.0">LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_parameters</node>
+    <node x="7866.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Move</node>
+    <node x="899.0" y="632.0">LuaProgrammingGUI.test.view.view_process.wxPanel_overwrite.Panel</node>
+    <node x="1438.0" y="632.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.TesPanel</node>
+    <node x="7485.0" y="632.0">LuaProgrammingGUI.src.view.view_function_list.GUI_functionlist.Panel_ChooseFunc</node>
+    <node x="6012.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Go</node>
+    <node x="3431.765059523809" y="398.0">wx._core.Window</node>
+    <node x="666.0" y="1186.0">LuaProgrammingGUI.src.control.tools.colorstreamhandler._AnsiColorStreamHandler</node>
+    <node x="4210.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ON</node>
+    <node x="531.0" y="1648.0">LuaProgrammingGUI.src.view.view_tools.FloatSpin.FloatSpinCtrl</node>
+    <node x="2657.265059523809" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_CommandManager</node>
+    <node x="5399.249674908425" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.WHILE</node>
+    <node x="566.0" y="873.0">LuaProgrammingGUI.test.control.control_parameters.control_choose_pointlist.ChoosePoinListControl</node>
+    <node x="0.0" y="955.0">LuaProgrammingGUI.src.data.object_process.process_object.container</node>
+    <node x="824.0" y="796.0">LuaProgrammingGUI.test.view.view_process.Panel_controlprocess_overwrite.panel_process</node>
+    <node x="1679.0" y="1571.0">LuaProgrammingGUI.src.view.view_process.TreeMixin.TreeNotebook</node>
+    <node x="2191.0" y="1032.0">LuaProgrammingGUI.src.control.control_function_list.control_function.Function_List_Control</node>
+    <node x="10213.0" y="714.0">LuaProgrammingGUI.src.view.view_process.GUI_controlprocess.Panel_controlprocess</node>
+    <node x="4952.11505952381" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Delay</node>
+    <node x="10264.249674908424" y="398.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.IF</node>
+    <node x="1297.0" y="1263.0">LuaProgrammingGUI.src.control.control_parameters.control_parameters.Control</node>
+    <node x="1328.0" y="1186.0">LuaProgrammingGUI.test.view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF</node>
+    <node x="8863.0" y="714.0">LuaProgrammingGUI.test.view.view_parameters.Panel_choose_pointlist_overwrite.Panel_Choose_Point</node>
+    <node x="9631.0" y="714.0">LuaProgrammingGUI.src.view.LuaProgrammingPanel.LuaProgrammingPanel</node>
+    <node x="6111.0" y="632.0">LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_parameters</node>
+    <node x="2632.0" y="714.0">LuaProgrammingGUI.test.view.view_parameters.Panel_edit_if_condition_overwrite.Panel_edit_ifcondition</node>
+    <node x="1463.0" y="1032.0">LuaProgrammingGUI.test.control.control_parameters.control_if_condition.IFConditionControl</node>
+    <node x="7059.859375" y="256.0">LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command</node>
+    <node x="6108.0" y="714.0">LuaProgrammingGUI.src.view.view_parameters.Panel_control_paras_overwrite.panel_control_paras</node>
+    <node x="5359.0" y="714.0">LuaProgrammingGUI.test.view.view_parameters.Panel_control_paras_overwrite.panel_control_paras</node>
+    <node x="0.0" y="1494.0">LuaProgrammingGUI.src.view.view_tools.TextDialogClass.AlphaValidator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.FOR" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="11789.249674908424" y="308.0" />
+      <point x="7716.5901442307695" y="308.0" />
+      <point x="315.2307692307695" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Go" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="6295.249674908425" y="368.0" />
+      <point x="7243.743990384615" y="368.0" />
+      <point x="-157.61538461538476" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_process.wxPanel_overwrite.Panel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="10525.0" y="542.0" />
+      <point x="5774.277299679483" y="542.0" />
+      <point x="68.65625" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_process.Panel_controlprocess_overwrite.panel_process" target="LuaProgrammingGUI.src.view.view_process.GUI_controlprocess.Panel_controlprocess">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_process.wxPanel_overwrite.Panel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="1158.5" y="552.0" />
+      <point x="5626.402299679483" y="552.0" />
+      <point x="-79.21875" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_process.Panel_controlprocess_overwrite.panel_process" target="LuaProgrammingGUI.test.view.view_process.GUI_controlprocess.Panel_controlprocess">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ON" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="4495.249674908425" y="338.0" />
+      <point x="7086.1286057692305" y="338.0" />
+      <point x="-315.2307692307695" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Prog" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="8650.859375" y="154.0" />
+      <point x="7412.359375" y="154.0" />
+      <point x="11.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.CommandManager" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="3029.265059523809" y="134.0" />
+      <point x="7368.359375" y="134.0" />
+      <point x="-33.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.IF" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="10543.749674908424" y="328.0" />
+      <point x="7611.513221153846" y="328.0" />
+      <point x="210.15384615384573" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Sleep" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="6890.249674908425" y="378.0" />
+      <point x="7296.282451923077" y="378.0" />
+      <point x="-105.07692307692287" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.Panel_choose_pointlist_overwrite.Panel_Choose_Point" target="LuaProgrammingGUI.src.view.view_parameters.Panel_choose_pointlist.choose_pointlist">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc" target="LuaProgrammingGUI.test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.Panel_choose_pointlist_overwrite.Panel_Choose_Point" target="LuaProgrammingGUI.test.view.view_parameters.Panel_choose_pointlist.choose_pointlist">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ELIF" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="9956.249674908424" y="338.0" />
+      <point x="7558.974759615385" y="338.0" />
+      <point x="157.61538461538476" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_paras" target="wx._windows.Panel">
+      <point x="-4.547473508864641E-13" y="-16.0" />
+      <point x="8505.0" y="572.0" />
+      <point x="5742.589799679483" y="572.0" />
+      <point x="36.96875" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_paras" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="11198.5" y="532.0" />
+      <point x="5784.839799679483" y="532.0" />
+      <point x="79.21875" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.data.object_parameters.conditiontree_object.Condition_Tree_Container" target="LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeModel">
+      <point x="0.0" y="-16.0" />
+      <point x="10569.859375" y="236.0" />
+      <point x="10007.692708333334" y="236.0" />
+      <point x="163.33333333333348" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.Panel_luaprogramming.Panel_luaprogramming" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="9912.0" y="552.0" />
+      <point x="5763.714799679483" y="552.0" />
+      <point x="58.09375" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.WHILE" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="5695.749674908425" y="358.0" />
+      <point x="7191.205528846154" y="358.0" />
+      <point x="-210.15384615384573" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_process.TreeMixin.TesPanel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="1673.5" y="562.0" />
+      <point x="5636.964799679483" y="562.0" />
+      <point x="-68.65625" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_CommandManager" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.CommandManager">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Move" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="8158.749674908425" y="368.0" />
+      <point x="7401.359375" y="368.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.MainView.Frame_Main" target="wx._windows.Frame">
+      <point x="0.0" y="-16.0" />
+      <point x="202.5" y="689.0" />
+      <point x="369.75" y="689.0" />
+      <point x="-43.5" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.LuaProgrammingPanel.LuaProgrammingPanel" target="LuaProgrammingGUI.src.view.Panel_luaprogramming.Panel_luaprogramming">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.Panel_edit_paras_overwrite.panel_edit_paras" target="LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_paras">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.Panel_luaprogramming.Panel_luaprogramming" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="7134.5" y="592.0" />
+      <point x="5721.464799679483" y="592.0" />
+      <point x="15.84375" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.Panel_control_paras_overwrite.panel_control_paras" target="LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_parameters">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Set_Accel_Go" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="11162.249674908424" y="318.0" />
+      <point x="7664.051682692308" y="318.0" />
+      <point x="262.6923076923076" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_function_list.Panel_ChooseFunc_overwrite.Panel_ChooseFunc" target="LuaProgrammingGUI.src.view.view_function_list.GUI_functionlist.Panel_ChooseFunc">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_function_list.GUI_functionlist.Panel_ChooseFunc" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="3775.5" y="592.0" />
+      <point x="5668.652299679483" y="592.0" />
+      <point x="-36.96875" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.GUI_IF_Codition.If_Condition_Panel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="3015.0" y="582.0" />
+      <point x="5658.089799679483" y="582.0" />
+      <point x="-47.53125" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.Panel_edit_if_condition_overwrite.Panel_edit_ifcondition" target="LuaProgrammingGUI.src.view.view_parameters.GUI_IF_Codition.If_Condition_Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.LuaProgrammingPanel.LuaProgrammingPanel" target="LuaProgrammingGUI.test.view.Panel_luaprogramming.Panel_luaprogramming">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.data.object_parameters.conditiontree_object.Condition_Tree_Container" target="LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeModel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.data.object_process.process_object.container" target="TreeModel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Stop" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="5089.749674908425" y="348.0" />
+      <point x="7138.667067307692" y="348.0" />
+      <point x="-262.6923076923076" y="16.0" />
+    </edge>
+    <edge source="object" target="_abcoll.Hashable">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="wx._windows.Panel" target="wx._core.Window">
+      <point x="0.0" y="-16.0" />
+      <point x="5705.621049679483" y="455.0" />
+      <point x="3548.765059523809" y="455.0" />
+      <point x="39.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.Panel_edit_paras_overwrite.panel_edit_paras" target="LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_paras">
+      <point x="-4.547473508864641E-13" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.GUI_control_parameters.panel_control_parameters" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="6469.0" y="602.0" />
+      <point x="5710.902299679483" y="602.0" />
+      <point x="5.28125" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.Panel_choose_pointlist.choose_pointlist" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="9237.0" y="562.0" />
+      <point x="5753.152299679483" y="562.0" />
+      <point x="47.53125" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Set_Speed_Go" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="7524.249674908425" y="378.0" />
+      <point x="7348.820913461538" y="378.0" />
+      <point x="-52.53846153846189" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.GoJa" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="8762.249674908424" y="358.0" />
+      <point x="7453.897836538462" y="358.0" />
+      <point x="52.53846153846189" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="wx._core.EvtHandler" target="wx._core.Object">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="wx._windows.TopLevelWindow" target="wx._core.Window">
+      <point x="0.0" y="-16.0" />
+      <point x="413.25" y="455.0" />
+      <point x="3470.765059523809" y="455.0" />
+      <point x="-39.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.GUI_IF_Codition.If_Condition_Panel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="2232.5" y="572.0" />
+      <point x="5647.527299679483" y="572.0" />
+      <point x="-58.09375" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.data.object_process.process_object.container" target="LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeModel">
+      <point x="0.0" y="-16.0" />
+      <point x="9205.859375" y="236.0" />
+      <point x="9681.026041666668" y="236.0" />
+      <point x="-163.33333333333326" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler.Handle_Msg" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="10397.359375" y="134.0" />
+      <point x="7434.359375" y="134.0" />
+      <point x="33.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.MainView.Frame_Main" target="wx._windows.Frame">
+      <point x="0.0" y="-16.0" />
+      <point x="624.0" y="689.0" />
+      <point x="456.75" y="689.0" />
+      <point x="43.5" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_process.TreeMixin.TesPanel" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="5103.0" y="612.0" />
+      <point x="5689.777299679483" y="612.0" />
+      <point x="-15.84375" y="16.0" />
+    </edge>
+    <edge source="wx._windows.Frame" target="wx._windows.TopLevelWindow">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_process.TreeMixin.TreeModel" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="9844.359375" y="144.0" />
+      <point x="7423.359375" y="144.0" />
+      <point x="22.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_function_list.GUI_functionlist.Panel_ChooseFunc" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="7793.0" y="582.0" />
+      <point x="5732.027299679483" y="582.0" />
+      <point x="26.40625" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.OFF" target="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.Abstract_Command">
+      <point x="0.0" y="-16.0" />
+      <point x="9360.749674908424" y="348.0" />
+      <point x="7506.436298076923" y="348.0" />
+      <point x="105.07692307692287" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_process.TreeMixin.TreeModel" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="5418.765059523809" y="154.0" />
+      <point x="7390.359375" y="154.0" />
+      <point x="-11.0" y="16.0" />
+    </edge>
+    <edge source="wx._core.Window" target="wx._core.EvtHandler">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_process.GUI_controlprocess.Panel_controlprocess" target="LuaProgrammingGUI.test.view.view_process.wxPanel_overwrite.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Repeat" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command">
+      <point x="0.0" y="-16.0" />
+      <point x="8052.859375" y="236.0" />
+      <point x="7521.759375" y="236.0" />
+      <point x="120.39999999999964" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Delay" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command">
+      <point x="0.0" y="-16.0" />
+      <point x="5237.11505952381" y="226.0" />
+      <point x="7160.559375" y="226.0" />
+      <point x="-240.80000000000018" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.Panel_edit_if_condition_overwrite.Panel_edit_ifcondition" target="LuaProgrammingGUI.test.view.view_parameters.GUI_IF_Codition.If_Condition_Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="wx._core.Object" target="object">
+      <point x="0.0" y="-16.0" />
+      <point x="3509.765059523809" y="144.0" />
+      <point x="7379.359375" y="144.0" />
+      <point x="-22.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.End" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command">
+      <point x="0.0" y="-16.0" />
+      <point x="8642.359375" y="226.0" />
+      <point x="7642.159374999999" y="226.0" />
+      <point x="240.79999999999927" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_parameters" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="5723.5" y="612.0" />
+      <point x="5700.339799679483" y="612.0" />
+      <point x="-5.28125" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.demos.luaprogramme.command_class.CommonCmd.ELSE" target="LuaProgrammingGUI.demos.luaprogramme.command_class.core.cmds2.Command">
+      <point x="0.0" y="-16.0" />
+      <point x="5832.61505952381" y="236.0" />
+      <point x="7280.959375" y="236.0" />
+      <point x="-120.39999999999964" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.test.view.view_parameters.Panel_control_paras_overwrite.panel_control_paras" target="LuaProgrammingGUI.test.view.view_parameters.GUI_control_parameters.panel_control_parameters">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_parameters.Panel_choose_pointlist.choose_pointlist" target="wx._windows.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="4523.5" y="602.0" />
+      <point x="5679.214799679483" y="602.0" />
+      <point x="-26.40625" y="16.0" />
+    </edge>
+    <edge source="LuaProgrammingGUI.src.view.view_process.GUI_controlprocess.Panel_controlprocess" target="LuaProgrammingGUI.src.view.view_process.wxPanel_overwrite.Panel">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7010910894362703" x="2413.7572650662437" y="1194.6274755848428" />
+  <SelectedNodes />
+  <Categories />
+</Diagram>
+

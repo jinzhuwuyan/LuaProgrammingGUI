@@ -1,0 +1,76 @@
+Author: ysw
+Last_Edit_time: Thu Dec 28 17:48:40 2017
+ProgramBlocks:
+- !!python/tuple
+  - IF
+  - - !!python/tuple
+      - SPEED
+      - []
+      - value: !!python/tuple [100.0, float]
+    - !!python/tuple
+      - ACCEL
+      - []
+      - value: !!python/tuple [100.0, float]
+    - !!python/tuple
+      - DELAY
+      - []
+      - time: !!python/tuple [10.0, float]
+    - !!python/tuple
+      - GO
+      - []
+      - choose_point: !!python/tuple [P1, str]
+    - !!python/tuple
+      - DELAY
+      - []
+      - time: !!python/tuple [10.0, float]
+    - !!python/tuple
+      - GO
+      - []
+      - choose_point: !!python/tuple [P7, str]
+    - !!python/tuple
+      - DELAY
+      - []
+      - time: !!python/tuple [10.0, float]
+    - !!python/tuple
+      - IF
+      - - !!python/tuple
+          - MOVE
+          - []
+          - choose_point: !!python/tuple [P5, str]
+        - !!python/tuple
+          - DELAY
+          - []
+          - time: !!python/tuple [10.0, float]
+        - !!python/tuple
+          - IF
+          - - !!python/tuple
+              - 'OFF'
+              - []
+              - value: !!python/tuple [15, int]
+          - check_allconditions: true
+            condition: !!python/tuple
+            - - !!python/tuple
+                - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+                - []
+                - {condition_value: !!python/unicode 'getInput(4)', operation_value: "\u6709\u4FE1\
+                    \u53F7"}
+            - list
+      - check_allconditions: true
+        condition: !!python/tuple
+        - - !!python/tuple
+            - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+            - []
+            - {condition_value: !!python/unicode 'getInput(5)', operation_value: "\u6709\u4FE1\
+                \u53F7"}
+        - list
+  - check_allconditions: true
+    condition: !!python/tuple
+    - - !!python/tuple
+        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+        - []
+        - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
+            \u53F7"}
+    - list
+Repeat_time: 1
+encoding: utf-8
+version: null

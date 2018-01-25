@@ -1,0 +1,21 @@
+ACCEL: &id003
+  value: !!python/tuple [0.0, float]
+DELAY:
+  time: !!python/tuple [0, float]
+GO: &id001
+  choose_point: !!python/tuple [P1, str]
+IF:
+  check_allconditions: true
+  condition: !!python/tuple
+  - - !!python/tuple
+      - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+      - []
+      - {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
+          \u53F7"}
+  - list
+MOVE: *id001
+'OFF': &id002
+  value: !!python/tuple [0, int]
+'ON': *id002
+SPEED: *id003
+STOP: *id002

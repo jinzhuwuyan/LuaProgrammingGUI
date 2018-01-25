@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>control.control_parameters.control_choose_pointlist &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+          <li><a href="../../index.html" accesskey="U">
+              Module code</a> &#187;</li>
+        <li class="reltitle"> control.control_parameters.control_choose_pointlist</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../../index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processcontrol.html">函数流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="../../../_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <h1>Source code for control.control_parameters.control_choose_pointlist</h1><div class="highlight"><pre>
+<span class="ch">#! encoding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">**Module Info**::</span>
+
+<span class="sd">   Author: yan_sw</span>
+<span class="sd">   Date: 2018-01-08 13:53</span>
+<span class="sd">   Description:</span>
+<span class="sd">       Control the para panel which need to choose a point as an paras value</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">command_tools</span>
+<span class="kn">from</span> <span class="nn">control.tools</span> <span class="k">import</span> <span class="n">controlfile_tools</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wx.lib.pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pubsub</span> <span class="k">import</span> <span class="n">pub</span>
+
+<div class="viewcode-block" id="ChoosePoinListControl"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl">[docs]</a><span class="k">class</span> <span class="nc">ChoosePoinListControl</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            .. admonition:: Class Description</span>
+
+<span class="sd">                    |   Class for which function need to choose a point as parameter and show the detailed information of</span>
+<span class="sd">                    | chosen point. When a point have been chosen, it ought to update the paras data.</span>
+<span class="sd">                    |</span>
+<span class="sd">                    | 此类用于维护函数的参数点数据更新及被选中的点数据的显示(:meth:`set_textctrl_datas`)</span>
+<span class="sd">                    |</span>
+<span class="sd">                    |</span>
+<span class="sd">                    | The **initilization** of :class:`ChoosePointListControl` is:</span>
+<span class="sd">                    |        ``control = ChoosePointListControl(view_instance, datalist)``</span>
+<span class="sd">                    |</span>
+<span class="sd">                    |</span>
+<span class="sd">                    | **Parameters of initilization**:</span>
+<span class="sd">                    |</span>
+<span class="sd">                    |       **view_instance** : :class:`~view.view_parameters.Panel_choose_pointlist_overwrite`  or its subclass</span>
+<span class="sd">                    |           A view instance with a combo box</span>
+<span class="sd">                    |</span>
+<span class="sd">                    |       **datalist** : list</span>
+<span class="sd">                    |           A data list which is loaded from a pts file with yaml type</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">datalist</span><span class="p">):</span>
+        <span class="c1"># X_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_X</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Y_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_Y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Z_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_Z</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># U_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_U</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># V_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_V</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># W_value textCtrl to show</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_W</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># datalist for initing point list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datalist</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># an comboBox</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pointchooseBox</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># the data for refreshing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">showcontent</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_data</span><span class="p">((</span><span class="n">parent</span><span class="p">,</span> <span class="n">datalist</span><span class="p">))</span>
+
+<div class="viewcode-block" id="ChoosePoinListControl.init_data"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.init_data">[docs]</a>    <span class="k">def</span> <span class="nf">init_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;init data&quot;&quot;&quot;</span>
+        <span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">datalist</span><span class="p">,</span> <span class="p">)</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datalist</span> <span class="o">=</span> <span class="n">datalist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_Y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_Z</span><span class="p">,</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_U</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_W</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Xvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Yvalue</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Zvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Uvalue</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Vvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_textCtrl_Wvalue</span>
+        <span class="c1"># init choose list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_list_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_comboBox_pointlist</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.set_list_data"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_list_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_list_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;init the point data for comboxBox&quot;&quot;&quot;</span>
+        <span class="n">_tmp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">:</span>
+            <span class="n">_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;P-&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">])]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_comboBox_pointlist</span><span class="o">.</span><span class="n">SetItems</span><span class="p">(</span><span class="n">_tmp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.get_pointbyid"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_pointbyid">[docs]</a>    <span class="k">def</span> <span class="nf">get_pointbyid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return the point by comboBox selection&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;get_pointbyid is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">))</span>
+            <span class="nb">print</span> <span class="n">e</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.set_textctrl_datas"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.set_textctrl_datas">[docs]</a>    <span class="k">def</span> <span class="nf">set_textctrl_datas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set the point data to these value TextCtrl by comboBox selection</span>
+<span class="sd">        :param `id`: the combox id</span>
+<span class="sd">        :type `id`: int</span>
+
+<span class="sd">        :rtype: tuple</span>
+
+
+
+<span class="sd">        .. attention::</span>
+
+<span class="sd">                | The return format is (isFunctionTargetOk, showmsg)</span>
+<span class="sd">                | if isFunctionTargetOk is False, then will show the showmsg</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">controlfile_tools</span><span class="o">.</span><span class="n">log_bystatus</span><span class="p">(</span><span class="s1">&#39;selection id is </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="n">show_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pointbyid</span><span class="p">(</span><span class="nb">id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">show_point</span><span class="p">:</span>
+            <span class="n">pos_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">W</span><span class="p">]</span> <span class="o">=</span> <span class="n">show_point</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span>
+            <span class="n">elbow</span><span class="p">,</span> <span class="n">handmode</span> <span class="o">=</span> <span class="n">show_point</span><span class="p">[</span><span class="s1">&#39;Elbow&#39;</span><span class="p">],</span> <span class="n">show_point</span><span class="p">[</span><span class="s1">&#39;Hand&#39;</span><span class="p">]</span>
+            <span class="n">tcctrls</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tc_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_Y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_U</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc_W</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tcctrls</span><span class="p">):</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pos_data</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">select_elbow</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">show_point</span><span class="p">[</span><span class="s1">&#39;Elbow&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">select_handmode</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">show_point</span><span class="p">[</span><span class="s1">&#39;Hand&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;L&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># controlfile_tools.log_bystatus(&#39;sending save_paras %s&#39; % str(self.showcontent))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">showcontent</span><span class="p">[</span><span class="s1">&#39;choose_point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;P</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">)</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="s1">&#39;save_paras&#39;</span><span class="p">,</span> <span class="n">refresh_type</span><span class="o">=</span><span class="s1">&#39;refresh&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">showcontent</span><span class="p">)</span>
+
+            <span class="c1"># pub.sendMessage(&#39;save_paras&#39;, refresh_type = &#39;refresh&#39;, data = (&#39;P%d&#39; % id, &#39;str&#39;))</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;请检查点文件内容是否有错!&#39;</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.get_id_fromstring"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.get_id_fromstring">[docs]</a>    <span class="k">def</span> <span class="nf">get_id_fromstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the selection from comboBox value&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">match_result</span><span class="p">,</span> <span class="n">match_result_msg</span> <span class="o">=</span> <span class="n">command_tools</span><span class="o">.</span><span class="n">re_match</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;P-(\d+)&#39;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="n">match_result</span><span class="p">,</span> <span class="n">match_result_msg</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match_result</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match_result_msg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">id</span>  <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datalist</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="nb">id</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;不存在该点！&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;输入有误！&#39;</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;选择字符串错误！&#39;</span></div>
+
+
+<div class="viewcode-block" id="ChoosePoinListControl.select_elbow"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_elbow">[docs]</a>    <span class="k">def</span> <span class="nf">select_elbow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh elbow value of the point data&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_choice_elbow</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_choice_elbow</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.select_handmode"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_handmode">[docs]</a>    <span class="k">def</span> <span class="nf">select_handmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh the handmode value of the point data&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_choice_handmode</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_choice_handmode</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.select_pointlist"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.select_pointlist">[docs]</a>    <span class="k">def</span> <span class="nf">select_pointlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;refresh the selection of the pointlist&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_comboBox_pointlist</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">m_comboBox_pointlist</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.check_value_availablity"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.check_value_availablity">[docs]</a>    <span class="k">def</span> <span class="nf">check_value_availablity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return id if the comboBox value is correct&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_id_fromstring</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChoosePoinListControl.refresh_datalist"><a class="viewcode-back" href="../../../parameterscontrol.html#control.control_parameters.control_choose_pointlist.ChoosePoinListControl.refresh_datalist">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_datalist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datalist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; refresh datalist which have been initilized&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datalist</span> <span class="o">=</span> <span class="n">datalist</span></div></div>
+
+</pre></div>
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

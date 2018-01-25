@@ -1,0 +1,466 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>函数流程控制 &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/css/phoenix.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="树节点数据逻辑控制" href="treeitemcontrol.html" />
+    <link rel="prev" title="参数控制" href="parameterscontrol.html" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul class="row1">
+        <li><a href="https://github.com/jinzhuwuyan/LuaProgrammingGUI" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> |&nbsp;</li>
+        <li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> &raquo; </li>
+        <li class="reltitle"> 函数流程控制</li>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="treeitemcontrol.html" title="树节点数据逻辑控制"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="parameterscontrol.html" title="参数控制"
+             accesskey="P">previous</a> |</li>
+
+        </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">目录列表</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Lua自动编程界面介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionlistcontrol.html">函数列表控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterscontrol.html">参数控制</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">函数流程控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#processcontrol-dir">函数流程控制目录结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uml">函数流程控制 UML 模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detail-processcontrol">函数流程控制 模块细节</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="treeitemcontrol.html">树节点数据逻辑控制</a></li>
+</ul>
+
+    <div id="sourcelink" role="note" aria-label="source link">
+        <a href="_sources/processcontrol.rst.txt"
+           rel="nofollow">Show page source</a>
+    </div>
+<div id="searchbox" style="display: none" role="search">
+  <h4>Search</h4>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">函数流程控制</a><ul>
+<li><a class="reference internal" href="#processcontrol-dir">函数流程控制目录结构</a></li>
+<li><a class="reference internal" href="#uml">函数流程控制 UML 模型</a></li>
+<li><a class="reference internal" href="#detail-processcontrol">函数流程控制 模块细节</a><ul>
+<li><a class="reference internal" href="#control-process">control_process</a></li>
+<li><a class="reference internal" href="#control-process-showdata">control_process_showdata</a></li>
+<li><a class="reference internal" href="#treeitemscontrol">TreeItemsControl</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+  <div class="documentwrapper">
+    <div class="body headerfix">
+      <div class="headerimage">
+      <img src="_static/images/Design_images/RR_logo.png" alt="RR Logo" />
+      </div>
+    
+      
+  <script type="text/javascript" src="_static/javascript/toggle_visibility.js"></script><div class="section" id="processcontrol">
+<span id="id1"></span><h1>函数流程控制<a class="headerlink" href="#processcontrol" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="processcontrol-dir">
+<span id="id2"></span><h2>函数流程控制目录结构<a class="headerlink" href="#processcontrol-dir" title="Permalink to this headline">¶</a></h2>
+<p>目录结构打印:</p>
+<div class="highlight-default"><div class="highlight"><pre>├── control_process.py
+├── control_process.pyc
+├── control_process_showdata.py
+├── control_process_showdata.pyc
+├── __init__.py
+├── __init__.pyc
+├── TreeItemsControl.py
+└── TreeItemsControl.pyc
+</pre></div>
+</div>
+</div>
+<div class="section" id="uml">
+<span id="uml-processcontrol"></span><h2>函数流程控制 UML 模型<a class="headerlink" href="#uml" title="Permalink to this headline">¶</a></h2>
+<div id="toggleBlock" onclick="return toggleVisibility(this)" class="closed" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>processcontrol</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img src="_static/images/Design_images/processcontrol.png" alt="Inheritance diagram of processcontrol" usemap="#dummy" class="inheritance"/></center>
+</div>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area shape="rect" id="node1" href="wx.AcceleratorEntry.html" title="An object used by an application wishing to create an accelerator table (see wx.AcceleratorTable)." alt="" coords="5,5,153,35"/> </map>
+</p></div>
+<div class="section" id="detail-processcontrol">
+<span id="id3"></span><h2>函数流程控制 模块细节<a class="headerlink" href="#detail-processcontrol" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="control-process">
+<span id="id4"></span><h3>control_process<a class="headerlink" href="#control-process" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-control.control_process.control_process"></span><p><strong>Module Info</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@Author</span>     <span class="p">:</span> <span class="n">yan_sw</span>
+<span class="nd">@Time</span>       <span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span> <span class="mi">13</span><span class="p">:</span><span class="mi">53</span>
+<span class="nd">@Description</span><span class="p">:</span>
+    <span class="n">This</span> <span class="k">class</span> <span class="nc">is</span> <span class="n">the</span> <span class="n">main</span> <span class="k">class</span> <span class="nc">for</span> <span class="n">maintaining</span> <span class="n">the</span> <span class="n">treelistctrl</span> <span class="n">data</span> <span class="k">as</span> <span class="n">well</span> <span class="k">as</span> <span class="n">reflect</span> <span class="n">the</span> <span class="n">view</span> <span class="n">event</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="control.control_process.control_process.Control">
+<em class="property">class </em><code class="descname">Control</code><span class="sig-paren">(</span><em>parent</em>, <em>tree=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-infos admonition">
+<p class="first admonition-title">Class Infos</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"><em>class_description</em>:</div>
+<div class="line-block">
+<div class="line">The core function of controlling the treelistctrl data as well as saving it as a project.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><em>class_chinese_description</em>:</div>
+<div class="line-block">
+<div class="line">刷新当前函数参数面板(<a class="reference internal" href="#control.control_process.control_process.Control.refresh_current_selection" title="control.control_process.control_process.Control.refresh_current_selection"><code class="xref py py-meth docutils literal"><span class="pre">refresh_current_selection</span></code></a>)</div>
+<div class="line">增加函数(<code class="xref py py-meth docutils literal"><span class="pre">control.control_process.TreeItemsControl.control_model</span></code>)</div>
+<div class="line">删除函数(<code class="xref py py-meth docutils literal"><span class="pre">control.control_process.TreeItemsControl.control_model</span></code>)</div>
+<div class="line">改变函数位置(<code class="xref py py-meth docutils literal"><span class="pre">control.control_process.TreeItemsControl.control_model</span></code>)</div>
+<div class="line">保存(<a class="reference internal" href="#control.control_process.control_process.Control.save_to_disk" title="control.control_process.control_process.Control.save_to_disk"><code class="xref py py-meth docutils literal"><span class="pre">save_to_disk</span></code></a>)</div>
+<div class="line">恢复上次操作(<a class="reference internal" href="#control.control_process.control_process.Control.load_from_disk" title="control.control_process.control_process.Control.load_from_disk"><code class="xref py py-meth docutils literal"><span class="pre">load_from_disk</span></code></a>)</div>
+<div class="line">修改循环时间(<code class="xref py py-meth docutils literal"><span class="pre">modify_runtime</span></code>)</div>
+<div class="line">打开工程文件(<a class="reference internal" href="#control.control_process.control_process.Control.import_prj_fromdisk" title="control.control_process.control_process.Control.import_prj_fromdisk"><code class="xref py py-meth docutils literal"><span class="pre">import_prj_fromdisk</span></code></a>)</div>
+<div class="line">另存为工程文件(<a class="reference internal" href="#control.control_process.control_process.Control.output_to_folder" title="control.control_process.control_process.Control.output_to_folder"><code class="xref py py-meth docutils literal"><span class="pre">output_to_folder</span></code></a>)</div>
+<div class="line">帮助(<a class="reference internal" href="#control.control_process.control_process.Control.load_help_msg" title="control.control_process.control_process.Control.load_help_msg"><code class="xref py py-meth docutils literal"><span class="pre">load_help_msg</span></code></a>)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">The <strong>initilization</strong> of <a class="reference internal" href="#control.control_process.control_process.Control" title="control.control_process.control_process.Control"><code class="xref py py-class docutils literal"><span class="pre">Control</span></code></a> is:</div>
+<div class="line-block">
+<div class="line">control = control.control_process.control_process.Control(view_instance, tree)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>Parameters of initilization</strong>:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>view_instance</strong> : <code class="xref py py-class docutils literal"><span class="pre">Panel_controlprocess_overwrite</span></code>  or its subclass</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>tree</strong>: wx.TreeListCtrl</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_process.control_process.Control.append_item">
+<code class="descname">append_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.append_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.append_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>控制显示数据</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.check_process_hierarchy">
+<code class="descname">check_process_hierarchy</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em>, <em>check_type='up'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.check_process_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.check_process_hierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>check the position whether can be jump out or not</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>list</em>) – item data</li>
+<li><strong>pos</strong> (<em>list</em>) – check position</li>
+<li><strong>check_type</strong> – check up or down</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line"><br /></div>
+<div class="line">return -1 equals to data None or index None.</div>
+<div class="line">return 0  equals to normal change, up is up, down is down.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.generate_prj_data">
+<code class="descname">generate_prj_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.generate_prj_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.generate_prj_data" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">Generate the project data of tree model</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<div class="last line-block">
+<div class="line">It is neccessary to specific the data structure of project file</div>
+<div class="line"><br /></div>
+<div class="line">- ProgramBlocks: model data</div>
+<div class="line">- Repeat_time: int</div>
+<div class="line">- Last_Edit_time: time</div>
+<div class="line">- encoding: utf-8</div>
+<div class="line">- Author: ysw</div>
+<div class="line">- version: str</div>
+</div>
+</div>
+<div class="admonition-model-data-s-data-structure admonition">
+<p class="first admonition-title">model data’s data structure</p>
+<div class="last line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">model data ===&gt; [(?), (?), (?), …]</div>
+<div class="line"><br /></div>
+<div class="line">? =====&gt; function str&lt;str&gt;, function child&lt;list&gt;, function paras&lt;dict&gt;</div>
+<div class="line"><br /></div>
+<div class="line">example:</div>
+<div class="line-block">
+<div class="line">[(‘if’, [], {condition_value: ‘’, operation_value: ‘’}), (‘move’, [], {choose_point: (P1, str)}})]</div>
+<div class="line">there are only one if and move function in this model</div>
+<div class="line"><br /></div>
+<div class="line">[(‘if’, [(‘move’, [], {choose_point: (P1, str)})], {condition_value: ‘’, operation_value: ‘’}), (‘move’, [], {choose_point: (P1, str)})]</div>
+<div class="line">this model is different from the one before, because if has its children <cite>move</cite></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Tips:</div>
+<div class="line-block">
+<div class="line">Only control function like if, while and so on can have child.</div>
+</div>
+</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.get_current_pos">
+<code class="descname">get_current_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.get_current_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.get_current_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the position according to tree selection</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.import_prj_fromdisk">
+<code class="descname">import_prj_fromdisk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.import_prj_fromdisk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.import_prj_fromdisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>import project data from disk file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.load_from_disk">
+<code class="descname">load_from_disk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.load_from_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.load_from_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>load Project data with file_path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.load_help_msg">
+<code class="descname">load_help_msg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.load_help_msg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.load_help_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>load help msg</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.output_to_folder">
+<code class="descname">output_to_folder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.output_to_folder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.output_to_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>save current project data edited on the panel to disk</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.print_allerrmsg">
+<code class="descname">print_allerrmsg</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.print_allerrmsg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.print_allerrmsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>print all errmsg if there exists errmsg</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.refresh_current_selection">
+<code class="descname">refresh_current_selection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.refresh_current_selection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.refresh_current_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh current selected func and func data, show para panel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.replace_freshobj_bypos">
+<code class="descname">replace_freshobj_bypos</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em>, <em>freshobj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.replace_freshobj_bypos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.replace_freshobj_bypos" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace the obj with freshobj according to pos</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>list</em>) – items data</li>
+<li><strong>pos</strong> (<em>list</em>) – position of replace obj</li>
+<li><strong>freshobj</strong> (<em>tuple</em>) – fresh obj</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.request_showdata_onlyrefreshdata">
+<code class="descname">request_showdata_onlyrefreshdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.request_showdata_onlyrefreshdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.request_showdata_onlyrefreshdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>only refresh data of treelistctrl</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.request_showdata_refresh">
+<code class="descname">request_showdata_refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.request_showdata_refresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.request_showdata_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh data of treelistctrl as well as unselect all selection</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.save_to_disk">
+<code class="descname">save_to_disk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.save_to_disk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.save_to_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>save the project data into disk as well as generate commands to lua4 Panel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.set_tree">
+<code class="descname">set_tree</code><span class="sig-paren">(</span><em>tree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.set_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.set_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>set process tree</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process.Control.update_modeldata">
+<code class="descname">update_modeldata</code><span class="sig-paren">(</span><em>data</em>, <em>pos</em>, <em>new_value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process.html#Control.update_modeldata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process.Control.update_modeldata" title="Permalink to this definition">¶</a></dt>
+<dd><p>update new_value to data by pos</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="control-process-showdata">
+<span id="id5"></span><h3>control_process_showdata<a class="headerlink" href="#control-process-showdata" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-control.control_process.control_process_showdata"></span><p><strong>Module Info</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@Author</span>     <span class="p">:</span> <span class="n">yan_sw</span>
+<span class="nd">@Time</span>       <span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span> <span class="mi">13</span><span class="p">:</span><span class="mi">53</span>
+<span class="nd">@Description</span><span class="p">:</span>
+    <span class="n">control</span> <span class="n">to</span> <span class="n">show</span> <span class="n">current</span> <span class="n">items</span> <span class="n">data</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="control.control_process.control_process_showdata.ShowDataControl">
+<em class="property">class </em><code class="descname">ShowDataControl</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process_showdata.html#ShowDataControl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process_showdata.ShowDataControl" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition-class-infos admonition">
+<p class="first admonition-title">Class Infos</p>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"><em>class_description</em>:</div>
+<div class="line-block">
+<div class="line">Control TreeListCtrl data show and refresh</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><em>class_chinese_description</em>:</div>
+<div class="line-block">
+<div class="line">控制函数列表树的更新</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">The <strong>initilization</strong> of <a class="reference internal" href="#control.control_process.control_process_showdata.ShowDataControl" title="control.control_process.control_process_showdata.ShowDataControl"><code class="xref py py-class docutils literal"><span class="pre">ShowDataControl</span></code></a> is:</div>
+<div class="line-block">
+<div class="line">control = ShowDataControl(view_instance)``</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><strong>Parameters of initilization</strong>:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>view_instance</strong> : <code class="xref py py-class docutils literal"><span class="pre">Panel_controlprocess_overwrite</span></code>  or its subclass</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<dl class="method">
+<dt id="control.control_process.control_process_showdata.ShowDataControl.refresh_show_modeldata">
+<code class="descname">refresh_show_modeldata</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process_showdata.html#ShowDataControl.refresh_show_modeldata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process_showdata.ShowDataControl.refresh_show_modeldata" title="Permalink to this definition">¶</a></dt>
+<dd><p>update modeldata of TreeListCtrl as well as unselect Tree</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>tuple</em>) – (itemsdata, condiiton_check_list)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process_showdata.ShowDataControl.refresh_show_onlyrefreshdata">
+<code class="descname">refresh_show_onlyrefreshdata</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process_showdata.html#ShowDataControl.refresh_show_onlyrefreshdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process_showdata.ShowDataControl.refresh_show_onlyrefreshdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only refresh modeldata of TreeListCtrl</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="control.control_process.control_process_showdata.ShowDataControl.refresh_tree">
+<code class="descname">refresh_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/control_process/control_process_showdata.html#ShowDataControl.refresh_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#control.control_process.control_process_showdata.ShowDataControl.refresh_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh and unselect tree</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="treeitemscontrol">
+<span id="id6"></span><h3>TreeItemsControl<a class="headerlink" href="#treeitemscontrol" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="treeitemcontrol.html#treeitem-control"><span class="std std-ref">树节点数据逻辑控制</span></a></p>
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yan_sw.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

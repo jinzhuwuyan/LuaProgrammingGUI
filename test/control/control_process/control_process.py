@@ -1,95 +1,235 @@
-#! encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+**Module Info**::
+
+   @Author     : yan_sw
+   @Time       : 2018-01-08 13:53
+   @Description:
+       This class is the main class for maintaining the treelistctrl data as well as reflect the view event.
+
+"""
 import yaml
 import wx
+import copy
 import time
 import sys
-from LuaProgrammingGUI.test.control.tools import command_tools
-from LuaProgrammingGUI.test.control.tools import controlfile_tools
-from LuaProgrammingGUI.test.data.object_process import process_object
-from LuaProgrammingGUI.test.control.control_process import control_process_showdata
+import os
+from control.tools import command_tools
+from control.tools import controlfile_tools
+from data.object_process import process_object
+from control.control_process import control_process_showdata
+from control.control_process.TreeItemsControl import TreeItemController
 try:
     from wx.lib.pubsub import pub
 except ImportError:
     from pubsub import pub
 
-class Control():
+__version__ =  ','.join(list('0010'))
 
+class Control():
+    """
+                .. admonition:: Class Infos
+
+                        |  *class_description*:
+                        |        The core function of controlling the treelistctrl data as well as saving it as a project.
+                        |
+                        |  *class_chinese_description*:
+                        |       刷新当前函数参数面板(:meth:`refresh_current_selection`)
+                        |       增加函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+                        |       删除函数(:meth:`control.control_process.TreeItemsControl.control_model`)
+                        |       改变函数位置(:meth:`control.control_process.TreeItemsControl.control_model`)
+                        |       保存(:meth:`save_to_disk`)
+                        |       恢复上次操作(:meth:`load_from_disk`)
+                        |       修改循环时间(:meth:`modify_runtime`)
+                        |       打开工程文件(:meth:`import_prj_fromdisk`)
+                        |       另存为工程文件(:meth:`output_to_folder`)
+                        |       帮助(:meth:`load_help_msg`)
+                        |
+                        |
+                        | The **initilization** of :class:`~control.control_process.control_process.Control` is:
+                        |        control = control.control_process.control_process.Control(view_instance, tree)
+                        |
+                        |
+                        | **Parameters of initilization**:
+                        |
+                        |       **view_instance** : :class:`~view.view_process.Panel_controlprocess_overwrite`  or its subclass
+                        |
+                        |
+                        |       **tree**: wx.TreeListCtrl
+                        |
+
+    """
     def __init__(self, parent, tree=None):
-        self.version = '.'.join(list('0010'))
         self.parent = parent
         self.tree = tree
-        #change
+        self.version = None
+        self.func_str = None
+        self.func_child = None
+        self.command = None
+        self.change_way = None
+        self.func_data = None
+        self.func_paras = None
+        self.func_items = None
+        self.func_selection = None
+        self.file_path = None
+        self.rename_list = None
+        self.help_msg_path = None
+        self.help_msg = None
+        self.pos = None
+        self.model = None
+        self.repeat_time = None
+        self.file_path_rewrite = None
+        self.init_control()
+
+
+    def init_control(self):
+        # change
         self.func_str, self.func_child, self.command, \
-            self.change_way, self.func_data, \
-            self._func_items, self._func_str, self._func_selection, \
-            self._funcs_paras, self._funcs_unlimit,\
-            self.index_1, self.index_2, self.file_path, \
-            self.rename_list, self.help_msg_path, self.help_msg,\
-            self.pos = [None] * 17
+        self.change_way, self.func_data, \
+        self._func_items, self._func_str, self._func_selection, \
+        self._funcs_paras, self._funcs_unlimit, \
+        self.index_1, self.index_2, self.file_path, \
+        self.rename_list, self.help_msg_path, self.help_msg, \
+        self.pos = [None] * 17
         self.model = process_object.container()
         self.repeat_time = 1
         # refresh func data from function list panel
         pub.subscribe(self._get_funcs_data, 'refresh_func_ret')
         pub.subscribe(self._refresh_parasdata, 'save_paras')
+        # pub.subscribe(self.refresh_paras_again, 'refresh_paras_again')
         pub.subscribe(self._unselete_all, 'UnSelectAll_controlprocess')
+        pub.subscribe(self._rewrite_filepath, 'rewrite_filepath')
         self._refresh_func_init()
 
 ##########################################control parameters panel#########################################
-    def refresh_current_selection(self):
+    # def refresh_paras_again(self):
+    #     controlfile_tools.log_bystatus('refresh again')
+    #     self.refresh_current_selection()
 
+    def refresh_current_selection(self):
+        """refresh current selected func and func data, show para panel"""
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
-        pub.sendMessage('refresh_paras', data=refresh_data,
-                            pos=self.get_current_pos())
 
-    def _refresh_parasdata(self, refresh_type = 'get', data = None):
+        pub.sendMessage('refresh_paras', data=(refresh_data, self.func_str))
 
-        refresh_data = None
+
+    def _get_funcs_paras_bypos(self, data, pos):
+        """
+        get funcs paras from data by pos
+        """
+        _tmp = None
+        for idx, p in enumerate(pos):
+            if idx == 0:
+                _tmp = data[p]
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
+        func_str, child, paras = _tmp
+        self.func_str = func_str
+        return paras
+
+
+    def _refresh_item_data(self,  data, pos, refresh_data):
+        """generate parent data to refresh according to refresh_data as well as pos """
+        _tmp = None
+        for idx, p in enumerate(pos):
+
+            if idx == 0:
+                _tmp = data[p]
+                if len(pos) == 1:
+                    func_str, child_tmp, _ = _tmp
+                    _tmp = (func_str, child_tmp, refresh_data)
+                    data[p] = _tmp
+                else:
+                    pass
+            elif idx + 1 == len(pos):
+                controlfile_tools.log_bystatus('_refresh_item_data in last item tmp is %s, refresh_data is %s' % (str(_tmp), str(refresh_data)))
+                _, child, _ = _tmp
+                controlfile_tools.log_bystatus('_refresh_item_data in last item child is %s' % (str(child)))
+                func_str, child_tmp, _ = child[p]
+                controlfile_tools.log_bystatus('_refresh_item_data in last item child[p] is %s' % (str(child[p])))
+                child[p] = (func_str, child_tmp, refresh_data)
+                _tmp = child[p]
+                controlfile_tools.log_bystatus('_refresh_item_data in last item tmp is %s, refresh_data is %s' % (str(_tmp), str(refresh_data)))
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
+        return _tmp
+
+
+
+
+    def replace_freshobj_bypos(self, data, pos, freshobj):
+        """
+        replace the obj with freshobj according to pos
+
+        :param `data`: items data
+        :type `data`: list
+        :param `pos`: position of replace obj
+        :type `pos`: list
+        :param `freshobj`: fresh obj
+        :type `freshobj`: tuple
+        """
+        _tmp = None
+        for idx, p in enumerate(pos):
+
+            if idx == 0:
+                _tmp = data[p]
+                func_str, child_tmp, _= _tmp
+                if func_str in self._funcs_unlimit and len(pos) == 1:
+                    data[p] = freshobj
+                    break
+                else:
+                    pass
+
+            elif idx + 1 == len(pos):
+                _, child, _ = _tmp
+                func_str, child_tmp, _ = child[p]
+                child[p] = freshobj
+            else:
+                _, child, _ = _tmp
+                _tmp = child[p]
+
+    def _refresh_parasdata(self, refresh_type='get', data=None):
+        """refresh or get paras data(`Main Control`)"""
+        refresh_data = {}
         selection_indexs = self.get_current_pos()
-        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (str(refresh_type), str(data), str(selection_indexs)))
-        # print 'select_item is ', str(selection_indexs)
-        if selection_indexs and len(selection_indexs) > 1:
-            self.index_1 = selection_indexs[0]
-            self.index_2 = selection_indexs[1]
-            # print self.model.items
+        controlfile_tools.log_bystatus('_refresh_parasdata %s, data is %s, current_pos is %s' % (
+        str(refresh_type), str(data), str(selection_indexs)))
+        if selection_indexs:
             if refresh_type == 'get':
-                _, _tmp_item, _ = self.model.items[self.index_1]
-                _, _, refresh_data = _tmp_item[self.index_2]
-            elif data and refresh_type == 'refresh':
-                    _tmp_key1, _tmp_item1, _tmp_paras1 = self.model.items[self.index_1]
-                    _tmp_key2, _tmp_item2, refresh_data = _tmp_item1[self.index_2]
-                    _tmp_item1[self.index_2] = (_tmp_key2, _tmp_item2, data)
-                    self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, _tmp_paras1)
-                    self.request_showdata_refresh()
+                controlfile_tools.log_bystatus('self.model.items is %s' % str(self.model.items))
+                refresh_data = self._get_funcs_paras_bypos(self.model.items, selection_indexs)
+                controlfile_tools.log_bystatus('refresh_data in _refresh_parasdata is %s' % str(self.model.items))
+                return refresh_data
             else:
-                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
+                # self._refresh_item_data(self.model.items, selection_indexs, data)
+                # self.tree.RefreshItems()
+                controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
+                refresh_obj = self._refresh_item_data(self.model.items, selection_indexs, data)
+                controlfile_tools.log_bystatus('get refresh obj is %s' % str(refresh_obj))
+                self.replace_freshobj_bypos(self.model.items, selection_indexs, refresh_obj)
+                controlfile_tools.log_bystatus('get func_paras by pos is %s' % str(self._get_funcs_paras_bypos(self.model.items, selection_indexs)))
+                controlfile_tools.log_bystatus('after refreshing, self.model.items is %s' % str(self.model.items))
+                #只刷新数据，不取消选中
+                self.request_showdata_onlyrefreshdata()
 
-        elif selection_indexs and len(selection_indexs) == 1:
-            self.index_1 = selection_indexs[0]
-            self.index_2 = None
-            if refresh_type == 'get':
-                _, _, refresh_data = self.model.items[self.index_1]
-            elif data and refresh_type == 'refresh':
-                controlfile_tools.log_bystatus('refreshing data %s' % str(data))
-                _tmp_key1, _tmp_item1, refresh_data = self.model.items[self.index_1]
-                self.model.items[self.index_1] = (_tmp_key1, _tmp_item1, data)
-                self.request_showdata_refresh()
-            else:
-                controlfile_tools.log_bystatus("Can't check refresh_type or refresh data is None! ", 'e')
         else:
-            refresh_data = {}
+            return None
 
-        controlfile_tools.log_bystatus("refresh_type, %s, data, %s, self.model.items,  %s"
-                                       % (str(refresh_type), str(data), str(self.model.items)), 'e')
 
-        return refresh_data
 
 
     def get_current_pos(self):
+        """get the position according to tree selection"""
         _pos = []
         select_item = self.tree.GetSelection()
+        print 'select_item.m_pItem is ',select_item.m_pItem
         if select_item.m_pItem:
             controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+            print 'Get selection is %s' % str(self.tree.GetIndexOfItem(select_item))
             for i in list(self.tree.GetIndexOfItem(select_item)):
                 _pos.append(i)
         else:
@@ -102,17 +242,20 @@ class Control():
 
 
     def update_modeldata(self, data, pos, new_value):
-
+        """update new_value to data by pos"""
         command_tools.set_dict(data, pos, new_value)
 
 
 
 ##########################################control programming process panel################################
-    def monitor_changes(self, event, status):
-        event.Enable(status)
 
+    def _rewrite_filepath(self, data):
+        self.file_path_rewrite = data
+        print 'receving the file path rewriten is %s' % self.file_path_rewrite
+        self.load_from_disk()
 
     def set_tree(self, tree):
+        """set process tree"""
         self.tree = tree
 
     def unselect_items(self):
@@ -133,31 +276,79 @@ class Control():
         self._control_model('add', data)
 
     def delete_item(self):
-        if self.model.items:
-            self._control_model('delete')
+        self._control_model('delete')
 
     def change_item_position(self, change_way = 'up'):
-        self.change_way = change_way
-        self._control_model('change')
+            self.change_way = change_way
+            self._control_model('change')
 
-    def save_to_disk(self):
-        # TODO: 保存当前数据进行文件
-        print 'self.file_path', self.file_path
-        if self.file_path:
+    def save_to_disk(self, file_path):
+        """save the project data into disk as well as generate commands to lua4 panel"""
+        if file_path:
             try:
+                print 'file_path is %s' % file_path
                 print 'saving file.',self.model.items
-                controlfile_tools.save(self.file_path, self.generate_prj_data())
-                commands_data = self.orgnize_commands()
-                pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
-                return True, '保存成功！'
+                if self.model.items:
+
+                    controlfile_tools.save(file_path, self.generate_prj_data())
+                    controlfile_tools.log_bystatus('prj data is %s' % str(self.generate_prj_data()))
+                    commands_data = self.orgnize_commands(file_path)
+                    pub.sendMessage('refresh_lua_panel', data = (commands_data, ))
+                    print self.generate_prj_data()
+                    # import mm
+                    # modelitems = mm.DataModel
+                    # modelitems.write('~/Documents/modelitems.xls')
+                    return True, '保存成功！'
+                else:
+                    return False, '为了确保程序正常退出，请至少添加一个延时操作delay!'
             except Exception as e:
                 exceptions = sys.exc_info()
-                return False, '保存失败，请检查第%d行错误原因！' % exceptions[2].tb_lineno
+                return False, '保存失败，请检查第%d行错误原因！请联系技术人员解决问题！' % exceptions[2].tb_lineno
         else:
             # load filepath
-            return False, '请检查文件路径%s是否正确？' % self.file_path
+            return False, '请检查文件路径%s是否正确？' % file_path
 
     def generate_prj_data(self):
+
+        """
+        |
+        |   Generate the project data of tree model
+        |
+
+        .. attention::
+
+               It is neccessary to specific the data structure of project file
+
+               - ProgramBlocks: model data
+               - Repeat_time: int
+               - Last_Edit_time: time
+               - encoding: utf-8
+               - Author: ysw
+               - version: str
+
+
+        ..  admonition:: tree model data's data structure
+
+
+               tree model data ===> [(?), (?), (?), ...]
+
+               ? =====> function str<str>, function child<list>, function paras<dict>
+
+               example:
+                   [('if', [], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)}})]
+                   there are only one if and move function in this model
+
+                   [('if', [('move', [], {choose_point: (P1, str)})], {condition_value: '', operation_value: ''}), ('move', [], {choose_point: (P1, str)})]
+                   this model is different from the one before, because if has its children `move`
+
+               Tips:
+                   Only control function like if, while and so on can have child.
+
+
+
+
+        """
+
         _tmp = {}
         _tmp['ProgramBlocks'] = self.model.items
         _tmp['Repeat_time'] = self.repeat_time
@@ -169,34 +360,57 @@ class Control():
 
         return yaml.dump(_tmp)
 
-    def orgnize_commands(self):
+    def orgnize_commands(self, file_path):
 
+
+        controlfile_tools.log_bystatus('Enter orgnizing commands....')
         from LuaProgrammingGUI.demos.luaprogramme.control.Data_Handler import Handle_Msg
+
         handler = Handle_Msg(self)
+        controlfile_tools.log_bystatus('modeldata in orgnize_commands is %s, rename_list is %s' % (str(self.model.items), str(self.rename_list)))
         commands_data = handler.generate_data_from_gui(self.model.items, self.rename_list)
         controlfile_tools.log_bystatus(
-            'Generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
+            'generating command data is %s, repeat_time is %d' % (str(commands_data), self.repeat_time))
         head_instance, end_instance = handler.get_repeat_lua_for(self.repeat_time)
         handler.Cmd_Manager.pg.append(head_instance)
         handler.generate_commands(commands_data, self.repeat_time)
         handler.Cmd_Manager.pg.append(end_instance)
-        controlfile_tools.save(self.file_path + '.lua', handler.output_commands())
+        controlfile_tools.log_bystatus(
+            'saving commands into lua file %s' % file_path + '.lua'
+        )
+        controlfile_tools.save(file_path + '.lua', handler.output_commands())
         return handler.output_commands()
 
 
-
     def load_from_disk(self):
-        # TODO: 从文件中读取数据
-        print self.file_path
-        if self.file_path:
-            filedata = controlfile_tools.loadyaml(self.file_path)
-            self.model.items = filedata['ProgramBlocks']
-            self.repeat_time = filedata['Repeat_time']
-            print 'loading ...', self.model.items
-            self.refresh_tree()
+        """load project data with file_path"""
+        print 'filepath is %s, rewrite file path is %s' % (self.file_path, self.file_path_rewrite)
+        file_path = self.file_path_rewrite if self.file_path_rewrite else self.file_path
+        if file_path:
+            filedata = controlfile_tools.loadyaml(file_path)
+            if filedata is None:
+                self.model.items = []
+            else:
+                try:
+
+                    self.model.items = filedata['ProgramBlocks']
+                    self.repeat_time = filedata['Repeat_time']
+                except KeyError as e:
+                    print e
+                    wx.MessageBox(u'加载的工程文件不符合格式！请联系技术人员检查工程文件是否损坏！')
+                except Exception as e:
+                    print e
+        # elif self.file_path:
+        #     filedata = controlfile_tools.loadyaml(self.file_path)
+        #     self.model.items = filedata['ProgramBlocks']
+        #     self.repeat_time = filedata['Repeat_time']
+        #     print 'loading ...', self.model.items
+
         else:
             # load filepath
-            pass
+            wx.MessageBox('加载工程文件失败！请选择一个有效的工程进行加载!')
+
+        self.refresh_tree()
 
     def refresh_tree(self):
         self.request_showdata_refresh()
@@ -205,183 +419,180 @@ class Control():
 
 
     def request_showdata_refresh(self):
+        """refresh data of treelistctrl as well as unselect all selection"""
         controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
         pub.sendMessage('refresh_show_modeldata', data=(self.model.items[:], self._funcs_unlimit, ))
 
+    def request_showdata_onlyrefreshdata(self):
+        """only refresh data of treelistctrl"""
+        controlfile_tools.log_bystatus('show data refresh is %s' % str(self.model.items[:]))
+        pub.sendMessage('refresh_show_onlyrefreshdata', data=(self.model.items[:], self._funcs_unlimit, ))
 
-    def _add_obj_bylimit(self, obj, index, limit = False):
 
-        if not limit:
-            (item_str, itemlist, item_data) = obj[index]
-            itemlist.append((self.func_str, self.func_child, self.get_selection_paras()))
-            obj[index] = (item_str, itemlist, item_data)
-        else:
-            obj.insert(index + 1, (self.func_str, self.func_child, self.get_selection_paras()))
-        print 'Enter by limit is %s' % str(limit)
-        return obj
 
     def _rename_func_str(self, func_str):
+        """translate the func str to command str"""
         controlfile_tools.log_bystatus('func_str is %s, final_str is %s' % (func_str, self.rename_list[func_str]))
         return self.rename_list[func_str]
 
-    def _change_obj_pos(self, obj, index):
-        move_count = 1
-        if self.change_way == 'up' and index > move_count - 1:
-            controlfile_tools.log_bystatus(
-                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-            obj[index - move_count], obj[index] = obj[index], obj[index - move_count]
-            controlfile_tools.log_bystatus(
-                'obj[index - 1] = %s, obj[index] = %s' % (str(obj[index - move_count]), str(obj[index])), 'i')
-
-        elif self.change_way == 'down' and index < len(obj) - move_count:
-            controlfile_tools.log_bystatus(
-                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-            obj[index + move_count], obj[index] = obj[index], obj[index + move_count]
-            controlfile_tools.log_bystatus(
-                'obj[index + 1] = %s, obj[index] = %s' % (str(obj[index + move_count]), str(obj[index])), 'i')
-
-        else:
-            controlfile_tools.log_bystatus("Can't move the item!", 'e')
-        return obj
-
-    def _delete_obj(self, obj, index):
-        obj.pop(index)
-        return None
-
 
     def _control_model(self, command = 'delete', data = ('', [], {})):
+        """main control of controlling the change of data """
         self._refresh_func_init()
         controlfile_tools.log_bystatus('Entering control model, data is %s' % str(data), 'i')
         (self.func_str, self.func_child, self._funcs_paras) = data
         self.command = command
         select_item = self.tree.GetSelection()
+        select_items = self.tree.GetIndexOfItem(select_item) if select_item else None
+        self.pos = list(select_items) if select_items else None
 
-        # show_item = _panel_functionlist.data.get_selectionstr()
-        controlfile_tools.log_bystatus('select_item is %s' % str(select_item), 'i')
-        childitem = self.model.items
-
-        # childitemdata = self.model.modeldata
-        try:
-            controlfile_tools.log_bystatus('selection is %s' % str(self.tree.GetIndexOfItem(select_item)))
-        except Exception as e:
-            controlfile_tools.log_bystatus(str(e))
-            controlfile_tools.log_bystatus('selection is None')
-
-        if select_item:
-            controlfile_tools.log_bystatus('selection is %s' %
-                                           str(self.tree.GetIndexOfItem(select_item)), 'i')
-            select_items = self.tree.GetIndexOfItem(select_item)
-            self.pos = select_items
-            select_item_str = self.tree.GetItemText(select_item)
-            controlfile_tools.log_bystatus('select_items is %s, select_item_str is %s' %
-                                           (select_items, select_item_str), 'i')
-            if self.command == 'change':
-                controlfile_tools.log_bystatus(
-                    'Check Change type is %s' % str(self.check_process_hierarchy(childitem, list(select_items),
-                                                                             self.change_way)))
-            if len(select_items) > 2:
-
-                controlfile_tools.log_bystatus('select_item_count is %s' % str(len(select_items)), 'i')
-                controlfile_tools.log_bystatus("Can't append out of index 3!", 'e')
-
-            elif len(select_items) == 1:
-                (self.index_1,) = select_items
-                self.index_2 = None
-                controlfile_tools.log_bystatus('index_1 is %s' % str(self.index_1), 'i')
-                childitem = self._control_command(childitem, self.index_1, limit=not self._check_func_str(select_item_str))
-
-            elif len(select_items) == 2:
-
-                (self.index_1, self.index_2,) = select_items
-                (item_str, itemlist, paraslist) = childitem[self.index_1]
-                controlfile_tools.log_bystatus('index_1 is %s, index_2 is %s' % (str(self.index_1), str(self.index_2)), 'i')
-
-
-                itemlist = self._control_command(itemlist, self.index_2, limit=not self._check_func_str(select_item_str))
-                if itemlist:
-                    childitem[self.index_1] = (item_str, itemlist, paraslist)
-            else:
-                controlfile_tools.log_bystatus('index is %s' % '0', 'i')
-                if self.command == 'add':
-                    childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-                    self.index_1, self.index_2 = [None] * 2
-
-
-        else:
-            # 初始化的时候调用此函数添加第一个节点
-            if self.command == 'add':
-                childitem.append((self.func_str, self.func_child, self.get_selection_paras()))
-                self.index_1, self.index_2 = [None] * 2
-                # childitemdata.append((self.func_str, {}, []))
+        self._control_command()
         self.refresh_tree()
 
-
-
-    def _control_command(self, obj, index, limit = False):
-
-        if self.command == 'add':
-            obj = self._add_obj_bylimit(obj, index, limit=limit)
-
-        elif self.command == 'change':
-
-            if self.check_process_hierarchy(self.model.items, list(self.pos), self.change_way) == 0:
-                obj = self._change_obj_pos(obj, index)
+    def print_allerrmsg(self, result):
+        """print all errmsg if there exists errmsg"""
+        for i in result:
+            if isinstance(i, list) \
+                or isinstance(i, tuple):
+                self.print_allerrmsg(i)
             else:
-                print 'I jump!'
+                print unicode(i)
+
+    def _control_command(self):
+        """
+        truly control function data with command
+        """
+        if self.command == 'add':
+            # obj = self._add_obj_bylimit(obj, index, limit=limit)
+            add_control = TreeItemController()
+            add_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
+            if self.get_selection_paras():
+                self.print_allerrmsg(add_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
+                self.model.items = add_control.items
+            else:
+                wx.MessageBox(u'请选择左侧函数列表中需要添加的函数！')
+            # controlfile_tools.log_bystatus('after adding items is %s' % str(self.model.items))
+        elif self.command == 'change':
+            change_control = TreeItemController()
+            change_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
+            if self.pos:
+                self.print_allerrmsg(
+                    change_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras()), change_way=self.change_way))
+                self.model.items = change_control.items
+            else:
+                wx.MessageBox(u'请选择需要改变位置的函数！')
 
         elif self.command == 'delete':
+            delete_control = TreeItemController()
+            delete_control.config(self.model.items[:], self.pos, self._funcs_unlimit, self.rename_list)
+            if self.pos:
+                self.print_allerrmsg(delete_control.control_model(str(self.command), (str(self.func_str), [], self.get_selection_paras())))
+                self.model.items = delete_control.items
+            else:
+                wx.MessageBox(u'请选择需要删除的函数！')
+            # obj = self._delete_obj(obj, index)
 
-            obj = self._delete_obj(obj, index)
 
-        return obj
+    def __set_tree_value_jumpout(self, treedata, pos, check_type='up'):
+        __tmp_data = None
+        __tmp = []
+        for p in pos:
+            __tmp_data = treedata[p] if not __tmp_data else __tmp_data[1][p]
+            __tmp.append(__tmp_data)
+        setdata = __tmp[-1]
+        if len(pos) > 2:
+            (func_str_grandfather, func_child_grandfather, func_paras_grandfather) = __tmp[pos[-3]]
+            if check_type == 'up':
+                func_child_grandfather.insert(pos[-2], setdata)
+            else:
+                func_child_grandfather.insert(pos[-2] + 1, setdata)
+                __tmp[pos[-3]] = (func_str_grandfather, func_child_grandfather, func_paras_grandfather)
+        elif len(pos) == 2:
+            if check_type == 'up':
+                self.model.items.insert(pos[0], setdata)
+            else:
+                self.model.items.insert(pos[0] + 1, setdata)
+        else:
+            return False
+        del __tmp[-1] # 以便使用parent item来做控制
+        delete_pos = pos[-1]
+        del __tmp[-1][1][delete_pos]
+        return True
 
-
+    def __get_loop_data(self, parentitem, index):
+        if parentitem:
+            parentitem_str, parentitem_child, parentitem_paras = parentitem
+            parentitem = parentitem_child[index]
+        else:
+            parentitem = self.model.items[index]
+        return parentitem
 
     def _check_func_str(self, func_str):
         controlfile_tools.log_bystatus("func_str is %s, _funcs_unlimit is %s" % (str(func_str), str(self._funcs_unlimit)), 'i')
         return func_str in self._funcs_unlimit
 
     def _unselete_all(self):
+        controlfile_tools.log_bystatus('_unselect_all items is %s, tree is %s' % (str(self.model.items), str(self.tree)))
+        self.tree.RefreshItems()
         self.tree.UnselectAll()
 
 
     ## Addon functions
 
     def import_prj_fromdisk(self):
-        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=self.file_path,
+        """import project data from disk file"""
+        dlg = wx.FileDialog(parent=self.parent, message='Please Choose A project file', defaultDir=os.getcwd(),
                       wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*')
         if dlg.ShowModal() == wx.ID_OK:
             self.file_path = dlg.GetPath()
+            self.load_from_disk()
         else:
             pass
-        self.load_from_disk()
+
 
     def output_to_folder(self):
-        dlg = wx.DirDialog(parent=self.parent, message='Plese Set your path to save project file!',
-                           defaultPath=self.file_path, name='view.lts')
+        """save current project data edited on the panel to disk"""
+        dlg = wx.FileDialog(
+            self.parent, message="请填写需要保存的工程文件名，并选中一个路径进行保存！", defaultDir=os.getcwd(),
+            defaultFile="", wildcard='Lts files (*.lts)|*.lts|All files (*.*)|*.*', style=wx.SAVE
+        )
+
         if dlg.ShowModal() == wx.ID_OK:
             self.file_path = dlg.GetPath()
+            self.save_to_disk(self.file_path)
         else:
             pass
-        self.save_to_disk()
+
 
     def load_help_msg(self):
+        """load help msg"""
         controlfile_tools.log_bystatus('help_msg_path is %s' % self.help_msg_path)
-        data = controlfile_tools.loadyaml(self.help_msg_path)
-        return data
+        with open(self.help_msg_path, 'r') as f:
+            data = unicode(f.read())
+            return data
 
     def get_help(self, func_str):
         return self.help_msg.get(func_str, None)
 
     def check_process_hierarchy(self, data, pos, check_type='up'):
         """
-        return -1 equals to data None or index None.
-        return 0  equals to normal change, up is up, down is down.
-        return 1 equals to into or outto the hierarchy.
-        :param data:
-        :param pos:
-        :param check_type:
-        :return:
+        check the position whether can be jump out or not
+
+        :param `data`: item data
+        :type `data`: list
+        :param `pos`: check position
+        :type `pos`: list
+        :param `check_type`: check up or down
+        :rtype: int
+
+        .. attention::
+
+            |
+            | return -1 equals to data None or index None.
+            | return 0  equals to normal change, up is up, down is down.
+            |
+            |
+
         """
         controlfile_tools.log_bystatus('Enter check_process_hierarchy....')
         first_index = pos[0] if pos else None
@@ -424,18 +635,22 @@ class Control():
                 check_value = data[index + 1]
                 return self.__get_limited_checkvalue(check_value)
             else:
-                return 0
+                if parentdata:
+                    return 1 if self.__get_limited_checkvalue(parentdata) else 0
+                else:
+                    return 0
         elif index == len(data) - 1 and len(data) > 1:
             if check_type == 'up':
                 check_value = data[index - 1]
                 return self.__get_limited_checkvalue(check_value)
             else:
-                return 0
+                if parentdata:
+                    return self.__get_limited_checkvalue(parentdata)
+                else:
+                    return 0
         elif len(data) == 1 and parentdata:
-            if self.__get_limited_checkvalue(parentdata) == 1:
-                return 1
-            else:
-                return 0
+            return self.__get_limited_checkvalue(parentdata)
+
         else:
             return 0
 
@@ -458,7 +673,8 @@ class Control():
         return self._func_selection
 
     def get_selection_paras(self):
-        return self._funcs_paras
+        print '获取到paras为%s' % str(copy.deepcopy(self._func_items).get(self._func_str, None))
+        return copy.deepcopy(self._func_items).get(self._func_str, None)
 
     def get_funcsitems(self):
         self._refresh_func_init()
@@ -468,6 +684,6 @@ class Control():
         pub.sendMessage('refresh_funcs')
 
     def _get_funcs_data(self, data):
-        (self._func_items, self._func_str, self._func_selection, self._funcs_paras,
+        (self._func_items, self._func_str, self._func_selection,
                         self._funcs_unlimit, self.file_path, self.rename_list, self.help_msg_path) = data
         controlfile_tools.log_bystatus('_get_funcs_data is %s' % str(data))

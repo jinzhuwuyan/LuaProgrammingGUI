@@ -1,0 +1,86 @@
+condition: ["\u5224\u65AD\u8F93\u5165\u4FE1\u53F7", "\u5224\u65AD\u8F93\u51FA\u4FE1\
+    \u53F7", "\u5224\u65AD\u4F4D\u7F6E"]
+default_append_item: !!python/tuple
+- "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+- []
+- {condition_value: !!python/unicode 'getInput(0)', operation_value: "\u6709\u4FE1\
+    \u53F7"}
+default_refresh_data:
+  check_allconditions: true
+  condition: !!python/tuple
+  - []
+  - list
+operation:
+  "\u5224\u65AD\u4F4D\u7F6E": ["\u5DF2\u5230\u8FBE", "\u672A\u5230\u8FBE"]
+  "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7": ["\u6709\u4FE1\u53F7", "\u65E0\u4FE1\u53F7"]
+  "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7": ["\u6709\u4FE1\u53F7", "\u65E0\u4FE1\u53F7"]
+operation_values: {"\u5DF2\u5230\u8FBE": !!python/unicode '==0', "\u65E0\u4FE1\u53F7": !!python/unicode '!=0',
+  "\u6709\u4FE1\u53F7": !!python/unicode '==0', "\u672A\u5230\u8FBE": !!python/unicode '!=0'}
+value:
+  "\u5224\u65AD\u4F4D\u7F6E": [!!python/unicode 'getTargetOk(P0)', !!python/unicode 'getTargetOk(P1)',
+    !!python/unicode 'getTargetOk(P2)', !!python/unicode 'getTargetOk(P3)', !!python/unicode 'getTargetOk(P4)',
+    !!python/unicode 'getTargetOk(P5)', !!python/unicode 'getTargetOk(P6)', !!python/unicode 'getTargetOk(P7)',
+    !!python/unicode 'getTargetOk(P8)', !!python/unicode 'getTargetOk(P9)', !!python/unicode 'getTargetOk(P10)',
+    !!python/unicode 'getTargetOk(P11)', !!python/unicode 'getTargetOk(P12)', !!python/unicode 'getTargetOk(P13)',
+    !!python/unicode 'getTargetOk(P14)', !!python/unicode 'getTargetOk(P15)', !!python/unicode 'getTargetOk(P16)',
+    !!python/unicode 'getTargetOk(P17)', !!python/unicode 'getTargetOk(P18)', !!python/unicode 'getTargetOk(P19)',
+    !!python/unicode 'getTargetOk(P20)', !!python/unicode 'getTargetOk(P21)', !!python/unicode 'getTargetOk(P22)',
+    !!python/unicode 'getTargetOk(P23)', !!python/unicode 'getTargetOk(P24)', !!python/unicode 'getTargetOk(P25)',
+    !!python/unicode 'getTargetOk(P26)', !!python/unicode 'getTargetOk(P27)', !!python/unicode 'getTargetOk(P28)',
+    !!python/unicode 'getTargetOk(P29)', !!python/unicode 'getTargetOk(P30)', !!python/unicode 'getTargetOk(P31)',
+    !!python/unicode 'getTargetOk(P32)', !!python/unicode 'getTargetOk(P33)', !!python/unicode 'getTargetOk(P34)',
+    !!python/unicode 'getTargetOk(P35)', !!python/unicode 'getTargetOk(P36)', !!python/unicode 'getTargetOk(P37)',
+    !!python/unicode 'getTargetOk(P38)', !!python/unicode 'getTargetOk(P39)', !!python/unicode 'getTargetOk(P40)',
+    !!python/unicode 'getTargetOk(P41)', !!python/unicode 'getTargetOk(P42)', !!python/unicode 'getTargetOk(P43)',
+    !!python/unicode 'getTargetOk(P44)', !!python/unicode 'getTargetOk(P45)', !!python/unicode 'getTargetOk(P46)',
+    !!python/unicode 'getTargetOk(P47)', !!python/unicode 'getTargetOk(P48)', !!python/unicode 'getTargetOk(P49)',
+    !!python/unicode 'getTargetOk(P50)', !!python/unicode 'getTargetOk(P51)', !!python/unicode 'getTargetOk(P52)',
+    !!python/unicode 'getTargetOk(P53)', !!python/unicode 'getTargetOk(P54)', !!python/unicode 'getTargetOk(P55)',
+    !!python/unicode 'getTargetOk(P56)', !!python/unicode 'getTargetOk(P57)', !!python/unicode 'getTargetOk(P58)',
+    !!python/unicode 'getTargetOk(P59)', !!python/unicode 'getTargetOk(P60)', !!python/unicode 'getTargetOk(P61)',
+    !!python/unicode 'getTargetOk(P62)', !!python/unicode 'getTargetOk(P63)', !!python/unicode 'getTargetOk(P64)',
+    !!python/unicode 'getTargetOk(P65)', !!python/unicode 'getTargetOk(P66)', !!python/unicode 'getTargetOk(P67)',
+    !!python/unicode 'getTargetOk(P68)', !!python/unicode 'getTargetOk(P69)', !!python/unicode 'getTargetOk(P70)',
+    !!python/unicode 'getTargetOk(P71)', !!python/unicode 'getTargetOk(P72)', !!python/unicode 'getTargetOk(P73)',
+    !!python/unicode 'getTargetOk(P74)', !!python/unicode 'getTargetOk(P75)', !!python/unicode 'getTargetOk(P76)',
+    !!python/unicode 'getTargetOk(P77)', !!python/unicode 'getTargetOk(P78)', !!python/unicode 'getTargetOk(P79)',
+    !!python/unicode 'getTargetOk(P80)', !!python/unicode 'getTargetOk(P81)', !!python/unicode 'getTargetOk(P82)',
+    !!python/unicode 'getTargetOk(P83)', !!python/unicode 'getTargetOk(P84)', !!python/unicode 'getTargetOk(P85)',
+    !!python/unicode 'getTargetOk(P86)', !!python/unicode 'getTargetOk(P87)', !!python/unicode 'getTargetOk(P88)',
+    !!python/unicode 'getTargetOk(P89)', !!python/unicode 'getTargetOk(P90)', !!python/unicode 'getTargetOk(P91)',
+    !!python/unicode 'getTargetOk(P92)', !!python/unicode 'getTargetOk(P93)', !!python/unicode 'getTargetOk(P94)',
+    !!python/unicode 'getTargetOk(P95)', !!python/unicode 'getTargetOk(P96)', !!python/unicode 'getTargetOk(P97)',
+    !!python/unicode 'getTargetOk(P98)', !!python/unicode 'getTargetOk(P99)']
+  "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7": [!!python/unicode 'getInput(0)', !!python/unicode 'getInput(1)',
+    !!python/unicode 'getInput(2)', !!python/unicode 'getInput(3)', !!python/unicode 'getInput(4)',
+    !!python/unicode 'getInput(5)', !!python/unicode 'getInput(6)', !!python/unicode 'getInput(7)',
+    !!python/unicode 'getInput(8)', !!python/unicode 'getInput(9)', !!python/unicode 'getInput(10)',
+    !!python/unicode 'getInput(11)', !!python/unicode 'getInput(12)', !!python/unicode 'getInput(13)',
+    !!python/unicode 'getInput(14)', !!python/unicode 'getInput(15)', !!python/unicode 'getInput(16)',
+    !!python/unicode 'getInput(17)', !!python/unicode 'getInput(18)', !!python/unicode 'getInput(19)',
+    !!python/unicode 'getInput(20)', !!python/unicode 'getInput(21)', !!python/unicode 'getInput(22)',
+    !!python/unicode 'getInput(23)', !!python/unicode 'getInput(24)', !!python/unicode 'getInput(25)',
+    !!python/unicode 'getInput(26)', !!python/unicode 'getInput(27)', !!python/unicode 'getInput(28)',
+    !!python/unicode 'getInput(29)', !!python/unicode 'getInput(30)', !!python/unicode 'getInput(31)',
+    !!python/unicode 'getInput(32)', !!python/unicode 'getInput(33)', !!python/unicode 'getInput(34)',
+    !!python/unicode 'getInput(35)', !!python/unicode 'getInput(36)', !!python/unicode 'getInput(37)',
+    !!python/unicode 'getInput(38)', !!python/unicode 'getInput(39)', !!python/unicode 'getInput(40)',
+    !!python/unicode 'getInput(41)', !!python/unicode 'getInput(42)', !!python/unicode 'getInput(43)',
+    !!python/unicode 'getInput(44)', !!python/unicode 'getInput(45)', !!python/unicode 'getInput(46)',
+    !!python/unicode 'getInput(47)', !!python/unicode 'getInput(48)', !!python/unicode 'getInput(49)',
+    !!python/unicode 'getInput(50)', !!python/unicode 'getInput(51)', !!python/unicode 'getInput(52)',
+    !!python/unicode 'getInput(53)', !!python/unicode 'getInput(54)', !!python/unicode 'getInput(55)',
+    !!python/unicode 'getInput(56)', !!python/unicode 'getInput(57)', !!python/unicode 'getInput(58)',
+    !!python/unicode 'getInput(59)', !!python/unicode 'getInput(60)', !!python/unicode 'getInput(61)',
+    !!python/unicode 'getInput(62)', !!python/unicode 'getInput(63)']
+  "\u5224\u65AD\u8F93\u51FA\u4FE1\u53F7": [!!python/unicode 'getOutput(0)', !!python/unicode 'getOutput(1)',
+    !!python/unicode 'getOutput(2)', !!python/unicode 'getOutput(3)', !!python/unicode 'getOutput(4)',
+    !!python/unicode 'getOutput(5)', !!python/unicode 'getOutput(6)', !!python/unicode 'getOutput(7)',
+    !!python/unicode 'getOutput(8)', !!python/unicode 'getOutput(9)', !!python/unicode 'getOutput(10)',
+    !!python/unicode 'getOutput(11)', !!python/unicode 'getOutput(12)', !!python/unicode 'getOutput(13)',
+    !!python/unicode 'getOutput(14)', !!python/unicode 'getOutput(15)', !!python/unicode 'getOutput(16)',
+    !!python/unicode 'getOutput(17)', !!python/unicode 'getOutput(18)', !!python/unicode 'getOutput(19)',
+    !!python/unicode 'getOutput(20)', !!python/unicode 'getOutput(21)', !!python/unicode 'getOutput(22)',
+    !!python/unicode 'getOutput(23)', !!python/unicode 'getOutput(24)', !!python/unicode 'getOutput(25)',
+    !!python/unicode 'getOutput(26)', !!python/unicode 'getOutput(27)', !!python/unicode 'getOutput(28)',
+    !!python/unicode 'getOutput(29)', !!python/unicode 'getOutput(30)', !!python/unicode 'getOutput(31)']

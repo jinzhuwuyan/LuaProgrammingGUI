@@ -4,9 +4,9 @@ import wx
 import sys
 import GUI_controlprocess
 
-from LuaProgrammingGUI.test.control.control_process import control_process
-from LuaProgrammingGUI.test.control.control_process import control_process_showdata
-from LuaProgrammingGUI.test.control.tools import view_tools
+from control.control_process import control_process
+from control.control_process import control_process_showdata
+from control.tools import view_tools
 
 # Implementing Panel_controlprocess
 class panel_process( GUI_controlprocess.Panel_controlprocess ):
@@ -53,13 +53,20 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		# TODO: Implement save_change
 		self.change_status = False
 
-		ret, ret_msg = self.control.save_to_disk()
+		ret, ret_msg = self.control.save_to_disk(self.control.file_path)
 		wx.MessageBox(ret_msg)
+		print 'the path of filepath_rewrite is %s' % self.control.file_path_rewrite
+		if self.control.file_path_rewrite:
+			ret_file_rewrite, ret_msg_file_rewrite = self.control.save_to_disk(self.control.file_path_rewrite)
+			print 'The result of saving to disk for lua Programming is %s' % ret_msg_file_rewrite
+		else:
+			pass
 
-	def redo_edit( self, event ):
-		# TODO: Implement redo_edit
-		self.change_status = True
-		self.control.load_from_disk()
+
+	# def redo_edit( self, event ):
+	# 	# TODO: Implement redo_edit
+	# 	self.change_status = True
+	# 	self.control.load_from_disk()
 
 	def refresh_current_selection( self, event ):
 		print 'refresh_current_selection ...'
@@ -67,15 +74,15 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 		self.control.refresh_current_selection()
 
 	def modify_runtime( self, event ):
-
+		self.change_status = True
 		self.control.modify_runtime()
 
 	def import_prj_fromdisk( self, event ):
-
+		self.change_status = True
 		self.control.import_prj_fromdisk()
 
 	def output_to_folder( self, event ):
-
+		self.change_status = False
 		self.control.output_to_folder()
 
 	def show_process_control_help( self, event ):

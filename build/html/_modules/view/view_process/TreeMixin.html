@@ -1,0 +1,469 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>view.view_process.TreeMixin &#8212; LuaProgrammingGUI 1.0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><h1 style="font-size: 3em;">Sampledoc</h1></a>
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for view.view_process.TreeMixin</h1><div class="highlight"><pre>
+<span class="ch">#! encoding: utf-8</span>
+<span class="kn">import</span> <span class="nn">wx</span><span class="o">,</span> <span class="nn">wx.lib.customtreectrl</span><span class="o">,</span> <span class="nn">wx.gizmos</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">treemixin</span> 
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">wx.lib.mixins</span> <span class="k">import</span> <span class="n">treemixin</span>
+
+<span class="n">overview</span> <span class="o">=</span> <span class="n">treemixin</span><span class="o">.</span><span class="n">__doc__</span>
+
+<div class="viewcode-block" id="TreeModel"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel">[docs]</a><span class="k">class</span> <span class="nc">TreeModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; TreeModel holds the domain objects that are shown in the different</span>
+<span class="sd">    tree controls. Each domain object is simply a two-tuple consisting of</span>
+<span class="sd">    a label and a list of child tuples, i.e. (label, [list of child tuples]). </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">itemCounter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TreeModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TreeModel.GetItem"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.GetItem">[docs]</a>    <span class="k">def</span> <span class="nf">GetItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">childrendata</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="p">{}</span>
+        <span class="nb">print</span> <span class="s1">&#39;Getting item is </span><span class="si">%s</span><span class="s1">, indices is </span><span class="si">%s</span><span class="s1">  &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s1">&#39;children[index] is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">children</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+            <span class="n">text</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">childrendata</span> <span class="o">=</span> <span class="n">children</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">childrendata</span></div>
+
+<div class="viewcode-block" id="TreeModel.GetText"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.GetText">[docs]</a>    <span class="k">def</span> <span class="nf">GetText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">indices</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="TreeModel.GetChildren"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.GetChildren">[docs]</a>    <span class="k">def</span> <span class="nf">GetChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">indices</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="TreeModel.GetChildrenCount"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.GetChildrenCount">[docs]</a>    <span class="k">def</span> <span class="nf">GetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TreeModel.SetChildrenCount"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.SetChildrenCount">[docs]</a>    <span class="k">def</span> <span class="nf">SetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+
+            <span class="c1"># children = self.GetChildren(indices)</span>
+
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;item </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">itemCounter</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{}))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">itemCounter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="n">model</span>
+            <span class="c1"># while len(children) &lt; count:</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">model</span><span class="p">:</span>
+
+                <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">itemCounter</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="TreeModel.MoveItem"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeModel.MoveItem">[docs]</a>    <span class="k">def</span> <span class="nf">MoveItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">itemToMoveIndex</span><span class="p">,</span> <span class="n">newParentIndex</span><span class="p">):</span>
+        <span class="n">itemToMove</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">itemToMoveIndex</span><span class="p">)</span>
+        <span class="n">newParentChildren</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="n">newParentIndex</span><span class="p">)</span>
+        <span class="n">newParentChildren</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">itemToMove</span><span class="p">)</span>
+        <span class="n">oldParentChildren</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="n">itemToMoveIndex</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">oldParentChildren</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">itemToMove</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DemoTreeMixin"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin">[docs]</a><span class="k">class</span> <span class="nc">DemoTreeMixin</span><span class="p">(</span><span class="n">treemixin</span><span class="o">.</span><span class="n">VirtualTree</span><span class="p">,</span> <span class="n">treemixin</span><span class="o">.</span><span class="n">DragAndDrop</span><span class="p">,</span> 
+                    <span class="n">treemixin</span><span class="o">.</span><span class="n">ExpansionState</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;treemodel&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;Init DemoTreeMixin ...&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CreateImageList</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DemoTreeMixin.SetTreeModel"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.SetTreeModel">[docs]</a>    <span class="k">def</span> <span class="nf">SetTreeModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span></div>
+
+<div class="viewcode-block" id="DemoTreeMixin.CreateImageList"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.CreateImageList">[docs]</a>    <span class="k">def</span> <span class="nf">CreateImageList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;Creating Image List....&#39;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageList</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ImageList</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">art</span> <span class="ow">in</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_FOLDER</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_FILE_OPEN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_NORMAL_FILE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="n">art</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_OTHER</span><span class="p">,</span> 
+                                                        <span class="n">size</span><span class="p">))</span></div>
+        <span class="c1"># self.AssignImageList(self.imageList)</span>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnGetItemText"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnGetItemText">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;OnGetItemText.... </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">GetText</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">GetText</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnGetChildrenCount"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnGetChildrenCount">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;GetChildrenCount....&#39;</span>
+        <span class="nb">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnGetItemFont"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnGetItemFont">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemFont</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;OnGetItemFont.....&#39;</span>
+        <span class="c1"># Show how to change the item font. Here we use a small font for</span>
+        <span class="c1"># items that have children and the default font otherwise.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">SMALL_FONT</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">OnGetItemFont</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnGetItemTextColour"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnGetItemTextColour">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemTextColour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;GetItemTextColour....&#39;</span>
+        <span class="c1"># Show how to change the item text colour. In this case second level</span>
+        <span class="c1"># items are coloured red and third level items are blue. All other</span>
+        <span class="c1"># items have the default text colour.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">RED</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">BLUE</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">OnGetItemTextColour</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnGetItemBackgroundColour"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnGetItemBackgroundColour">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemBackgroundColour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="c1"># Show how to change the item background colour. In this case the</span>
+        <span class="c1"># background colour of each third item is green.</span>
+        <span class="nb">print</span> <span class="s1">&#39;OnGetItemBackGroundColour.....&#39;</span>
+        <span class="c1"># if indices[-1] == 2:</span>
+        <span class="c1">#     return wx.GREEN</span>
+        <span class="c1"># else:</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">OnGetItemBackgroundColour</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+    <span class="c1"># def OnGetItemImage(self, indices, which):</span>
+    <span class="c1">#     # Return the right icon depending on whether the item has children.</span>
+    <span class="c1">#     print &#39;GetItemImage....&#39;</span>
+    <span class="c1">#     if which in [wx.TreeItemIcon_Normal, wx.TreeItemIcon_Selected]:</span>
+    <span class="c1">#         if self.model.GetChildrenCount(indices):</span>
+    <span class="c1">#             return 0</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             return 2</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         return 1</span>
+
+<div class="viewcode-block" id="DemoTreeMixin.OnDrop"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.DemoTreeMixin.OnDrop">[docs]</a>    <span class="k">def</span> <span class="nf">OnDrop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dropTarget</span><span class="p">,</span> <span class="n">dragItem</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;Droping.....&#39;</span>
+        <span class="c1"># dropIndex = self.GetIndexOfItem(dropTarget)</span>
+        <span class="c1"># dropText = self.model.GetText(dropIndex)</span>
+        <span class="c1"># dragIndex = self.GetIndexOfItem(dragItem)</span>
+        <span class="c1"># dragText = self.model.GetText(dragIndex)</span>
+        <span class="c1"># self.log.write(&#39;drop %s %s on %s %s&#39;%(dragText, dragIndex,</span>
+        <span class="c1">#     dropText, dropIndex))</span>
+        <span class="c1"># self.model.MoveItem(dragIndex, dropIndex)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RefreshItems</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UnselectAll</span><span class="p">()</span></div></div>
+
+
+
+<div class="viewcode-block" id="VirtualTreeCtrl"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeCtrl">[docs]</a><span class="k">class</span> <span class="nc">VirtualTreeCtrl</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">TreeCtrl</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+
+<div class="viewcode-block" id="VirtualTreeListCtrl"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl">[docs]</a><span class="k">class</span> <span class="nc">VirtualTreeListCtrl</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">gizmos</span><span class="o">.</span><span class="n">TreeListCtrl</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_DEFAULT_STYLE</span> <span class="o">|</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_FULL_ROW_HIGHLIGHT</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VirtualTreeListCtrl</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddColumn</span><span class="p">(</span><span class="s1">&#39;命令&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddColumn</span><span class="p">(</span><span class="s1">&#39;值&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">art</span> <span class="ow">in</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_TIP</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_WARNING</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="n">art</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_OTHER</span><span class="p">,</span>
+                                                        <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="VirtualTreeListCtrl.OnGetItemText"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl.OnGetItemText">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># Return a different label depending on column.</span>
+        <span class="n">_pos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indices</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nb">print</span> <span class="s2">&quot;indices&#39;s type is </span><span class="si">%s</span><span class="s2">, _pos is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">_pos</span><span class="p">))</span>
+        <span class="n">_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_itembypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">_pos</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;Get Item in TreeListCtrl, no pos item is </span><span class="si">%s</span><span class="s1">, items is </span><span class="si">%s</span><span class="s1">, column is </span><span class="si">%d</span><span class="s1">&#39;</span> \
+              <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">_item</span><span class="p">),</span> <span class="n">column</span><span class="p">)</span>
+        <span class="n">func_str</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">paras</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="nb">print</span> <span class="s1">&#39;Get Item in TreeListCtrl, func_str is </span><span class="si">%s</span><span class="s1">, child is </span><span class="si">%s</span><span class="s1">, paras is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">func_str</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">paras</span><span class="p">))</span>
+        <span class="n">paras_str</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">para</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">para</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">para</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">para</span><span class="p">)</span> <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">paras</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="n">func_str</span> <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">paras_str</span></div>
+
+
+<div class="viewcode-block" id="VirtualTreeListCtrl.OnItemChecked"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl.OnItemChecked">[docs]</a>    <span class="k">def</span> <span class="nf">OnItemChecked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;ItemChecked.....&#39;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetItem</span><span class="p">()</span>
+        <span class="n">itemIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItemType</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># It&#39;s a radio item; reset other items on the same level</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetItemParent</span><span class="p">(</span><span class="n">item</span><span class="p">))):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">nr</span><span class="p">,)]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="VirtualTreeListCtrl.get_itembypos"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl.get_itembypos">[docs]</a>    <span class="k">def</span> <span class="nf">get_itembypos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s1">&#39;item[index] is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_itembypos</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="VirtualTreeListCtrl_ControlIF"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF">[docs]</a><span class="k">class</span> <span class="nc">VirtualTreeListCtrl_ControlIF</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">gizmos</span><span class="o">.</span><span class="n">TreeListCtrl</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_DEFAULT_STYLE</span> <span class="o">|</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_FULL_ROW_HIGHLIGHT</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VirtualTreeListCtrl_ControlIF</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddColumn</span><span class="p">(</span><span class="s1">&#39;条件&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddColumn</span><span class="p">(</span><span class="s1">&#39;条件值&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddColumn</span><span class="p">(</span><span class="s1">&#39;操作值&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">art</span> <span class="ow">in</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_TIP</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_WARNING</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageList</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="n">art</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_OTHER</span><span class="p">,</span>
+                                                        <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="VirtualTreeListCtrl_ControlIF.OnGetItemText"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF.OnGetItemText">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># Return a different label depending on column.</span>
+        <span class="n">_pos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indices</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nb">print</span> <span class="s2">&quot;indices&#39;s type is </span><span class="si">%s</span><span class="s2">, _pos is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">_pos</span><span class="p">))</span>
+        <span class="n">_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_itembypos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">_pos</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;Get Item in TreeListCtrl, no pos item is </span><span class="si">%s</span><span class="s1">, items is </span><span class="si">%s</span><span class="s1">, column is </span><span class="si">%d</span><span class="s1">&#39;</span> \
+              <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">_item</span><span class="p">),</span> <span class="n">column</span><span class="p">)</span>
+        <span class="n">func_str</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">paras</span> <span class="o">=</span> <span class="n">_item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="nb">print</span> <span class="s1">&#39;Get Item in TreeListCtrl, func_str is </span><span class="si">%s</span><span class="s1">, child is </span><span class="si">%s</span><span class="s1">, paras is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">func_str</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">paras</span><span class="p">))</span>
+        <span class="n">paras_str</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">para</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">paras</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="n">para_list</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">func_str</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">paras</span><span class="p">[</span><span class="s1">&#39;condition_value&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="n">paras</span><span class="p">[</span><span class="s1">&#39;operation_value&#39;</span><span class="p">]}</span>
+        <span class="k">return</span> <span class="n">para_list</span><span class="p">[</span><span class="n">column</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="VirtualTreeListCtrl_ControlIF.OnItemChecked"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF.OnItemChecked">[docs]</a>    <span class="k">def</span> <span class="nf">OnItemChecked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;ItemChecked.....&#39;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetItem</span><span class="p">()</span>
+        <span class="n">itemIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItemType</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># It&#39;s a radio item; reset other items on the same level</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetItemParent</span><span class="p">(</span><span class="n">item</span><span class="p">))):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">nr</span><span class="p">,)]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="VirtualTreeListCtrl_ControlIF.get_itembypos"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualTreeListCtrl_ControlIF.get_itembypos">[docs]</a>    <span class="k">def</span> <span class="nf">get_itembypos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s1">&#39;item[index] is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func_str</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">paras</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_itembypos</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="VirtualCustomTreeCtrl"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualCustomTreeCtrl">[docs]</a><span class="k">class</span> <span class="nc">VirtualCustomTreeCtrl</span><span class="p">(</span><span class="n">DemoTreeMixin</span><span class="p">,</span> 
+                            <span class="n">wx</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">customtreectrl</span><span class="o">.</span><span class="n">CustomTreeCtrl</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_HIDE_ROOT</span> <span class="o">|</span> \
+            <span class="n">wx</span><span class="o">.</span><span class="n">TR_HAS_BUTTONS</span> <span class="o">|</span> <span class="n">wx</span><span class="o">.</span><span class="n">TR_FULL_ROW_HIGHLIGHT</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VirtualCustomTreeCtrl</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">customtreectrl</span><span class="o">.</span><span class="n">EVT_TREE_ITEM_CHECKED</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">OnItemChecked</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VirtualCustomTreeCtrl.OnGetItemType"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualCustomTreeCtrl.OnGetItemType">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;getItemType.....&#39;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="VirtualCustomTreeCtrl.OnGetItemChecked"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualCustomTreeCtrl.OnGetItemChecked">[docs]</a>    <span class="k">def</span> <span class="nf">OnGetItemChecked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;GetItemChecked....&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VirtualCustomTreeCtrl.OnItemChecked"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.VirtualCustomTreeCtrl.OnItemChecked">[docs]</a>    <span class="k">def</span> <span class="nf">OnItemChecked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;ItemChecked.....&#39;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetItem</span><span class="p">()</span>
+        <span class="n">itemIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetItemType</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="c1"># It&#39;s a radio item; reset other items on the same level</span>
+            <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetItemParent</span><span class="p">(</span><span class="n">item</span><span class="p">))):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">nr</span><span class="p">,)]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checked</span><span class="p">[</span><span class="n">itemIndex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+
+
+<div class="viewcode-block" id="TreeNotebook"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeNotebook">[docs]</a><span class="k">class</span> <span class="nc">TreeNotebook</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Notebook</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">treemodel</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;treemodel&#39;</span><span class="p">)</span>
+        <span class="n">log</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TreeNotebook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trees</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">class_</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">VirtualTreeCtrl</span><span class="p">,</span> <span class="s1">&#39;TreeCtrl&#39;</span><span class="p">),</span>
+                              <span class="p">(</span><span class="n">VirtualTreeListCtrl</span><span class="p">,</span> <span class="s1">&#39;TreeListCtrl&#39;</span><span class="p">),</span>
+                              <span class="p">(</span><span class="n">VirtualCustomTreeCtrl</span><span class="p">,</span> <span class="s1">&#39;CustomTreeCtrl&#39;</span><span class="p">)]:</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">class_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treemodel</span><span class="o">=</span><span class="n">treemodel</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">AddPage</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_NOTEBOOK_PAGE_CHANGED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnPageChanged</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TreeNotebook.OnPageChanged"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeNotebook.OnPageChanged">[docs]</a>    <span class="k">def</span> <span class="nf">OnPageChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;Changing page.....&#39;</span>
+        <span class="n">oldTree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPage</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">OldSelection</span><span class="p">)</span>
+        <span class="n">newTree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPage</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">Selection</span><span class="p">)</span>
+        <span class="n">newTree</span><span class="o">.</span><span class="n">RefreshItems</span><span class="p">()</span>
+        <span class="n">newTree</span><span class="o">.</span><span class="n">SetExpansionState</span><span class="p">(</span><span class="n">oldTree</span><span class="o">.</span><span class="n">GetExpansionState</span><span class="p">())</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">Skip</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TreeNotebook.GetIndicesOfSelectedItems"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeNotebook.GetIndicesOfSelectedItems">[docs]</a>    <span class="k">def</span> <span class="nf">GetIndicesOfSelectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;GetIndicesOfSelectedItems.....&#39;</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="o">.</span><span class="n">GetSelections</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">tree</span><span class="o">.</span><span class="n">GetIndexOfItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">GetSelections</span><span class="p">()]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[()]</span></div>
+
+<div class="viewcode-block" id="TreeNotebook.RefreshItems"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TreeNotebook.RefreshItems">[docs]</a>    <span class="k">def</span> <span class="nf">RefreshItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;Refreshing items is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()]</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">RefreshItems</span><span class="p">()</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">UnselectAll</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="TesPanel"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TesPanel">[docs]</a><span class="k">class</span> <span class="nc">TesPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">log</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">log</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TesPanel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">treemodel</span> <span class="o">=</span> <span class="n">TreeModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CreateControls</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LayoutControls</span><span class="p">()</span>
+
+<div class="viewcode-block" id="TesPanel.CreateControls"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TesPanel.CreateControls">[docs]</a>    <span class="k">def</span> <span class="nf">CreateControls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notebook</span> <span class="o">=</span> <span class="n">TreeNotebook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treemodel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">treemodel</span><span class="p">,</span> 
+                                     <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of children: &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">childrenCountCtrl</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">SpinCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Update children&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnEnter</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TesPanel.LayoutControls"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TesPanel.LayoutControls">[docs]</a>    <span class="k">def</span> <span class="nf">LayoutControls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">hSizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALIGN_CENTER_VERTICAL</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">hSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">hSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrenCountCtrl</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">hSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notebook</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">hSizer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TesPanel.OnEnter"><a class="viewcode-back" href="../../../getting_started.html#view.view_process.TreeMixin.TesPanel.OnEnter">[docs]</a>    <span class="k">def</span> <span class="nf">OnEnter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">indicesList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">GetIndicesOfSelectedItems</span><span class="p">()</span>
+        <span class="n">newChildrenCount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrenCountCtrl</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">indicesList</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">treemodel</span><span class="o">.</span><span class="n">GetText</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="s1">&#39;text is </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">oldChildrenCount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">treemodel</span><span class="o">.</span><span class="n">GetChildrenCount</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="s1">&#39;oldChildrenCount is </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">oldChildrenCount</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> now has </span><span class="si">%d</span><span class="s1"> children (was </span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span>
+                                                                   <span class="n">newChildrenCount</span><span class="p">,</span> <span class="n">oldChildrenCount</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">treemodel</span><span class="o">.</span><span class="n">SetChildrenCount</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">newChildrenCount</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">RefreshItems</span><span class="p">()</span></div></div>
+
+
+<span class="c1"># def runTest(frame, nb, log):</span>
+<span class="c1">#     win = TestPanel(nb, log)</span>
+<span class="c1">#     return win</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">TesPanel</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+    <span class="c1"># import sys, os, run</span>
+    <span class="c1"># run.main([&#39;&#39;, os.path.basename(sys.argv[0])] + sys.argv[1:])</span>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, yan_sw.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
