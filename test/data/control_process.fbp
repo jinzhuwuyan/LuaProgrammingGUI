@@ -282,27 +282,6 @@
                             <event name="OnUpdateUI">check_save_status</event>
                         </object>
                         <object class="tool" expanded="0">
-                            <property name="bitmap">Load From Art Provider; gtk-undo; wxART_TOOLBAR</property>
-                            <property name="context_menu">0</property>
-                            <property name="id">wxID_ANY</property>
-                            <property name="kind">wxITEM_NORMAL</property>
-                            <property name="label">tool</property>
-                            <property name="name">m_tool_redo</property>
-                            <property name="permission">protected</property>
-                            <property name="statusbar">恢复上次工作</property>
-                            <property name="tooltip">恢复上次工作</property>
-                            <event name="OnAuiToolBarBeginDrag"></event>
-                            <event name="OnAuiToolBarMiddleClick"></event>
-                            <event name="OnAuiToolBarOverflowClick"></event>
-                            <event name="OnAuiToolBarRightClick"></event>
-                            <event name="OnAuiToolBarToolDropDown"></event>
-                            <event name="OnMenuSelection"></event>
-                            <event name="OnToolClicked">redo_edit</event>
-                            <event name="OnToolEnter"></event>
-                            <event name="OnToolRClicked"></event>
-                            <event name="OnUpdateUI"></event>
-                        </object>
-                        <object class="tool" expanded="0">
                             <property name="bitmap">Load From Art Provider; gtk-refresh; wxART_TOOLBAR</property>
                             <property name="context_menu">0</property>
                             <property name="id">wxID_ANY</property>

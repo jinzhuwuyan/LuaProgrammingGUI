@@ -279,6 +279,37 @@ class WHILE(Condition_Paras_Command):
     def __init__(self, CmdID, PairID, condition_filepath = None):
         Condition_Paras_Command.__init__(self, CmdID=CmdID, commandName='while', PairID=PairID, condition_filepath=condition_filepath)
 
+    def gen_str(self):
+        self.generate_condition()
+        __condition_values = []
+        value, check_allcondition = self.data
+        check_str = ' and ' if check_allcondition else ' or '
+        print 'Entering gen_str function......value is %s, check_allcondition is %s'  % (str(value), str(check_allcondition))
+        if isinstance(value, tuple):
+            # value = ([], 'list')
+            for condition in value[0]:
+                # ([(u'xxx', [], {condition_value: 'xxxx', operation_value: 'xxxx1'})], 'list')
+                func_str, _, paras = condition
+                condition_value = paras['condition_value']
+                operation_value = paras['operation_value']
+                for r_str in self.removes_msg:
+
+                    func_str = unicode(func_str).replace(r_str, u'')
+                    condition_value = unicode(condition_value).replace(r_str, u'')
+
+                print 'condition_value is %s, condition_value is %s, final command is %s' \
+                      % (str(self.condition_values), str(paras['condition_value']),
+                         self.condition_values[func_str] % condition_value)
+                func_value = self.condition_values[func_str] % condition_value
+                print 'find condition name is %s, paras is %s' % (func_str, func_value)
+                condition_str = ''.join([func_value, self.operations_values[operation_value]])
+                __condition_values.append(condition_str)
+
+        self.condition_strs = tuple([check_str.join(__condition_values)])
+
+
+        return ''.join([self.commandName, " (%s) do"])
+
 class ON(Abstract_Command):
 
     def __init__(self, CmdID):

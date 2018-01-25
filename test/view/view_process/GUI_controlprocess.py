@@ -40,8 +40,6 @@ class Panel_controlprocess ( Panel ):
 		
 		self.m_tool_save = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( u"gtk-yes", wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"保存", u"保存", None ) 
 		
-		self.m_tool_redo = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( u"gtk-undo", wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"恢复上次工作", u"恢复上次工作", None ) 
-		
 		self.m_tool_modify_run_time = self.m_toolBar_main.AddLabelTool( wx.ID_ANY, u"tool", wx.ArtProvider.GetBitmap( u"gtk-refresh", wx.ART_TOOLBAR ), wx.NullBitmap, wx.ITEM_NORMAL, u"修改循环时间", u"修改循环时间", None ) 
 		
 		self.m_toolBar_main.AddSeparator()
@@ -78,7 +76,6 @@ class Panel_controlprocess ( Panel ):
 		self.Bind( wx.EVT_TOOL, self.take_function_down, id = self.m_tool_down.GetId() )
 		self.Bind( wx.EVT_TOOL, self.save_change, id = self.m_tool_save.GetId() )
 		self.Bind( wx.EVT_UPDATE_UI, self.check_save_status, id = self.m_tool_save.GetId() )
-		self.Bind( wx.EVT_TOOL, self.redo_edit, id = self.m_tool_redo.GetId() )
 		self.Bind( wx.EVT_TOOL, self.modify_runtime, id = self.m_tool_modify_run_time.GetId() )
 		self.Bind( wx.EVT_TOOL, self.import_prj_fromdisk, id = self.m_tool_open_project.GetId() )
 		self.Bind( wx.EVT_TOOL, self.output_to_folder, id = self.m_tool_save_to_otherpath.GetId() )
@@ -105,9 +102,6 @@ class Panel_controlprocess ( Panel ):
 		event.Skip()
 	
 	def check_save_status( self, event ):
-		event.Skip()
-	
-	def redo_edit( self, event ):
 		event.Skip()
 	
 	def modify_runtime( self, event ):
