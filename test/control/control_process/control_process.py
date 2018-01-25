@@ -111,6 +111,7 @@ class Control():
         """refresh current selected func and func data, show para panel"""
         refresh_data = self._refresh_parasdata(refresh_type = 'get')
         print 'refresh_data ...', refresh_data
+
         pub.sendMessage('refresh_paras', data=(refresh_data, self.func_str))
 
 
@@ -126,6 +127,7 @@ class Control():
                 _, child, _ = _tmp
                 _tmp = child[p]
         func_str, child, paras = _tmp
+        self.func_str = func_str
         return paras
 
 
@@ -224,8 +226,10 @@ class Control():
         """get the position according to tree selection"""
         _pos = []
         select_item = self.tree.GetSelection()
+        print 'select_item.m_pItem is ',select_item.m_pItem
         if select_item.m_pItem:
             controlfile_tools.log_bystatus("Enter getpos from get_current_pos")
+            print 'Get selection is %s' % str(self.tree.GetIndexOfItem(select_item))
             for i in list(self.tree.GetIndexOfItem(select_item)):
                 _pos.append(i)
         else:

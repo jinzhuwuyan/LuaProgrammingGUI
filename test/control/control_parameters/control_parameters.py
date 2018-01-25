@@ -73,6 +73,7 @@ class Control():
                             'ON':  self.check_io_value,
                             'OFF': self.check_io_value,
                             'FOR': self.check_naturalnumber_value,
+                            'STOP': self.check_zero_one_value,
                             }
         self.check_value_msg = {'SPEED': u'速度必须在0到100之间！',
                                 'ACCEL': u'加速度必须在0到100之间！',
@@ -80,6 +81,7 @@ class Control():
                                 'ON': u'开启输出信号必须在0到31之间！',
                                 'OFF': u'关闭输出信号必须在0到31之间！',
                                 'FOR': u'FOR的循环次数必须大于0!',
+                                'STOP': u'急停只能为0或1,1表示停止, 0表示恢复运动!',
                                 }
 
     def save_content_from_gui(self, text_content, _type):
@@ -102,7 +104,7 @@ class Control():
         controlfile_tools.log_bystatus('text_content is %s, type is %s' % (text_content, _type), 'i')
         save_data = command_tools.check_type(text_content, _type)
         controlfile_tools.log_bystatus('save_data is %s' % save_data, 'i')
-        if save_data and self.check_functionlimits(self.function_name, save_data):
+        if save_data != None and self.check_functionlimits(self.function_name, save_data):
 
                 self.request_save_data()
                 controlfile_tools.log_bystatus('request saving data %s' % save_data, 'i')
@@ -249,6 +251,7 @@ class Control():
         # pub.sendMessage('refresh_choosedatalist', data=(datalist, ))
 
     def get_errormsg(self):
+        print 'function name is %s' % self.function_name
         return self.check_value_msg[self.function_name]
 
     def set_functionname(self, func_name):
@@ -263,7 +266,11 @@ class Control():
         return 0.0 < value < 100.0
 
     def check_io_value(self, value):
-        return value in range(1)
+        return value in range(32)
 
     def check_naturalnumber_value(self, value):
         return  value > 0
+
+    def check_zero_one_value(self, value):
+        print 'check zero or one is', value in range(2)
+        return value in range(2)
