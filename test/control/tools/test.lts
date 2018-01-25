@@ -1,23 +1,49 @@
 Author: ysw
-Last_Edit_time: Tue Jan 23 17:44:01 2018
+Last_Edit_time: Thu Jan 25 14:56:15 2018
 ProgramBlocks:
 - !!python/tuple
   - IF
   - - !!python/tuple
-      - GO
+      - SPEED
       - []
-      - choose_point: !!python/tuple [P1, str]
+      - value: !!python/tuple [40.0, float]
+    - !!python/tuple
+      - 'ON'
+      - []
+      - value: !!python/tuple [30, int]
+    - !!python/tuple
+      - STOP
+      - []
+      - value: !!python/tuple [0, int]
+    - !!python/tuple
+      - DELAY
+      - []
+      - time: !!python/tuple [2.0, float]
+    - !!python/tuple
+      - ACCEL
+      - []
+      - value: !!python/tuple [10.0, float]
   - check_allconditions: true
     condition: !!python/tuple
     - - !!python/tuple
+        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+        - []
+        - {condition_value: "\u7AEF\u53E30", operation_value: "\u6709\u4FE1\u53F7"}
+    - list
+- !!python/tuple
+  - WHILE
+  - []
+  - check_allconditions: true
+    condition: !!python/tuple
+    - - !!python/tuple
+        - "\u5224\u65AD\u8F93\u5165\u4FE1\u53F7"
+        - []
+        - {condition_value: "\u7AEF\u53E33", operation_value: "\u6709\u4FE1\u53F7"}
+      - !!python/tuple
         - "\u5224\u65AD\u4F4D\u7F6E"
         - []
         - {condition_value: !!python/unicode 'P2', operation_value: "\u5DF2\u5230\u8FBE"}
     - list
-- !!python/tuple
-  - FOR
-  - []
-  - value: !!python/tuple [1, int]
 Repeat_time: 1
 encoding: utf-8
 version: null

@@ -1,7 +1,11 @@
     for i=1,1 do
-        if (targetOK(P2)==0) then
-            go(P1)
+        if (getInput(0)==0) then
+            setSpeed(40)
+            on(30)
+            emgStop(0)
+            luaSleep(2.000000)
+            setAccel(10)
         end --#END -- 2
-        for i=1,1 do
+        while (getInput(3)==0 and targetOK(P2)==0) do
         end --#END -- 3
     end --#END -- 1

@@ -75,8 +75,8 @@ class Control():
                             'FOR': self.check_naturalnumber_value,
                             'STOP': self.check_zero_one_value,
                             }
-        self.check_value_msg = {'SPEED': u'速度必须在0到100之间！',
-                                'ACCEL': u'加速度必须在0到100之间！',
+        self.check_value_msg = {'SPEED': u'速度必须在0到100之间(不包括0)！',
+                                'ACCEL': u'加速度必须在0到100之间(不包括0)！',
                                 'DELAY': u'等待时间必须大于0！',
                                 'ON': u'开启输出信号必须在0到31之间！',
                                 'OFF': u'关闭输出信号必须在0到31之间！',

@@ -63,10 +63,10 @@ class panel_process( GUI_controlprocess.Panel_controlprocess ):
 			pass
 
 
-	def redo_edit( self, event ):
-		# TODO: Implement redo_edit
-		self.change_status = True
-		self.control.load_from_disk()
+	# def redo_edit( self, event ):
+	# 	# TODO: Implement redo_edit
+	# 	self.change_status = True
+	# 	self.control.load_from_disk()
 
 	def refresh_current_selection( self, event ):
 		print 'refresh_current_selection ...'
