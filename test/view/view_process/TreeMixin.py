@@ -159,12 +159,15 @@ class VirtualTreeListCtrl(DemoTreeMixin, wx.gizmos.TreeListCtrl):
         self.checked = None
         self.AddColumn('命令')
         self.AddColumn('值')
+        a = self.GetColumn(0)
+        print 'SelectedImage is ', a.GetSelectedImage()
         for art in wx.ART_TIP, wx.ART_WARNING:
             self.imageList.Add(wx.ArtProvider.GetBitmap(art, wx.ART_OTHER,
                                                         (16, 16)))
 
     def OnGetItemText(self, indices, column=0):
         # Return a different label depending on column.
+
         _pos = list(indices)[::-1]
         print "indices's type is %s, _pos is %s" % (str(type(indices)), str(_pos))
         _item = self.get_itembypos(self.model.items, _pos)
